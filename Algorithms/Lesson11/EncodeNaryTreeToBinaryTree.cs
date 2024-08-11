@@ -1,0 +1,116 @@
+//测试通过
+
+namespace Algorithms.Lesson11;
+
+// 本题测试链接：https://leetcode.cn/problems/encode-n-ary-tree-to-binary-tree
+public class EncodeNaryTreeToBinaryTree
+{
+    public static void Run()
+    {
+        //构造一个多叉树
+        var root = new Node(1, [
+            new Node(3, [
+                    new Node(5),
+                    new Node(6),
+                    new Node(7)
+                ]
+            ),
+
+            new Node(2),
+            new Node(4),
+            new Node(8)
+        ]);
+
+        var encoder = new Codec();
+        var decoder = new Codec();
+
+        var encoded = encoder.Encode(root);
+        var nAryTree = decoder.Decode(encoded);
+        //结构调试看内存
+        Console.WriteLine(nAryTree);
+    }
+
+    // 提交时不要提交这个类
+    public class Node
+    {
+        public readonly List<Node>? Children;
+        public readonly int Val;
+
+        public Node()
+        {
+        }
+
+        public Node(int val)
+        {
+            Val = val;
+        }
+
+        public Node(int val, List<Node> children)
+        {
+            Val = val;
+            Children = children;
+        }
+    }
+
+    // 提交时不要提交这个类
+    public class TreeNode(int x)
+    {
+        public readonly int Val = x;
+        public TreeNode? Left;
+        public TreeNode? Right;
+    }
+
+    // 只提交这个类即可
+    private class Codec
+    {
+        // Encodes an n-ary tree to a binary tree.
+        public TreeNode? Encode(Node? root)
+        {
+            if (root == null) return null;
+
+            var head = new TreeNode(root.Val)
+            {
+                Left = En(root.Children)
+            };
+            return head;
+        }
+
+        private static TreeNode? En(List<Node>? children)
+        {
+            TreeNode? head = null;
+            TreeNode? cur = null;
+            if (children != null)
+                foreach (var child in children)
+                {
+                    var tNode = new TreeNode(child.Val);
+                    if (head == null)
+                        head = tNode;
+                    else if (cur != null) cur.Right = tNode;
+
+                    cur = tNode;
+                    cur.Left = En(child.Children);
+                }
+
+            return head;
+        }
+
+        // Decodes your binary tree to an n-ary tree.
+        public Node? Decode(TreeNode? root)
+        {
+            return root == null ? null : new Node(root.Val, De(root.Left));
+        }
+
+        private static List<Node> De(TreeNode? root)
+        {
+            var children = new List<Node>();
+            while (root != null)
+            {
+                var cur = new Node(root.Val, De(root.Left));
+                children.Add(cur);
+                root = root.Right;
+            }
+
+            return children;
+        }
+    }
+}
