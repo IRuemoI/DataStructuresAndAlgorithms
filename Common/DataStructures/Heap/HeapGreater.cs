@@ -4,21 +4,14 @@ namespace Common.DataStructures.Heap;
 ///     加强堆
 /// </summary>
 /// <typeparam name="T">T一定要是非基础类型，有基础类型需求包一层</typeparam>
-public class HeapGreater<T> where T : notnull
+public class HeapGreater<T>(Func<T, T, int> comparison)
+    where T : notnull
 {
-    private readonly List<T> _heap;
-    private readonly Dictionary<T, int> _indexMap;
-
-    public HeapGreater(Func<T, T, int> comparison)
-    {
-        _heap = new List<T>();
-        _indexMap = new Dictionary<T, int>();
-        Count = 0;
-        Comparison = comparison ?? throw new ArgumentNullException(nameof(comparison));
-    }
+    private readonly List<T> _heap = [];
+    private readonly Dictionary<T, int> _indexMap = new();
 
     public int Count { get; private set; }
-    private Func<T, T, int> Comparison { get; }
+    private Func<T, T, int> Comparison { get; } = comparison ?? throw new ArgumentNullException(nameof(comparison));
 
     private int Compare(T a, T b)
     {

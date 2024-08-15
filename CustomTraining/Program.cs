@@ -1,5 +1,4 @@
-﻿//体系学习班 https://www.bilibili.com/list/ml3257668072
-
+﻿//todo:进度 https://www.bilibili.com/video/BV1sovaemEhi/?t=2146
 namespace CustomTraining;
 
 public static class Program

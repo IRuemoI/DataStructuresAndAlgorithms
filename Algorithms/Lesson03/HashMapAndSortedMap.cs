@@ -46,7 +46,7 @@ public class HashMapAndSortedMap
         Console.WriteLine(value2);
 
         // key
-        HashSet<string> set = new() { "abc" };
+        HashSet<string> set = ["abc"];
         Console.WriteLine(set.Contains("abc") ? "yes" : "No");
         set.Remove("abc");
 
@@ -110,23 +110,13 @@ public class HashMapAndSortedMap
         // O(logN)
     }
 
-    private class Node
+    private class Node(int v)
     {
-        public int Value;
-
-        public Node(int v)
-        {
-            Value = v;
-        }
+        public int Value = v;
     }
 
-    private class Zuo
+    private class Zuo(int v)
     {
-        public int Value;
-
-        public Zuo(int v)
-        {
-            Value = v;
-        }
+        public int Value = v;
     }
 }

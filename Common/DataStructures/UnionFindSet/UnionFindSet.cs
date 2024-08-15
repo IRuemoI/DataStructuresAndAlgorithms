@@ -2,18 +2,11 @@
 
 namespace Common.DataStructures.UnionFindSet;
 
-public class Node<T>
+public class Node<T>(T v)
 {
-    private readonly T _value;
-
-    public Node(T v)
-    {
-        _value = v;
-    }
-
     public T GetValue()
     {
-        return _value;
+        return v;
     }
 }
 
@@ -182,7 +175,7 @@ public static class UnionFindTest
 {
     public static void Run()
     {
-        var uf = new GenericUnionFindSet<int>(new List<int> { 1, 2, 3, 4, 5, 6, 7 });
+        var uf = new GenericUnionFindSet<int>([1, 2, 3, 4, 5, 6, 7]);
         uf.Union(1, 2);
         uf.Union(2, 3);
         uf.Union(4, 5);

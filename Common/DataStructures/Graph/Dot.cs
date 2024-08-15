@@ -1,27 +1,18 @@
 namespace Common.DataStructures.Graph;
 
 // 点结构的描述
-public class Dot
+public class Dot(int label)
 {
-    public readonly List<Edge> BelongEdgeList;
+    public readonly List<Edge> BelongEdgeList = [];
 
     //标签
-    public readonly int Label;
+    public readonly int Label = label;
 
-    public readonly List<Dot?> PointToList;
+    public readonly List<Dot?> PointToList = [];
 
     //入度
-    public int InDegree;
+    public int InDegree = 0;
 
     //出度
-    public int OutDegree;
-
-    public Dot(int label)
-    {
-        Label = label;
-        InDegree = 0;
-        OutDegree = 0;
-        PointToList = new List<Dot?>();
-        BelongEdgeList = new List<Edge>();
-    }
+    public int OutDegree = 0;
 }

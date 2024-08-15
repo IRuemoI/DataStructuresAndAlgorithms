@@ -35,18 +35,18 @@ public class DoubleEndsQueueToStackAndQueue
             var queue = new Queue<int>();
             for (var j = 0; j < oneTestDataNum; j++)
             {
-                var nums = (int)(Utility.GetRandomDouble * value);
+                var numbers = (int)(Utility.GetRandomDouble * value);
                 if (stack.Count == 0)
                 {
-                    myStack.Push(nums);
-                    stack.Push(nums);
+                    myStack.Push(numbers);
+                    stack.Push(numbers);
                 }
                 else
                 {
                     if (Utility.GetRandomDouble < 0.5)
                     {
-                        myStack.Push(nums);
-                        stack.Push(nums);
+                        myStack.Push(numbers);
+                        stack.Push(numbers);
                     }
                     else
                     {

@@ -2,14 +2,15 @@
 
 namespace Algorithms.Lesson03;
 
+//用两个栈模拟队列的思路：数据整体入栈出栈后会导致顺序颠倒，只要颠倒两次就可以保持顺序
 public class TwoStacksImplementQueue
 {
     public static void Run()
     {
         var test = new TwoStacksQueue();
-        test.Add(1);
-        test.Add(2);
-        test.Add(3);
+        test.Push(1);
+        test.Push(2);
+        test.Push(3);
         Console.WriteLine(test.Peek());
         Console.WriteLine(test.Poll());
         Console.WriteLine(test.Peek());
@@ -20,14 +21,8 @@ public class TwoStacksImplementQueue
 
     private class TwoStacksQueue
     {
-        private readonly Stack<int> _stackPop;
-        private readonly Stack<int> _stackPush;
-
-        public TwoStacksQueue()
-        {
-            _stackPush = new Stack<int>();
-            _stackPop = new Stack<int>();
-        }
+        private readonly Stack<int> _stackPop = new();
+        private readonly Stack<int> _stackPush = new();
 
         // push栈向pop栈倒入数据
         private void PushToPop()
@@ -37,7 +32,7 @@ public class TwoStacksImplementQueue
                     _stackPop.Push(_stackPush.Pop());
         }
 
-        public void Add(int pushInt)
+        public void Push(int pushInt)
         {
             _stackPush.Push(pushInt);
             PushToPop();

@@ -8,12 +8,7 @@ namespace Common.DataStructures.Stack;
 
 public class CustomStack<T>
 {
-    private readonly CustomDeque<T> _queue;
-
-    public CustomStack()
-    {
-        _queue = new CustomDeque<T>();
-    }
+    private readonly CustomDeque<T> _queue = new();
 
     public void Push(T value)
     {

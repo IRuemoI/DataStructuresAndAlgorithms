@@ -3,14 +3,9 @@
 //todo:待整理
 // 本题测试链接 : https://leetcode.cn/problems/lru-cache/
 // 提交时把类名和构造方法名改成 : LRUCache
-public class LRUCache
+public class LRUCache(int capacity)
 {
-    private readonly MyCache<int, int> cache;
-
-    public LRUCache(int capacity)
-    {
-        cache = new MyCache<int, int>(capacity);
-    }
+    private readonly MyCache<int, int> cache = new(capacity);
 
     public virtual int Get(int key)
     {

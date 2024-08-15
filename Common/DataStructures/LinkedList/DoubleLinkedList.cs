@@ -8,9 +8,19 @@ using Common.Utilities;
 
 namespace Common.DataStructures.LinkedList;
 
-public class DoubleLinkedList
+public class DNode(int value)
 {
-    private DNode? _innerHead;
+    public readonly int Value = value;
+    public DNode? Next;
+    public DNode? Pre;
+}
+
+public class DoubleLinkedList : ICloneable
+{
+    private DNode? _head;
+    private DNode? _tail;
+
+    private bool IsEmpty => _head == null && _tail == null;
 
     private static DNode? Reverse(DNode? head)
     {
@@ -35,57 +45,153 @@ public class DoubleLinkedList
         return pre; //返回最终已反转链表的头节点
     }
 
-    public void AddAtHead(int num)
+    private void AddAtHead(int value)
     {
-        throw new NotImplementedException("未实现从头部添加节点");
-    }
-
-    public void AddAtTail(int num)
-    {
-        throw new NotImplementedException("未实现从尾部添加节点");
-    }
-
-    public DNode? RemoveAt(int index)
-    {
-        throw new NotImplementedException("未实现删除指定位置的节点");
-    }
-
-    public DNode? RemoveValue(int num) //头节点包含数据
-    {
-        if (_innerHead == null) return null;
-        // head来到第一个不需要删的位置
-        while (_innerHead != null)
+        //创建新节点
+        var newNode = new DNode(value);
+        //如果链表为空
+        if (_head == null)
         {
-            if (_innerHead.Value != num) break;
-            _innerHead = _innerHead.Next;
+            //将新节点同时作为头节点和尾节点
+            _head = _tail = newNode;
+        }
+        else
+        {
+            //将新节点的下一个节点指向当前的头节点
+            newNode.Next = _head;
+            //将当前头节点的前一个节点指向新节点
+            _head.Pre = newNode;
+            //将头节点指向新节点
+            _head = newNode;
+        }
+    }
+
+    private void AddAtTail(int value)
+    {
+        //创建新节点
+        var newNode = new DNode(value);
+        //如果链表为空
+        if (_tail == null)
+        {
+            //将新节点同时作为头节点和尾节点
+            _head = _tail = newNode;
+        }
+        else
+        {
+            //将当前尾节点的下一个节点指向新节点
+            _tail.Next = newNode;
+            //将新节点的前一个节点指向当前尾节点
+            newNode.Pre = _tail;
+            //将尾节点指向新节点
+            _tail = newNode;
+        }
+    }
+
+    private DNode? RemoveAt(int index)
+    {
+        if (_head == null) return null; //空链表，无节点可移除
+
+        var current = _head;
+        var currentIndex = 0;
+
+        while (current != null && currentIndex < index)
+        {
+            current = current.Next;
+            currentIndex++;
         }
 
-        // 1 ) head == null
-        // 2 ) head != null
-        var pre = _innerHead;
-        var cur = _innerHead;
-        while (cur != null)
+        if (current == null) return null; // Index out of bounds
+
+        if (current.Pre != null)
+            current.Pre.Next = current.Next;
+        else
+            _head = current.Next; // Removing the head
+
+        if (current.Next != null)
+            current.Next.Pre = current.Pre;
+        else
+            _tail = current.Pre; // Removing the tail
+
+        current.Next = null;
+        current.Pre = null;
+        return current;
+    }
+
+    private DNode? RemoveValue(int num)
+    {
+        if (_head == null) return null; // 空链表，无节点可移除
+        // head来到第一个不需要删的位置
+        while (_head != null)
         {
-            if (cur.Value == num)
+            if (_head.Value != num) break;
+            _head = _head.Next;
+        }
+
+        var pre = _head; //pre表示需要删除节点的上一个节点
+        var cur = _head; //cur表示当前节点
+        while (cur != null) //直到遍历完成链表
+        {
+            //如果当前节点的值等于目标值num，并且pre不为空
+            if (cur.Value == num && pre != null)
             {
-                if (pre != null) pre.Next = cur.Next;
+                //则将pre的next指向cur的next(cur节点内存之后被回收)
+                pre.Next = cur.Next;
             }
             else
             {
+                //否则将pre向后移动至cur
                 pre = cur;
             }
 
             cur = cur.Next;
         }
 
-        return _innerHead;
+        //将cur向后移动
+        return _head;
     }
 
-    public class DNode(int value)
+    private void Print()
     {
-        public readonly int Value = value;
-        public DNode? Next;
-        public DNode? Pre;
+        var tempHead = _head;
+        while (tempHead != null)
+        {
+            Console.Write(tempHead.Value + ",");
+            tempHead = tempHead.Next;
+        }
+
+        Console.WriteLine();
+    }
+
+    public object Clone()
+    {
+        // 创建一个新的DoubleLinkedList实例
+        var clonedList = new DoubleLinkedList();
+
+        // 如果原始链表为空，直接返回新的空链表
+        if (_head == null)
+            return clonedList;
+
+        // 从头节点开始复制
+        var currentOriginalNode = _head;
+        var newHead = new DNode(currentOriginalNode.Value);
+        var currentNewNode = newHead;
+        clonedList._head = newHead;
+
+        // 遍历原始链表，并复制每个节点
+        while (currentOriginalNode.Next != null)
+        {
+            currentOriginalNode = currentOriginalNode.Next;
+            currentNewNode.Next = new DNode(currentOriginalNode.Value)
+            {
+                Pre = currentNewNode
+            };
+            currentNewNode = currentNewNode.Next;
+        }
+
+        // 设置尾节点
+        clonedList._tail = currentNewNode;
+
+        return clonedList;
     }
 
     # region 用于测试
@@ -173,6 +279,22 @@ public class DoubleLinkedList
 
     public static void Run()
     {
+        //双链表测试
+        var doubleLinkedList = new DoubleLinkedList();
+        Console.WriteLine(doubleLinkedList.IsEmpty);
+        doubleLinkedList.AddAtHead(0);
+        doubleLinkedList.AddAtHead(1);
+        doubleLinkedList.AddAtHead(2);
+        doubleLinkedList.AddAtTail(3);
+        doubleLinkedList.AddAtTail(4);
+        Console.WriteLine(doubleLinkedList.IsEmpty);
+        var copy = (DoubleLinkedList)doubleLinkedList.Clone();
+        doubleLinkedList.Print();
+        Console.WriteLine(doubleLinkedList.RemoveAt(3)?.Value);
+        Console.WriteLine(doubleLinkedList.RemoveValue(0)?.Value);
+        doubleLinkedList.Print();
+        copy.Print();
+
         var len = 50;
         var value = 100;
         var testTime = 100000;

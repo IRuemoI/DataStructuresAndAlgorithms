@@ -6,12 +6,7 @@
 /// <typeparam name="T">泛型</typeparam>
 public class CustomQueue<T>
 {
-    private readonly CustomDeque<T> _queue;
-
-    public CustomQueue()
-    {
-        _queue = new CustomDeque<T>();
-    }
+    private readonly CustomDeque<T> _queue = new();
 
     public void Push(T value)
     {

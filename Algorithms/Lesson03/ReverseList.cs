@@ -21,7 +21,7 @@ public class ReverseList
         var pre = head;
         while (head != null)
         {
-            //缩短next指向的未反转链表
+            //向右缩短next指向的未反转链表
             var next = head.Next;
             //让原本的下一个节点指向上一个节点
             head.Next = pre;

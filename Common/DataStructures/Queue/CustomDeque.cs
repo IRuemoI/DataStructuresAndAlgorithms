@@ -7,16 +7,11 @@ using Common.Utilities;
 
 namespace Common.DataStructures.Queue;
 
-public class DoubleLinkedListNode<T>
+public class DoubleLinkedListNode<T>(T data)
 {
-    public readonly T Value;
+    public readonly T Value = data;
     public DoubleLinkedListNode<T>? Last;
     public DoubleLinkedListNode<T>? Next;
-
-    public DoubleLinkedListNode(T data)
-    {
-        Value = data;
-    }
 }
 
 /// <summary>
@@ -131,18 +126,18 @@ public class CustomDeque<T>
 
             for (var j = 0; j < oneTestDataNum; j++)
             {
-                var nums = (int)(Utility.GetRandomDouble * value);
+                var numbers = (int)(Utility.GetRandomDouble * value);
                 if (stack.Count == 0)
                 {
-                    myStack.Push(nums);
-                    stack.Push(nums);
+                    myStack.Push(numbers);
+                    stack.Push(numbers);
                 }
                 else
                 {
                     if (Utility.GetRandomDouble < 0.5)
                     {
-                        myStack.Push(nums);
-                        stack.Push(nums);
+                        myStack.Push(numbers);
+                        stack.Push(numbers);
                     }
                     else
                     {

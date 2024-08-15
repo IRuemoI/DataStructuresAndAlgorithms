@@ -3,26 +3,16 @@
 /// <summary>
 ///     数组实现的循环队列
 /// </summary>
-public class RingQueue
+public class RingQueue(int limit)
 {
-    private readonly int[] _arr;
-    private readonly int _limit;
+    private readonly int[] _arr = new int[limit];
     private int _pollI; // begin
     private int _pushI; // end
     private int _size;
 
-    public RingQueue(int limit)
-    {
-        _arr = new int[limit];
-        _pushI = 0;
-        _pollI = 0;
-        _size = 0;
-        _limit = limit;
-    }
-
     public void Push(int value)
     {
-        if (_size == _limit) throw new Exception("Queue is full!");
+        if (_size == limit) throw new Exception("Queue is full!");
         _size++;
         _arr[_pushI] = value;
         _pushI = NextIndex(_pushI);
@@ -45,6 +35,6 @@ public class RingQueue
     // 如果现在的下标是i，返回下一个位置
     private int NextIndex(int i)
     {
-        return i < _limit - 1 ? i + 1 : 0;
+        return i < limit - 1 ? i + 1 : 0;
     }
 }

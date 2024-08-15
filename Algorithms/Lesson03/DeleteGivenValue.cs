@@ -8,42 +8,43 @@ namespace Algorithms.Lesson03;
 
 public static class DeleteGivenValue
 {
-    private static SingleLinkedList.SNode? RemoveValue(SingleLinkedList.SNode? head, int num)
+    private static SNode? RemoveValue(SNode? head, int value)
     {
-        // 处理头节点  
-        while (head != null && head.Value == num) head = head.Next;
+        while (head != null && head.Value == value) head = head.Next; //处理头节点
 
-        if (head == null) return null; // 如果链表为空或全部节点都被删除，返回null  
+        if (head == null) //如果整个链表节点的值都是需要删除的值
+            return null; //那么这个链表为空
 
-        var pre = head;
-        var cur = head.Next;
-        while (cur != null)
+        var pre = head; //记录上一个节点
+        var cur = head.Next; //记录当前节点
+
+        while (cur != null)//向后遍历链表
         {
-            if (cur.Value == num)
-                pre.Next = cur.Next;
+            if (cur.Value == value) //如果当前节点的值为目标值
+                pre.Next = cur.Next; //将上个节点的下个节点指向本节点的下个节点
             else
-                pre = cur;
+                pre = cur; //更新本节点未上一个节点
 
-            cur = cur.Next;
+            cur = cur.Next; //向后推进链表
         }
 
-        return head;
+        return head; //返回新链表的头节点
     }
 
     public static void Run()
     {
         //构建一个四个节点的单链表
-        var head = new SingleLinkedList.SNode(1)
+        var head = new SNode(1)
         {
-            Next = new SingleLinkedList.SNode(2)
+            Next = new SNode(2)
             {
-                Next = new SingleLinkedList.SNode(3)
+                Next = new SNode(3)
                 {
-                    Next = new SingleLinkedList.SNode(4)
+                    Next = new SNode(4)
                     {
-                        Next = new SingleLinkedList.SNode(5)
+                        Next = new SNode(5)
                         {
-                            Next = new SingleLinkedList.SNode(6)
+                            Next = new SNode(6)
                         }
                     }
                 }

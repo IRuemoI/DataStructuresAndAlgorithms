@@ -29,16 +29,13 @@ public class GetMinStack
         Console.WriteLine(stack2.GetMin());
     }
 
+    //这个能随时获得栈中最小值的结构它所使用的_stackMin内部的数据个数是小于等于_stackData的，
+    //只有刚开始时呈递减数据依次入栈时才会是的内部的两个栈的内部的数据个数是相同的；
+    //出栈时只有当_stackData顶部的值等于_stackMin顶部的值时才会同时弹出，否则只有_stackData弹出。
     private class MyStack1
     {
-        private readonly Stack<int> _stackData;
-        private readonly Stack<int> _stackMin;
-
-        public MyStack1()
-        {
-            _stackData = new Stack<int>();
-            _stackMin = new Stack<int>();
-        }
+        private readonly Stack<int> _stackData = new();
+        private readonly Stack<int> _stackMin = new();
 
         public void Push(int newNum)
         {
@@ -67,16 +64,12 @@ public class GetMinStack
         }
     }
 
+    //这个能随时获得栈中最小值的结构它所使用的_stackMin内部的数据个数总是等于_stackData的，
+    //内部的两个栈时同时入栈和出栈的。
     private class MyStack2
     {
-        private readonly Stack<int> _stackData;
-        private readonly Stack<int> _stackMin;
-
-        public MyStack2()
-        {
-            _stackData = new Stack<int>();
-            _stackMin = new Stack<int>();
-        }
+        private readonly Stack<int> _stackData = new();
+        private readonly Stack<int> _stackMin = new();
 
         public void Push(int newNum)
         {

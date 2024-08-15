@@ -112,7 +112,7 @@ public static class HeapTest
 
         Console.WriteLine("大根堆测试:");
 
-        var maxHeap = new Heap<int>((x, y) => x.CompareTo(y));
+        var maxHeap = new Heap<int>((x, y) => y.CompareTo(x));
         maxHeap.Push(1);
         maxHeap.Push(2);
         maxHeap.Push(3);
