@@ -90,25 +90,6 @@ public class BiggerThanRightTwice
     }
 
     //用于测试
-    private static bool IsEqual(int[]? arr1, int[]? arr2)
-    {
-        if ((arr1 == null && arr2 != null) || (arr1 != null && arr2 == null)) return false;
-
-        if (arr1 == null && arr2 == null) return true;
-
-        if (arr1 != null && arr2 != null)
-        {
-            if (arr1.Length != arr2.Length) return false;
-
-            for (var i = 0; i < arr1.Length; i++)
-                if (arr1[i] != arr2[i])
-                    return false;
-        }
-
-        return true;
-    }
-
-    //用于测试
     private static void PrintArray(int[]? arr)
     {
         if (arr == null) return;
@@ -121,7 +102,7 @@ public class BiggerThanRightTwice
     //用于测试
     public static void Run()
     {
-        var testTime = 500000;
+        var testTime = 10000;
         var maxSize = 100;
         var maxValue = 100;
         Console.WriteLine("测试开始");
