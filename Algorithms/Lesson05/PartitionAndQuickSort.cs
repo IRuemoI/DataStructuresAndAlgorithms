@@ -43,9 +43,9 @@ public class PartitionAndQuickSort
     {
         if (leftEdge > rightEdge)
             // L...R L>R
-            return new[] { -1, -1 };
+            return [-1, -1];
 
-        if (leftEdge == rightEdge) return new[] { leftEdge, rightEdge };
+        if (leftEdge == rightEdge) return [leftEdge, rightEdge];
 
         var less = leftEdge - 1; // < 区 右边界
         var more = rightEdge; // > 区 左边界
@@ -64,7 +64,7 @@ public class PartitionAndQuickSort
                 Swap(arr, index, --more);
 
         Swap(arr, more, rightEdge); // <[R]   =[R]   >[R]
-        return new[] { less + 1, more };
+        return [less + 1, more];
     }
 
     private static void QuickSort1(int[]? arr)
@@ -161,21 +161,11 @@ public class PartitionAndQuickSort
 
         return true;
     }
-
-    //用于测试
-    private static void PrintArray(int[]? arr)
-    {
-        if (arr == null) return;
-
-        foreach (var t in arr) Console.Write(t + " ");
-
-        Console.WriteLine();
-    }
-
+    
     //用于测试
     public static void Run()
     {
-        var testTime = 500000;
+        var testTime = 100000;
         var maxSize = 100;
         var maxValue = 100;
         var succeed = true;

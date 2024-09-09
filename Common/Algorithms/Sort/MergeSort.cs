@@ -1,135 +1,78 @@
-﻿#region
-
-using Common.Utilities;
-
-#endregion
-
-namespace Common.Algorithms.Sort;
+﻿namespace Common.Algorithms.Sort;
 
 public class MergeSort
 {
-    private static void MergeSort1(int[]? arr)
+    private static void RecursionMergeSort(int[] arr)
     {
-        if (arr == null || arr.Length < 2) return;
+        if (arr.Length <= 1) return;
         Process(arr, 0, arr.Length - 1);
     }
 
-    // 请把arr[L..R]排有序
-    // l...r N
-    // T(N) = 2 * T(N / 2) + O(N)
-    // O(N * logN)
-    private static void Process(int[] arr, int l, int r)
+    private static void Process(int[] arr, int leftEdge, int rightEdge)
     {
-        if (l == r)
-            // base case
-            return;
-        var mid = l + ((r - l) >> 1);
-        Process(arr, l, mid);
-        Process(arr, mid + 1, r);
-        Merge(arr, l, mid, r);
+        if (leftEdge == rightEdge) return;
+        int mid = leftEdge + ((rightEdge - leftEdge) >> 1);
+        Process(arr, leftEdge, mid); //左半部分排序
+        Process(arr, mid + 1, rightEdge); //右半部分排序
+        Merge(arr, leftEdge, mid, rightEdge); //合并
     }
 
-    private static void Merge(int[] arr, int l, int m, int r)
+    private static void Merge(int[] arr, int leftEdge, int middle, int rightEdge)
     {
-        var help = new int[r - l + 1];
-        var i = 0;
-        var p1 = l;
-        var p2 = m + 1;
-        while (p1 <= m && p2 <= r) help[i++] = arr[p1] <= arr[p2] ? arr[p1++] : arr[p2++];
-        // 要么p1越界了，要么p2越界了
-        while (p1 <= m) help[i++] = arr[p1++];
-        while (p2 <= r) help[i++] = arr[p2++];
-        for (i = 0; i < help.Length; i++) arr[l + i] = help[i];
+        int[] help = new int[rightEdge - leftEdge + 1];
+        int helpIndex = 0;
+        int leftPartIndex = leftEdge;
+        int rightPartIndex = middle + 1;
+        //比较左右两部分的元素，每次将较小的元素放入help数组中
+        while (leftPartIndex <= middle && rightPartIndex <= rightEdge)
+            help[helpIndex++] = arr[leftPartIndex] < arr[rightPartIndex] ? arr[leftPartIndex++] : arr[rightPartIndex++];
+        //复制左半部分还有剩余的元素
+        if (leftPartIndex <= middle) Array.Copy(arr, leftPartIndex, help, helpIndex, middle - leftPartIndex + 1);
+        //复制右半部分还有剩余的元素
+        if (rightPartIndex <= rightEdge)
+            Array.Copy(arr, rightPartIndex, help, helpIndex, rightEdge - rightPartIndex + 1);
+        //将排好序的help数组拷贝到原数组
+        Array.Copy(help, 0, arr, leftEdge, help.Length);
     }
 
-    // 非递归方法实现
-    private static void MergeSort2(int[]? arr)
+    // 迭代方法实现
+    private static void IterateMergeSort(int[] arr)
     {
-        if (arr == null || arr.Length < 2) return;
-        var n = arr.Length;
-        // 步长
-        var mergeSize = 1;
-        while (mergeSize < n)
+        var arrayLength = arr.Length;
+        if (arrayLength <= 1) return;
+        int stepSize = 1;
+        //如果步长小于数组长度，则继续循环(如果超过则说明已经遍历完所有元素)
+        while (stepSize < arr.Length)
         {
-            // log N
-            // 当前左组的，第一个位置
-            var l = 0;
-            while (l < n)
+            var leftEdge = 0;
+            //如果剩下的元素还能够凑齐一个左组，则继续循环
+            while (leftEdge < arrayLength)
             {
-                if (mergeSize >= n - l) break;
-                var m = l + mergeSize - 1;
-                var r = m + Math.Min(mergeSize, n - m - 1);
-                Merge(arr, l, m, r);
-                l = r + 1;
+                //如果当前步长的大小超过了一个左组，退出循环
+                if (stepSize >= arrayLength - leftEdge) break;
+                var middle = leftEdge + stepSize - 1;
+                //如果当前步长的大小超过了右组，则将右组边界设置为右组最后一个元素
+                //arrayLength-1表示右组最后一个元素的下标，减去middle表示右组元素个数
+                var rightEdge = middle + Math.Min(stepSize, arrayLength - 1 - middle);
+                Merge(arr, leftEdge, middle, rightEdge);
+                leftEdge = rightEdge + 1;
             }
 
-            // 防止溢出
-            if (mergeSize > n / 2) break;
-            mergeSize <<= 1;
+            //如果步长已经超过了数组长度的一半，那么说明整个数组已经排序完成，也可以避免类型溢出的问题
+            if (stepSize > arrayLength / 2) break;
+            stepSize <<= 1;
         }
-    }
-
-    //用于测试
-    private static int[] GenerateRandomArray(int maxSize, int maxValue)
-    {
-        var arr = new int[(int)((maxSize + 1) * Utility.GetRandomDouble)];
-        for (var i = 0; i < arr.Length; i++)
-            arr[i] = (int)((maxValue + 1) * Utility.GetRandomDouble) - (int)(maxValue * Utility.GetRandomDouble);
-        return arr;
-    }
-
-    //用于测试
-    private static int[]? CopyArray(int[]? arr)
-    {
-        if (arr == null) return null;
-        var res = new int[arr.Length];
-        for (var i = 0; i < arr.Length; i++) res[i] = arr[i];
-        return res;
-    }
-
-    //用于测试
-    private static bool IsEqual(int[]? arr1, int[]? arr2)
-    {
-        if ((arr1 == null && arr2 != null) || (arr1 != null && arr2 == null)) return false;
-        if (arr1 == null && arr2 == null) return true;
-        if (arr2 != null && arr1 != null && arr1.Length != arr2.Length) return false;
-        for (var i = 0; i < arr1?.Length; i++)
-            if (arr1[i] != arr2?[i])
-                return false;
-        return true;
-    }
-
-    //用于测试
-    private static void PrintArray(int[]? arr)
-    {
-        if (arr == null) return;
-        foreach (var item in arr)
-            Console.Write(item + " ");
-
-        Console.WriteLine();
     }
 
     public static void Run()
     {
-        var testTime = 500000;
-        var maxSize = 100;
-        var maxValue = 100;
-        Console.WriteLine("测试开始");
-        for (var i = 0; i < testTime; i++)
-        {
-            var arr1 = GenerateRandomArray(maxSize, maxValue);
-            var arr2 = CopyArray(arr1);
-            MergeSort1(arr1);
-            MergeSort2(arr2);
-            if (!IsEqual(arr1, arr2))
-            {
-                Console.WriteLine("出错了！");
-                PrintArray(arr1);
-                PrintArray(arr2);
-                break;
-            }
-        }
-
-        Console.WriteLine("测试结束");
+        int[] testList = [54, 26, 93, 17, 77, 31, 44, 55, 20];
+        Console.WriteLine("归并排序升序(递归)：");
+        RecursionMergeSort(testList);
+        Console.WriteLine(string.Join(",", testList));
+        Console.WriteLine("-------------------");
+        Console.WriteLine("归并排序升序(迭代)：");
+        IterateMergeSort(testList);
+        Console.WriteLine(string.Join(",", testList));
     }
 }

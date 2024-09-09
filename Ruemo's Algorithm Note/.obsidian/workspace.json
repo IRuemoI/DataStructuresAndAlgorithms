@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "71919f9cfc751744",
+        "id": "c29ff666496722a8",
         "type": "tabs",
         "children": [
           {
-            "id": "b5e39565a6dcc24c",
+            "id": "f1d6abc3d256ee10",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "EP00.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "EP00.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "EP00.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "EP00.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -146,16 +138,16 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "b5e39565a6dcc24c",
+  "active": "f1d6abc3d256ee10",
   "lastOpenFiles": [
-    "EP04.md",
     "EP03.md",
-    "EP02.md",
+    "EP04.md",
     "EP01.md",
+    "EP00.md",
+    "EP02.md",
     "Assets/clip_image002.jpg",
     "配套视频/第01节 认识复杂度、对数器、二分法.mp4",
     "Media Note - 第01节 认识复杂度、对数器、二分法.md",
-    "EP00.md",
     "EP05.md",
     "EP06.md",
     "EP07.md",
