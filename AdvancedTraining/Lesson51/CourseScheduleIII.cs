@@ -28,7 +28,7 @@ public class CourseScheduleIii //Problem_0630
             {
                 // 当前时间 + 花费 > 截止时间的, 只有淘汰掉某课，当前的课才能进来！
                 // 
-                if (!heap.IsEmpty() && heap.Peek() > c[0])
+                if (!heap.IsEmpty && heap.Peek() > c[0])
                 {
                     //					time -= heap.poll();
                     //					heap.add(c[0]);

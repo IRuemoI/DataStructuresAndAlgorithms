@@ -119,7 +119,7 @@ public class TreeMaxWidth
             if (MaxWidthUseMap(head) != MaxWidthNoMap(head)) Console.WriteLine("出错啦！");
         }
 
-        Console.WriteLine("finish!");
+        Console.WriteLine("测试完成");
     }
 
     public class Node(int data)

@@ -81,7 +81,7 @@ public class IsBalanced
             if (head != null && IsBalanced1(head) != IsBalanced2(head)) Console.WriteLine("��������");
         }
 
-        Console.WriteLine("finish!");
+        Console.WriteLine("测试完成");
     }
 
     public class Node

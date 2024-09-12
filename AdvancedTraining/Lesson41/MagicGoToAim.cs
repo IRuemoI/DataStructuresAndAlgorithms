@@ -37,7 +37,7 @@ public class MagicGoToAim
         var heap = new Heap<Node>((a, b) => a.Cost - b.Cost);
         heap.Push(new Node(0, 0, 0));
         bool[][] visited = [new bool[n], new bool[n]];
-        while (!heap.IsEmpty())
+        while (!heap.IsEmpty)
         {
             var cur = heap.Pop();
             if (visited[cur.PreTransfer][cur.City]) continue;

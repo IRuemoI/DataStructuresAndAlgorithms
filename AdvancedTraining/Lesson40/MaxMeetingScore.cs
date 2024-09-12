@@ -59,13 +59,13 @@ public class MaxMeetingScore
             }
             else
             {
-                if (heap.IsEmpty() || heap.Peek() >= item[1]) continue;
+                if (heap.IsEmpty || heap.Peek() >= item[1]) continue;
                 heap.Pop();
                 heap.Push(item[1]);
             }
 
         var ans = 0;
-        while (!heap.IsEmpty()) ans += heap.Pop();
+        while (!heap.IsEmpty) ans += heap.Pop();
 
         return ans;
     }

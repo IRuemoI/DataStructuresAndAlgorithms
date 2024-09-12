@@ -81,6 +81,6 @@ public class LessMoneySplitGold
             if (LessMoney1(arr) != LessMoney2(arr)) Console.WriteLine("出错啦！");
         }
 
-        Console.WriteLine("finish!");
+        Console.WriteLine("测试完成");
     }
 }

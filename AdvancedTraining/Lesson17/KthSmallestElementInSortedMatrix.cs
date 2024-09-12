@@ -20,7 +20,7 @@ public class KthSmallestElementInSortedMatrix
         set[0, 0] = true;
         var count = 0;
         Node? ans = null;
-        while (!heap.IsEmpty())
+        while (!heap.IsEmpty)
         {
             ans = heap.Pop();
             if (++count == k) break;

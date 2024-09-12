@@ -130,7 +130,7 @@ public class LowestAncestor
             if (LowestAncestor1(head, o1, o2) != LowestAncestor2(head, o1, o2)) Console.WriteLine("出错啦！");
         }
 
-        Console.WriteLine("finish!");
+        Console.WriteLine("测试完成");
     }
 
     public class Node

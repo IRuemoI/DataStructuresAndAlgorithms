@@ -82,7 +82,7 @@ public class IsFull
             if (IsFull1(head) != IsFull2(head)) Console.WriteLine("��������");
         }
 
-        Console.WriteLine("finish!");
+        Console.WriteLine("测试完成");
     }
 
     public class Node

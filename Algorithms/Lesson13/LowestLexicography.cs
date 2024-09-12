@@ -113,7 +113,7 @@ public class LowestLexicography
             }
         }
 
-        Console.WriteLine("finish!");
+        Console.WriteLine("测试完成");
     }
 
     public class MyComparator : IComparable<string>

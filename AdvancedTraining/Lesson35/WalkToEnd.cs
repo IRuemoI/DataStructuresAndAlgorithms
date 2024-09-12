@@ -21,7 +21,7 @@ public class WalkToEnd
         var minHeap = new Heap<Node>((a, b) => a.Cost - b.Cost);
         var visited = new bool[n, m];
         Add(map, 0, 0, 0, minHeap, visited);
-        while (!minHeap.IsEmpty())
+        while (!minHeap.IsEmpty)
         {
             var cur = minHeap.Pop();
             if (cur.Row == n - 1 && cur.Col == m - 1) return cur.Cost;

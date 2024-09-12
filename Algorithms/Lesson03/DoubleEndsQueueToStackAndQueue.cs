@@ -77,7 +77,7 @@ public class DoubleEndsQueueToStackAndQueue
             }
         }
 
-        Console.WriteLine("finish!");
+        Console.WriteLine("测试完成");
     }
 
     public class Node<T>(T data)

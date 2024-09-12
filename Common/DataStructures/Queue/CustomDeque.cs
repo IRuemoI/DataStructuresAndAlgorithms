@@ -168,6 +168,6 @@ public class CustomDeque<T>
             }
         }
 
-        Console.WriteLine("finish!");
+        Console.WriteLine("测试完成");
     }
 }

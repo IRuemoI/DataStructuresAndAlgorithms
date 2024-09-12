@@ -172,7 +172,7 @@ public class MaxDistance
             if (MaxDistance1(head) != MaxDistance2(head)) Console.WriteLine("��������");
         }
 
-        Console.WriteLine("finish!");
+        Console.WriteLine("测试完成");
     }
 
     public class Node(int data)

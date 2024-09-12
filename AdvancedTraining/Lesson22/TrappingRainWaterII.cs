@@ -44,7 +44,7 @@ public class TrappingRainWaterIi
 
         var water = 0;
         var max = 0;
-        while (!minHeap.IsEmpty())
+        while (!minHeap.IsEmpty)
         {
             var cur = minHeap.Pop();
             max = Math.Max(max, cur.Value);

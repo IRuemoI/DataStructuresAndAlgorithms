@@ -103,7 +103,7 @@ public class MaxHappy
             if (MaxHappy1(boss) != MaxHappy2(boss)) Console.WriteLine("出错啦！");
         }
 
-        Console.WriteLine("finish!");
+        Console.WriteLine("测试完成");
     }
 
     public class Employee

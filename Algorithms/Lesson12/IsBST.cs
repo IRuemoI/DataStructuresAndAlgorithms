@@ -95,7 +95,7 @@ public class IsBst
             if (IsBst1(head) != IsBst2(head)) Console.WriteLine("��������");
         }
 
-        Console.WriteLine("finish!");
+        Console.WriteLine("测试完成");
     }
 
     public class Node

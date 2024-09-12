@@ -97,7 +97,7 @@ public class BestArrange
             if (BestArrange1(programs) != BestArrange2(programs)) Console.WriteLine("出错啦！");
         }
 
-        Console.WriteLine("finish!");
+        Console.WriteLine("测试完成");
     }
 
     private class Program1

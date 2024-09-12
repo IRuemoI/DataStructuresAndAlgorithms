@@ -28,7 +28,7 @@ public class TopKFrequentElements //Problem_0347
 
         var ans = new int[k];
         var index = 0;
-        while (!heap.IsEmpty()) ans[index++] = heap.Pop().Num;
+        while (!heap.IsEmpty) ans[index++] = heap.Pop().Num;
 
         return ans;
     }

@@ -119,7 +119,7 @@ public class MaxSubBstHead
             if (MaxSubBstHead1(head) != MaxSubBstHead2(head)) Console.WriteLine("出错啦！");
         }
 
-        Console.WriteLine("finish!");
+        Console.WriteLine("测试完成");
     }
 
     public class Node

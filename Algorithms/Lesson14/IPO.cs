@@ -46,15 +46,9 @@ public class Ipo
         Console.WriteLine(FindMaximizedCapital(k2, w2, profits2, capital2)); //输出6
     }
 
-    private class Project
+    private class Project(int p, int c)
     {
-        public readonly int C;
-        public readonly int P;
-
-        public Project(int p, int c)
-        {
-            P = p;
-            C = c;
-        }
+        public readonly int C = c;
+        public readonly int P = p;
     }
 }

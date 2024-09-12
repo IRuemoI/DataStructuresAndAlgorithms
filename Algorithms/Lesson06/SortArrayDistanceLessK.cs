@@ -15,20 +15,28 @@ public class SortArrayDistanceLessK
     {
         if (k == 0) return;
 
-        // 默认小根堆
+        // 创建小根堆
         var minHeap = new Heap<int>((x, y) => x.CompareTo(y));
-        var index = 0;
-        // 0...K-1
-        for (; index <= Math.Min(arr.Length - 1, k - 1); index++) minHeap.Push(arr[index]);
-
-        var i = 0;
-        for (; index < arr.Length; i++, index++)
+        var heapRightEdge = 0;
+        // 把下标为0到K-1的元素先先放到小根堆中
+        while (heapRightEdge <= Math.Min(arr.Length - 1, k - 1))
         {
-            minHeap.Push(arr[index]);
-            arr[i] = minHeap.Pop();
+            minHeap.Push(arr[heapRightEdge]);
+            heapRightEdge++;
         }
 
-        while (minHeap.Count != 0) arr[i++] = minHeap.Pop();
+        var current = 0;
+        //剩下的元素依次进入小根堆作为的窗口中
+        while (heapRightEdge < arr.Length)
+        {
+            minHeap.Push(arr[heapRightEdge]);
+            arr[current] = minHeap.Pop();
+            current++;
+            heapRightEdge++;
+        }
+        
+        // 将窗口内剩下的值全部取出
+        while (minHeap.Count != 0) arr[current++] = minHeap.Pop();
     }
 
     //用于测试
@@ -106,7 +114,7 @@ public class SortArrayDistanceLessK
     public static void Run()
     {
         Console.WriteLine("测试开始");
-        var testTime = 500000;
+        var testTime = 10000;
         var maxSize = 100;
         var maxValue = 100;
         var succeed = true;

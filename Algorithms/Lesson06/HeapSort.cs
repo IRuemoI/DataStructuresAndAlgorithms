@@ -15,12 +15,12 @@ public class HeapSort
     {
         if (arr == null || arr.Length < 2) return;
 
-        // O(N*logN)
+        // 从上到下建堆O(N*logN)
         // for (int i = 0; i < arr.Length; i++) { // O(N)
         // 	heapInsert(arr, i); // O(logN)
         // }
 
-        // O(N)
+        // 从下到上建堆O(N)
         for (var i = arr.Length - 1; i >= 0; i--) Heapify(arr, i, arr.Length);
 
         var heapSize = arr.Length;
@@ -134,7 +134,7 @@ public class HeapSort
     //用于测试
     public static void Run()
     {
-        var testTime = 1;
+        var testTime = 10;
         var maxSize = 100;
         var maxValue = 100;
         var succeed = true;
@@ -150,9 +150,7 @@ public class HeapSort
                 break;
             }
 
-            foreach (var element in arr1) Console.Write(element + " ");
-
-            Console.WriteLine();
+            Console.WriteLine("出错的输入:"+string.Join(",",arr1.Select(element => element.ToString()) ));
         }
 
         Console.WriteLine(succeed ? "测试通过" : "出现错误");

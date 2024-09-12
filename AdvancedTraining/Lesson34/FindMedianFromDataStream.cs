@@ -33,7 +33,7 @@ public class FindMedianFromDataStream //Problem_0295
 
         public virtual void AddNum(int num)
         {
-            if (_maxHeap.IsEmpty() || _maxHeap.Peek() >= num)
+            if (_maxHeap.IsEmpty || _maxHeap.Peek() >= num)
                 _maxHeap.Push(num);
             else
                 _minHeap.Push(num);

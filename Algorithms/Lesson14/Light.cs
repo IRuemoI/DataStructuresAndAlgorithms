@@ -93,6 +93,6 @@ public class Light
             if (ans1 != ans2) Console.WriteLine("出错  ans1:{0} ans2:{1}", ans1, ans2);
         }
 
-        Console.WriteLine("finish!");
+        Console.WriteLine("测试完成");
     }
 }
