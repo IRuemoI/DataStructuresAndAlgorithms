@@ -13,123 +13,145 @@ public class EveryStepShowBoss
 {
     private static List<List<int>> TopK(int[] arr, bool[] op, int k)
     {
-        var ans = new List<List<int>>();
+        var result = new List<List<int>>();
         var whoIsAwardees = new WhoIsAwardee(k);
+        //对于每一条顾客的操作
         for (var i = 0; i < arr.Length; i++)
         {
+            //执行操作
             whoIsAwardees.Operate(i, arr[i], op[i]);
-            ans.Add(whoIsAwardees.GetAwardees());
+            //将当前获奖区的内容添加到历史中
+            result.Add(whoIsAwardees.GetAwardees());
         }
 
-        return ans;
+        return result;
     }
 
-    // 干完所有的事，模拟，不优化
+    // 过程模拟
     private static List<List<int>> Compare(int[] arr, bool[] op, int k)
     {
-        Dictionary<int, Customer> map = new();
-        List<Customer> candidate = new();
-        List<Customer> awardee = new();
-        List<List<int>> ans = new();
+        Dictionary<int, Customer> customerDict = new(); //定义一个顾客编号和实例的字典
+        List<Customer> candidate = new(); //候选区
+        List<Customer> awardee = new(); //获奖区
+        List<List<int>> historyList = new(); //用于返回获奖区中的历史内容
+        //对于每一条顾客的操作
         for (var i = 0; i < arr.Length; i++)
         {
-            var id = arr[i];
-            var buyOrRefund = op[i];
-            if (!buyOrRefund && !map.ContainsKey(id))
+            var id = arr[i]; //获取本条操作的顾客ID
+            var buyOrRefund = op[i]; //获取操作中的内容
+            //如果当前操作是退货且顾客字典中并不包含这位顾客
+            if (!buyOrRefund && !customerDict.ContainsKey(id))
             {
-                ans.Add(GetCurAns(awardee));
-                continue;
+                historyList.Add(GetCurrentAwardee(awardee)); //将当前获奖区的内容添加到历史中
+                continue; //跳过后续的步骤
             }
 
-            // 没有发生：用户购买数为0并且又退货了
-            // 用户之前购买数是0，此时买货事件
-            // 用户之前购买数>0， 此时买货
-            // 用户之前购买数>0, 此时退货
-            if (!map.ContainsKey(id)) map.Add(id, new Customer(id, 0));
+            /*
+            执行到这里之后可能出现的情况：
+            用户之前购买数是0,此时买货事件
+            用户之前购买数>0,此时买货
+            用户之前购买数>0,此时退货
+            */
 
-            // 买、卖
-            var c = map[id];
+            //这是一个新来的顾客，把他添加到顾客字典中
+            if (!customerDict.ContainsKey(id)) customerDict.Add(id, new Customer(id, 0));
+
+            //在这里处理顾客的买、卖两种操作
+            var customer = customerDict[id]; //取出这条操作所属的顾客
             if (buyOrRefund)
-                c.Buy++;
+                customer.Buy++; //如果是购买操作，购买数增加
             else
-                c.Buy--;
+                customer.Buy--; //如果是退货操作，购买数减少
 
-            if (c.Buy == 0)
-                map.Remove(id);
+            //如果当前顾客的购买数为0
+            if (customer.Buy == 0)
+                customerDict.Remove(id); //将这名顾客从字典中移除
 
-            // c
-            // 下面做
-            if (!candidate.Contains(c) && !awardee.Contains(c))
+            //如果这个顾客是第一次购买(并不在两个区中)
+            if (!candidate.Contains(customer) && !awardee.Contains(customer))
             {
-                if (awardee.Count < k)
+                if (awardee.Count < k) //如果测试获奖区还没满
                 {
-                    c.EnterTime = i;
-                    awardee.Add(c);
+                    customer.EnterTime = i; //设置顾客的时间为本次处理的序号
+                    awardee.Add(customer); //将他放到获奖区中
                 }
                 else
                 {
-                    c.EnterTime = i;
-                    candidate.Add(c);
+                    customer.EnterTime = i; //设置顾客的时间为本次处理的序号
+                    candidate.Add(customer); //将他放到候选区中
                 }
             }
 
-            CleanZeroBuy(candidate);
-            CleanZeroBuy(awardee);
+            CleanZeroBuy(awardee); //清理中奖区中购买数为0的顾客
+            CleanZeroBuy(candidate); //清理候选区中购买数为0的顾客
+            //候选区根据购买数降序、操作时间升序排序
             candidate.Sort((x, y) => x.Buy != y.Buy ? y.Buy - x.Buy : x.EnterTime - y.EnterTime);
+            //获奖区根据购买数升序、操作时间升序排序(以此可以快速判断获奖区的顾客是否被候选区的顾客取代)
             awardee.Sort((x, y) => x.Buy != y.Buy ? x.Buy - y.Buy : x.EnterTime - y.EnterTime);
-            Move(candidate, awardee, k, i);
-            ans.Add(GetCurAns(awardee));
+            Move(awardee, candidate, k, i);
+            historyList.Add(GetCurrentAwardee(awardee));
         }
 
-        return ans;
+        return historyList;
     }
 
-    private static void Move(List<Customer> candidate, List<Customer> awardee, int k, int time)
+    /// <summary>
+    /// 将候选区的顾客移动到获奖区中
+    /// </summary>
+    /// <param name="awardee">获奖区</param>
+    /// <param name="candidate">候选区</param>
+    /// <param name="k">获奖区大小</param>
+    /// <param name="time">执行移动时的时间</param>
+    private static void Move(List<Customer> awardee, List<Customer> candidate, int k, int time)
     {
-        if (candidate.Count == 0) return;
+        if (candidate.Count == 0) return; //如果候选区为空直接返回
 
-        // 候选区不为空
-        if (awardee.Count < k)
+        if (awardee.Count < k) //候选区不为空且获奖区没满
         {
-            var c = candidate[0];
-            c.EnterTime = time;
-            awardee.Add(c);
-            candidate.RemoveAt(0);
+            var customer = candidate[0]; //获取候选区购买数最多且最早的顾客
+            customer.EnterTime = time; //更新这位顾客进入获奖区的时间
+            awardee.Add(customer); //把这个顾客放入到获奖区中
+            candidate.RemoveAt(0); //把这个顾客从候选区移除
         }
-        else
+        else // 获奖区满了，候选区有东西
         {
-            // 等奖区满了，候选区有东西
-            if (candidate[0].Buy > awardee[0].Buy)
+            if (candidate[0].Buy > awardee[0].Buy) //如果候选区的顾客可以替换获奖区的顾客
             {
-                var oldAwardee = awardee[0];
-                awardee.RemoveAt(0);
-                var newAwardee = candidate[0];
-                candidate.RemoveAt(0);
-                newAwardee.EnterTime = time;
-                oldAwardee.EnterTime = time;
-                awardee.Add(newAwardee);
-                candidate.Add(oldAwardee);
+                var oldAwardee = awardee[0]; //获取获奖区第一个也就是获奖区购买数最少的顾客作为被移出的获奖者
+                awardee.RemoveAt(0); //把他从获奖区移除
+                var newAwardee = candidate[0]; //获取候选区第一个也就是候选区购买数最多的顾客作为新的获奖者
+                candidate.RemoveAt(0); //把他从候选区移除
+                newAwardee.EnterTime = time; //更新新添加的获奖者的时间
+                oldAwardee.EnterTime = time; //更新被移除的获奖者的时间
+                awardee.Add(newAwardee); //把新的获奖者添加到获奖区
+                candidate.Add(oldAwardee); //把被移除的获奖者添加到候选区
             }
         }
     }
 
-    private static void CleanZeroBuy(List<Customer> arr)
-    {
-        var noZero = new List<Customer>();
-        foreach (var c in arr)
-            if (c.Buy != 0)
-                noZero.Add(c);
 
-        arr.Clear();
-        foreach (var c in noZero) arr.Add(c);
+    /// <summary>
+    /// 删除列表中购买数为零的顾客 
+    /// </summary>
+    /// <param name="customerList">顾客列表</param>
+    private static void CleanZeroBuy(List<Customer> customerList)
+    {
+        var noZero = new List<Customer>(); //定义一个非零购买数的顾客列表
+        //将本列表所有非零购买数的顾客放入其中
+        foreach (var customer in customerList)
+            if (customer.Buy != 0)
+                noZero.Add(customer);
+
+        customerList.Clear(); //将原来的顾客列表清空
+        foreach (var customer in noZero) customerList.Add(customer); //把这些购买数非零的顾客放入原来的列表中
     }
 
-    private static List<int> GetCurAns(List<Customer> awardee)
+    private static List<int> GetCurrentAwardee(List<Customer> awardee)
     {
-        List<int> ans = new();
-        foreach (var c in awardee) ans.Add(c.Id);
+        List<int> result = new(); //定义一个返回获奖区顾客的列表
+        foreach (var customer in awardee) result.Add(customer.Id); //把获奖区的顾客放入其中
 
-        return ans;
+        return result; //返回这个列表
     }
 
     // 为了测试
@@ -218,128 +240,123 @@ public class EveryStepShowBoss
         Console.WriteLine($"测试结束，总耗时:{Utility.GetStopwatchElapsedMilliseconds()}ms");
     }
 
-    private class Customer
+    private class Customer(int v, int b, int o = 0)
     {
-        public readonly int Id;
-        public int Buy;
-        public int EnterTime;
-
-        public Customer(int v, int b, int o = 0)
-        {
-            Id = v;
-            Buy = b;
-            EnterTime = o;
-        }
+        public readonly int Id = v;
+        public int Buy = b;
+        public int EnterTime = o;
     }
 
     private class WhoIsAwardee
     {
-        private readonly HeapGreater<Customer> _awardeeHeap;
-        private readonly int _awardeeLimit;
-        private readonly HeapGreater<Customer> _candidateHeap;
-        private readonly Dictionary<int, Customer> _customers;
+        private readonly int _awardeeLimit; //获奖区人数上限
+        private readonly HeapGreater<Customer> _awardeeHeap; //获奖区
+        private readonly HeapGreater<Customer> _candidateHeap; //候选区
+        private readonly Dictionary<int, Customer> _customerDict; //定义一个顾客编号和实例的字典
 
         public WhoIsAwardee(int limit)
         {
-            _customers = new Dictionary<int, Customer>();
+            _customerDict = new Dictionary<int, Customer>();
+            //候选区根据购买数降序、操作时间升序排序
             _candidateHeap =
                 new HeapGreater<Customer>((x, y) => x.Buy != y.Buy ? y.Buy - x.Buy : x.EnterTime - y.EnterTime);
+            //获奖区根据购买数升序、操作时间升序排序(以此可以快速判断获奖区的顾客是否被候选区的顾客取代)
             _awardeeHeap =
                 new HeapGreater<Customer>((x, y) => x.Buy != y.Buy ? x.Buy - y.Buy : x.EnterTime - y.EnterTime);
             _awardeeLimit = limit;
         }
 
-        // 当前处理i号事件，arr[i] -> id,  buyOrRefund
+        // 处理当前时间的操作
         public void Operate(int time, int id, bool buyOrRefund)
         {
-            if (!buyOrRefund && !_customers.ContainsKey(id)) return;
+            //如果当前操作是退货且顾客字典中并不包含这位顾客，直接退出
+            if (!buyOrRefund && !_customerDict.ContainsKey(id)) return;
 
-            if (!_customers.ContainsKey(id))
-                _customers[id] = new Customer(id, 0);
+            //直行道这里就意味着这是一个新来的顾客，把他添加到顾客字典中
+            if (!_customerDict.ContainsKey(id))
+                _customerDict[id] = new Customer(id, 0);
 
-            var c = _customers[id];
+            //在这里处理顾客的买、卖两种操作
+            var customer = _customerDict[id]; //取出这条操作所属的顾客
             if (buyOrRefund)
-                c.Buy++;
+                customer.Buy++; //如果是购买操作，购买数增加
             else
-                c.Buy--;
+                customer.Buy--; //如果是退货操作，购买数减少
 
-            if (c.Buy == 0) _customers.Remove(id);
+            //如果当前顾客的购买数为0,将这名顾客从字典中移除
+            if (customer.Buy == 0) _customerDict.Remove(id);
 
-            if (!_candidateHeap.Contains(c) && !_awardeeHeap.Contains(c))
+            //如果这个顾客是第一次购买(并不在两个区中)
+            if (!_candidateHeap.Contains(customer) && !_awardeeHeap.Contains(customer))
             {
-                if (_awardeeHeap.Size() < _awardeeLimit)
+                if (_awardeeHeap.Count < _awardeeLimit) //如果测试获奖区还没满
                 {
-                    c.EnterTime = time;
-                    _awardeeHeap.Push(c);
+                    customer.EnterTime = time; //设置顾客的时间为本次处理的时间
+                    _awardeeHeap.Push(customer); //将他放到获奖区中
                 }
                 else
                 {
-                    c.EnterTime = time;
-                    _candidateHeap.Push(c);
+                    customer.EnterTime = time; //设置顾客的时间为本次处理的时间
+                    _candidateHeap.Push(customer); //将他放到候选区中
                 }
             }
-            else if (_candidateHeap.Contains(c))
+            else if (_candidateHeap.Contains(customer)) //如果这名顾客在候选区中
             {
-                if (c.Buy == 0)
-                    _candidateHeap.Remove(c);
+                if (customer.Buy == 0) //且这名顾客的购买数为零
+                    _candidateHeap.Remove(customer); //将这名顾客从候选区中移除
                 else
-                    _candidateHeap.Resign(c);
+                    _candidateHeap.Resign(customer); //否则，更新这名顾客在堆中位置
             }
-            else
+            else //如果这名顾客在获奖区中
             {
-                if (c.Buy == 0)
-                    _awardeeHeap.Remove(c);
+                if (customer.Buy == 0) //且这名顾客的购买数为零
+                    _awardeeHeap.Remove(customer); //将这名顾客从获奖区中移除
                 else
-                    _awardeeHeap.Resign(c);
+                    _awardeeHeap.Resign(customer); //否则，更新这名顾客在堆中位置
             }
 
-            AwardeeMove(time);
+            AwardeeMove(time); //执行获奖区和候选区间的顾客移动
         }
 
         public List<int> GetAwardees()
         {
             var customers = _awardeeHeap.GetAllElements();
-            List<int> ans = new();
-            foreach (var c in customers) ans.Add(c.Id);
+            List<int> result = new();
+            foreach (var customer in customers) result.Add(customer.Id);
 
-            return ans;
+            return result;
         }
 
         private void AwardeeMove(int time)
         {
-            if (_candidateHeap.IsEmpty()) return;
+            if (_candidateHeap.IsEmpty) return; //如果候选区为空，直接退出
 
-            if (_awardeeHeap.Size() < _awardeeLimit)
+            if (_awardeeHeap.Count < _awardeeLimit) //如果获奖区还没满
             {
-                var p = _candidateHeap.Pop();
-                p.EnterTime = time;
-                _awardeeHeap.Push(p);
+                var customer = _candidateHeap.Pop(); //取出候选区中购买数最多的顾客
+                customer.EnterTime = time; //设置顾客的时间为本次处理的时间
+                _awardeeHeap.Push(customer); //将他放到获奖区中
             }
-            else
+            else //如果获奖区已满
             {
+                //如果候选区中购买数最多的顾客购买数大于获奖区中购买数最少的顾客购买数
                 if (_candidateHeap.Peek().Buy > _awardeeHeap.Peek().Buy)
                 {
-                    var oldAwardee = _awardeeHeap.Pop();
-                    var newAwardee = _candidateHeap.Pop();
-                    oldAwardee.EnterTime = time;
-                    newAwardee.EnterTime = time;
-                    _awardeeHeap.Push(newAwardee);
-                    _candidateHeap.Push(oldAwardee);
+                    var oldAwardee = _awardeeHeap.Pop(); //获取获奖区购买数最少的顾客作为被移出的获奖者
+                    var newAwardee = _candidateHeap.Pop(); //获取候选区购买数最多的顾客作为新的获奖者
+                    oldAwardee.EnterTime = time; //更新新添加的获奖者的时间
+                    newAwardee.EnterTime = time; //更新被移除的获奖者的时间
+                    _awardeeHeap.Push(newAwardee); //把新的获奖者添加到获奖区
+                    _candidateHeap.Push(oldAwardee); //把被移除的获奖者添加到候选区
                 }
             }
         }
     }
 
     // 为了测试
-    private class Data
+    private class Data(int[] a, bool[] o)
     {
-        public readonly int[] Arr;
-        public readonly bool[] Op;
-
-        public Data(int[] a, bool[] o)
-        {
-            Arr = a;
-            Op = o;
-        }
+        public readonly int[] Arr = a;
+        public readonly bool[] Op = o;
     }
 }

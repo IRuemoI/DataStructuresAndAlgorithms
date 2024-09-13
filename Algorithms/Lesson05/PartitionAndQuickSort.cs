@@ -14,7 +14,7 @@ public class PartitionAndQuickSort
     {
         (arr[i], arr[j]) = (arr[j], arr[i]);
     }
-
+    
     // arr[L..R]上，以arr[R]位置的数做划分值
     // <= X > X
     // <= X X

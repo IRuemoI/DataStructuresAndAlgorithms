@@ -11,10 +11,12 @@ namespace Algorithms.Lesson07;
 
 public class CoverMax
 {
+    //暴力解
     private static int MaxCover1(int[,] lines)
     {
         var min = int.MaxValue;
         var max = int.MinValue;
+        //先找出这组输入中左端最小值和右端最大值
         for (var i = 0; i < lines.GetLength(0); i++)
         {
             min = Math.Min(min, lines[i, 0]);
@@ -22,6 +24,7 @@ public class CoverMax
         }
 
         var cover = 0;
+        //对于每个"数轴上的点"，遍历所有线段获得在该点上的重叠数，并记录最大值
         for (var p = min + 0.5; p < max; p += 1)
         {
             var cur = 0;
@@ -37,23 +40,25 @@ public class CoverMax
 
     private static int MaxCover2(int[,] m)
     {
-        var lines = new Line[m.GetLength(0)];
-        for (var i = 0; i < m.GetLength(0); i++) lines[i] = new Line(m[i, 0], m[i, 1]);
-
-        Array.Sort(lines);
-        // 小根堆，每一条线段的结尾数值，使用默认的
+        int maxCover = -1;
+        var lines = new List<Line>();
+        for (int i = 0; i < m.GetLength(0); i++) lines.Add(new Line(m[i, 0], m[i, 1]));
+        lines.Sort();
         var minHeap = new Heap<int>((x, y) => x.CompareTo(y));
-        var max = 0;
-        foreach (var line in lines)
+        foreach (var tempLine in lines)
         {
-            // lines[i] -> cur  在黑盒中，把<=cur.start 东西都弹出
-            while (minHeap.Count != 0 && minHeap.Peek() <= line.Start) minHeap.Pop();
+            //弹出堆中所有不大于将要添加线段的开始位置的所有值
+            while (!minHeap.IsEmpty && minHeap.Peek()<= tempLine.LeftEnd)
+            {
+                minHeap.Pop();
+            }
 
-            minHeap.Push(line.End);
-            max = Math.Max(max, minHeap.Count);
+            //将当前线段的结束位置加入堆中
+            minHeap.Push(tempLine.RightEnd);
+            //记录最大覆盖数
+            maxCover = Math.Max(maxCover, minHeap.Count);
         }
-
-        return max;
+        return maxCover;
     }
 
     //用于测试
@@ -79,7 +84,7 @@ public class CoverMax
         const int n = 100;
         const int l = 0;
         const int r = 200;
-        const int testTimes = 200;
+        const int testTimes = 10000;
 
         Console.WriteLine("测试开始");
         Utility.RestartStopwatch();
@@ -94,22 +99,16 @@ public class CoverMax
         Console.WriteLine($"测试结束，总耗时:{Utility.GetStopwatchElapsedMilliseconds()}ms");
     }
 
-    private class Line : IComparable
+    private class Line(int leftEnd, int rightEnd) : IComparable<Line>
     {
-        public readonly int End;
-        public readonly int Start;
+        public readonly int LeftEnd = leftEnd;
+        public readonly int RightEnd = rightEnd;
 
-        public Line(int s, int e)
+        public int CompareTo(Line? other)
         {
-            Start = s;
-            End = e;
-        }
-
-        public int CompareTo(object? obj)
-        {
-            if (obj is Line other)
-                return Start - other.Start;
-            throw new AggregateException();
+            if (other != null)
+                return LeftEnd - other.LeftEnd;
+            throw new ArgumentNullException();
         }
     }
 }

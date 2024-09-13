@@ -21,25 +21,25 @@ public class Heap
         for (var i = 0; i < testTimes; i++)
         {
             var curLimit = (int)(Utility.GetRandomDouble * limit) + 1;
-            //var my = new MyMaxHeap(curLimit);
-            var my = new Heap<int>((x, y) => y.CompareTo(x), curLimit);
+            var my = new MyMaxHeap(curLimit);
+            //var my = new Heap<int>((x, y) => y.CompareTo(x), curLimit);
             var test = new RightMaxHeap(curLimit);
             var curOpTimes = (int)(Utility.GetRandomDouble * limit);
             for (var j = 0; j < curOpTimes; j++)
             {
-                if (my.IsEmpty != test.IsEmpty())
+                if (my.IsEmpty() != test.IsEmpty())
                     Console.WriteLine("出错啦！");
 
-                if (my.IsFull != test.IsFull())
+                if (my.IsFull() != test.IsFull())
                     Console.WriteLine("出错啦！");
 
-                if (my.IsEmpty)
+                if (my.IsEmpty())
                 {
                     var curValue = (int)(Utility.GetRandomDouble * value);
                     my.Push(curValue);
                     test.Push(curValue);
                 }
-                else if (my.IsFull)
+                else if (my.IsFull())
                 {
                     if (my.Pop() != test.Pop())
                         Console.WriteLine("出错啦！");
@@ -64,19 +64,11 @@ public class Heap
         Console.WriteLine("测试完成");
     }
 
-    private class MyMaxHeap
+    private class MyMaxHeap(int limit)
     {
-        private readonly int[] _heap;
-        private readonly int _limit;
-        private int _heapSize;
-    
-        public MyMaxHeap(int limit)
-        {
-            _heap = new int[limit];
-            _limit = limit;
-            _heapSize = 0;
-        }
-    
+        private readonly int[] _heap = new int[limit];
+        private int _heapSize = 0;
+
         public bool IsEmpty()
         {
             return _heapSize == 0;
@@ -84,12 +76,12 @@ public class Heap
     
         public bool IsFull()
         {
-            return _heapSize == _limit;
+            return _heapSize == limit;
         }
     
         public void Push(int value)
         {
-            if (_heapSize == _limit) throw new Exception("heap is full");
+            if (_heapSize == limit) throw new Exception("heap is full");
     
             _heap[_heapSize] = value;
             // value  heapSize
@@ -232,18 +224,10 @@ public class Heap
     //     }
     // }
     
-    private class RightMaxHeap
+    private class RightMaxHeap(int limit)
     {
-        private readonly int[] _arr;
-        private readonly int _limit;
-        private int _size;
-
-        public RightMaxHeap(int limit)
-        {
-            _arr = new int[limit];
-            _limit = limit;
-            _size = 0;
-        }
+        private readonly int[] _arr = new int[limit];
+        private int _size = 0;
 
         public bool IsEmpty()
         {
@@ -252,12 +236,12 @@ public class Heap
 
         public bool IsFull()
         {
-            return _size == _limit;
+            return _size == limit;
         }
 
         public void Push(int value)
         {
-            if (_size == _limit) throw new Exception("heap is full");
+            if (_size == limit) throw new Exception("heap is full");
 
             _arr[_size++] = value;
         }
