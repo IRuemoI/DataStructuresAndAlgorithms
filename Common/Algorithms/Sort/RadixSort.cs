@@ -1,16 +1,8 @@
-//测试通过
-
-#region
-
-using Common.Utilities;
-
-#endregion
-
-namespace Algorithms.Lesson08;
+﻿namespace Common.Algorithms.Sort;
 
 public class RadixSort
 {
-    private static void Sort(int[] arr, int radix = 10)
+    private static void Code(int[] arr, int radix = 10)
     {
         if (arr.Length < 2) return;
 
@@ -67,7 +59,7 @@ public class RadixSort
                 var digit = GetDigitAtPosition(arr[i], position);
                 //将原数组中下标i的元素放到临时数组tempArray中下标前缀和数组中指导的位置上。
                 //因为原来构成前缀和数组所使用的数据都是自然数构成的所以当前缀和数组中的相邻两个元素表现为上升状态时说明需要从从上一个位置向后放下提升量个元素
-                tempArray[count[digit] - 1] = arr[i];
+                tempArray[count[digit] - 1] = arr[i];//关键的一行
                 //表示已经从存放数字digit的桶中倒出一个元素
                 count[digit]--;
             }
@@ -91,88 +83,13 @@ public class RadixSort
         //将number向右移动position - 1位并求余来获得第position位上的数字
         return number / (int)Math.Pow(10, position - 1) % 10;
     }
-
-    #region 用于测试
-
-    private static void Comparator(int[] arr)
-    {
-        Array.Sort(arr);
-    }
-
-    private static int[] GenerateRandomArray(int maxSize, int maxValue, int minValue)
-    {
-        var arr = new int[(int)((maxSize + 1) * Utility.GetRandomDouble)];
-        for (var i = 0; i < arr.Length; i++) arr[i] = (int)((maxValue + 1) * Utility.GetRandomDouble) + minValue;
-
-        return arr;
-    }
-
-    private static int[]? CopyArray(int[]? arr)
-    {
-        if (arr == null) return null;
-
-        var res = new int[arr.Length];
-        for (var i = 0; i < arr.Length; i++) res[i] = arr[i];
-
-        return res;
-    }
-
-    private static bool IsEqual(int[]? arr1, int[]? arr2)
-    {
-        if ((arr1 == null && arr2 != null) || (arr1 != null && arr2 == null)) return false;
-
-        if (arr1 == null && arr2 == null) return true;
-
-        if (arr1?.Length != arr2?.Length) return false;
-
-        for (var i = 0; i < arr1?.Length; i++)
-            if (arr1[i] != arr2?[i])
-                return false;
-
-        return true;
-    }
-
-    private static void PrintArray(int[]? arr)
-    {
-        if (arr == null) return;
-
-        foreach (var element in arr) Console.Write(element + " ");
-
-        Console.WriteLine();
-    }
-
-    #endregion
-
+    
+        
     public static void Run()
     {
-        var testTime = 5000;
-        var maxSize = 100;
-        var minxSize = -500;
-        var maxValue = 1500;
-        var succeed = true;
-        for (var i = 0; i < testTime; i++)
-        {
-            var arr1 = GenerateRandomArray(maxSize, maxValue, minxSize);
-            var arr2 = CopyArray(arr1);
-            var original = CopyArray(arr1);
-            Sort(arr1);
-            if (arr2 != null)
-            {
-                Comparator(arr2);
-                if (!IsEqual(arr1, arr2))
-                {
-                    succeed = false;
-                    Console.Write("输入数组：");
-                    PrintArray(original);
-                    Console.Write("排序结果：");
-                    PrintArray(arr1);
-                    Console.Write("预期结果：");
-                    PrintArray(arr2);
-                    break;
-                }
-            }
-        }
-        
-        Console.WriteLine(succeed ? "测试通过" : "出现错误");
+        int[] testList = [54, 26, 93, 17, 77, 31, 44, 55, 20];
+        Console.WriteLine("计数排序升序：");
+        Code(testList);
+        Console.WriteLine(string.Join(",", testList));
     }
 }

@@ -10,7 +10,7 @@ namespace Algorithms.Lesson05;
 
 public class QuickSortRecursiveAndIteration
 {
-    // 荷兰国旗问题
+    // 三分荷兰国旗问题
     private static int[] NetherlandsFlag(int[] arr, int leftEdge, int rightEdge)
     {
         if (leftEdge > rightEdge) return new[] { -1, -1 };
@@ -49,7 +49,6 @@ public class QuickSortRecursiveAndIteration
     {
         if (leftEdge >= rightEdge) return;
 
-
         Swap(arr, leftEdge + (int)(Utility.GetRandomDouble * (rightEdge - leftEdge + 1)), rightEdge);
         var equalArea = NetherlandsFlag(arr, leftEdge, rightEdge);
         Process(arr, leftEdge, equalArea[0] - 1);
@@ -84,6 +83,8 @@ public class QuickSortRecursiveAndIteration
             }
         }
     }
+
+    #region 用于测试
 
     // 生成随机数组（用于测试）
     private static int[] GenerateRandomArray(int maxSize, int maxValue)
@@ -124,18 +125,10 @@ public class QuickSortRecursiveAndIteration
 
         return true;
     }
+    
 
-    // 打印数组（用于测试）
-    // private static void PrintArray(int[]? arr)
-    // {
-    //     if (arr == null) return;
-    //
-    //     foreach (var t in arr) Console.Write(t + " ");
-    //
-    //     Console.WriteLine();
-    // }
+    #endregion
 
-    // 跑大样本随机测试（对数器）
     public static void Run()
     {
         var testTime = 500000;

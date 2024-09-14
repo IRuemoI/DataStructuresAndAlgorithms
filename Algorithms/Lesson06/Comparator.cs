@@ -4,22 +4,6 @@ namespace Algorithms.Lesson06;
 
 public class Comparator
 {
-    public void PrintStudents(Student[] students)
-    {
-        foreach (var student in students)
-            Console.WriteLine("Name : " + student.Name + ", Id : " + student.Id + ", Age : " + student.Age);
-    }
-
-    public void PrintArray(int[]? arr)
-    {
-        if (arr == null) return;
-
-        foreach (var t in arr) Console.Write(t + " ");
-
-        Console.WriteLine();
-    }
-
-
     public static void Run()
     {
         int[] arr = [5, 4, 3, 2, 7, 9, 1, 0];
@@ -73,7 +57,7 @@ public class Comparator
         foreach (var s in sortedDictionary.Keys) Console.WriteLine(s.Name + "," + s.Id + "," + s.Age);
     }
 
-    public class Student(string name, int id, int age)
+    private class Student(string name, int id, int age)
     {
         public readonly int Age = age;
         public readonly int Id = id;
@@ -95,46 +79,6 @@ public class Comparator
         }
     }
 
-    public class IdAscendingComparator : IComparer<Student>
-    {
-        public int Compare(Student? x, Student? y)
-        {
-            if (x != null && y != null)
-                return x.Id - y.Id;
-            throw new AggregateException();
-        }
-    }
-
-    public class IdDescendingComparator : IComparer<Student>
-    {
-        public int Compare(Student? x, Student? y)
-        {
-            if (x != null && y != null)
-                return y.Id - x.Id;
-            throw new AggregateException();
-        }
-    }
-
-    // 先按照id排序，id小的，放前面；
-    // id一样，age大的，前面；
-    public class IdInAgeDe : IComparer<Student>
-    {
-        public int Compare(Student? x, Student? y)
-        {
-            if (y != null && x != null)
-                return x.Id != y.Id ? x.Id - y.Id : y.Age - x.Age;
-            throw new AggregateException();
-        }
-    }
-
-    public class MyComp : IComparer<int>
-    {
-        public int Compare(int o1, int o2)
-        {
-            return o2 - o1;
-        }
-    }
-
     private class AComp : IComparer<int>
     {
         // 如果返回负数，认为第一个参数应该拍在前面
@@ -144,8 +88,6 @@ public class Comparator
         public int Compare(int arg0, int arg1)
         {
             return arg1 - arg0;
-
-//			return 0;
         }
     }
 }

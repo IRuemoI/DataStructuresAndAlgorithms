@@ -11,31 +11,49 @@ namespace Algorithms.Lesson08;
 public class CountSort
 {
     // only for 0~200 value
-    private static void Code(int[]? arr)
+    private static void Code(int[] arr)
     {
-        if (arr == null || arr.Length < 2) return;
+        if (arr.Length < 2) return;
 
+        //找出数组中的最大值和最小值
         var max = int.MinValue;
-        foreach (var element in arr) max = Math.Max(max, element);
+        var min = int.MaxValue;
+        foreach (var element in arr)
+        {
+            max = Math.Max(max, element);
+            min = Math.Min(min, element);
+        }
 
-        var bucket = new int[max + 1];
-        foreach (var element in arr) bucket[element]++;
+        //申请合适大小的"桶"，作为计数数组
+        var bucket = new int[max - min + 1];
+        //把数组中的所有元素放入桶中
+        foreach (var element in arr)
+        {
+            bucket[element - min]++;//可以处理负数的情况
+        }
 
-        var i1 = 0;
-        for (var j = 0; j < bucket.Length; j++)
-            while (bucket[j]-- > 0)
-                arr[i1++] = j;
+        var index = 0; //定义用于写入数组时所使用的指针
+        //把桶中的元素按照从小到大的索引从桶中取出放入元素数组(降序排序时逆向写入)
+        for (var i = 0; i < bucket.Length; i++)
+        {
+            while (bucket[i]-- > 0)
+            {
+                arr[index++] = min + i;
+            }
+        }
     }
+
+    #region 用于测试
 
     private static void Comparator(int[] arr)
     {
         Array.Sort(arr);
     }
 
-    private static int[] GenerateRandomArray(int maxSize, int maxValue)
+    private static int[] GenerateRandomArray(int maxSize, int minValue, int maxValue)
     {
         var arr = new int[(int)((maxSize + 1) * Utility.GetRandomDouble)];
-        for (var i = 0; i < arr.Length; i++) arr[i] = (int)((maxValue + 1) * Utility.GetRandomDouble);
+        for (var i = 0; i < arr.Length; i++) arr[i] = (int)((maxValue + 1) * Utility.GetRandomDouble) + minValue;
 
         return arr;
     }
@@ -75,15 +93,18 @@ public class CountSort
         Console.WriteLine();
     }
 
+    #endregion
+
     public static void Run()
     {
         var testTime = 500000;
         var maxSize = 100;
-        var maxValue = 150;
+        var minValue = -20;
+        var maxValue = 60;
         var succeed = true;
         for (var i = 0; i < testTime; i++)
         {
-            var arr1 = GenerateRandomArray(maxSize, maxValue);
+            var arr1 = GenerateRandomArray(maxSize, minValue, maxValue);
             var arr2 = CopyArray(arr1);
             Code(arr1);
             if (arr2 != null)

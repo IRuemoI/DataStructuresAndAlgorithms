@@ -27,7 +27,8 @@ public class EveryStepShowBoss
         return result;
     }
 
-    // 过程模拟
+    #region 用于测试
+    
     private static List<List<int>> Compare(int[] arr, bool[] op, int k)
     {
         Dictionary<int, Customer> customerDict = new(); //定义一个顾客编号和实例的字典
@@ -96,7 +97,7 @@ public class EveryStepShowBoss
     }
 
     /// <summary>
-    /// 将候选区的顾客移动到获奖区中
+    ///     将候选区的顾客移动到获奖区中
     /// </summary>
     /// <param name="awardee">获奖区</param>
     /// <param name="candidate">候选区</param>
@@ -131,7 +132,7 @@ public class EveryStepShowBoss
 
 
     /// <summary>
-    /// 删除列表中购买数为零的顾客 
+    ///     删除列表中购买数为零的顾客
     /// </summary>
     /// <param name="customerList">顾客列表</param>
     private static void CleanZeroBuy(List<Customer> customerList)
@@ -154,6 +155,13 @@ public class EveryStepShowBoss
         return result; //返回这个列表
     }
 
+    // 为了测试
+    private class Data(int[] a, bool[] o)
+    {
+        public readonly int[] Arr = a;
+        public readonly bool[] Op = o;
+    }
+    
     // 为了测试
     private static Data RandomData(int maxValue, int maxLen)
     {
@@ -190,6 +198,9 @@ public class EveryStepShowBoss
         return true;
     }
 
+
+    #endregion
+    
     public static void Run()
     {
         const int maxValue = 10;
@@ -351,12 +362,5 @@ public class EveryStepShowBoss
                 }
             }
         }
-    }
-
-    // 为了测试
-    private class Data(int[] a, bool[] o)
-    {
-        public readonly int[] Arr = a;
-        public readonly bool[] Op = o;
     }
 }

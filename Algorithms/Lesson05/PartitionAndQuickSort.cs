@@ -14,7 +14,7 @@ public class PartitionAndQuickSort
     {
         (arr[i], arr[j]) = (arr[j], arr[i]);
     }
-    
+
     // arr[L..R]上，以arr[R]位置的数做划分值
     // <= X > X
     // <= X X
@@ -84,7 +84,6 @@ public class PartitionAndQuickSort
         Process1(arr, middle + 1, rightEdge);
     }
 
-
     private static void QuickSort2(int[]? arr)
     {
         if (arr == null || arr.Length < 2) return;
@@ -102,7 +101,6 @@ public class PartitionAndQuickSort
         Process2(arr, leftEdge, equalArea[0] - 1);
         Process2(arr, equalArea[1] + 1, rightEdge);
     }
-
 
     private static void QuickSort3(int[]? arr)
     {
@@ -122,7 +120,8 @@ public class PartitionAndQuickSort
         Process3(arr, equalArea[1] + 1, rightEdge);
     }
 
-    //用于测试
+    #region 用于测试
+
     private static int[] GenerateRandomArray(int maxSize, int maxValue)
     {
         var arr = new int[(int)((maxSize + 1) * Utility.GetRandomDouble)];
@@ -132,7 +131,6 @@ public class PartitionAndQuickSort
         return arr;
     }
 
-    //用于测试
     private static int[]? CopyArray(int[]? arr)
     {
         if (arr == null) return null;
@@ -143,7 +141,6 @@ public class PartitionAndQuickSort
         return res;
     }
 
-    //用于测试
     private static bool IsEqual(int[]? arr1, int[]? arr2)
     {
         if ((arr1 == null && arr2 != null) || (arr1 != null && arr2 == null)) return false;
@@ -161,8 +158,8 @@ public class PartitionAndQuickSort
 
         return true;
     }
-    
-    //用于测试
+
+    #endregion
     public static void Run()
     {
         var testTime = 100000;

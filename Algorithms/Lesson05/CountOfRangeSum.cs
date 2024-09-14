@@ -44,7 +44,7 @@ public class CountOfRangeSum
         }
 
         #endregion
-        
+
         #region 合并的基本操作
 
         var help = new long[rightEdge - leftEdge + 1];

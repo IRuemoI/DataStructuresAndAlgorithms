@@ -18,7 +18,7 @@ public static class DeleteGivenValue
         var pre = head; //记录上一个节点
         var cur = head.Next; //记录当前节点
 
-        while (cur != null)//向后遍历链表
+        while (cur != null) //向后遍历链表
         {
             if (cur.Value == value) //如果当前节点的值为目标值
                 pre.Next = cur.Next; //将上个节点的下个节点指向本节点的下个节点

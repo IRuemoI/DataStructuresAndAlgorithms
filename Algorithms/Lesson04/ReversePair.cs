@@ -84,7 +84,7 @@ public class ReversePair
 
         return res;
     }
-    
+
     //用于测试
     private static void PrintArray(int[]? arr)
     {

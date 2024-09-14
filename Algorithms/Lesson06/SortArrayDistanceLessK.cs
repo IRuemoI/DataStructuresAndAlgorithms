@@ -34,18 +34,18 @@ public class SortArrayDistanceLessK
             current++;
             heapRightEdge++;
         }
-        
+
         // 将窗口内剩下的值全部取出
         while (minHeap.Count != 0) arr[current++] = minHeap.Pop();
     }
 
-    //用于测试
+    #region 用于测试
+
     private static void Comparator(int[] arr)
     {
         Array.Sort(arr);
     }
 
-    //用于测试
     private static int[] RandomArrayNoMoveMoreK(int maxSize, int maxValue, int k)
     {
         var arr = new int[(int)((maxSize + 1) * Utility.GetRandomDouble)];
@@ -72,7 +72,6 @@ public class SortArrayDistanceLessK
         return arr;
     }
 
-    //用于测试
     private static int[]? CopyArray(int[]? arr)
     {
         if (arr == null) return null;
@@ -83,7 +82,6 @@ public class SortArrayDistanceLessK
         return res;
     }
 
-    //用于测试
     private static bool IsEqual(int[]? arr1, int[]? arr2)
     {
         if ((arr1 == null && arr2 != null) || (arr1 != null && arr2 == null)) return false;
@@ -100,7 +98,6 @@ public class SortArrayDistanceLessK
         return true;
     }
 
-    //用于测试
     private static void PrintArray(int[]? arr)
     {
         if (arr == null) return;
@@ -110,7 +107,8 @@ public class SortArrayDistanceLessK
         Console.WriteLine();
     }
 
-    //用于测试
+    #endregion
+
     public static void Run()
     {
         Console.WriteLine("测试开始");

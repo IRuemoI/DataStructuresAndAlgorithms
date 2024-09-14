@@ -86,16 +86,16 @@ public class HeapGreater<T>(Func<T, T, int> comparison) where T : notnull
     private void Heapify(int index)
     {
         var left = index * 2 + 1;
-
-
+        
         while (left < Count)
         {
-            var smallest = left + 1 < Count && Compare(_elements[left + 1], _elements[left]) < 0 ? left + 1 : left;
-            smallest = Compare(_elements[smallest], _elements[index]) < 0 ? smallest : index;
-            if (smallest == index) break;
+            var right = left + 1;
+            var swappedIndex = right < Count && Compare(_elements[right], _elements[left]) < 0 ? right : left;
+            swappedIndex = Compare(_elements[swappedIndex], _elements[index]) < 0 ? swappedIndex : index;
+            if (swappedIndex == index) break;
 
-            Swap(smallest, index);
-            index = smallest;
+            Swap(swappedIndex, index);
+            index = swappedIndex;
             left = index * 2 + 1;
         }
     }

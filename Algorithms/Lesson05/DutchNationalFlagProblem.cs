@@ -14,6 +14,7 @@ public static class DutchNationalFlagProblem
                 (arr[currentIndex], arr[lessEqualEdge]) = (arr[lessEqualEdge], arr[currentIndex]);
                 lessEqualEdge++;
             }
+
             currentIndex++;
         }
     }
@@ -55,16 +56,19 @@ public static class DutchNationalFlagProblem
         {
             equalLeftEdge++;
         }
+
         //设置一个循环，当equalRightEdge > target时，equalRightEdge向左移动
         while (equalRightEdge > -1 && arr[equalRightEdge] > target)
         {
             equalRightEdge--;
         }
+
         //没有等于target的数直接返回false
         if (equalLeftEdge > equalRightEdge)
         {
             return false;
         }
+
         //设置一个循环，验证equalLeftEdge到equalRightEdge的所有数是否都等于target
         while (equalLeftEdge <= equalRightEdge)
         {
@@ -77,6 +81,7 @@ public static class DutchNationalFlagProblem
                 equalLeftEdge++;
             }
         }
+
         return true;
     }
 
@@ -89,6 +94,7 @@ public static class DutchNationalFlagProblem
         {
             equalLeftEdge++;
         }
+
         //设置一个循环，验证equalLeftEdge到arr.Length-1的所有数是否都大于target
         while (equalLeftEdge < arr.Length)
         {
@@ -101,12 +107,14 @@ public static class DutchNationalFlagProblem
                 return false;
             }
         }
+
         return true;
     }
 
     public static void Run()
     {
         #region 验证小于、等于、大于
+
         for (int i = 0; i < 100000; i++)
         {
             // 创建一个随机长度和随机值的数组
@@ -124,14 +132,17 @@ public static class DutchNationalFlagProblem
             LessAndEqualAndGreater(arr, target);
             if (!ValidLorEorG(arr, target))
             {
-                Console.WriteLine($"这是第{i + 1}次测试 出现错误 原始数组为{string.Join(",", original.Select(element => element.ToString()))} 目标值为{target}");
+                Console.WriteLine(
+                    $"这是第{i + 1}次测试 出现错误 原始数组为{string.Join(",", original.Select(element => element.ToString()))} 目标值为{target}");
                 foreach (var element in arr) Console.Write(element + ",");
                 Console.WriteLine("\n");
             }
         }
+
         #endregion
 
         #region 验证小于等于、大于
+
         for (int i = 0; i < 100000; i++)
         {
             // 创建一个随机长度和随机值的数组
@@ -151,11 +162,13 @@ public static class DutchNationalFlagProblem
             LessEqualAndGreater(arr, target);
             if (!ValidLEorG(arr, target))
             {
-                Console.WriteLine($"这是第{i + 1}次测试 出现错误 原始数组为{string.Join(",", original.Select(element => element.ToString()))} 目标值为{target}");
+                Console.WriteLine(
+                    $"这是第{i + 1}次测试 出现错误 原始数组为{string.Join(",", original.Select(element => element.ToString()))} 目标值为{target}");
                 foreach (var element in arr) Console.Write(element + ",");
                 Console.WriteLine("\n");
             }
         }
+
         #endregion
 
         Console.WriteLine("测试完成");

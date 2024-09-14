@@ -77,13 +77,13 @@ public class HeapSort
         (arr[i], arr[j]) = (arr[j], arr[i]);
     }
 
-    //用于测试
+    #region 用于测试
+
     private static void Comparator(int[]? arr)
     {
         if (arr != null) Array.Sort(arr);
     }
 
-    //用于测试
     private static int[] GenerateRandomArray(int maxSize, int maxValue)
     {
         var arr = new int[(int)((maxSize + 1) * Utility.GetRandomDouble)];
@@ -93,7 +93,6 @@ public class HeapSort
         return arr;
     }
 
-    //用于测试
     private static int[]? CopyArray(int[]? arr)
     {
         if (arr == null) return null;
@@ -104,7 +103,6 @@ public class HeapSort
         return res;
     }
 
-    //用于测试
     private static bool IsEqual(int[]? arr1, int[]? arr2)
     {
         if ((arr1 == null && arr2 != null) || (arr1 != null && arr2 == null)) return false;
@@ -121,7 +119,6 @@ public class HeapSort
         return true;
     }
 
-    //用于测试
     private static void PrintArray(int[]? arr)
     {
         if (arr == null) return;
@@ -131,7 +128,8 @@ public class HeapSort
         Console.WriteLine();
     }
 
-    //用于测试
+    #endregion
+    
     public static void Run()
     {
         var testTime = 10;
@@ -150,7 +148,7 @@ public class HeapSort
                 break;
             }
 
-            Console.WriteLine("出错的输入:"+string.Join(",",arr1.Select(element => element.ToString()) ));
+            Console.WriteLine("出错的输入:" + string.Join(",", arr1.Select(element => element.ToString())));
         }
 
         Console.WriteLine(succeed ? "测试通过" : "出现错误");
