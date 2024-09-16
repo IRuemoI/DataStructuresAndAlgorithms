@@ -36,9 +36,9 @@
    * cur=cur?.next 等价于 if(cur!=null) cur=cur?.next
    * cur?? throw new Exception; 等价于如果当前指针为空那么抛出异常
    * 构造函数的语法糖：可以将集合的成员直接在构造时天机
-   * 模式判断 cur{ lchild is not null , rchild is not null}表示cur左右子节点都不为空的条件表达式
+   * 使用[模式匹配](https://learn.microsoft.com/zh-cn/dotnet/csharp/fundamentals/functional/pattern-matching)进行判断：cur{ lchild is not null , rchild is not null}表示cur左右子节点都不为空的条件表达式
    * C#也有类似Python的切片语法：比如arr\[^1\]表示arr的倒数第一个元素
-   * 集合的Floor函数可以使用Linq代替（可能性能稍差）
+   * 集合的Floor函数可以使用[LINQ](https://learn.microsoft.com/zh-cn/dotnet/csharp/linq/get-started/introduction-to-linq-queries)代替（可能性能稍差）
    * 更多语法糖可以查阅微软的官方文档，这些以上语法都是在Rider的默认配置下提示的改进写法
 3. 其他需要注意的就是C#的比较器与Java比较器的区别
 

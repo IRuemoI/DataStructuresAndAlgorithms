@@ -6,87 +6,81 @@ public class CopyListWithRandom
 {
     private static Node? CopyListWithRand1(Node? head)
     {
-        if (head == null) return null;
+        if (head == null) return null; //空链表直接返回
 
-        // key 老节点
-        // value 新节点
+        // 复制各节点，并建立 “原节点 -> 新节点” 的映射字典
         var map = new Dictionary<Node, Node>();
-        var cur = head;
-        while (cur != null)
+        var current = head;
+        while (current != null)
         {
-            map.Add(cur, new Node(cur.Value));
-            cur = cur.Next;
+            map.Add(current, new Node(current.Value));
+            current = current.Next;
         }
 
-        cur = head;
-
-        while (cur != null)
+        // 按照旧链表复制新链表的next和random指向
+        current = head;
+        while (current != null)
         {
-            // cur 老
-            // map.get(cur) 新
-            // 新.next ->  cur.next克隆节点找到
-            map[cur].Rand = map[cur.Rand!];
-            if (cur.Next != null)
-                map[cur].Next = map[cur.Next];
+            map[current].Rand = map[current.Rand!];
+            if (current.Next != null)
+                map[current].Next = map[current.Next];
             else
                 break;
 
-
-            cur = cur.Next;
+            current = current.Next;
         }
 
+        //返回复制链表的头节点
         return map[head];
     }
 
     private static Node? CopyListWithRand2(Node? head)
     {
-        if (head == null) return null;
+        if (head == null) return null; //空链表直接返回
 
-        var cur = head;
+        var current = head;
         Node? next;
-        // copy node and link to every node
-        // 1 -> 2
-        // 1 -> 1' -> 2
-        while (cur != null)
+
+        // 将原链表的每个节点复制并发到本节点的后方
+        while (current != null)
         {
-            // cur 老 next 老的下一个
-            next = cur.Next;
-            cur.Next = new Node(cur.Value)
+            next = current.Next;
+            current.Next = new Node(current.Value)
             {
                 Next = next
             };
-            cur = next;
+            current = next;
         }
 
-        cur = head;
-        Node? curCopy;
-        // set copy node rand
-        // 1 -> 1' -> 2 -> 2'
-        while (cur != null)
+        // 复制各节点的random指向
+        current = head;
+        Node? currentCopy;
+        while (current != null)
         {
-            // cur 老
-            // cur.next 新 copy
-            next = cur.Next?.Next;
-            curCopy = cur.Next;
-            if (curCopy != null) curCopy.Rand = cur.Rand?.Next;
-            cur = next;
+            next = current.Next?.Next;
+            currentCopy = current.Next;
+            if (currentCopy != null) currentCopy.Rand = current.Rand?.Next;
+            current = next;
         }
 
-        // head head.next
-        var res = head.Next;
-        cur = head;
-        // split
-        while (cur != null)
+        // 新链表的头节点是原链表头节点的下个节点
+        var newHead = head.Next;
+
+        // 分离原链表和复制链表
+        current = head;
+        while (current != null)
         {
-            next = cur.Next?.Next;
-            curCopy = cur.Next;
-            cur.Next = next;
-            if (curCopy != null) curCopy.Next = next?.Next;
-            cur = next;
+            next = current.Next?.Next;
+            currentCopy = current.Next;
+            current.Next = next;
+            if (currentCopy != null) currentCopy.Next = next?.Next;
+            current = next;
         }
 
-        return res;
+        return newHead;
     }
+
+    # region 用于测试
 
     private static void PrintRandLinkedList(Node? head)
     {
@@ -147,33 +141,7 @@ public class CopyListWithRandom
 
         return true;
     }
-
-    public static void Run()
-    {
-        const int maxLength = 30;
-        const int testTimes = 3;
-        var randomGen = new Random();
-        for (var i = 0; i < testTimes; i++)
-        {
-            var listLength = randomGen.Next(maxLength) + 1;
-            Console.WriteLine("本轮生成的链表长度为{0}", listLength);
-            var origin = RandomizedList.GenerateRandomizedList(listLength);
-            PrintRandLinkedList(origin);
-
-            var copy1 = CopyListWithRand1(origin);
-            PrintRandLinkedList(copy1);
-
-            var copy2 = CopyListWithRand2(origin);
-            PrintRandLinkedList(copy2);
-
-            if (!(IsEquals(origin, copy1) && IsEquals(copy1, copy2))) Console.WriteLine("oops");
-
-            Console.WriteLine("========================");
-        }
-
-        Console.WriteLine("pass");
-    }
-
+    
     public class Node(int data)
     {
         public readonly int Value = data;
@@ -181,7 +149,7 @@ public class CopyListWithRandom
         public Node? Rand;
     }
 
-    public static class RandomizedList
+    private static class RandomizedList
     {
         private static Node? _head;
         private static readonly Random Rand = new();
@@ -224,8 +192,35 @@ public class CopyListWithRandom
                 current = current.Next!;
             }
 
-
             return _head;
         }
+    }
+
+    #endregion
+
+    public static void Run()
+    {
+        const int maxLength = 30;
+        const int testTimes = 3;
+        var randomGen = new Random();
+        for (var i = 0; i < testTimes; i++)
+        {
+            var listLength = randomGen.Next(maxLength) + 1;
+            Console.WriteLine("本轮生成的链表长度为{0}", listLength);
+            var origin = RandomizedList.GenerateRandomizedList(listLength);
+            PrintRandLinkedList(origin);
+
+            var copy1 = CopyListWithRand1(origin);
+            PrintRandLinkedList(copy1);
+
+            var copy2 = CopyListWithRand2(origin);
+            PrintRandLinkedList(copy2);
+
+            if (!(IsEquals(origin, copy1) && IsEquals(copy1, copy2))) Console.WriteLine("oops");
+
+            Console.WriteLine("========================");
+        }
+
+        Console.WriteLine("测试完成");
     }
 }

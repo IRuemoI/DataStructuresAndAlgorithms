@@ -4,69 +4,80 @@ namespace Algorithms.Lesson09;
 
 public class LinkedListMid
 {
-    // head 头
+    //返回链表中点或者上中点
     private static Node? MidOrUpMidNode(Node? head)
     {
-        if (head?.Next?.Next == null) return head;
+        if (head?.Next?.Next == null) return head; //如果这个链表的长度小于3那么返回头节点
 
-        // 链表有3个点或以上
-        var slow = head.Next;
-        var fast = head.Next.Next;
+        var slow = head.Next; //定义慢指针并向后移动一次
+        var fast = head.Next.Next; //定义快指针并向后移动一次
         while (fast.Next is { Next: not null })
         {
-            slow = slow?.Next;
-            fast = fast.Next.Next;
+            //下一个节点和下两个节点不为空
+            slow = slow?.Next; //慢指针向后移动
+            fast = fast.Next.Next; //快指针向后移动
         }
 
         return slow;
     }
 
+    //返回链表中点或者下中点
     private static Node? MidOrDownMidNode(Node? head)
     {
-        if (head?.Next == null) return head;
+        if (head?.Next == null) return head; //如果这个链表的长度小于2那么返回头节点
 
-        var slow = head.Next;
-        var fast = head.Next;
+        //要找中点的下一个节点需要定义时向后移一个节点
+        var slow = head.Next; //定义慢指针
+        var fast = head.Next; //定义快指针
         while (fast.Next is { Next: not null })
         {
-            slow = slow?.Next;
-            fast = fast.Next.Next;
+            //下一个节点和下两个节点不为空
+            slow = slow?.Next; //慢指针向后移动
+            fast = fast.Next.Next; //快指针向后移动
         }
 
         return slow;
     }
 
+    //返回链表中点或者上中点的上一个节点
     private static Node? MidOrUpMidPreNode(Node? head)
     {
-        if (head?.Next?.Next == null) return null;
+        if (head?.Next?.Next == null) return null; //如果这个链表的长度小于3那么返回头节点
 
-        var slow = head;
-        var fast = head.Next.Next;
+        //要找中点的上一个节点需要快定义时块指针先走一步
+        var slow = head; //定义慢指针
+        var fast = head.Next.Next; //定义快指针
         while (fast.Next is { Next: not null })
         {
-            slow = slow?.Next;
-            fast = fast.Next.Next;
+            //下一个节点和下两个节点不为空
+            slow = slow?.Next; //慢指针向后移动
+            fast = fast.Next.Next; //块指针向后移动
         }
 
         return slow;
     }
 
+    //返回链表中点或者下中点的上一个节点
     private static Node? MidOrDownMidPreNode(Node? head)
     {
-        if (head?.Next == null) return null;
+        if (head?.Next == null) return null; //如果这个链表的长度小于2那么返回空
 
-        if (head.Next.Next == null) return head;
+        if (head.Next.Next == null) return head; //如果这个链表的长度小于3那么返回头节点
 
-        var slow = head;
-        var fast = head.Next;
+        //要找中点的下一个节点需要快定义时快指针少走一个节点
+        var slow = head; //定义慢指针
+        var fast = head.Next; //定义快指针
         while (fast.Next is { Next: not null })
         {
-            slow = slow?.Next;
-            fast = fast.Next.Next;
+            //下一个节点和下两个节点不为空
+            slow = slow?.Next; //慢指针向后移动
+            fast = fast.Next.Next; //块指针向后移动
         }
 
         return slow;
     }
+
+    #region 用于测试
 
     private static Node? Right1(Node? head)
     {
@@ -128,6 +139,8 @@ public class LinkedListMid
         return arr[(arr.Count - 2) / 2];
     }
 
+    #endregion
+    
     public static void Run()
     {
         var test = new Node(0)
@@ -177,14 +190,9 @@ public class LinkedListMid
         Console.WriteLine(ans2 != null ? ans2.Value : "无");
     }
 
-    public class Node
+    private class Node(int v)
     {
-        public readonly int Value;
+        public readonly int Value = v;
         public Node? Next;
-
-        public Node(int v)
-        {
-            Value = v;
-        }
     }
 }

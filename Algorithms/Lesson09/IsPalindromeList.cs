@@ -4,171 +4,177 @@ namespace Algorithms.Lesson09;
 
 public class IsPalindromeList
 {
-    // need n extra space
+    // 需要O(n)的额外空间
     private static bool IsPalindrome1(Node? head)
     {
         var stack = new Stack<Node>();
-        var cur = head;
-        while (cur != null)
+        var current = head;
+        //将链表的所有节点放入栈中
+        while (current != null)
         {
-            stack.Push(cur);
-            cur = cur.Next;
+            stack.Push(current);
+            current = current.Next;
         }
 
+        //从头重新遍历链表并同时弹出栈中节点，如果不相同那么不是回文
         while (head != null)
         {
             if (head.Value != stack.Pop().Value) return false;
-
-            if (head.Next != null) head = head.Next;
-        }
-
-        return true;
-    }
-
-    // need n/2 extra space
-    private static bool IsPalindrome2(Node? head)
-    {
-        if (head?.Next == null) return true;
-
-        var right = head.Next;
-        var cur = head;
-        while (cur.Next is { Next: not null })
-        {
-            right = right?.Next;
-            cur = cur.Next.Next;
-        }
-
-        var stack = new Stack<Node>();
-        while (right != null)
-        {
-            stack.Push(right);
-            right = right.Next;
-        }
-
-        while (stack.Count != 0)
-        {
-            if (head?.Value != stack.Pop().Value) return false;
-
             head = head.Next;
         }
 
-        return true;
+        return true; //全部相同那么就是回文
     }
 
-    // need O(1) extra space
+    // 需要O(n/2)的额外空间
+    private static bool IsPalindrome2(Node? head)
+    {
+        if (head?.Next == null) return true; //链表只有一个节点是回文
+
+        //找到链表的下中点middle
+        var middle = head.Next;
+        var current = head;
+        while (current.Next is { Next: not null })
+        {
+            middle = middle?.Next;
+            current = current.Next.Next;
+        }
+
+        //将下中点之后的节点放入栈中
+        var stack = new Stack<Node>();
+        while (middle != null)
+        {
+            stack.Push(middle);
+            middle = middle.Next;
+        }
+
+        //从头重新遍历链表并同时弹出栈中节点，如果不相同那么不是回文
+        while (stack.Count != 0)
+        {
+            if (head?.Value != stack.Pop().Value) return false;
+            head = head.Next;
+        }
+
+        return true; //链表的前后两部分对称是回文
+    }
+
+    // 需要O(1)的额外空间
     private static bool IsPalindrome3(Node? head)
     {
-        if (head == null || head.Next == null) return true;
+        if (head?.Next == null) return true;
 
-        var n1 = head;
-        var n2 = head;
-        while (n2.Next is { Next: not null })
+        // 找到链表的下中点middle
+        var middle = head;
+        var current = head;
+        while (current.Next is { Next: not null })
         {
-            // find mid node
-            n1 = n1?.Next; // n1 -> mid
-            n2 = n2.Next.Next; // n2 -> end
+            middle = middle?.Next;
+            current = current.Next.Next;
         }
-        // n1 中点
 
-
-        n2 = n1?.Next; // n2 -> right part first node
-        if (n1 != null)
+        current = middle?.Next; //current指向右半部分的第一个节点 
+        var preNode = middle;
+        if (middle != null)
         {
-            n1.Next = null; // mid.next -> null
-            Node? n3;
-            while (n2 != null)
+            //翻转链表右半部分
+            middle.Next = null; //将链表从中间断开 
+            while (current != null)
             {
-                // right part convert
-                n3 = n2.Next; // n3 -> save next node
-                n2.Next = n1; // next of right node convert
-                n1 = n2; // n1 move
-                n2 = n3; // n2 move
+                //右半部分翻转
+                var nextNode = current.Next; //记录下个节点 
+                current.Next = preNode; //当前节点的Next指向前一个节点
+                preNode = current; //上个节点后移
+                current = nextNode; //当前节点后移
             }
 
-            n3 = n1; // n3 -> save last node
-            n2 = head; // n2 -> left first node
-            var res = true;
-            while (n1 != null && n2 != null)
+            var leftHead = head; //获取左侧的头指针
+            var rightHead = preNode; //获取右侧的头指针
+            var result = true;
+            while (leftHead != null && rightHead != null)
             {
-                // check palindrome
-                if (n1.Value != n2.Value)
+                //判断回文
+                if (leftHead.Value != rightHead.Value)
                 {
-                    res = false;
+                    result = false;
                     break;
                 }
 
-                n1 = n1.Next; // left to mid
-                n2 = n2.Next; // right to mid
+                //两端指针向中间移动
+                leftHead = leftHead.Next;
+                rightHead = rightHead.Next;
             }
 
-            n1 = n3.Next;
-            n3.Next = null;
-            while (n1 != null)
+            // 重新连接并恢复后半部分链表的顺序
+            var tail = preNode; //右半部分的头节点
+            var currentNode = preNode?.Next; //设置右半部分的第二个节点为当前节点
+            tail!.Next = null; //将右半部分的头节点设置为空
+            while (currentNode != null)
             {
-                // recover list
-                n2 = n1.Next;
-                n1.Next = n3;
-                n3 = n1;
-                n1 = n2;
+                var nextNode = currentNode.Next; //获取右侧的下一个节点
+                currentNode.Next = preNode; //将当前节点的Next指向前一个节点
+                preNode = currentNode; //前一个节点后移
+                currentNode = nextNode; //当前节点后移
             }
 
-            return res;
+            return result;
         }
 
         throw new InvalidOperationException();
     }
 
+    # region 用于测试
+
     private static void PrintLinkedList(Node? node)
     {
-        Console.Write("Linked List: ");
         while (node != null)
         {
-            Console.Write(node.Value + " ");
+            Console.Write(node.Value + "->");
             node = node.Next;
         }
 
-        Console.WriteLine();
+        Console.WriteLine("null");
     }
+
+    private class Node(int data)
+    {
+        public readonly int Value = data;
+        public Node? Next;
+    }
+
+    private static void Test(Node? head)
+    {
+        Console.Write("运行前的链表：");
+        PrintLinkedList(head);
+        var result1 = IsPalindrome1(head);
+        var result2 = IsPalindrome2(head);
+        var result3 = IsPalindrome3(head);
+        Console.WriteLine(result1 == result2 && result2 == result3 ? "Pass" : "Error");
+        Console.Write("复原后的链表：");
+        PrintLinkedList(head);
+        Console.WriteLine("=========================");
+    }
+
+    #endregion
 
     public static void Run()
     {
         Node? head = null;
-        PrintLinkedList(head);
-        Console.Write(IsPalindrome1(head) + " | ");
-        Console.Write(IsPalindrome2(head) + " | ");
-        Console.WriteLine(IsPalindrome3(head) + " | ");
-        PrintLinkedList(head);
-        Console.WriteLine("=========================");
+        Test(head);
 
         head = new Node(1);
-        PrintLinkedList(head);
-        Console.Write(IsPalindrome1(head) + " | ");
-        Console.Write(IsPalindrome2(head) + " | ");
-        Console.WriteLine(IsPalindrome3(head) + " | ");
-        PrintLinkedList(head);
-        Console.WriteLine("=========================");
+        Test(head);
 
         head = new Node(1)
         {
             Next = new Node(2)
         };
-        PrintLinkedList(head);
-        Console.Write(IsPalindrome1(head) + " | ");
-        Console.Write(IsPalindrome2(head) + " | ");
-        Console.WriteLine(IsPalindrome3(head) + " | ");
-        PrintLinkedList(head);
-        Console.WriteLine("=========================");
+        Test(head);
 
         head = new Node(1)
         {
             Next = new Node(1)
         };
-        PrintLinkedList(head);
-        Console.Write(IsPalindrome1(head) + " | ");
-        Console.Write(IsPalindrome2(head) + " | ");
-        Console.WriteLine(IsPalindrome3(head) + " | ");
-        PrintLinkedList(head);
-        Console.WriteLine("=========================");
+        Test(head);
 
         head = new Node(1)
         {
@@ -177,12 +183,7 @@ public class IsPalindromeList
                 Next = new Node(3)
             }
         };
-        PrintLinkedList(head);
-        Console.Write(IsPalindrome1(head) + " | ");
-        Console.Write(IsPalindrome2(head) + " | ");
-        Console.WriteLine(IsPalindrome3(head) + " | ");
-        PrintLinkedList(head);
-        Console.WriteLine("=========================");
+        Test(head);
 
         head = new Node(1)
         {
@@ -191,12 +192,7 @@ public class IsPalindromeList
                 Next = new Node(1)
             }
         };
-        PrintLinkedList(head);
-        Console.Write(IsPalindrome1(head) + " | ");
-        Console.Write(IsPalindrome2(head) + " | ");
-        Console.WriteLine(IsPalindrome3(head) + " | ");
-        PrintLinkedList(head);
-        Console.WriteLine("=========================");
+        Test(head);
 
         head = new Node(1)
         {
@@ -208,12 +204,7 @@ public class IsPalindromeList
                 }
             }
         };
-        PrintLinkedList(head);
-        Console.Write(IsPalindrome1(head) + " | ");
-        Console.Write(IsPalindrome2(head) + " | ");
-        Console.WriteLine(IsPalindrome3(head) + " | ");
-        PrintLinkedList(head);
-        Console.WriteLine("=========================");
+        Test(head);
 
         head = new Node(1)
         {
@@ -225,12 +216,7 @@ public class IsPalindromeList
                 }
             }
         };
-        PrintLinkedList(head);
-        Console.Write(IsPalindrome1(head) + " | ");
-        Console.Write(IsPalindrome2(head) + " | ");
-        Console.WriteLine(IsPalindrome3(head) + " | ");
-        PrintLinkedList(head);
-        Console.WriteLine("=========================");
+        Test(head);
 
         head = new Node(1)
         {
@@ -245,22 +231,6 @@ public class IsPalindromeList
                 }
             }
         };
-        PrintLinkedList(head);
-        Console.Write(IsPalindrome1(head) + " | ");
-        Console.Write(IsPalindrome2(head) + " | ");
-        Console.WriteLine(IsPalindrome3(head) + " | ");
-        PrintLinkedList(head);
-        Console.WriteLine("=========================");
-    }
-
-    public class Node
-    {
-        public readonly int Value;
-        public Node? Next;
-
-        public Node(int data)
-        {
-            Value = data;
-        }
+        Test(head);
     }
 }

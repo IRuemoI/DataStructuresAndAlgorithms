@@ -10,7 +10,6 @@ namespace Algorithms.Lesson08;
 
 public class CountSort
 {
-    // only for 0~200 value
     private static void Code(int[] arr)
     {
         if (arr.Length < 2) return;

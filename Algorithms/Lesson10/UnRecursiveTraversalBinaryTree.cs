@@ -2,9 +2,10 @@
 
 namespace Algorithms.Lesson10;
 
-public class UnRecursiveTraversalBt
+//非递归遍历二叉树
+public class UnRecursiveTraversalBinaryTree
 {
-    private static void Pre(Node? head)
+    private static void PreOrderTraversal(Node? head)
     {
         Console.Write("pre-order: ");
         if (head != null)
@@ -24,7 +25,7 @@ public class UnRecursiveTraversalBt
         Console.WriteLine();
     }
 
-    private static void In1(Node? cur)
+    private static void InOrderTraversal(Node? cur)
     {
         Console.Write("in-order: ");
         if (cur != null)
@@ -47,7 +48,7 @@ public class UnRecursiveTraversalBt
         Console.WriteLine();
     }
 
-    private static void Pos1(Node? head)
+    private static void PostOrderTraversal(Node? head)
     {
         Console.Write("pos-order: ");
         if (head != null)
@@ -71,7 +72,7 @@ public class UnRecursiveTraversalBt
         Console.WriteLine();
     }
 
-    private static void Pos2(Node? h)
+    private static void PostOrderTraversal2(Node? h)
     {
         Console.Write("pos-order: ");
         if (h != null)
@@ -104,33 +105,32 @@ public class UnRecursiveTraversalBt
     {
         var head = new Node(1)
         {
-            Left = new Node(2),
-            Right = new Node(3)
+            Left = new Node(2)
+            {
+                Left = new Node(3),
+                Right = new Node(4)
+            },
+            Right = new Node(5)
+            {
+                Left = new Node(6),
+                Right = new Node(7)
+            }
         };
-        head.Left.Left = new Node(4);
-        head.Left.Right = new Node(5);
-        head.Right.Left = new Node(6);
-        head.Right.Right = new Node(7);
-
-        Pre(head);
+        
+        PreOrderTraversal(head);
         Console.WriteLine("========");
-        In1(head);
+        InOrderTraversal(head);
         Console.WriteLine("========");
-        Pos1(head);
+        PostOrderTraversal(head);
         Console.WriteLine("========");
-        Pos2(head);
+        PostOrderTraversal2(head);
         Console.WriteLine("========");
     }
 
-    public class Node
+    public class Node(int v)
     {
-        public readonly int Value;
+        public readonly int Value = v;
         public Node? Left;
         public Node? Right;
-
-        public Node(int v)
-        {
-            Value = v;
-        }
     }
 }
