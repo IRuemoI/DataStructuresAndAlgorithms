@@ -1,9 +1,11 @@
-﻿namespace Algorithms;
+﻿using Algorithms.Lesson10;
+
+namespace Algorithms;
 
 public static class Program
 {
     public static void Main()
     {
-        Console.WriteLine("Hello, World!");
+        UnRecursiveTraversalBinaryTree.Run();
     }
 }
