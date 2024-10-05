@@ -48,7 +48,7 @@ public class MaxAbsBetweenLeftAndRight
     private static int[] GetRandomStringArray(int length)
     {
         var arr = new int[length];
-        for (var i = 0; i != arr.Length; i++) arr[i] = (int)(Utility.GetRandomDouble * 1000) - 499;
+        for (var i = 0; i != arr.Length; i++) arr[i] = (int)(Utility.getRandomDouble * 1000) - 499;
         return arr;
     }
 

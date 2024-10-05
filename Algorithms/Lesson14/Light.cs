@@ -75,8 +75,8 @@ public class Light
     //用于测试
     private static string RandomString(int len)
     {
-        var res = new char[(int)(Utility.GetRandomDouble * len) + 1];
-        for (var i = 0; i < res.Length; i++) res[i] = Utility.GetRandomDouble < 0.5 ? 'X' : 'O';
+        var res = new char[(int)(Utility.getRandomDouble * len) + 1];
+        for (var i = 0; i < res.Length; i++) res[i] = Utility.getRandomDouble < 0.5 ? 'X' : 'O';
 
         return new string(res);
     }

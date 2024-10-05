@@ -35,7 +35,7 @@ public class DoubleEndsQueueToStackAndQueue
             var queue = new Queue<int>();
             for (var j = 0; j < oneTestDataNum; j++)
             {
-                var numbers = (int)(Utility.GetRandomDouble * value);
+                var numbers = (int)(Utility.getRandomDouble * value);
                 if (stack.Count == 0)
                 {
                     myStack.Push(numbers);
@@ -43,7 +43,7 @@ public class DoubleEndsQueueToStackAndQueue
                 }
                 else
                 {
-                    if (Utility.GetRandomDouble < 0.5)
+                    if (Utility.getRandomDouble < 0.5)
                     {
                         myStack.Push(numbers);
                         stack.Push(numbers);
@@ -55,7 +55,7 @@ public class DoubleEndsQueueToStackAndQueue
                     }
                 }
 
-                var numQ = (int)(Utility.GetRandomDouble * value);
+                var numQ = (int)(Utility.getRandomDouble * value);
                 if (stack.Count == 0)
                 {
                     myQueue.Push(numQ);
@@ -63,7 +63,7 @@ public class DoubleEndsQueueToStackAndQueue
                 }
                 else
                 {
-                    if (Utility.GetRandomDouble < 0.5)
+                    if (Utility.getRandomDouble < 0.5)
                     {
                         myQueue.Push(numQ);
                         queue.Enqueue(numQ);
@@ -80,7 +80,7 @@ public class DoubleEndsQueueToStackAndQueue
         Console.WriteLine("测试完成");
     }
 
-    public class Node<T>(T data)
+    private class Node<T>(T data)
     {
         public readonly T Value = data;
         public Node<T>? Last;

@@ -158,7 +158,7 @@ public class Coffee
     private static int[] RandomArray(int len, int max)
     {
         var arr = new int[len];
-        for (var i = 0; i < len; i++) arr[i] = (int)(Utility.GetRandomDouble * max) + 1;
+        for (var i = 0; i < len; i++) arr[i] = (int)(Utility.getRandomDouble * max) + 1;
 
         return arr;
     }
@@ -183,9 +183,9 @@ public class Coffee
         for (var i = 0; i < testTime; i++)
         {
             var arr = RandomArray(len, max);
-            var n = (int)(Utility.GetRandomDouble * 7) + 1;
-            var a = (int)(Utility.GetRandomDouble * 7) + 1;
-            var b = (int)(Utility.GetRandomDouble * 10) + 1;
+            var n = (int)(Utility.getRandomDouble * 7) + 1;
+            var a = (int)(Utility.getRandomDouble * 7) + 1;
+            var b = (int)(Utility.getRandomDouble * 10) + 1;
             var ans1 = Right(arr, n, a, b);
             var ans2 = MinTime1(arr, n, a, b);
             var ans3 = MinTime2(arr, n, a, b);

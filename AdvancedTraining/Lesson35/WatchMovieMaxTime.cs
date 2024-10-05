@@ -80,8 +80,8 @@ public class WatchMovieMaxTime
         var movies = new int[len][];
         for (var i = 0; i < len; i++)
         {
-            var a = (int)(Utility.GetRandomDouble * time);
-            var b = (int)(Utility.GetRandomDouble * time);
+            var a = (int)(Utility.getRandomDouble * time);
+            var b = (int)(Utility.getRandomDouble * time);
             movies[i] =
             [
                 Math.Min(a, b),
@@ -100,7 +100,7 @@ public class WatchMovieMaxTime
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var len = (int)(Utility.GetRandomDouble * n) + 1;
+            var len = (int)(Utility.getRandomDouble * n) + 1;
             var movies = RandomMovies(len, t);
             var ans1 = MaxEnjoy1(movies);
             var ans2 = MaxEnjoy2(movies);

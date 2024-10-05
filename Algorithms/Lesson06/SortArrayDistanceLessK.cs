@@ -48,9 +48,9 @@ public class SortArrayDistanceLessK
 
     private static int[] RandomArrayNoMoveMoreK(int maxSize, int maxValue, int k)
     {
-        var arr = new int[(int)((maxSize + 1) * Utility.GetRandomDouble)];
+        var arr = new int[(int)((maxSize + 1) * Utility.getRandomDouble)];
         for (var i = 0; i < arr.Length; i++)
-            arr[i] = (int)((maxValue + 1) * Utility.GetRandomDouble) - (int)(maxValue * Utility.GetRandomDouble);
+            arr[i] = (int)((maxValue + 1) * Utility.getRandomDouble) - (int)(maxValue * Utility.getRandomDouble);
 
         // 先排个序
         Array.Sort(arr);
@@ -60,7 +60,7 @@ public class SortArrayDistanceLessK
         var isSwap = new bool[arr.Length];
         for (var i = 0; i < arr.Length; i++)
         {
-            var j = Math.Min(i + (int)(Utility.GetRandomDouble * (k + 1)), arr.Length - 1);
+            var j = Math.Min(i + (int)(Utility.getRandomDouble * (k + 1)), arr.Length - 1);
             if (!isSwap[i] && !isSwap[j])
             {
                 isSwap[i] = true;
@@ -119,7 +119,7 @@ public class SortArrayDistanceLessK
 
         for (var i = 0; i < testTime; i++)
         {
-            var k = (int)(Utility.GetRandomDouble * maxSize) + 1;
+            var k = (int)(Utility.getRandomDouble * maxSize) + 1;
             var arr = RandomArrayNoMoveMoreK(maxSize, maxValue, k);
             var arr1 = CopyArray(arr);
             var arr2 = CopyArray(arr);

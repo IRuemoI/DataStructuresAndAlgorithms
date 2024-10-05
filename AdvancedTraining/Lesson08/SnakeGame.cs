@@ -172,7 +172,7 @@ public class SnakeGame
         var arr = new int[row, col];
         for (var i = 0; i < arr.GetLength(0); i++)
         for (var j = 0; j < arr.GetLength(1); j++)
-            arr[i, j] = (int)(Utility.GetRandomDouble * value) * (Utility.GetRandomDouble > 0.5 ? -1 : 1);
+            arr[i, j] = (int)(Utility.getRandomDouble * value) * (Utility.getRandomDouble > 0.5 ? -1 : 1);
         return arr;
     }
 
@@ -184,8 +184,8 @@ public class SnakeGame
         var times = 1000000;
         for (var i = 0; i < times; i++)
         {
-            var r = (int)(Utility.GetRandomDouble * (n + 1));
-            var c = (int)(Utility.GetRandomDouble * (m + 1));
+            var r = (int)(Utility.getRandomDouble * (n + 1));
+            var c = (int)(Utility.getRandomDouble * (m + 1));
             var matrix = GetRandomStringArray(r, c, v);
             var ans1 = Zuo(matrix);
             var ans2 = Walk2(matrix);

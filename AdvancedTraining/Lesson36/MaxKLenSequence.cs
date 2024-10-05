@@ -59,7 +59,7 @@ public class MaxKLenSequence
     private static string RandomString(int len, int range)
     {
         var str = new char[len];
-        for (var i = 0; i < len; i++) str[i] = (char)((int)(Utility.GetRandomDouble * range) + 'a');
+        for (var i = 0; i < len; i++) str[i] = (char)((int)(Utility.getRandomDouble * range) + 'a');
         return new string(str);
     }
 
@@ -71,9 +71,9 @@ public class MaxKLenSequence
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var len = (int)(Utility.GetRandomDouble * (n + 1));
+            var len = (int)(Utility.getRandomDouble * (n + 1));
             var str = RandomString(len, r);
-            var k = (int)(Utility.GetRandomDouble * (str.Length + 1));
+            var k = (int)(Utility.getRandomDouble * (str.Length + 1));
             var ans1 = MaxString(str, k);
             var ans2 = Test(str, k);
             if (!ans1.Equals(ans2))

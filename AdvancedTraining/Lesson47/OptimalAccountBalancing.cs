@@ -123,9 +123,9 @@ public class OptimalAccountBalancing //Problem_0465
         for (var i = 0; i < trans.Length; i++)
             trans[i] = new[]
             {
-                (int)(Utility.GetRandomDouble * n),
-                (int)(Utility.GetRandomDouble * n),
-                (int)(Utility.GetRandomDouble * m) + 1
+                (int)(Utility.getRandomDouble * n),
+                (int)(Utility.getRandomDouble * n),
+                (int)(Utility.getRandomDouble * m) + 1
             };
 
         return trans;

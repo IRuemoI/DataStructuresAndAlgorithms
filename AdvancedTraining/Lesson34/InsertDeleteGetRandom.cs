@@ -31,7 +31,7 @@ public class InsertDeleteGetRandom //Problem_0380
             get
             {
                 if (size == 0) return -1;
-                var randomIndex = (int)(Utility.GetRandomDouble * size);
+                var randomIndex = (int)(Utility.getRandomDouble * size);
                 return indexKeyMap[randomIndex];
             }
         }

@@ -208,7 +208,7 @@ public class Mod3Max
         private static int[] RandomArray(int len)
         {
             var arr = new int[len];
-            for (var i = 0; i < len; i++) arr[i] = (int)(Utility.GetRandomDouble * 10);
+            for (var i = 0; i < len; i++) arr[i] = (int)(Utility.getRandomDouble * 10);
 
             return arr;
         }
@@ -230,7 +230,7 @@ public class Mod3Max
             Console.WriteLine("测试开始");
             for (var i = 0; i < testTimes; i++)
             {
-                var len = (int)(Utility.GetRandomDouble * n);
+                var len = (int)(Utility.getRandomDouble * n);
                 var arr1 = RandomArray(len);
                 var arr2 = CopyArray(arr1);
                 var arr3 = CopyArray(arr1);

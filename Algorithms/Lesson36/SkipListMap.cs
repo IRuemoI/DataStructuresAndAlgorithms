@@ -112,7 +112,7 @@ public class SkipListMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
             // find == null   8   7   9
             Size++;
             var newNodeLevel = 0;
-            while (Utility.GetRandomDouble < Probability) newNodeLevel++;
+            while (Utility.getRandomDouble < Probability) newNodeLevel++;
 
             // newNodeLevel
             while (newNodeLevel > _maxLevel)

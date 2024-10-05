@@ -103,7 +103,7 @@ public class LongestCommonSubstringConquerByHeight
     private static string RandomNumberString(int len, int range)
     {
         var str = new char[len];
-        for (var i = 0; i < len; i++) str[i] = (char)((int)(Utility.GetRandomDouble * range) + 'a');
+        for (var i = 0; i < len; i++) str[i] = (char)((int)(Utility.getRandomDouble * range) + 'a');
 
         return new string(str);
     }
@@ -116,8 +116,8 @@ public class LongestCommonSubstringConquerByHeight
         Console.WriteLine("功能测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var n1 = (int)(Utility.GetRandomDouble * len);
-            var n2 = (int)(Utility.GetRandomDouble * len);
+            var n1 = (int)(Utility.getRandomDouble * len);
+            var n2 = (int)(Utility.getRandomDouble * len);
             var str11 = RandomNumberString(n1, range);
             var str21 = RandomNumberString(n2, range);
             var ans11 = Lcs1(str11, str21);

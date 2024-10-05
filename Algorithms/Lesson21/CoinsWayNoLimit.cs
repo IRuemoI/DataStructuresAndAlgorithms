@@ -70,14 +70,14 @@ public class CoinsWayNoLimit
     // 为了测试
     private static int[] RandomArray(int maxLen, int maxValue)
     {
-        var n = (int)(Utility.GetRandomDouble * maxLen);
+        var n = (int)(Utility.getRandomDouble * maxLen);
         var arr = new int[n];
         var has = new bool[maxValue + 1];
         for (var i = 0; i < n; i++)
         {
             do
             {
-                arr[i] = (int)(Utility.GetRandomDouble * maxValue) + 1;
+                arr[i] = (int)(Utility.getRandomDouble * maxValue) + 1;
             } while (has[arr[i]]);
 
             has[arr[i]] = true;
@@ -105,7 +105,7 @@ public class CoinsWayNoLimit
         for (var i = 0; i < testTime; i++)
         {
             var arr = RandomArray(maxLen, maxValue);
-            var aim = (int)(Utility.GetRandomDouble * maxValue);
+            var aim = (int)(Utility.getRandomDouble * maxValue);
             var ans1 = CoinsWay(arr, aim);
             var ans2 = Dp1(arr, aim);
             var ans3 = Dp2(arr, aim);

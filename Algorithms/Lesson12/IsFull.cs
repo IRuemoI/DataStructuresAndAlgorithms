@@ -61,9 +61,9 @@ public class IsFull
     //���ڲ���
     private static Node? Generate(int level, int maxLevel, int maxValue)
     {
-        if (level > maxLevel || Utility.GetRandomDouble < 0.5) return null;
+        if (level > maxLevel || Utility.getRandomDouble < 0.5) return null;
 
-        var head = new Node((int)(Utility.GetRandomDouble * maxValue))
+        var head = new Node((int)(Utility.getRandomDouble * maxValue))
         {
             Left = Generate(level + 1, maxLevel, maxValue),
             Right = Generate(level + 1, maxLevel, maxValue)
@@ -85,7 +85,7 @@ public class IsFull
         Console.WriteLine("测试完成");
     }
 
-    public class Node
+    private class Node
     {
         public Node? Left;
         public Node? Right;

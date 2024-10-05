@@ -150,11 +150,11 @@ public class Cola
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var m = (int)(Utility.GetRandomDouble * colaMax);
-            var a = (int)(Utility.GetRandomDouble * user2Max);
-            var b = (int)(Utility.GetRandomDouble * user2Max);
-            var c = (int)(Utility.GetRandomDouble * user2Max);
-            var x = ((int)(Utility.GetRandomDouble * priceMax) + 1) * 10;
+            var m = (int)(Utility.getRandomDouble * colaMax);
+            var a = (int)(Utility.getRandomDouble * user2Max);
+            var b = (int)(Utility.getRandomDouble * user2Max);
+            var c = (int)(Utility.getRandomDouble * user2Max);
+            var x = ((int)(Utility.getRandomDouble * priceMax) + 1) * 10;
             var ans1 = PutTimes(m, a, b, c, x);
             var ans2 = Right(m, a, b, c, x);
             if (ans1 == ans2) continue;

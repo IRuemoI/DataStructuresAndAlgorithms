@@ -49,7 +49,7 @@ public class BestSplitForAll
     private static int[] RandomArray(int len, int max)
     {
         var ans = new int[len];
-        for (var i = 0; i < len; i++) ans[i] = (int)(Utility.GetRandomDouble * max);
+        for (var i = 0; i < len; i++) ans[i] = (int)(Utility.getRandomDouble * max);
         return ans;
     }
 
@@ -61,7 +61,7 @@ public class BestSplitForAll
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var len = (int)(Utility.GetRandomDouble * n);
+            var len = (int)(Utility.getRandomDouble * n);
             var arr = RandomArray(len, max);
             var ans1 = BestSplit1(arr);
             var ans2 = BestSplit2(arr);

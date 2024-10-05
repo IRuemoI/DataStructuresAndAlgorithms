@@ -20,7 +20,7 @@ public class QuickSort
         if (leftEdge >= rightEdge) return;
 
 
-        Utility.Swap(arr, leftEdge + (int)(Utility.GetRandomDouble * (rightEdge - leftEdge + 1)), rightEdge);
+        Utility.Swap(arr, leftEdge + (int)(Utility.getRandomDouble * (rightEdge - leftEdge + 1)), rightEdge);
         var equalArea = NetherlandsFlag(arr, leftEdge, rightEdge);
         Process(arr, leftEdge, equalArea[0] - 1);
         Process(arr, equalArea[1] + 1, rightEdge);

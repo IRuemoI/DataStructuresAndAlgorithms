@@ -323,7 +323,7 @@ public class PoemProblem
     private static int[] RandomArray(int len, int value)
     {
         var arr = new int[len];
-        for (var i = 0; i < len; i++) arr[i] = (int)(Utility.GetRandomDouble * value);
+        for (var i = 0; i < len; i++) arr[i] = (int)(Utility.getRandomDouble * value);
         return arr;
     }
 

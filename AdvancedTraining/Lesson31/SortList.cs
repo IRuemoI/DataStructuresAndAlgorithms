@@ -154,7 +154,7 @@ public class SortList //Problem_0148
     private static HeadAndTail Process(ListNode head, int n)
     {
         if (n == 0) return new HeadAndTail(head, head);
-        var index = (int)(Utility.GetRandomDouble * n);
+        var index = (int)(Utility.getRandomDouble * n);
         var cur = head;
         while (index-- != 0) cur = cur.Next;
         var r = Partition(head, cur);

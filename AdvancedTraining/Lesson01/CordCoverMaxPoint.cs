@@ -73,8 +73,8 @@ public class CordCoverMaxPoint
     //用于测试
     private static int[] GenerateArray(int len, int max)
     {
-        var ans = new int[(int)(Utility.GetRandomDouble * len) + 1];
-        for (var i = 0; i < ans.Length; i++) ans[i] = (int)(Utility.GetRandomDouble * max);
+        var ans = new int[(int)(Utility.getRandomDouble * len) + 1];
+        for (var i = 0; i < ans.Length; i++) ans[i] = (int)(Utility.getRandomDouble * max);
         Array.Sort(ans);
         return ans;
     }
@@ -87,7 +87,7 @@ public class CordCoverMaxPoint
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var l = (int)(Utility.GetRandomDouble * max);
+            var l = (int)(Utility.getRandomDouble * max);
             var arr = GenerateArray(len, max);
             var ans1 = MaxPoint1(arr, l);
             var ans2 = MaxPoint2(arr, l);

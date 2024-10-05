@@ -2,23 +2,14 @@
 
 namespace Algorithms.Lesson14;
 
-public class Node<T>
-{
-    private readonly T _value;
-
-    public Node(T v)
-    {
-        _value = v;
-    }
-
-    public T GetValue()
-    {
-        return _value;
-    }
-}
 
 public class UnionFind<T> where T : notnull
 {
+    private class Node<T>(T v)
+    {
+        public T Value { set; get; } = v;
+    }
+
     //每个元素与包装对象的对应关系
     private readonly Dictionary<T, Node<T>> _nodes;
 
@@ -88,7 +79,7 @@ public static class UnionFindTest
 {
     public static void Run()
     {
-        var uf = new UnionFind<int>(new List<int> { 1, 2, 3, 4, 5, 6, 7 });
+        var uf = new UnionFind<int>([1, 2, 3, 4, 5, 6, 7]);
         uf.Union(1, 2);
         uf.Union(2, 3);
         uf.Union(4, 5);

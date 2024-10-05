@@ -96,15 +96,15 @@ public class ReverseList
     //生成随机单链表
     private static Node? GenerateRandomLinkedList(int len, int value)
     {
-        var size = (int)(Utility.GetRandomDouble * (len + 1));
+        var size = (int)(Utility.getRandomDouble * (len + 1));
         if (size == 0) return null;
 
         size--;
-        var head = new Node((int)(Utility.GetRandomDouble * (value + 1)));
+        var head = new Node((int)(Utility.getRandomDouble * (value + 1)));
         var pre = head;
         while (size != 0)
         {
-            var cur = new Node((int)(Utility.GetRandomDouble * (value + 1)));
+            var cur = new Node((int)(Utility.getRandomDouble * (value + 1)));
             pre.Next = cur;
             pre = cur;
             size--;
@@ -116,15 +116,15 @@ public class ReverseList
     //生成随机双链表
     private static DoubleNode? GenerateRandomDoubleList(int len, int value)
     {
-        var size = (int)(Utility.GetRandomDouble * (len + 1));
+        var size = (int)(Utility.getRandomDouble * (len + 1));
         if (size == 0) return null;
 
         size--;
-        var head = new DoubleNode((int)(Utility.GetRandomDouble * (value + 1)));
+        var head = new DoubleNode((int)(Utility.getRandomDouble * (value + 1)));
         var pre = head;
         while (size != 0)
         {
-            var cur = new DoubleNode((int)(Utility.GetRandomDouble * (value + 1)));
+            var cur = new DoubleNode((int)(Utility.getRandomDouble * (value + 1)));
             pre.Next = cur;
             cur.Last = pre;
             pre = cur;
@@ -230,7 +230,7 @@ public class ReverseList
         Console.WriteLine("测试完成");
     }
 
-    public class Node(int data)
+    private class Node(int data)
     {
         public readonly int Value = data;
         public Node? Next;

@@ -166,8 +166,8 @@ public class VisibleMountains
     //用于测试
     private static int[] GetRandomArray(int size, int max)
     {
-        var arr = new int[(int)(Utility.GetRandomDouble * size)];
-        for (var i = 0; i < arr.Length; i++) arr[i] = (int)(Utility.GetRandomDouble * max);
+        var arr = new int[(int)(Utility.getRandomDouble * size)];
+        for (var i = 0; i < arr.Length; i++) arr[i] = (int)(Utility.getRandomDouble * max);
         return arr;
     }
 

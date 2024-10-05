@@ -27,7 +27,7 @@ public class PopulatingNextRightPointersInEachNode //Problem_0116
     }
 
     // 不要提交这个类
-    public class Node
+    private class Node
     {
         public Node? Left;
         public Node? Next;

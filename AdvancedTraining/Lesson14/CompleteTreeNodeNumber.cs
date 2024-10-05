@@ -46,7 +46,7 @@ public class CompleteTreeNodeNumber
         Console.WriteLine(NodeNum(head));
     }
 
-    public class Node(int data)
+    private class Node(int data)
     {
         public readonly int Value = data;
         public Node? Left;

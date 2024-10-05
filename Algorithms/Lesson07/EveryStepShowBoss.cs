@@ -165,13 +165,13 @@ public class EveryStepShowBoss
     // 为了测试
     private static Data RandomData(int maxValue, int maxLen)
     {
-        var len = (int)(Utility.GetRandomDouble * maxLen) + 1;
+        var len = (int)(Utility.getRandomDouble * maxLen) + 1;
         var arr = new int[len];
         var op = new bool[len];
         for (var i = 0; i < len; i++)
         {
-            arr[i] = (int)(Utility.GetRandomDouble * maxValue);
-            op[i] = Utility.GetRandomDouble < 0.5;
+            arr[i] = (int)(Utility.getRandomDouble * maxValue);
+            op[i] = Utility.getRandomDouble < 0.5;
         }
 
         return new Data(arr, op);
@@ -214,7 +214,7 @@ public class EveryStepShowBoss
         for (var i = 0; i < testTimes; i++)
         {
             var testData = RandomData(maxValue, maxLen);
-            var k = (int)(Utility.GetRandomDouble * maxK) + 1;
+            var k = (int)(Utility.getRandomDouble * maxK) + 1;
             var arr = testData.Arr;
             var op = testData.Op;
             var ans1 = TopK(arr, op, k);

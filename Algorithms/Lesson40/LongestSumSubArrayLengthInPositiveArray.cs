@@ -64,7 +64,7 @@ public class LongestSumSubArrayLengthInPositiveArray
     private static int[] GeneratePositiveArray(int size, int value)
     {
         var ans = new int[size];
-        for (var i = 0; i != size; i++) ans[i] = (int)(Utility.GetRandomDouble * value) + 1;
+        for (var i = 0; i != size; i++) ans[i] = (int)(Utility.getRandomDouble * value) + 1;
 
         return ans;
     }
@@ -86,7 +86,7 @@ public class LongestSumSubArrayLengthInPositiveArray
         for (var i = 0; i < testTime; i++)
         {
             var arr = GeneratePositiveArray(len, value);
-            var k = (int)(Utility.GetRandomDouble * value) + 1;
+            var k = (int)(Utility.getRandomDouble * value) + 1;
             var ans1 = GetMaxLength(arr, k);
             var ans2 = Right(arr, k);
             if (ans1 != ans2)

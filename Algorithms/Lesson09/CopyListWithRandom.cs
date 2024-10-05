@@ -142,7 +142,7 @@ public class CopyListWithRandom
         return true;
     }
     
-    public class Node(int data)
+    private class Node(int data)
     {
         public readonly int Value = data;
         public Node? Next;

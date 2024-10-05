@@ -2,7 +2,7 @@
 
 namespace Algorithms.Lesson10;
 
-public class FindFirstIntersectNode
+public static class FindFirstIntersectNode
 {
     private static Node? GetIntersectNode1(Node? head1, Node? head2)
     {

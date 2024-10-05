@@ -90,7 +90,7 @@ public class ValidSequence
     private static int[] randomArray(int n, int v)
     {
         var arr = new int[n];
-        for (var i = 0; i < n; i++) arr[i] = (int)(Utility.GetRandomDouble * v);
+        for (var i = 0; i < n; i++) arr[i] = (int)(Utility.getRandomDouble * v);
         return arr;
     }
 
@@ -110,7 +110,7 @@ public class ValidSequence
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var m = (int)(Utility.GetRandomDouble * n);
+            var m = (int)(Utility.getRandomDouble * n);
             var arr = randomArray(m, v);
             var ans1 = Numbers(arr);
             var ans2 = Test(arr);

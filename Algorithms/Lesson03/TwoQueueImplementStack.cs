@@ -25,23 +25,23 @@ public class TwoQueueImplementStack
             {
                 if (test.Count != 0) Console.WriteLine("Oops");
 
-                var num = (int)(Utility.GetRandomDouble * max);
+                var num = (int)(Utility.getRandomDouble * max);
                 myStack.Enqueue(num);
                 test.Push(num);
             }
             else
             {
-                if (Utility.GetRandomDouble < 0.25)
+                if (Utility.getRandomDouble < 0.25)
                 {
-                    var num = (int)(Utility.GetRandomDouble * max);
+                    var num = (int)(Utility.getRandomDouble * max);
                     myStack.Enqueue(num);
                     test.Push(num);
                 }
-                else if (Utility.GetRandomDouble < 0.5)
+                else if (Utility.getRandomDouble < 0.5)
                 {
                     if (!myStack.Peek().Equals(test.Peek())) Console.WriteLine("Oops");
                 }
-                else if (Utility.GetRandomDouble < 0.75)
+                else if (Utility.getRandomDouble < 0.75)
                 {
                     if (!myStack.Dequeue().Equals(test.Pop())) Console.WriteLine("Oops");
                 }
@@ -51,7 +51,7 @@ public class TwoQueueImplementStack
                 }
             }
 
-        Console.WriteLine("test finish!");
+        Console.WriteLine("测试完成");
     }
 
     private class TwoQueueStack<T>

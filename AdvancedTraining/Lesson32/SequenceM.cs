@@ -111,7 +111,7 @@ public class SequenceM
     private static int[] randomArray(int len, int value)
     {
         var arr = new int[len];
-        for (var i = 0; i < len; i++) arr[i] = (int)(Utility.GetRandomDouble * (value + 1));
+        for (var i = 0; i < len; i++) arr[i] = (int)(Utility.getRandomDouble * (value + 1));
         return arr;
     }
 
@@ -124,9 +124,9 @@ public class SequenceM
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTimes; i++)
         {
-            var len = (int)(Utility.GetRandomDouble * (n + 1));
+            var len = (int)(Utility.getRandomDouble * (n + 1));
             var arr = randomArray(len, value);
-            var m = (int)(Utility.GetRandomDouble * (value + 1));
+            var m = (int)(Utility.getRandomDouble * (value + 1));
             var ans1 = Ways1(arr, m);
             var ans2 = Ways2(arr, m);
             var ans3 = Ways3(arr, m);

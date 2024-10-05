@@ -96,9 +96,9 @@ public class KillMonster
 
         for (var i = 0; i < testTime; i++)
         {
-            var n = (int)(Utility.GetRandomDouble * nMax);
-            var m = (int)(Utility.GetRandomDouble * mMax);
-            var k = (int)(Utility.GetRandomDouble * kMax);
+            var n = (int)(Utility.getRandomDouble * nMax);
+            var m = (int)(Utility.getRandomDouble * mMax);
+            var k = (int)(Utility.getRandomDouble * kMax);
             var ans1 = Right(n, m, k);
             var ans2 = Dp1(n, m, k);
             var ans3 = Dp2(n, m, k);

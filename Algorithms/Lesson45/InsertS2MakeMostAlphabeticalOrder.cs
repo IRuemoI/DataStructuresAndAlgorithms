@@ -107,7 +107,7 @@ public class InsertS2MakeMostAlphabeticalOrder
     private static string RandomNumberString(int len, int range)
     {
         var str = new char[len];
-        for (var i = 0; i < len; i++) str[i] = (char)((int)(Utility.GetRandomDouble * range) + '0');
+        for (var i = 0; i < len; i++) str[i] = (char)((int)(Utility.getRandomDouble * range) + '0');
 
         return new string(str);
     }
@@ -121,8 +121,8 @@ public class InsertS2MakeMostAlphabeticalOrder
         Console.WriteLine("功能测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var s1Len = (int)(Utility.GetRandomDouble * len);
-            var s2Len = (int)(Utility.GetRandomDouble * len);
+            var s1Len = (int)(Utility.getRandomDouble * len);
+            var s2Len = (int)(Utility.getRandomDouble * len);
             var s1 = RandomNumberString(s1Len, range);
             var s2 = RandomNumberString(s2Len, range);
             var ans1 = Right(s1, s2);

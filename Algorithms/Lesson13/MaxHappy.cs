@@ -70,9 +70,9 @@ public class MaxHappy
     //用于测试
     private static Employee? GenerateBoss(int maxLevel, int maxNext, int maxHappy)
     {
-        if (Utility.GetRandomDouble < 0.02) return null;
+        if (Utility.getRandomDouble < 0.02) return null;
 
-        var boss = new Employee((int)(Utility.GetRandomDouble * (maxHappy + 1)));
+        var boss = new Employee((int)(Utility.getRandomDouble * (maxHappy + 1)));
         GenerateNext(boss, 1, maxLevel, maxNext, maxHappy);
         return boss;
     }
@@ -82,10 +82,10 @@ public class MaxHappy
     {
         if (level > maxLevel) return;
 
-        var nextSize = (int)(Utility.GetRandomDouble * (maxNext + 1));
+        var nextSize = (int)(Utility.getRandomDouble * (maxNext + 1));
         for (var i = 0; i < nextSize; i++)
         {
-            var next = new Employee((int)(Utility.GetRandomDouble * (maxHappy + 1)));
+            var next = new Employee((int)(Utility.getRandomDouble * (maxHappy + 1)));
             e.NextList.Add(next);
             GenerateNext(next, level + 1, maxLevel, maxNext, maxHappy);
         }

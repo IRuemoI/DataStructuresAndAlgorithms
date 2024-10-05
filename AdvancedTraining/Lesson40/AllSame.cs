@@ -90,9 +90,9 @@ public class AllSame
     // 为了测试
     private static int[] RandomArray(int maxSize, int maxNum)
     {
-        var size = 2 + (int)(Utility.GetRandomDouble * maxSize);
+        var size = 2 + (int)(Utility.getRandomDouble * maxSize);
         var arr = new int[size];
-        for (var i = 0; i < size; i++) arr[i] = 1 + (int)(Utility.GetRandomDouble * maxSize);
+        for (var i = 0; i < size; i++) arr[i] = 1 + (int)(Utility.getRandomDouble * maxSize);
         return arr;
     }
 

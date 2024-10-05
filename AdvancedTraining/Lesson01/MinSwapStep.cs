@@ -51,8 +51,8 @@ public class MinSwapStep
     // 为了测试
     private static string RandomString(int maxLen)
     {
-        var str = new char[(int)(Utility.GetRandomDouble * maxLen)];
-        for (var i = 0; i < str.Length; i++) str[i] = Utility.GetRandomDouble < 0.5 ? 'G' : 'B';
+        var str = new char[(int)(Utility.getRandomDouble * maxLen)];
+        for (var i = 0; i < str.Length; i++) str[i] = Utility.getRandomDouble < 0.5 ? 'G' : 'B';
         return new string(str);
     }
 

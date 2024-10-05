@@ -144,10 +144,10 @@ public class LcaTarjanAndTreeChainPartition
     {
         var order = new int[n];
         for (var i = 0; i < n; i++) order[i] = i;
-        for (var i = n - 1; i >= 0; i--) Swap(order, i, (int)(Utility.GetRandomDouble * (i + 1)));
+        for (var i = n - 1; i >= 0; i--) Swap(order, i, (int)(Utility.getRandomDouble * (i + 1)));
         var ans = new int[n];
         ans[order[0]] = order[0];
-        for (var i = 1; i < n; i++) ans[order[i]] = order[(int)(Utility.GetRandomDouble * i)];
+        for (var i = 1; i < n; i++) ans[order[i]] = order[(int)(Utility.getRandomDouble * i)];
         return ans;
     }
 
@@ -159,8 +159,8 @@ public class LcaTarjanAndTreeChainPartition
         var ans = new int[m, 2];
         for (var i = 0; i < m; i++)
         {
-            ans[i, 0] = (int)(Utility.GetRandomDouble * n);
-            ans[i, 1] = (int)(Utility.GetRandomDouble * n);
+            ans[i, 0] = (int)(Utility.getRandomDouble * n);
+            ans[i, 1] = (int)(Utility.getRandomDouble * n);
         }
 
         return ans;
@@ -191,8 +191,8 @@ public class LcaTarjanAndTreeChainPartition
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var size = (int)(Utility.GetRandomDouble * n) + 1;
-            var ques = (int)(Utility.GetRandomDouble * m) + 1;
+            var size = (int)(Utility.getRandomDouble * n) + 1;
+            var ques = (int)(Utility.getRandomDouble * m) + 1;
             var father = GenerateFatherArray(size);
             var queries = GenerateQueries(ques, size);
             var ans1 = query1(father, queries);

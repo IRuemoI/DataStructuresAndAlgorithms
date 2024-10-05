@@ -10,8 +10,8 @@ public class QueryHobby
 {
     private static int[] GetRandomStringArray(int len, int value)
     {
-        var ans = new int[(int)(Utility.GetRandomDouble * len) + 1];
-        for (var i = 0; i < ans.Length; i++) ans[i] = (int)(Utility.GetRandomDouble * value) + 1;
+        var ans = new int[(int)(Utility.getRandomDouble * len) + 1];
+        for (var i = 0; i < ans.Length; i++) ans[i] = (int)(Utility.getRandomDouble * value) + 1;
         return ans;
     }
 
@@ -30,11 +30,11 @@ public class QueryHobby
             var box2 = new QueryBox2(arr);
             for (var j = 0; j < queryTimes; j++)
             {
-                var a = (int)(Utility.GetRandomDouble * n);
-                var b = (int)(Utility.GetRandomDouble * n);
+                var a = (int)(Utility.getRandomDouble * n);
+                var b = (int)(Utility.getRandomDouble * n);
                 var l = Math.Min(a, b);
                 var r = Math.Max(a, b);
-                var v = (int)(Utility.GetRandomDouble * value) + 1;
+                var v = (int)(Utility.getRandomDouble * value) + 1;
                 if (box1.Query(l, r, v) != box2.Query(l, r, v)) Console.WriteLine("出错啦！");
             }
         }

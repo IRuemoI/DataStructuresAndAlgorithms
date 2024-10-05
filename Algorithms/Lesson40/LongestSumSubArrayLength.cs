@@ -57,9 +57,9 @@ public class LongestSumSubArrayLength
     //用于测试
     private static int[] GenerateRandomArray(int size, int value)
     {
-        var ans = new int[(int)(Utility.GetRandomDouble * size) + 1];
+        var ans = new int[(int)(Utility.getRandomDouble * size) + 1];
         for (var i = 0; i < ans.Length; i++)
-            ans[i] = (int)(Utility.GetRandomDouble * value) - (int)(Utility.GetRandomDouble * value);
+            ans[i] = (int)(Utility.getRandomDouble * value) - (int)(Utility.getRandomDouble * value);
 
         return ans;
     }
@@ -82,7 +82,7 @@ public class LongestSumSubArrayLength
         for (var i = 0; i < testTime; i++)
         {
             var arr = GenerateRandomArray(len, value);
-            var k = (int)(Utility.GetRandomDouble * value) - (int)(Utility.GetRandomDouble * value);
+            var k = (int)(Utility.getRandomDouble * value) - (int)(Utility.getRandomDouble * value);
             var ans1 = MaxLength(arr, k);
             var ans2 = Right(arr, k);
             if (ans1 != ans2)

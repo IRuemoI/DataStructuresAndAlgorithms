@@ -82,7 +82,7 @@ public class MaxAndValue
     private static int[] GetRandomArray(int size, int range)
     {
         var arr = new int[size];
-        for (var i = 0; i < size; i++) arr[i] = (int)(Utility.GetRandomDouble * range) + 1;
+        for (var i = 0; i < size; i++) arr[i] = (int)(Utility.getRandomDouble * range) + 1;
         return arr;
     }
 
@@ -94,7 +94,7 @@ public class MaxAndValue
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var size = (int)(Utility.GetRandomDouble * maxSize) + 2;
+            var size = (int)(Utility.getRandomDouble * maxSize) + 2;
             var arr = GetRandomArray(size, range);
             var ans1 = MaxAndValue1(arr);
             var ans2 = MaxAndValue2(arr);

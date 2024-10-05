@@ -76,8 +76,8 @@ public class MaxMeetingScore
         for (var i = 0; i < n; i++)
             ans[i] = new int[2]
             {
-                (int)(Utility.GetRandomDouble * t) + 1,
-                (int)(Utility.GetRandomDouble * s) + 1
+                (int)(Utility.getRandomDouble * t) + 1,
+                (int)(Utility.getRandomDouble * s) + 1
             };
 
         return ans;
@@ -106,7 +106,7 @@ public class MaxMeetingScore
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var size = (int)(Utility.GetRandomDouble * n) + 1;
+            var size = (int)(Utility.getRandomDouble * n) + 1;
             var meetings1 = RandomMeetings(size, t, s);
             var meetings2 = CopyMeetings(meetings1);
             var ans1 = MaxScore1(meetings1);

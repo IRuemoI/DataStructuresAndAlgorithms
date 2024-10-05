@@ -57,7 +57,7 @@ public class MinPathSum
         var result = new int[rowSize, colSize];
         for (var i = 0; i != result.GetLength(0); i++)
         for (var j = 0; j != result.GetLength(1); j++)
-            result[i, j] = (int)(Utility.GetRandomDouble * 100);
+            result[i, j] = (int)(Utility.getRandomDouble * 100);
 
         return result;
     }

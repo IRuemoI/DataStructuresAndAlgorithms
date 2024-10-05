@@ -143,9 +143,9 @@ public class ShuffleProblem
     //用于测试
     private static int[] GenerateArray()
     {
-        var len = (int)(Utility.GetRandomDouble * 10) * 2;
+        var len = (int)(Utility.getRandomDouble * 10) * 2;
         var arr = new int[len];
-        for (var i = 0; i < len; i++) arr[i] = (int)(Utility.GetRandomDouble * 100);
+        for (var i = 0; i < len; i++) arr[i] = (int)(Utility.getRandomDouble * 100);
         return arr;
     }
 

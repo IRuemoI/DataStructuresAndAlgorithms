@@ -77,7 +77,7 @@ public class DesignInMemoryFileSystem //Problem_0588
         }
 
 
-        public class Node
+        private class Node
         {
             // content == null 意味着这个节点是目录
             // content != null 意味着这个节点是文件

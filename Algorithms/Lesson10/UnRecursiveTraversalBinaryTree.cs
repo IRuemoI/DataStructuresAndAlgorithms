@@ -3,7 +3,7 @@
 namespace Algorithms.Lesson10;
 
 //非递归遍历二叉树
-public class UnRecursiveTraversalBinaryTree
+public static class UnRecursiveTraversalBinaryTree
 {
     private static void PreOrderTraversal(Node? head)
     {
@@ -50,14 +50,13 @@ public class UnRecursiveTraversalBinaryTree
         Console.WriteLine();
     }
 
-    private static void PostOrderTraversal1(Node? head)
+    private static void PostOrderTraversal(Node? head)
     {
         if (head != null)
         {
             var s1 = new Stack<Node>();
             var s2 = new Stack<Node>();
-            //按照上面的先序遍历更改为头左右遍历
-            //最后用栈翻转结果即可
+            //按照上面的先序遍历更改为头右左遍历
             s1.Push(head);
             while (s1.Count != 0)
             {
@@ -67,14 +66,15 @@ public class UnRecursiveTraversalBinaryTree
                 if (head.Right != null) s1.Push(head.Right);
             }
 
-            // 左 右 头
+            //用栈翻转结果为左右头
             while (s2.Count != 0) Console.Write(s2.Pop().Value + " ");
         }
 
         Console.WriteLine();
     }
 
-    private static void PostOrderTraversal(Node? head)
+    //这种方法并不常见
+    private static void PostOrderTraversal1(Node? head)
     {
         if (head != null)
         {
@@ -119,7 +119,10 @@ public class UnRecursiveTraversalBinaryTree
             },
             Right = new Node(5)
             {
-                Left = new Node(6),
+                Left = new Node(6){
+                    Left = new Node(8),
+                    Right = new Node(9)
+                },
                 Right = new Node(7)
             }
         };
@@ -131,14 +134,14 @@ public class UnRecursiveTraversalBinaryTree
         InOrderTraversal(head);
         Console.WriteLine("========");
         Console.Write("post-order:\t");
-        PostOrderTraversal1(head);
+        PostOrderTraversal(head);
         Console.WriteLine("========");
         Console.Write("post-order:\t");
-        PostOrderTraversal(head);
+        PostOrderTraversal1(head);
         Console.WriteLine("========");
     }
 
-    public class Node(int v)
+    private class Node(int v)
     {
         public readonly int Value = v;
         public Node? Left;

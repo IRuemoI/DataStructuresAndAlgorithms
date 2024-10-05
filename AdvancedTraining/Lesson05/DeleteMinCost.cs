@@ -215,9 +215,9 @@ public class DeleteMinCost
 
     private static string GenerateRandomString(int l, int v)
     {
-        var len = (int)(Utility.GetRandomDouble * l);
+        var len = (int)(Utility.getRandomDouble * l);
         var str = new char[len];
-        for (var i = 0; i < len; i++) str[i] = (char)('a' + (int)(Utility.GetRandomDouble * v));
+        for (var i = 0; i < len; i++) str[i] = (char)('a' + (int)(Utility.getRandomDouble * v));
 
         return new string(str);
     }

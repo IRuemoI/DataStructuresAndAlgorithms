@@ -114,7 +114,7 @@ public class PartitionAndQuickSort
         if (leftEdge >= rightEdge) return;
 
 
-        Swap(arr, leftEdge + (int)(Utility.GetRandomDouble * (rightEdge - leftEdge + 1)), rightEdge);
+        Swap(arr, leftEdge + (int)(Utility.getRandomDouble * (rightEdge - leftEdge + 1)), rightEdge);
         var equalArea = NetherlandsFlag(arr, leftEdge, rightEdge);
         Process3(arr, leftEdge, equalArea[0] - 1);
         Process3(arr, equalArea[1] + 1, rightEdge);
@@ -124,9 +124,9 @@ public class PartitionAndQuickSort
 
     private static int[] GenerateRandomArray(int maxSize, int maxValue)
     {
-        var arr = new int[(int)((maxSize + 1) * Utility.GetRandomDouble)];
+        var arr = new int[(int)((maxSize + 1) * Utility.getRandomDouble)];
         for (var i = 0; i < arr.Length; i++)
-            arr[i] = (int)((maxValue + 1) * Utility.GetRandomDouble) - (int)(maxValue * Utility.GetRandomDouble);
+            arr[i] = (int)((maxValue + 1) * Utility.getRandomDouble) - (int)(maxValue * Utility.getRandomDouble);
 
         return arr;
     }

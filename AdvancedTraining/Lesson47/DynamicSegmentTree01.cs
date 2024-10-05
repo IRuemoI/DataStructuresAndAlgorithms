@@ -21,36 +21,36 @@ public class DynamicSegmentTree
         Console.WriteLine("测试开始");
         for (var i = 0; i < createTimes; i++)
         {
-            var size = (int)(Utility.GetRandomDouble * n) + 1;
+            var size = (int)(Utility.getRandomDouble * n) + 1;
             var dst = new DynamicSegmentTreeA(size);
             var right = new Right(size);
             for (var k = 0; k < operateTimes; k++)
             {
-                var choose = Utility.GetRandomDouble;
+                var choose = Utility.getRandomDouble;
                 if (choose < 0.333)
                 {
-                    var a = (int)(Utility.GetRandomDouble * size) + 1;
-                    var b = (int)(Utility.GetRandomDouble * size) + 1;
+                    var a = (int)(Utility.getRandomDouble * size) + 1;
+                    var b = (int)(Utility.getRandomDouble * size) + 1;
                     var s = Math.Min(a, b);
                     var e = Math.Max(a, b);
-                    var v = (int)(Utility.GetRandomDouble * value);
+                    var v = (int)(Utility.getRandomDouble * value);
                     dst.Update(s, e, v);
                     right.Update(s, e, v);
                 }
                 else if (choose < 0.666)
                 {
-                    var a = (int)(Utility.GetRandomDouble * size) + 1;
-                    var b = (int)(Utility.GetRandomDouble * size) + 1;
+                    var a = (int)(Utility.getRandomDouble * size) + 1;
+                    var b = (int)(Utility.getRandomDouble * size) + 1;
                     var s = Math.Min(a, b);
                     var e = Math.Max(a, b);
-                    var v = (int)(Utility.GetRandomDouble * value);
+                    var v = (int)(Utility.getRandomDouble * value);
                     dst.Add(s, e, v);
                     right.Add(s, e, v);
                 }
                 else
                 {
-                    var a = (int)(Utility.GetRandomDouble * size) + 1;
-                    var b = (int)(Utility.GetRandomDouble * size) + 1;
+                    var a = (int)(Utility.getRandomDouble * size) + 1;
+                    var b = (int)(Utility.getRandomDouble * size) + 1;
                     var s = Math.Min(a, b);
                     var e = Math.Max(a, b);
                     var ans1 = dst.Query(s, e);
@@ -68,7 +68,7 @@ public class DynamicSegmentTree
         Console.WriteLine("测试结束");
     }
 
-    public class Node
+    private class Node
     {
         public int Change;
         public int Lazy;

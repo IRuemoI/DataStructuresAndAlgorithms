@@ -156,10 +156,10 @@ public class TreeEqual
             if (ans1 != ans2) Console.WriteLine("��������");
         }
 
-        Console.WriteLine("test finish!");
+        Console.WriteLine("测试完成");
     }
 
-    public class Node
+    private class Node
     {
         public readonly int Value;
         public Node? Left;

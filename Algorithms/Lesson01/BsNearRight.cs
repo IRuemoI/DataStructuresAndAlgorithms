@@ -46,9 +46,9 @@ public class BsNearRight
     //用于测试
     private static int[] GenerateRandomArray(int maxSize, int maxValue)
     {
-        var arr = new int[(int)((maxSize + 1) * Utility.GetRandomDouble)];
+        var arr = new int[(int)((maxSize + 1) * Utility.getRandomDouble)];
         for (var i = 0; i < arr.Length; i++)
-            arr[i] = (int)((maxValue + 1) * Utility.GetRandomDouble) - (int)(maxValue * Utility.GetRandomDouble);
+            arr[i] = (int)((maxValue + 1) * Utility.getRandomDouble) - (int)(maxValue * Utility.getRandomDouble);
         return arr;
     }
 
@@ -63,7 +63,7 @@ public class BsNearRight
         {
             var arr = GenerateRandomArray(maxSize, maxValue);
             Array.Sort(arr);
-            var value = (int)((maxValue + 1) * Utility.GetRandomDouble) - (int)(maxValue * Utility.GetRandomDouble);
+            var value = (int)((maxValue + 1) * Utility.getRandomDouble) - (int)(maxValue * Utility.getRandomDouble);
             if (Test(arr, value) != NearestIndex(arr, value))
             {
                 Console.WriteLine(string.Join(",", arr));

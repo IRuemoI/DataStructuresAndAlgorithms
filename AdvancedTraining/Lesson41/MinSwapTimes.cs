@@ -69,7 +69,7 @@ public class MinSwapTimes
     {
         var arr = new int[len];
         for (var i = 0; i < len; i++) arr[i] = i;
-        for (var i = 0; i < len; i++) Swap(arr, i, (int)(Utility.GetRandomDouble * len));
+        for (var i = 0; i < len; i++) Swap(arr, i, (int)(Utility.getRandomDouble * len));
         return arr;
     }
 
@@ -80,7 +80,7 @@ public class MinSwapTimes
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var len = (int)(Utility.GetRandomDouble * n) + 1;
+            var len = (int)(Utility.getRandomDouble * n) + 1;
             var arr = randomArray(len);
             var ans1 = MinSwap1(arr);
             var ans2 = MinSwap2(arr);

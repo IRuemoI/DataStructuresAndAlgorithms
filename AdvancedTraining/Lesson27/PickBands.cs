@@ -189,16 +189,16 @@ public class PickBands
         for (var i = 0; i < programs.Length; i++) programs[i] = new int[3];
         for (var i = 0; i < n; i++)
         {
-            var a = (int)(Utility.GetRandomDouble * nums);
+            var a = (int)(Utility.getRandomDouble * nums);
             int b;
             do
             {
-                b = (int)(Utility.GetRandomDouble * nums);
+                b = (int)(Utility.getRandomDouble * nums);
             } while (b == a);
 
             programs[i][0] = a;
             programs[i][1] = b;
-            programs[i][2] = (int)(Utility.GetRandomDouble * argV) + 1;
+            programs[i][2] = (int)(Utility.getRandomDouble * argV) + 1;
         }
 
         return programs;
@@ -214,7 +214,7 @@ public class PickBands
         Console.WriteLine("测试开始");
         for (var i = 0; i < t; i++)
         {
-            var nums = (int)(Utility.GetRandomDouble * n) + 1;
+            var nums = (int)(Utility.getRandomDouble * n) + 1;
             var programs = RandomPrograms(nums, v);
             var ans1 = Right(programs, nums);
             var ans2 = MinCost(programs, nums);

@@ -153,7 +153,7 @@ public class HuffmanTree
     private static string RandomNumberString(int len, int range)
     {
         var str = new char[len];
-        for (var i = 0; i < len; i++) str[i] = (char)((int)(Utility.GetRandomDouble * range) + 'a');
+        for (var i = 0; i < len; i++) str[i] = (char)((int)(Utility.getRandomDouble * range) + 'a');
 
         return new string(str);
     }
@@ -199,7 +199,7 @@ public class HuffmanTree
         var testTime = 100000;
         for (var i = 0; i < testTime; i++)
         {
-            var n = (int)(Utility.GetRandomDouble * len) + 1;
+            var n = (int)(Utility.getRandomDouble * len) + 1;
             var test = RandomNumberString(n, range);
             var counts = CountMap(test);
             var form = HuffmanForm(counts);
@@ -217,7 +217,7 @@ public class HuffmanTree
         Console.WriteLine("大样本随机测试结束");
     }
 
-    public class Node
+    private class Node
     {
         public readonly int Count;
         public Node? Left;

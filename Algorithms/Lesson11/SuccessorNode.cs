@@ -96,7 +96,7 @@ public class SuccessorNode
         Console.WriteLine(test.Value + " next: " + GetSuccessorNode(test));
     }
 
-    public class Node
+    private class Node
     {
         public readonly int Value;
         public Node? Left;

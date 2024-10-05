@@ -81,7 +81,7 @@ public class MaxSumLengthNoMore
     {
         var arr = new int[len];
         for (var i = 0; i < len; i++)
-            arr[i] = (int)(Utility.GetRandomDouble * max) - (int)(Utility.GetRandomDouble * max);
+            arr[i] = (int)(Utility.getRandomDouble * max) - (int)(Utility.getRandomDouble * max);
 
         return arr;
     }
@@ -95,8 +95,8 @@ public class MaxSumLengthNoMore
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var n = (int)(Utility.GetRandomDouble * maxN);
-            var m = (int)(Utility.GetRandomDouble * maxN);
+            var n = (int)(Utility.getRandomDouble * maxN);
+            var m = (int)(Utility.getRandomDouble * maxN);
             var arr = RandomArray(n, maxValue);
             var ans1 = Test(arr, m);
             var ans2 = MaxSum(arr, m);

@@ -24,7 +24,7 @@ public class ReceiveAndPrintOrderLine
         box.Receive(11, "K"); // 11 12 13 -> Print, trigger is 11
     }
 
-    public class Node(string str)
+    private class Node(string str)
     {
         public readonly string Info = str;
         public Node? Next;

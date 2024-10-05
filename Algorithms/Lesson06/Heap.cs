@@ -20,11 +20,11 @@ public class Heap
 
         for (var i = 0; i < testTimes; i++)
         {
-            var curLimit = (int)(Utility.GetRandomDouble * limit) + 1;
+            var curLimit = (int)(Utility.getRandomDouble * limit) + 1;
             var my = new MyMaxHeap(curLimit);
             //var my = new Heap<int>((x, y) => y.CompareTo(x), curLimit);
             var test = new RightMaxHeap(curLimit);
-            var curOpTimes = (int)(Utility.GetRandomDouble * limit);
+            var curOpTimes = (int)(Utility.getRandomDouble * limit);
             for (var j = 0; j < curOpTimes; j++)
             {
                 if (my.IsEmpty() != test.IsEmpty())
@@ -35,7 +35,7 @@ public class Heap
 
                 if (my.IsEmpty())
                 {
-                    var curValue = (int)(Utility.GetRandomDouble * value);
+                    var curValue = (int)(Utility.getRandomDouble * value);
                     my.Push(curValue);
                     test.Push(curValue);
                 }
@@ -46,9 +46,9 @@ public class Heap
                 }
                 else
                 {
-                    if (Utility.GetRandomDouble < 0.5)
+                    if (Utility.getRandomDouble < 0.5)
                     {
-                        var curValue = (int)(Utility.GetRandomDouble * value);
+                        var curValue = (int)(Utility.getRandomDouble * value);
                         my.Push(curValue);
                         test.Push(curValue);
                     }

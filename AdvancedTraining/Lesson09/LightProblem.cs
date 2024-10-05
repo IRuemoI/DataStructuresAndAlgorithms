@@ -328,7 +328,7 @@ public class LightProblem
     private static int[] randomArray(int len)
     {
         var arr = new int[len];
-        for (var i = 0; i < arr.Length; i++) arr[i] = (int)(Utility.GetRandomDouble * 2);
+        for (var i = 0; i < arr.Length; i++) arr[i] = (int)(Utility.getRandomDouble * 2);
         return arr;
     }
 
@@ -340,7 +340,7 @@ public class LightProblem
         var lenMax = 12;
         for (var i = 0; i < testTime; i++)
         {
-            var len = (int)(Utility.GetRandomDouble * lenMax);
+            var len = (int)(Utility.getRandomDouble * lenMax);
             var arr = randomArray(len);
             var ans1 = NoLoopRight(arr);
             var ans2 = NoLoopMinStep1(arr);
@@ -350,7 +350,7 @@ public class LightProblem
 
         for (var i = 0; i < testTime; i++)
         {
-            var len1 = (int)(Utility.GetRandomDouble * lenMax);
+            var len1 = (int)(Utility.getRandomDouble * lenMax);
             var arr1 = randomArray(len1);
             var ans1 = LoopRight(arr1);
             var ans2 = LoopMinStep1(arr1);

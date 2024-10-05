@@ -26,7 +26,6 @@ public class PaperFolding
 
     public static void Run()
     {
-        var n = 4;
-        PrintAllFolds(n);
+        PrintAllFolds(4);
     }
 }

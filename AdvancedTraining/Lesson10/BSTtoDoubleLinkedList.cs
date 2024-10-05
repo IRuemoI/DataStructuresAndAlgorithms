@@ -33,7 +33,7 @@ public class BstToDoubleLinkedList
     }
 
     // 提交时不要提交这个类
-    public class Node(int data)
+    private class Node(int data)
     {
         public Node? Left;
         public Node? Right;

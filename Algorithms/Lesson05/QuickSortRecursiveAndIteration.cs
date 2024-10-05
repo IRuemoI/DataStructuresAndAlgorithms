@@ -49,7 +49,7 @@ public class QuickSortRecursiveAndIteration
     {
         if (leftEdge >= rightEdge) return;
 
-        Swap(arr, leftEdge + (int)(Utility.GetRandomDouble * (rightEdge - leftEdge + 1)), rightEdge);
+        Swap(arr, leftEdge + (int)(Utility.getRandomDouble * (rightEdge - leftEdge + 1)), rightEdge);
         var equalArea = NetherlandsFlag(arr, leftEdge, rightEdge);
         Process(arr, leftEdge, equalArea[0] - 1);
         Process(arr, equalArea[1] + 1, rightEdge);
@@ -62,7 +62,7 @@ public class QuickSortRecursiveAndIteration
 
         var length = arr.Length;
 
-        Swap(arr, (int)(Utility.GetRandomDouble * length), length - 1);
+        Swap(arr, (int)(Utility.getRandomDouble * length), length - 1);
         var equalArea = NetherlandsFlag(arr, 0, length - 1);
         var el = equalArea[0];
         var er = equalArea[1];
@@ -74,7 +74,7 @@ public class QuickSortRecursiveAndIteration
             var op = stack.Pop(); // op.l  ... op.r
             if (op.Left < op.Right)
             {
-                Swap(arr, op.Left + (int)(Utility.GetRandomDouble * (op.Right - op.Left + 1)), op.Right);
+                Swap(arr, op.Left + (int)(Utility.getRandomDouble * (op.Right - op.Left + 1)), op.Right);
                 equalArea = NetherlandsFlag(arr, op.Left, op.Right);
                 el = equalArea[0];
                 er = equalArea[1];
@@ -89,9 +89,9 @@ public class QuickSortRecursiveAndIteration
     // 生成随机数组（用于测试）
     private static int[] GenerateRandomArray(int maxSize, int maxValue)
     {
-        var arr = new int[(int)((maxSize + 1) * Utility.GetRandomDouble)];
+        var arr = new int[(int)((maxSize + 1) * Utility.getRandomDouble)];
         for (var i = 0; i < arr.Length; i++)
-            arr[i] = (int)((maxValue + 1) * Utility.GetRandomDouble) - (int)(maxValue * Utility.GetRandomDouble);
+            arr[i] = (int)((maxValue + 1) * Utility.getRandomDouble) - (int)(maxValue * Utility.getRandomDouble);
 
         return arr;
     }

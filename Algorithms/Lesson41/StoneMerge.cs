@@ -106,7 +106,7 @@ public class StoneMerge
     private static int[] RandomArray(int len, int maxValue)
     {
         var arr = new int[len];
-        for (var i = 0; i < len; i++) arr[i] = (int)(Utility.GetRandomDouble * maxValue);
+        for (var i = 0; i < len; i++) arr[i] = (int)(Utility.getRandomDouble * maxValue);
 
         return arr;
     }
@@ -119,7 +119,7 @@ public class StoneMerge
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var len = (int)(Utility.GetRandomDouble * n);
+            var len = (int)(Utility.getRandomDouble * n);
             var arr = RandomArray(len, maxValue);
             var ans1 = Min1(arr);
             var ans2 = Min2(arr);

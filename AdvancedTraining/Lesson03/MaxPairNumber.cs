@@ -91,7 +91,7 @@ public class MaxPairNumber
     private static int[] randomArray(int len, int value)
     {
         var arr = new int[len];
-        for (var i = 0; i < arr.Length; i++) arr[i] = (int)(Utility.GetRandomDouble * value);
+        for (var i = 0; i < arr.Length; i++) arr[i] = (int)(Utility.getRandomDouble * value);
         return arr;
     }
 
@@ -120,11 +120,11 @@ public class MaxPairNumber
         Console.WriteLine("功能测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var n = (int)(Utility.GetRandomDouble * (maxLen + 1));
+            var n = (int)(Utility.getRandomDouble * (maxLen + 1));
             var arr = randomArray(n, maxValue);
             var arr1 = copyArray(arr);
             var arr2 = copyArray(arr);
-            var k = (int)(Utility.GetRandomDouble * (maxK + 1));
+            var k = (int)(Utility.getRandomDouble * (maxK + 1));
             var ans1 = MaxPairNum1(arr1, k);
             var ans2 = MaxPairNum2(arr2, k);
             if (ans1 != ans2)

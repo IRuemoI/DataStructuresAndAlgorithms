@@ -28,16 +28,16 @@ public class AddRemoveGetIndexGreat
                 break;
             }
 
-            if (list.Count > 1 && Utility.GetRandomDouble < 0.5)
+            if (list.Count > 1 && Utility.getRandomDouble < 0.5)
             {
-                var removeIndex = (int)(Utility.GetRandomDouble * list.Count);
+                var removeIndex = (int)(Utility.getRandomDouble * list.Count);
                 list.RemoveAt(removeIndex);
                 sbtList.Remove(removeIndex);
             }
             else
             {
-                var randomIndex = (int)(Utility.GetRandomDouble * (list.Count + 1));
-                var randomValue = (int)(Utility.GetRandomDouble * (max + 1));
+                var randomIndex = (int)(Utility.getRandomDouble * (list.Count + 1));
+                var randomValue = (int)(Utility.getRandomDouble * (max + 1));
                 list.Insert(randomIndex, randomValue);
                 sbtList.Add(randomIndex, randomValue);
             }
@@ -59,8 +59,8 @@ public class AddRemoveGetIndexGreat
         Utility.RestartStopwatch();
         for (var i = 0; i < test; i++)
         {
-            var randomIndex = (int)(Utility.GetRandomDouble * (list.Count + 1));
-            var randomValue = (int)(Utility.GetRandomDouble * (max + 1));
+            var randomIndex = (int)(Utility.getRandomDouble * (list.Count + 1));
+            var randomValue = (int)(Utility.getRandomDouble * (max + 1));
             list.Insert(randomIndex, randomValue);
         }
 
@@ -69,7 +69,7 @@ public class AddRemoveGetIndexGreat
         Utility.RestartStopwatch();
         for (var i = 0; i < test; i++)
         {
-            var randomIndex = (int)(Utility.GetRandomDouble * (i + 1));
+            var randomIndex = (int)(Utility.getRandomDouble * (i + 1));
             var temp = list[randomIndex];
         }
 
@@ -78,7 +78,7 @@ public class AddRemoveGetIndexGreat
         Utility.RestartStopwatch();
         for (var i = 0; i < test; i++)
         {
-            var randomIndex = (int)(Utility.GetRandomDouble * list.Count);
+            var randomIndex = (int)(Utility.getRandomDouble * list.Count);
             list.RemoveAt(randomIndex);
         }
 
@@ -87,8 +87,8 @@ public class AddRemoveGetIndexGreat
         Utility.RestartStopwatch();
         for (var i = 0; i < test; i++)
         {
-            var randomIndex = (int)(Utility.GetRandomDouble * (sbtList.Size() + 1));
-            var randomValue = (int)(Utility.GetRandomDouble * (max + 1));
+            var randomIndex = (int)(Utility.getRandomDouble * (sbtList.Size() + 1));
+            var randomValue = (int)(Utility.getRandomDouble * (max + 1));
             sbtList.Add(randomIndex, randomValue);
         }
 
@@ -98,7 +98,7 @@ public class AddRemoveGetIndexGreat
         Utility.RestartStopwatch();
         for (var i = 0; i < test; i++)
         {
-            var randomIndex = (int)(Utility.GetRandomDouble * (i + 1));
+            var randomIndex = (int)(Utility.getRandomDouble * (i + 1));
             sbtList.Get(randomIndex);
         }
 
@@ -108,7 +108,7 @@ public class AddRemoveGetIndexGreat
         Utility.RestartStopwatch();
         for (var i = 0; i < test; i++)
         {
-            var randomIndex = (int)(Utility.GetRandomDouble * sbtList.Size());
+            var randomIndex = (int)(Utility.getRandomDouble * sbtList.Size());
             sbtList.Remove(randomIndex);
         }
 

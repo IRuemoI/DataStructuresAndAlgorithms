@@ -52,7 +52,7 @@ public class HowManyTypes
     //用于测试
     private static string[] GetRandomStringArray(int possibilities, int strMaxSize, int arrMaxSize)
     {
-        var ans = new string[(int)(Utility.GetRandomDouble * arrMaxSize) + 1];
+        var ans = new string[(int)(Utility.getRandomDouble * arrMaxSize) + 1];
         for (var i = 0; i < ans.Length; i++) ans[i] = GetRandomString(possibilities, strMaxSize);
         return ans;
     }
@@ -60,8 +60,8 @@ public class HowManyTypes
     //用于测试
     private static string GetRandomString(int possibilities, int strMaxSize)
     {
-        var ans = new char[(int)(Utility.GetRandomDouble * strMaxSize) + 1];
-        for (var i = 0; i < ans.Length; i++) ans[i] = (char)((int)(Utility.GetRandomDouble * possibilities) + 'a');
+        var ans = new char[(int)(Utility.getRandomDouble * strMaxSize) + 1];
+        for (var i = 0; i < ans.Length; i++) ans[i] = (char)((int)(Utility.getRandomDouble * possibilities) + 'a');
         return new string(ans);
     }
 

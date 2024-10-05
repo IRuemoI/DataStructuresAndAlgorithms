@@ -81,7 +81,7 @@ public class CountOfRangeSum
     private static int[] GenerateArray(int len, int variable)
     {
         var arr = new int[len];
-        for (var i = 0; i < arr.Length; i++) arr[i] = (int)(Utility.GetRandomDouble * variable);
+        for (var i = 0; i < arr.Length; i++) arr[i] = (int)(Utility.getRandomDouble * variable);
 
         return arr;
     }
@@ -94,8 +94,8 @@ public class CountOfRangeSum
         for (var i = 0; i < 10000; i++)
         {
             var test = GenerateArray(len, variable);
-            var lower = (int)(Utility.GetRandomDouble * variable) - (int)(Utility.GetRandomDouble * variable);
-            var upper = lower + (int)(Utility.GetRandomDouble * variable);
+            var lower = (int)(Utility.getRandomDouble * variable) - (int)(Utility.getRandomDouble * variable);
+            var upper = lower + (int)(Utility.getRandomDouble * variable);
             var ans1 = CountRangeSum1(test, lower, upper);
             var ans2 = CountRangeSum2(test, lower, upper);
             if (ans1 != ans2)

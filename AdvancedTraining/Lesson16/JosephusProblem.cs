@@ -126,7 +126,7 @@ public class JosephusProblem
     }
 
     // 以下的code针对单链表，不要提交
-    public class Node(int data)
+    private class Node(int data)
     {
         public readonly int Value = data;
         public Node? Next;

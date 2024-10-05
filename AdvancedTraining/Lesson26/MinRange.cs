@@ -75,9 +75,9 @@ public class MinRange
         var m = new int[3][];
         for (var i = 0; i < 3; i++)
         {
-            var s = (int)(Utility.GetRandomDouble * n) + 1;
+            var s = (int)(Utility.getRandomDouble * n) + 1;
             m[i] = new int[s];
-            for (var j = 0; j < s; j++) m[i][j] = (int)(Utility.GetRandomDouble * v);
+            for (var j = 0; j < s; j++) m[i][j] = (int)(Utility.getRandomDouble * v);
 
             Array.Sort(m[i]);
         }

@@ -90,7 +90,7 @@ public class WordBreak //Problem_0139
         Console.WriteLine(WordBreak2(s, wordDict.ToList()));
     }
 
-    public class Node
+    private class Node
     {
         public readonly Node?[] NextList = new Node[26];
         public bool End;

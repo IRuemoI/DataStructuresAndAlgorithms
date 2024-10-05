@@ -84,7 +84,7 @@ public class Heaters //Problem_0475
     private static int[] randomArray(int len, int v)
     {
         var arr = new int[len];
-        for (var i = 0; i < len; i++) arr[i] = (int)(Utility.GetRandomDouble * v) + 1;
+        for (var i = 0; i < len; i++) arr[i] = (int)(Utility.getRandomDouble * v) + 1;
         return arr;
     }
 

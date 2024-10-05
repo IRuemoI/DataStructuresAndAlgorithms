@@ -159,7 +159,7 @@ public class Dc3
     private static int[] RandomArray(int len, int maxValue)
     {
         var arr = new int[len];
-        for (var i = 0; i < len; i++) arr[i] = (int)(Utility.GetRandomDouble * maxValue) + 1;
+        for (var i = 0; i < len; i++) arr[i] = (int)(Utility.getRandomDouble * maxValue) + 1;
         return arr;
     }
 

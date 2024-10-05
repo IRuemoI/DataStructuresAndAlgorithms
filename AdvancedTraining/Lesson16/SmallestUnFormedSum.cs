@@ -78,7 +78,7 @@ public class SmallestUnFormedSum
     private static int[] GenerateArray(int len, int maxValue)
     {
         var res = new int[len];
-        for (var i = 0; i != res.Length; i++) res[i] = (int)(Utility.GetRandomDouble * maxValue) + 1;
+        for (var i = 0; i != res.Length; i++) res[i] = (int)(Utility.getRandomDouble * maxValue) + 1;
         return res;
     }
 

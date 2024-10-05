@@ -162,7 +162,7 @@ public class SumNoPositiveMinCost
     private static int[] randomArray(int len, int v)
     {
         var arr = new int[len];
-        for (var i = 0; i < len; i++) arr[i] = (int)(Utility.GetRandomDouble * v) + 1;
+        for (var i = 0; i < len; i++) arr[i] = (int)(Utility.getRandomDouble * v) + 1;
         return arr;
     }
 
@@ -184,13 +184,13 @@ public class SumNoPositiveMinCost
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var len = (int)(Utility.GetRandomDouble * n);
+            var len = (int)(Utility.getRandomDouble * n);
             var arr = randomArray(len, v);
             var arr1 = copyArray(arr);
             var arr2 = copyArray(arr);
             var arr3 = copyArray(arr);
-            var x = (int)(Utility.GetRandomDouble * c);
-            var y = (int)(Utility.GetRandomDouble * c);
+            var x = (int)(Utility.getRandomDouble * c);
+            var y = (int)(Utility.getRandomDouble * c);
             var ans1 = MinOpStep1(arr1, x, y);
             var ans2 = MinOpStep2(arr2, x, y);
             var ans3 = MinOpStep3(arr3, x, y);

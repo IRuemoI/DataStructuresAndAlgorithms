@@ -18,14 +18,14 @@ public class LRUCache(int capacity)
         cache.Set(key, value);
     }
 
-    public class Node<K, V>
+    public class Node<TK, TV>
     {
-        public K key;
-        public Node<K, V> last;
-        public Node<K, V> next;
-        public V value;
+        public TK key;
+        public Node<TK, TV> last;
+        public Node<TK, TV> next;
+        public TV value;
 
-        public Node(K key, V value)
+        public Node(TK key, TV value)
         {
             this.key = key;
             this.value = value;
@@ -34,8 +34,8 @@ public class LRUCache(int capacity)
 
     public class NodeDoubleLinkedList<K, V>
     {
-        internal Node<K, V> head;
-        internal Node<K, V> tail;
+        public Node<K, V> head;
+        public Node<K, V> tail;
 
         public NodeDoubleLinkedList()
         {

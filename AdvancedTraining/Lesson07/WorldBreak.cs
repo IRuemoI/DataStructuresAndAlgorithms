@@ -164,18 +164,18 @@ public class WorldBreak
         var index = 0;
         foreach (var str in set) arr[index++] = str;
         var all = new StringBuilder();
-        for (var i = 0; i < joint; i++) all.Append(arr[(int)(Utility.GetRandomDouble * arr.Length)]);
+        for (var i = 0; i < joint; i++) all.Append(arr[(int)(Utility.getRandomDouble * arr.Length)]);
         return new RandomSample(all.ToString(), arr);
     }
 
     private static string[] randomSeeds(char[] candidates, int num, int len)
     {
-        var arr = new string[(int)(Utility.GetRandomDouble * num) + 1];
+        var arr = new string[(int)(Utility.getRandomDouble * num) + 1];
         for (var i = 0; i < arr.Length; i++)
         {
-            var str = new char[(int)(Utility.GetRandomDouble * len) + 1];
+            var str = new char[(int)(Utility.getRandomDouble * len) + 1];
             for (var j = 0; j < str.Length; j++)
-                str[j] = candidates[(int)(Utility.GetRandomDouble * candidates.Length)];
+                str[j] = candidates[(int)(Utility.getRandomDouble * candidates.Length)];
             arr[i] = new string(str);
         }
 
@@ -203,7 +203,7 @@ public class WorldBreak
         Console.WriteLine(testTimes + "次随机测试是否通过：" + testResult);
     }
 
-    public class Node
+    private class Node
     {
         public readonly Node?[] NextList = new Node[26];
         public bool End;

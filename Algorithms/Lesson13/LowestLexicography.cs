@@ -66,11 +66,11 @@ public class LowestLexicography
     //用于测试
     private static string? GenerateRandomString(int strLen)
     {
-        var ans = new char[(int)(Utility.GetRandomDouble * strLen) + 1];
+        var ans = new char[(int)(Utility.getRandomDouble * strLen) + 1];
         for (var i = 0; i < ans.Length; i++)
         {
-            var value = (int)(Utility.GetRandomDouble * 5);
-            ans[i] = Utility.GetRandomDouble <= 0.5 ? (char)(65 + value) : (char)(97 + value);
+            var value = (int)(Utility.getRandomDouble * 5);
+            ans[i] = Utility.getRandomDouble <= 0.5 ? (char)(65 + value) : (char)(97 + value);
         }
 
         return ans.ToString();
@@ -79,7 +79,7 @@ public class LowestLexicography
     //用于测试
     private static string?[] GenerateRandomStringArray(int arrLen, int strLen)
     {
-        var ans = new string?[(int)(Utility.GetRandomDouble * arrLen) + 1];
+        var ans = new string?[(int)(Utility.getRandomDouble * arrLen) + 1];
         for (var i = 0; i < ans.Length; i++) ans[i] = GenerateRandomString(strLen);
 
         return ans;

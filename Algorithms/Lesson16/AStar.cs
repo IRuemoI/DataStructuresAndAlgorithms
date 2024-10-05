@@ -143,7 +143,7 @@ public class AStar
 
         for (var i = 0; i < n; i++)
         for (var j = 0; j < n; j++)
-            if (Utility.GetRandomDouble < 0.3)
+            if (Utility.getRandomDouble < 0.3)
                 // 每个格子有30%概率是0
                 grid[i][j] = 0;
             else
@@ -161,13 +161,13 @@ public class AStar
         Console.WriteLine("功能测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var n = (int)(Utility.GetRandomDouble * len) + 2;
+            var n = (int)(Utility.getRandomDouble * len) + 2;
             _heapCapacity = n * n;
             var grid1 = RandomGrid(n);
-            var startX1 = (int)(Utility.GetRandomDouble * n);
-            var startY1 = (int)(Utility.GetRandomDouble * n);
-            var targetX1 = (int)(Utility.GetRandomDouble * n);
-            var targetY2 = (int)(Utility.GetRandomDouble * n);
+            var startX1 = (int)(Utility.getRandomDouble * n);
+            var startY1 = (int)(Utility.getRandomDouble * n);
+            var targetX1 = (int)(Utility.getRandomDouble * n);
+            var targetY2 = (int)(Utility.getRandomDouble * n);
             var ans11 = MinDistance1(grid1, startX1, startY1, targetX1, targetY2);
             var ans12 = MinDistance2(grid1, startX1, startY1, targetX1, targetY2);
             if (ans11 != ans12) Console.WriteLine("出错了!");

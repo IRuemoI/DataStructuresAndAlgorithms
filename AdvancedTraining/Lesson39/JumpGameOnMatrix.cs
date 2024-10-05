@@ -120,7 +120,7 @@ public class JumpGameOnMatrix
         var ans = new int[n, m];
         for (var i = 0; i < n; i++)
         for (var j = 0; j < m; j++)
-            ans[i, j] = (int)(Utility.GetRandomDouble * v);
+            ans[i, j] = (int)(Utility.getRandomDouble * v);
         return ans;
     }
 
@@ -149,8 +149,8 @@ public class JumpGameOnMatrix
         Console.WriteLine("对数器测试开始");
         for (var i = 0; i < testTimes; i++)
         {
-            var n = (int)(Utility.GetRandomDouble * len) + 1;
-            var m = (int)(Utility.GetRandomDouble * len) + 1;
+            var n = (int)(Utility.getRandomDouble * len) + 1;
+            var m = (int)(Utility.getRandomDouble * len) + 1;
             var map = randomMatrix(n, m, value);
             var ans1 = Jump1(map);
             var ans2 = Jump2(map);

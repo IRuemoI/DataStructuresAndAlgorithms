@@ -266,11 +266,11 @@ public class Tsp
 
     private static int[,] GenerateGraph(int maxSize, int maxValue)
     {
-        var len = (int)(Utility.GetRandomDouble * maxSize) + 1;
+        var len = (int)(Utility.getRandomDouble * maxSize) + 1;
         var matrix = new int[len, len];
         for (var i = 0; i < len; i++)
         for (var j = 0; j < len; j++)
-            matrix[i, j] = (int)(Utility.GetRandomDouble * maxValue) + 1;
+            matrix[i, j] = (int)(Utility.getRandomDouble * maxValue) + 1;
 
         for (var i = 0; i < len; i++) matrix[i, i] = 0;
 
@@ -285,7 +285,7 @@ public class Tsp
         for (var i = 0; i < 20000; i++)
         {
             var tempMatrix = GenerateGraph(len, value);
-            var origin = (int)(Utility.GetRandomDouble * tempMatrix.Length);
+            var origin = (int)(Utility.getRandomDouble * tempMatrix.Length);
             var ans1 = T3(tempMatrix);
             var ans2 = T4(tempMatrix);
             var ans3 = Tsp2(tempMatrix, origin);
@@ -299,7 +299,7 @@ public class Tsp
         var matrix = new int[len, len];
         for (var i = 0; i < len; i++)
         for (var j = 0; j < len; j++)
-            matrix[i, j] = (int)(Utility.GetRandomDouble * value) + 1;
+            matrix[i, j] = (int)(Utility.getRandomDouble * value) + 1;
 
         for (var i = 0; i < len; i++) matrix[i, i] = 0;
 

@@ -23,7 +23,7 @@ public class MaximumXorWithAnElementFromArray
         foreach (var item in result) Console.Write(item + " ");
     }
 
-    public class Node
+    private class Node
     {
         public readonly Node?[] NextList = new Node[2];
         public int Min = int.MaxValue;

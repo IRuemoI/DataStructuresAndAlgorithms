@@ -176,7 +176,7 @@ public class SplitArrayLargestSum
     private static int[] RandomArray(int len, int maxValue)
     {
         var arr = new int[len];
-        for (var i = 0; i < len; i++) arr[i] = (int)(Utility.GetRandomDouble * maxValue);
+        for (var i = 0; i < len; i++) arr[i] = (int)(Utility.getRandomDouble * maxValue);
 
         return arr;
     }
@@ -197,8 +197,8 @@ public class SplitArrayLargestSum
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var len = (int)(Utility.GetRandomDouble * n) + 1;
-            var m = (int)(Utility.GetRandomDouble * n) + 1;
+            var len = (int)(Utility.getRandomDouble * n) + 1;
+            var m = (int)(Utility.getRandomDouble * n) + 1;
             var arr = RandomArray(len, maxValue);
             var ans1 = SplitArray1(arr, m);
             var ans2 = SplitArray2(arr, m);

@@ -18,7 +18,7 @@ public class Ac2
     }
 
     // 前缀树的节点
-    public class Node
+    private class Node
     {
         public readonly Node?[] NextArray;
 

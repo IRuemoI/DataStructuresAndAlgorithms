@@ -79,12 +79,12 @@ public class CoverMax
     
     private static int[,] GenerateLines(int n, int l, int r)
     {
-        var size = (int)(Utility.GetRandomDouble * n) + 1;
+        var size = (int)(Utility.getRandomDouble * n) + 1;
         var ans = new int[size, 2];
         for (var i = 0; i < size; i++)
         {
-            var a = l + (int)(Utility.GetRandomDouble * (r - l + 1));
-            var b = l + (int)(Utility.GetRandomDouble * (r - l + 1));
+            var a = l + (int)(Utility.getRandomDouble * (r - l + 1));
+            var b = l + (int)(Utility.getRandomDouble * (r - l + 1));
             if (a == b) b = a + 1;
 
             ans[i, 0] = Math.Min(a, b);

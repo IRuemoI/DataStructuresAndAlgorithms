@@ -19,17 +19,17 @@ public class DynamicSegmentTree02
         var right = new Right(size);
         Console.WriteLine("测试开始");
         for (var k = 0; k < testTime; k++)
-            if (Utility.GetRandomDouble < 0.5)
+            if (Utility.getRandomDouble < 0.5)
             {
-                var i = (int)(Utility.GetRandomDouble * size) + 1;
-                var v = (int)(Utility.GetRandomDouble * value);
+                var i = (int)(Utility.getRandomDouble * size) + 1;
+                var v = (int)(Utility.getRandomDouble * value);
                 dst.Add(i, v);
                 right.Add(i, v);
             }
             else
             {
-                var a = (int)(Utility.GetRandomDouble * size) + 1;
-                var b = (int)(Utility.GetRandomDouble * size) + 1;
+                var a = (int)(Utility.getRandomDouble * size) + 1;
+                var b = (int)(Utility.getRandomDouble * size) + 1;
                 var s = Math.Min(a, b);
                 var e = Math.Max(a, b);
                 var ans1 = dst.Query(s, e);
@@ -45,7 +45,7 @@ public class DynamicSegmentTree02
         Console.WriteLine("测试结束");
     }
 
-    public class Node
+    private class Node
     {
         public Node? left;
         public Node? right;

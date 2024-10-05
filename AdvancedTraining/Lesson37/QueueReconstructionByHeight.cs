@@ -66,8 +66,8 @@ public class QueueReconstructionByHeight //Problem_0406
         var sbtree = new SBTree();
         for (var i = 0; i < test; i++)
         {
-            var randomIndex = (int)(Utility.GetRandomDouble * (i + 1));
-            var randomValue = (int)(Utility.GetRandomDouble * (max + 1));
+            var randomIndex = (int)(Utility.getRandomDouble * (i + 1));
+            var randomValue = (int)(Utility.getRandomDouble * (max + 1));
             list[randomIndex] = randomValue;
             sbtree.Insert(randomIndex, randomValue);
         }
@@ -89,8 +89,8 @@ public class QueueReconstructionByHeight //Problem_0406
         Utility.RestartStopwatch();
         for (var i = 0; i < test; i++)
         {
-            var randomIndex = (int)(Utility.GetRandomDouble * (i + 1));
-            var randomValue = (int)(Utility.GetRandomDouble * (max + 1));
+            var randomIndex = (int)(Utility.getRandomDouble * (i + 1));
+            var randomValue = (int)(Utility.getRandomDouble * (max + 1));
             list[randomIndex] = randomValue;
         }
 
@@ -100,7 +100,7 @@ public class QueueReconstructionByHeight //Problem_0406
         Utility.RestartStopwatch();
         for (var i = 0; i < test; i++)
         {
-            var randomIndex = (int)(Utility.GetRandomDouble * (i + 1));
+            var randomIndex = (int)(Utility.getRandomDouble * (i + 1));
             var temp = list[randomIndex];
         }
 
@@ -110,8 +110,8 @@ public class QueueReconstructionByHeight //Problem_0406
         Utility.RestartStopwatch();
         for (var i = 0; i < test; i++)
         {
-            var randomIndex = (int)(Utility.GetRandomDouble * (i + 1));
-            var randomValue = (int)(Utility.GetRandomDouble * (max + 1));
+            var randomIndex = (int)(Utility.getRandomDouble * (i + 1));
+            var randomValue = (int)(Utility.getRandomDouble * (max + 1));
             sbtree.Insert(randomIndex, randomValue);
         }
 
@@ -121,7 +121,7 @@ public class QueueReconstructionByHeight //Problem_0406
         Utility.RestartStopwatch();
         for (var i = 0; i < test; i++)
         {
-            var randomIndex = (int)(Utility.GetRandomDouble * (i + 1));
+            var randomIndex = (int)(Utility.getRandomDouble * (i + 1));
             sbtree.Get(randomIndex);
         }
 

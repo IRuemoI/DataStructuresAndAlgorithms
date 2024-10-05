@@ -118,8 +118,8 @@ public class SubsequenceMaxModM
 
     private static int[] GenerateRandomArray(int len, int value)
     {
-        var ans = new int[(int)(Utility.GetRandomDouble * len) + 1];
-        for (var i = 0; i < ans.Length; i++) ans[i] = (int)(Utility.GetRandomDouble * value);
+        var ans = new int[(int)(Utility.getRandomDouble * len) + 1];
+        for (var i = 0; i < ans.Length; i++) ans[i] = (int)(Utility.getRandomDouble * value);
 
         return ans;
     }
@@ -145,6 +145,6 @@ public class SubsequenceMaxModM
             }
         }
 
-        Console.WriteLine("test finish!");
+        Console.WriteLine("测试完成");
     }
 }

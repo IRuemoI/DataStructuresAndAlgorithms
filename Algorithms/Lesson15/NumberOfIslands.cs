@@ -104,7 +104,7 @@ public class NumberOfIslands
         var board = new char[row, col];
         for (var i = 0; i < row; i++)
         for (var j = 0; j < col; j++)
-            board[i, j] = Utility.GetRandomDouble < 0.5 ? '1' : '0';
+            board[i, j] = Utility.getRandomDouble < 0.5 ? '1' : '0';
 
         return board;
     }

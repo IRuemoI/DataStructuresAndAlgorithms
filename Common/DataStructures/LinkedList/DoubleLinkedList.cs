@@ -223,14 +223,14 @@ public class DoubleLinkedList : ICloneable
 
     private static DNode? GenerateRandomList(int len, int value)
     {
-        var size = (int)(Utility.GetRandomDouble * (len + 1));
+        var size = (int)(Utility.getRandomDouble * (len + 1));
         if (size == 0) return null;
         size--;
-        var head = new DNode((int)(Utility.GetRandomDouble * (value + 1)));
+        var head = new DNode((int)(Utility.getRandomDouble * (value + 1)));
         var pre = head;
         while (size != 0)
         {
-            var cur = new DNode((int)(Utility.GetRandomDouble * (value + 1)));
+            var cur = new DNode((int)(Utility.getRandomDouble * (value + 1)));
             pre.Next = cur;
             cur.Pre = pre;
             pre = cur;

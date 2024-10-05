@@ -131,7 +131,7 @@ public class MergeRecord
     private static int[] GenerateRandomOriginArray(int power, int value)
     {
         var ans = new int[1 << power];
-        for (var i = 0; i < ans.Length; i++) ans[i] = (int)(Utility.GetRandomDouble * value);
+        for (var i = 0; i < ans.Length; i++) ans[i] = (int)(Utility.getRandomDouble * value);
         return ans;
     }
 
@@ -139,7 +139,7 @@ public class MergeRecord
     private static int[] GenerateRandomReverseArray(int len, int power)
     {
         var ans = new int[len];
-        for (var i = 0; i < ans.Length; i++) ans[i] = (int)(Utility.GetRandomDouble * (power + 1));
+        for (var i = 0; i < ans.Length; i++) ans[i] = (int)(Utility.getRandomDouble * (power + 1));
         return ans;
     }
 
@@ -173,8 +173,8 @@ public class MergeRecord
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var power = (int)(Utility.GetRandomDouble * powerMax) + 1;
-            var msize = (int)(Utility.GetRandomDouble * msizeMax) + 1;
+            var power = (int)(Utility.getRandomDouble * powerMax) + 1;
+            var msize = (int)(Utility.getRandomDouble * msizeMax) + 1;
             var originArr01 = GenerateRandomOriginArray(power, value);
             var originArr1 = copyArray(originArr01);
             var originArr2 = copyArray(originArr01);
@@ -186,7 +186,7 @@ public class MergeRecord
             if (!IsEqual(ans1, ans2)) Console.WriteLine("出错啦！");
         }
 
-        Console.WriteLine("test finish!");
+        Console.WriteLine("测试完成");
 
         powerMax = 20;
         msizeMax = 1000000;

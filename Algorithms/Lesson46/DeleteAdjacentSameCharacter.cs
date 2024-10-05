@@ -133,7 +133,7 @@ public class DeleteAdjacentSameCharacter
     private static string RandomString(int len, int variety)
     {
         var str = new char[len];
-        for (var i = 0; i < len; i++) str[i] = (char)((int)(Utility.GetRandomDouble * variety) + 'a');
+        for (var i = 0; i < len; i++) str[i] = (char)((int)(Utility.getRandomDouble * variety) + 'a');
         return new string(str);
     }
 
@@ -145,7 +145,7 @@ public class DeleteAdjacentSameCharacter
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var len = (int)(Utility.GetRandomDouble * maxLen);
+            var len = (int)(Utility.getRandomDouble * maxLen);
             var str = RandomString(len, variety);
             var ans1 = RestMin1(str);
             var ans2 = RestMin2(str);

@@ -150,8 +150,8 @@ public class ThrowChessPiecesProblem
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var n = (int)(Utility.GetRandomDouble * maxN) + 1;
-            var k = (int)(Utility.GetRandomDouble * maxK) + 1;
+            var n = (int)(Utility.getRandomDouble * maxN) + 1;
+            var k = (int)(Utility.getRandomDouble * maxK) + 1;
             var ans2 = SuperEggDrop2(k, n);
             var ans3 = SuperEggDrop3(k, n);
             var ans4 = SuperEggDrop4(k, n);

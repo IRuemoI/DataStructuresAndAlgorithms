@@ -49,7 +49,7 @@ public class LeftRightSameTreeNumber
     {
         if (restLevel == 0) return null;
 
-        var head = new Node((int)(Utility.GetRandomDouble * maxValue));
+        var head = new Node((int)(Utility.getRandomDouble * maxValue));
         if (head != null)
         {
             head.Left = RandomBinaryTree(restLevel - 1, maxValue);

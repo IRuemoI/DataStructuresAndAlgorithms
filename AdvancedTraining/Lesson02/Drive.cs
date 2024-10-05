@@ -92,8 +92,8 @@ public class Drive
         var ans = new int[len << 1, 2];
         for (var i = 0; i < ans.Length; i++)
         {
-            ans[i, 0] = (int)(Utility.GetRandomDouble * value);
-            ans[i, 1] = (int)(Utility.GetRandomDouble * value);
+            ans[i, 0] = (int)(Utility.getRandomDouble * value);
+            ans[i, 1] = (int)(Utility.getRandomDouble * value);
         }
 
         return ans;
@@ -107,7 +107,7 @@ public class Drive
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var len = (int)(Utility.GetRandomDouble * n) + 1;
+            var len = (int)(Utility.getRandomDouble * n) + 1;
             var matrix = randomMatrix(len, value);
             var ans1 = MaxMoney1(matrix);
             var ans2 = MaxMoney2(matrix);

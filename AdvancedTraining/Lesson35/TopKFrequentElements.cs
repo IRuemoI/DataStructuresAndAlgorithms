@@ -38,18 +38,9 @@ public class TopKFrequentElements //Problem_0347
         Console.WriteLine(string.Join(", ", TopKFrequent([1, 1, 1, 2, 2, 3], 2))); //输出: [1,2]
     }
 
-    public class Node(int k)
+    private class Node(int k)
     {
         public readonly int Num = k;
         public int Count = 1;
-    }
-
-    public class CountComparator : IComparer<Node>
-    {
-        public int Compare(Node? o1, Node? o2)
-        {
-            if (o1 == null || o2 == null) throw new Exception();
-            return o1.Count - o2.Count;
-        }
     }
 }

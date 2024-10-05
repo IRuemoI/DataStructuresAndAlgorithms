@@ -28,7 +28,7 @@ public class CountOfSmallerNumbersAfterSelf //Problem_0315
         Console.WriteLine(string.Join(",", CountSmaller([5, 2, 6, 1]))); //输出：[2,1,1,0] 
     }
 
-    public class Node
+    private class Node
     {
         public Node? Left;
         public Node? Right;

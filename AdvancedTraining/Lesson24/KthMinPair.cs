@@ -77,7 +77,7 @@ public class KthMinPair
         var r = arr.Length - 1;
         while (l < r)
         {
-            var pivot = arr[l + (int)(Utility.GetRandomDouble * (r - l + 1))];
+            var pivot = arr[l + (int)(Utility.getRandomDouble * (r - l + 1))];
             var range = Partition(arr, l, r, pivot);
             if (index < range[0])
                 r = range[0] - 1;
@@ -113,9 +113,9 @@ public class KthMinPair
     // 为了测试，生成值也随机，长度也随机的随机数组
     private static int[] GetRandomArray(int max, int len)
     {
-        var arr = new int[(int)(Utility.GetRandomDouble * len) + 1];
+        var arr = new int[(int)(Utility.getRandomDouble * len) + 1];
         for (var i = 0; i < arr.Length; i++)
-            arr[i] = (int)(Utility.GetRandomDouble * max) - (int)(Utility.GetRandomDouble * max);
+            arr[i] = (int)(Utility.getRandomDouble * max) - (int)(Utility.getRandomDouble * max);
         return arr;
     }
 
@@ -142,7 +142,7 @@ public class KthMinPair
             var arr2 = CopyArray(arr);
             var arr3 = CopyArray(arr);
             var n = arr.Length * arr.Length;
-            var k = (int)(Utility.GetRandomDouble * n) + 1;
+            var k = (int)(Utility.getRandomDouble * n) + 1;
             if (arr1 != null && arr2 != null && arr3 != null)
             {
                 var ans1 = KthMinPair1(arr1, k);

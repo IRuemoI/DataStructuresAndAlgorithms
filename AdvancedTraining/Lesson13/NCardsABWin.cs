@@ -133,9 +133,9 @@ public class NCardsAbWin
         Console.WriteLine("如果没有错误提示, 说明验证通过");
         for (var i = 0; i < testTime; i++)
         {
-            n = (int)(Utility.GetRandomDouble * maxN);
-            a = (int)(Utility.GetRandomDouble * maxM);
-            b = (int)(Utility.GetRandomDouble * maxM);
+            n = (int)(Utility.getRandomDouble * maxN);
+            a = (int)(Utility.getRandomDouble * maxM);
+            b = (int)(Utility.getRandomDouble * maxM);
             var ans2 = F2(n, a, b);
             var ans3 = F2(n, a, b);
             var ans4 = F2(n, a, b);

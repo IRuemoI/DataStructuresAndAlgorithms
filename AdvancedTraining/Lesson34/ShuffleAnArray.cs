@@ -35,7 +35,7 @@ public class ShuffleAnArray //Problem_0384
         {
             for (var i = _n - 1; i >= 0; i--)
             {
-                var r = (int)(Utility.GetRandomDouble * (i + 1));
+                var r = (int)(Utility.getRandomDouble * (i + 1));
                 (_shuffleArray[r], _shuffleArray[i]) = (_shuffleArray[i], _shuffleArray[r]);
             }
 

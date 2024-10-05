@@ -57,9 +57,9 @@ public class Power2Diffs
     //用于测试
     private static int[] randomSortedArray(int len, int value)
     {
-        var ans = new int[(int)(Utility.GetRandomDouble * len) + 1];
+        var ans = new int[(int)(Utility.getRandomDouble * len) + 1];
         for (var i = 0; i < ans.Length; i++)
-            ans[i] = (int)(Utility.GetRandomDouble * value) - (int)(Utility.GetRandomDouble * value);
+            ans[i] = (int)(Utility.getRandomDouble * value) - (int)(Utility.getRandomDouble * value);
         Array.Sort(ans);
         return ans;
     }

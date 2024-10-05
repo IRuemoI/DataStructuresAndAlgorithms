@@ -105,7 +105,7 @@ public class WordBreakIi //Problem_0140
         Console.WriteLine(string.Join(",", WordBreak("catsanddog", ["cat", "cats", "and", "sand", "dog"])));
     }
 
-    public class Node
+    private class Node
     {
         public readonly Node?[] NextList = new Node[26];
         public bool End;

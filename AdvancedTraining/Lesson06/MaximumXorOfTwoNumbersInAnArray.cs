@@ -24,7 +24,7 @@ public class MaximumXorOfTwoNumbersInAnArray
         Console.WriteLine(FindMaximumXor([14, 70, 53, 83, 49, 91, 36, 80, 92, 51, 66, 70])); //输出127
     }
 
-    public class Node
+    private class Node
     {
         public readonly Node?[] NextList = new Node[2];
     }

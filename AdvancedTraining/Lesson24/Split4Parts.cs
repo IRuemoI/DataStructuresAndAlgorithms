@@ -81,8 +81,8 @@ public class Split4Parts
 
     private static int[] GenerateRondomArray()
     {
-        var res = new int[(int)(Utility.GetRandomDouble * 10) + 7];
-        for (var i = 0; i < res.Length; i++) res[i] = (int)(Utility.GetRandomDouble * 10) + 1;
+        var res = new int[(int)(Utility.getRandomDouble * 10) + 7];
+        for (var i = 0; i < res.Length; i++) res[i] = (int)(Utility.getRandomDouble * 10) + 1;
         return res;
     }
 

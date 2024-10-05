@@ -130,12 +130,12 @@ public class MoneyProblem
 
     private static int[][] GenerateTwoRandomArray(int len, int value)
     {
-        var size = (int)(Utility.GetRandomDouble * len) + 1;
+        var size = (int)(Utility.getRandomDouble * len) + 1;
         int[][] arrays = [new int[size], new int[size]];
         for (var i = 0; i < size; i++)
         {
-            arrays[0][i] = (int)(Utility.GetRandomDouble * value) + 1;
-            arrays[1][i] = (int)(Utility.GetRandomDouble * value) + 1;
+            arrays[0][i] = (int)(Utility.getRandomDouble * value) + 1;
+            arrays[1][i] = (int)(Utility.getRandomDouble * value) + 1;
         }
 
         return arrays;

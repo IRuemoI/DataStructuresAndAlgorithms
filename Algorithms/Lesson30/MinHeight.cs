@@ -116,10 +116,10 @@ public class MinHeight
             if (ans1 != ans2) Console.WriteLine("出错啦！");
         }
 
-        Console.WriteLine("test finish!");
+        Console.WriteLine("测试完成");
     }
 
-    public class Node
+    private class Node
     {
         public Node? Left;
         public Node? Right;

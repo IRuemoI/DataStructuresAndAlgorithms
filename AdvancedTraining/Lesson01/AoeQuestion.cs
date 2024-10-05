@@ -180,7 +180,7 @@ public class AoeQuestion
     {
         var ans = new int[n];
         for (var i = 0; i < n; i++)
-            ans[i] = (int)(Utility.GetRandomDouble * valueMax) + 1;
+            ans[i] = (int)(Utility.getRandomDouble * valueMax) + 1;
         return ans;
     }
 
@@ -204,11 +204,11 @@ public class AoeQuestion
         Console.WriteLine("测试开始");
         for (var i = 0; i < time; i++)
         {
-            var len = (int)(Utility.GetRandomDouble * n) + 1;
+            var len = (int)(Utility.getRandomDouble * n) + 1;
             var x = randomArray(len, valueMax);
             Array.Sort(x);
             var hp = randomArray(len, h);
-            var range = (int)(Utility.GetRandomDouble * r) + 1;
+            var range = (int)(Utility.getRandomDouble * r) + 1;
             var x2 = copyArray(x);
             var hp2 = copyArray(hp);
             var ans2 = MinAoe2(x2, hp2, range);

@@ -154,8 +154,8 @@ public class SplitTo01
         Console.WriteLine("功能测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var a = (int)(Utility.GetRandomDouble * ans.Count) + 1;
-            var b = (int)(Utility.GetRandomDouble * ans.Count) + 1;
+            var a = (int)(Utility.getRandomDouble * ans.Count) + 1;
+            var b = (int)(Utility.getRandomDouble * ans.Count) + 1;
             var l1 = Math.Min(a, b);
             var r1 = Math.Max(a, b);
             var ans1 = 0;

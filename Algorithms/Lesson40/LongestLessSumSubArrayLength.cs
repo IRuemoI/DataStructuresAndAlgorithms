@@ -106,7 +106,7 @@ public class LongestLessSumSubArrayLength
     private static int[] GenerateRandomArray(int len, int maxValue)
     {
         var res = new int[len];
-        for (var i = 0; i != res.Length; i++) res[i] = (int)(Utility.GetRandomDouble * maxValue) - maxValue / 3;
+        for (var i = 0; i != res.Length; i++) res[i] = (int)(Utility.getRandomDouble * maxValue) - maxValue / 3;
         return res;
     }
 
@@ -116,7 +116,7 @@ public class LongestLessSumSubArrayLength
         for (var i = 0; i < 10000000; i++)
         {
             var arr = GenerateRandomArray(10, 20);
-            var k = (int)(Utility.GetRandomDouble * 20) - 5;
+            var k = (int)(Utility.getRandomDouble * 20) - 5;
             if (MaxLengthAwesome(arr, k) != MaxLength(arr, k)) Console.WriteLine("出错啦！");
         }
 

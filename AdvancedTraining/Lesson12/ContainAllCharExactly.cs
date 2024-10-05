@@ -82,8 +82,8 @@ public class ContainAllCharExactly
     //用于测试
     private static string GetRandomString(int possibilities, int maxSize)
     {
-        var ans = new char[(int)(Utility.GetRandomDouble * maxSize) + 1];
-        for (var i = 0; i < ans.Length; i++) ans[i] = (char)((int)(Utility.GetRandomDouble * possibilities) + 'a');
+        var ans = new char[(int)(Utility.getRandomDouble * maxSize) + 1];
+        for (var i = 0; i < ans.Length; i++) ans[i] = (char)((int)(Utility.getRandomDouble * possibilities) + 'a');
         return new string(ans);
     }
 

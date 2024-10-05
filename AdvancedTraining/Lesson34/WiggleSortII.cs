@@ -40,7 +40,7 @@ public class WiggleSortIi //Problem_0324
     {
         while (l < r)
         {
-            var pivot = arr[l + (int)(Utility.GetRandomDouble * (r - l + 1))];
+            var pivot = arr[l + (int)(Utility.getRandomDouble * (r - l + 1))];
             var range = Partition(arr, l, r, pivot);
             if (index >= range[0] && index <= range[1])
                 return arr[index];
@@ -165,7 +165,7 @@ public class WiggleSortIi //Problem_0324
     private static int[] randomArray(int n, int v)
     {
         var ans = new int[n];
-        for (var i = 0; i < n; i++) ans[i] = (int)(Utility.GetRandomDouble * v);
+        for (var i = 0; i < n; i++) ans[i] = (int)(Utility.getRandomDouble * v);
         return ans;
     }
 
@@ -186,7 +186,7 @@ public class WiggleSortIi //Problem_0324
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var n = (int)(Utility.GetRandomDouble * n1) + 1;
+            var n = (int)(Utility.getRandomDouble * n1) + 1;
             var arr1 = randomArray(n, v);
             var arr2 = copyArray(arr1);
             WiggleSort(arr1);

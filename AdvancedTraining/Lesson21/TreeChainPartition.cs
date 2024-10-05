@@ -12,11 +12,11 @@ public class TreeChainPartition
         var order = new int[n];
         for (var i = 0; i < n; i++) order[i] = i;
 
-        for (var i = n - 1; i >= 0; i--) Swap(order, i, (int)(Utility.GetRandomDouble * (i + 1)));
+        for (var i = n - 1; i >= 0; i--) Swap(order, i, (int)(Utility.getRandomDouble * (i + 1)));
 
         var ans = new int[n];
         ans[order[0]] = order[0];
-        for (var i = 1; i < n; i++) ans[order[i]] = order[(int)(Utility.GetRandomDouble * i)];
+        for (var i = 1; i < n; i++) ans[order[i]] = order[(int)(Utility.getRandomDouble * i)];
 
         return ans;
     }
@@ -31,7 +31,7 @@ public class TreeChainPartition
     private static int[] GenerateValueArray(int n, int v)
     {
         var ans = new int[n];
-        for (var i = 0; i < n; i++) ans[i] = (int)(Utility.GetRandomDouble * v) + 1;
+        for (var i = 0; i < n; i++) ans[i] = (int)(Utility.getRandomDouble * v) + 1;
 
         return ans;
     }
@@ -49,31 +49,31 @@ public class TreeChainPartition
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var decision = Utility.GetRandomDouble;
+            var decision = Utility.getRandomDouble;
             if (decision < 0.25)
             {
-                var head = (int)(Utility.GetRandomDouble * n);
-                var value = (int)(Utility.GetRandomDouble * v);
+                var head = (int)(Utility.getRandomDouble * n);
+                var value = (int)(Utility.getRandomDouble * v);
                 tc.AddSubtree(head, value);
                 right.AddSubtree(head, value);
             }
             else if (decision < 0.5)
             {
-                var head = (int)(Utility.GetRandomDouble * n);
+                var head = (int)(Utility.getRandomDouble * n);
                 if (tc.QuerySubtree(head) != right.QuerySubtree(head)) Console.WriteLine("出错了!");
             }
             else if (decision < 0.75)
             {
-                var a = (int)(Utility.GetRandomDouble * n);
-                var b = (int)(Utility.GetRandomDouble * n);
-                var value = (int)(Utility.GetRandomDouble * v);
+                var a = (int)(Utility.getRandomDouble * n);
+                var b = (int)(Utility.getRandomDouble * n);
+                var value = (int)(Utility.getRandomDouble * v);
                 tc.AddChain(a, b, value);
                 right.AddChain(a, b, value);
             }
             else
             {
-                var a = (int)(Utility.GetRandomDouble * n);
-                var b = (int)(Utility.GetRandomDouble * n);
+                var a = (int)(Utility.getRandomDouble * n);
+                var b = (int)(Utility.getRandomDouble * n);
                 if (tc.QueryChain(a, b) != right.QueryChain(a, b)) Console.WriteLine("出错了!");
             }
         }

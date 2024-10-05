@@ -2,10 +2,11 @@
 
 namespace CustomTraining;
 
+using Common.Utilities;
+
 public static class Program
 {
     public static void Main()
     {
-
     }
 }

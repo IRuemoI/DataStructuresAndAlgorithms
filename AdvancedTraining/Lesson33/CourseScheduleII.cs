@@ -56,7 +56,7 @@ public class CourseScheduleIi //Problem_0210
         Console.WriteLine(string.Join(",", FindOrder(numCourses, prerequisites))); //输出：[0,2,1,3]
     }
 
-    public class Node(int n)
+    private class Node(int n)
     {
         public readonly int Name = n;
         public readonly List<Node> NextList = [];

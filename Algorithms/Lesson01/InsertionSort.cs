@@ -20,9 +20,9 @@ public class InsertionSort : QuestionTemplate<int[]?, int[]?>
     {
         var maxSize = 50;
         var maxValue = 100;
-        var arr = new int[(int)((maxSize + 1) * Utility.GetRandomDouble)];
+        var arr = new int[(int)((maxSize + 1) * Utility.getRandomDouble)];
         for (var i = 0; i < arr.Length; i++)
-            arr[i] = (int)((maxValue + 1) * Utility.GetRandomDouble) - (int)(maxValue * Utility.GetRandomDouble);
+            arr[i] = (int)((maxValue + 1) * Utility.getRandomDouble) - (int)(maxValue * Utility.getRandomDouble);
 
         return arr;
     }

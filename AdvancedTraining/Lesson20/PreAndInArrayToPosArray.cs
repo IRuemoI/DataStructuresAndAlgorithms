@@ -164,7 +164,7 @@ public class PreAndInArrayToPosArray
         int cur;
         do
         {
-            cur = (int)(Utility.GetRandomDouble * value) + 1;
+            cur = (int)(Utility.getRandomDouble * value) + 1;
         } while (hasValue.Contains(cur));
 
         hasValue.Add(cur);
@@ -214,7 +214,7 @@ public class PreAndInArrayToPosArray
         Console.WriteLine("测试结束");
     }
 
-    public class Node(int v)
+    private class Node(int v)
     {
         public readonly int Value = v;
         public Node? Left;

@@ -80,7 +80,7 @@ public class MinKthPairMinusAbs
     private static int[] randomArray(int n, int v)
     {
         var ans = new int[n];
-        for (var i = 0; i < ans.Length; i++) ans[i] = (int)(Utility.GetRandomDouble * v);
+        for (var i = 0; i < ans.Length; i++) ans[i] = (int)(Utility.getRandomDouble * v);
         return ans;
     }
 
@@ -94,8 +94,8 @@ public class MinKthPairMinusAbs
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var n1 = (int)(Utility.GetRandomDouble * size);
-            var k1 = (int)(Utility.GetRandomDouble * (n1 * (n1 - 1) / 2)) + 1;
+            var n1 = (int)(Utility.getRandomDouble * size);
+            var k1 = (int)(Utility.getRandomDouble * (n1 * (n1 - 1) / 2)) + 1;
             var arr1 = randomArray(n1, value);
             var ans1 = KthAbs1(arr1, k1);
             var ans2 = KthAbs2(arr1, k1);
@@ -116,7 +116,7 @@ public class MinKthPairMinusAbs
         var n = 500000;
         var v = 50000000;
         var arr = randomArray(n, v);
-        var k = (int)(Utility.GetRandomDouble * (n * (n - 1) / 2)) + 1;
+        var k = (int)(Utility.getRandomDouble * (n * (n - 1) / 2)) + 1;
         Utility.RestartStopwatch();
         KthAbs2(arr, k);
 

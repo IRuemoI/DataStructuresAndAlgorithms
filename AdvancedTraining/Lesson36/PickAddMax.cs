@@ -53,7 +53,7 @@ public class PickAddMax
     private static int[] randomArray(int len, int value)
     {
         var arr = new int[len];
-        for (var i = 0; i < len; i++) arr[i] = (int)(Utility.GetRandomDouble * value) + 1;
+        for (var i = 0; i < len; i++) arr[i] = (int)(Utility.getRandomDouble * value) + 1;
         return arr;
     }
 
@@ -66,7 +66,7 @@ public class PickAddMax
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var len = (int)(Utility.GetRandomDouble * n) + 1;
+            var len = (int)(Utility.getRandomDouble * n) + 1;
             var arr = randomArray(len, v);
             var ans1 = Pick(arr);
             var ans2 = Test(arr);

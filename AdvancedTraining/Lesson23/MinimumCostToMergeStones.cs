@@ -126,8 +126,8 @@ public class MinimumCostToMergeStones
     //用于测试
     private static int[] GetRandomStringArray(int maxSize, int maxValue)
     {
-        var arr = new int[(int)(maxSize * Utility.GetRandomDouble) + 1];
-        for (var i = 0; i < arr.Length; i++) arr[i] = (int)((maxValue + 1) * Utility.GetRandomDouble);
+        var arr = new int[(int)(maxSize * Utility.getRandomDouble) + 1];
+        for (var i = 0; i < arr.Length; i++) arr[i] = (int)((maxValue + 1) * Utility.getRandomDouble);
         return arr;
     }
 
@@ -149,7 +149,7 @@ public class MinimumCostToMergeStones
         for (var testTime = 0; testTime < 100000; testTime++)
         {
             var arr = GetRandomStringArray(maxSize, maxValue);
-            var k = (int)(Utility.GetRandomDouble * 7) + 2;
+            var k = (int)(Utility.getRandomDouble * 7) + 2;
             var ans1 = MergeStones1(arr, k);
             var ans2 = MergeStones2(arr, k);
             if (ans1 != ans2)

@@ -12,10 +12,10 @@ public class PrefixTree
 
     private static string GenerateRandomString(int strLen)
     {
-        var ans = new char[(int)(Utility.GetRandomDouble * strLen) + 1];
+        var ans = new char[(int)(Utility.getRandomDouble * strLen) + 1];
         for (var i = 0; i < ans.Length; i++)
         {
-            var value = (int)(Utility.GetRandomDouble * 26);
+            var value = (int)(Utility.getRandomDouble * 26);
             ans[i] = (char)('a' + value);
         }
 
@@ -24,7 +24,7 @@ public class PrefixTree
 
     private static string[] GenerateRandomStringArray(int arrLen, int strLen)
     {
-        var ans = new string[(int)(Utility.GetRandomDouble * arrLen) + 1];
+        var ans = new string[(int)(Utility.getRandomDouble * arrLen) + 1];
         for (var i = 0; i < ans.Length; i++) ans[i] = GenerateRandomString(strLen);
 
         return ans;
@@ -83,7 +83,7 @@ public class PrefixTree
             var right = new Right();
             foreach (var item in arr)
             {
-                var decide = Utility.GetRandomDouble;
+                var decide = Utility.getRandomDouble;
                 if (decide < 0.25)
                 {
                     trie1.Insert(item);

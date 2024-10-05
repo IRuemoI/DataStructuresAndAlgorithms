@@ -131,13 +131,13 @@ public class CardsProblem
     //用于测试
     private static string[] GenerateCards(int size)
     {
-        var n = (int)(Utility.GetRandomDouble * size) + 3;
+        var n = (int)(Utility.getRandomDouble * size) + 3;
         var ans = new string[n];
         for (var i = 0; i < n; i++)
         {
-            var cha0 = (char)((int)(Utility.GetRandomDouble * 3) + 'A');
-            var cha1 = (char)((int)(Utility.GetRandomDouble * 3) + 'A');
-            var cha2 = (char)((int)(Utility.GetRandomDouble * 3) + 'A');
+            var cha0 = (char)((int)(Utility.getRandomDouble * 3) + 'A');
+            var cha1 = (char)((int)(Utility.getRandomDouble * 3) + 'A');
+            var cha2 = (char)((int)(Utility.getRandomDouble * 3) + 'A');
             ans[i] = cha0 + cha1.ToString() + cha2;
         }
 

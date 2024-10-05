@@ -71,9 +71,9 @@ public class BiggerThanRightTwice
     //用于测试
     private static int[] GenerateRandomArray(int maxSize, int maxValue)
     {
-        var arr = new int[(int)((maxSize + 1) * Utility.GetRandomDouble)];
+        var arr = new int[(int)((maxSize + 1) * Utility.getRandomDouble)];
         for (var i = 0; i < arr.Length; i++)
-            arr[i] = (int)((maxValue + 1) * Utility.GetRandomDouble) - (int)((maxValue + 1) * Utility.GetRandomDouble);
+            arr[i] = (int)((maxValue + 1) * Utility.getRandomDouble) - (int)((maxValue + 1) * Utility.getRandomDouble);
 
         return arr;
     }

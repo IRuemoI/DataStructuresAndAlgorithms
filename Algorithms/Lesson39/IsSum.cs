@@ -129,7 +129,7 @@ public class IsSumTestTest
     private static int[] RandomArray(int len, int max)
     {
         var arr = new int[len];
-        for (var i = 0; i < len; i++) arr[i] = (int)(Utility.GetRandomDouble * ((max << 1) + 1)) - max;
+        for (var i = 0; i < len; i++) arr[i] = (int)(Utility.getRandomDouble * ((max << 1) + 1)) - max;
         return arr;
     }
 
@@ -142,9 +142,9 @@ public class IsSumTestTest
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var size = (int)(Utility.GetRandomDouble * (n + 1));
+            var size = (int)(Utility.getRandomDouble * (n + 1));
             var arr = RandomArray(size, m);
-            var sum = (int)(Utility.GetRandomDouble * ((m << 1) + 1)) - m;
+            var sum = (int)(Utility.getRandomDouble * ((m << 1) + 1)) - m;
             var ans1 = IsSum.IsSum1(arr, sum);
             var ans2 = IsSum.IsSum2(arr, sum);
             var ans3 = IsSum.IsSum3(arr, sum);

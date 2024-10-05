@@ -89,8 +89,8 @@ public class MostXorZero
     //用于测试
     private static int[] GetRandomStringArray(int maxSize, int maxValue)
     {
-        var arr = new int[(int)((maxSize + 1) * Utility.GetRandomDouble)];
-        for (var i = 0; i < arr.Length; i++) arr[i] = (int)((maxValue + 1) * Utility.GetRandomDouble);
+        var arr = new int[(int)((maxSize + 1) * Utility.getRandomDouble)];
+        for (var i = 0; i < arr.Length; i++) arr[i] = (int)((maxValue + 1) * Utility.getRandomDouble);
         return arr;
     }
 

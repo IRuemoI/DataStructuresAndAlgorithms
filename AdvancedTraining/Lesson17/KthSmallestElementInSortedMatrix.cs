@@ -107,21 +107,13 @@ public class KthSmallestElementInSortedMatrix
         Console.WriteLine(KthSmallest2(matrix, k)); //输出13
     }
 
-    public class Node(int v, int r, int c)
+    private class Node(int v, int r, int c)
     {
         public readonly int Col = c;
         public readonly int Row = r;
         public readonly int Value = v;
     }
 
-    public class NodeComparator : IComparer<Node>
-    {
-        public virtual int Compare(Node? o1, Node? o2)
-        {
-            if (o1 == null || o2 == null) throw new Exception();
-            return o1.Value - o2.Value;
-        }
-    }
 
     private class Info(int n1, int n2)
     {

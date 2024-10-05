@@ -85,7 +85,7 @@ public class DistanceKNodes
         foreach (var o1 in ans) Console.WriteLine(o1?.Value);
     }
 
-    public class Node(int v)
+    private class Node(int v)
     {
         public readonly int Value = v;
         public Node? Left;

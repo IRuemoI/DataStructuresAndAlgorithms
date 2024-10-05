@@ -57,7 +57,7 @@ public class PalindromeWays
     private static string RandomString(int len, int types)
     {
         var str = new char[len];
-        for (var i = 0; i < str.Length; i++) str[i] = (char)('a' + (int)(Utility.GetRandomDouble * types));
+        for (var i = 0; i < str.Length; i++) str[i] = (char)('a' + (int)(Utility.getRandomDouble * types));
         return new string(str);
     }
 
@@ -69,7 +69,7 @@ public class PalindromeWays
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTimes; i++)
         {
-            var len = (int)(Utility.GetRandomDouble * n);
+            var len = (int)(Utility.getRandomDouble * n);
             var str = RandomString(len, types);
             var ans1 = Ways1(str);
             var ans2 = Ways2(str);

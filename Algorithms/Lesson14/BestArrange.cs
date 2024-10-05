@@ -72,11 +72,11 @@ public class BestArrange
     //用于测试
     private static Program1[] GeneratePrograms(int programSize, int timeMax)
     {
-        var ans = new Program1[(int)(Utility.GetRandomDouble * (programSize + 1))];
+        var ans = new Program1[(int)(Utility.getRandomDouble * (programSize + 1))];
         for (var i = 0; i < ans.Length; i++)
         {
-            var r1 = (int)(Utility.GetRandomDouble * (timeMax + 1));
-            var r2 = (int)(Utility.GetRandomDouble * (timeMax + 1));
+            var r1 = (int)(Utility.getRandomDouble * (timeMax + 1));
+            var r2 = (int)(Utility.getRandomDouble * (timeMax + 1));
             if (r1 == r2)
                 ans[i] = new Program1(r1, r1 + 1);
             else

@@ -81,7 +81,7 @@ public class PostOfficeProblem
     private static int[] RandomSortedArray(int len, int range)
     {
         var arr = new int[len];
-        for (var i = 0; i != len; i++) arr[i] = (int)(Utility.GetRandomDouble * range);
+        for (var i = 0; i != len; i++) arr[i] = (int)(Utility.getRandomDouble * range);
 
         Array.Sort(arr);
         return arr;
@@ -104,9 +104,9 @@ public class PostOfficeProblem
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var len = (int)(Utility.GetRandomDouble * n) + 1;
+            var len = (int)(Utility.getRandomDouble * n) + 1;
             var arr = RandomSortedArray(len, maxValue);
-            var num = (int)(Utility.GetRandomDouble * n) + 1;
+            var num = (int)(Utility.getRandomDouble * n) + 1;
             var ans1 = Min1(arr, num);
             var ans2 = Min2(arr, num);
             if (ans1 != ans2)

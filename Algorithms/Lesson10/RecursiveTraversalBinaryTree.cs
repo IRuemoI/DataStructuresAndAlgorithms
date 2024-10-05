@@ -3,7 +3,7 @@
 namespace Algorithms.Lesson10;
 
 //递归遍历二叉树
-public class RecursiveTraversalBinaryTree
+public static class RecursiveTraversalBinaryTree
 {
     // 先序打印所有节点
     private static void PreOrderTraversal(Node? head)
@@ -57,7 +57,7 @@ public class RecursiveTraversalBinaryTree
         Console.WriteLine("\n========");
     }
 
-    public class Node(int v)
+    private class Node(int v)
     {
         public readonly int Value = v;
         public Node? Left;

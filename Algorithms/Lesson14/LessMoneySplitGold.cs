@@ -64,8 +64,8 @@ public class LessMoneySplitGold
     //用于测试
     private static int[] GenerateRandomArray(int maxSize, int maxValue)
     {
-        var arr = new int[(int)((maxSize + 1) * Utility.GetRandomDouble)];
-        for (var i = 0; i < arr.Length; i++) arr[i] = (int)(Utility.GetRandomDouble * (maxValue + 1));
+        var arr = new int[(int)((maxSize + 1) * Utility.getRandomDouble)];
+        for (var i = 0; i < arr.Length; i++) arr[i] = (int)(Utility.getRandomDouble * (maxValue + 1));
 
         return arr;
     }

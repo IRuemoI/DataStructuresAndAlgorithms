@@ -39,9 +39,9 @@ public class CoinsWayEveryPaperDifferent
     // 为了测试
     private static int[] RandomArray(int maxLen, int maxValue)
     {
-        var n = (int)(Utility.GetRandomDouble * maxLen);
+        var n = (int)(Utility.getRandomDouble * maxLen);
         var arr = new int[n];
-        for (var i = 0; i < n; i++) arr[i] = (int)(Utility.GetRandomDouble * maxValue) + 1;
+        for (var i = 0; i < n; i++) arr[i] = (int)(Utility.getRandomDouble * maxValue) + 1;
         return arr;
     }
 
@@ -64,7 +64,7 @@ public class CoinsWayEveryPaperDifferent
         for (var i = 0; i < testTime; i++)
         {
             var arr = RandomArray(maxLen, maxValue);
-            var aim = (int)(Utility.GetRandomDouble * maxValue);
+            var aim = (int)(Utility.getRandomDouble * maxValue);
             var ans1 = CoinWays(arr, aim);
             var ans2 = Dp(arr, aim);
             if (ans1 != ans2)

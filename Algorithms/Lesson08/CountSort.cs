@@ -51,8 +51,8 @@ public class CountSort
 
     private static int[] GenerateRandomArray(int maxSize, int minValue, int maxValue)
     {
-        var arr = new int[(int)((maxSize + 1) * Utility.GetRandomDouble)];
-        for (var i = 0; i < arr.Length; i++) arr[i] = (int)((maxValue + 1) * Utility.GetRandomDouble) + minValue;
+        var arr = new int[(int)((maxSize + 1) * Utility.getRandomDouble)];
+        for (var i = 0; i < arr.Length; i++) arr[i] = (int)((maxValue + 1) * Utility.getRandomDouble) + minValue;
 
         return arr;
     }

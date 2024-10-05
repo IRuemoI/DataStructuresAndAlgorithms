@@ -30,20 +30,20 @@ public static class Compare
         var testTime = 10000;
         for (var i = 0; i < testTime; i++)
         {
-            var newKey = (int)(Utility.GetRandomDouble * maxK) + 1;
-            var newValue = (int)(Utility.GetRandomDouble * maxV) + 1;
+            var newKey = (int)(Utility.getRandomDouble * maxK) + 1;
+            var newValue = (int)(Utility.getRandomDouble * maxV) + 1;
             sortedDictionary[newKey] = newValue;
             avl.Put(newKey, newValue);
             sbt.Put(newKey, newValue);
             skip.Put(newKey, newValue);
 
-            var removeKey = (int)(Utility.GetRandomDouble * maxK) + 1;
+            var removeKey = (int)(Utility.getRandomDouble * maxK) + 1;
             sortedDictionary.Remove(removeKey);
             avl.Remove(removeKey);
             sbt.Remove(removeKey);
             skip.Remove(removeKey);
 
-            var queryKey = (int)(Utility.GetRandomDouble * maxK) + 1;
+            var queryKey = (int)(Utility.getRandomDouble * maxK) + 1;
             if (sortedDictionary.ContainsKey(queryKey) != avl.ContainsKey(queryKey) ||
                 avl.ContainsKey(queryKey) != sbt.ContainsKey(queryKey) ||
                 sbt.ContainsKey(queryKey) != skip.ContainsKey(queryKey))
@@ -355,43 +355,43 @@ public static class Compare
 
         Console.WriteLine("随机加入测试，数据规模 : " + max);
         Utility.RestartStopwatch();
-        for (var i = 0; i < max; i++) sortedDictionary[(int)(Utility.GetRandomDouble * i)] = i;
+        for (var i = 0; i < max; i++) sortedDictionary[(int)(Utility.getRandomDouble * i)] = i;
 
         Console.WriteLine($"sortedDictionary 运行时间{Utility.GetStopwatchElapsedMilliseconds()}ms");
 
         Utility.RestartStopwatch();
-        for (var i = max; i >= 0; i--) avl.Put((int)(Utility.GetRandomDouble * i), i);
+        for (var i = max; i >= 0; i--) avl.Put((int)(Utility.getRandomDouble * i), i);
 
         Console.WriteLine($"avl 运行时间{Utility.GetStopwatchElapsedMilliseconds()}ms");
 
         Utility.RestartStopwatch();
-        for (var i = max; i >= 0; i--) sbt.Put((int)(Utility.GetRandomDouble * i), i);
+        for (var i = max; i >= 0; i--) sbt.Put((int)(Utility.getRandomDouble * i), i);
 
         Console.WriteLine($"sbt 运行时间{Utility.GetStopwatchElapsedMilliseconds()}ms");
 
         Utility.RestartStopwatch();
-        for (var i = max; i >= 0; i--) skip.Put((int)(Utility.GetRandomDouble * i), i);
+        for (var i = max; i >= 0; i--) skip.Put((int)(Utility.getRandomDouble * i), i);
 
         Console.WriteLine($"skip 运行时间{Utility.GetStopwatchElapsedMilliseconds()}ms");
 
         Console.WriteLine("随机删除测试，数据规模 : " + max);
         Utility.RestartStopwatch();
-        for (var i = 0; i < max; i++) sortedDictionary.Remove((int)(Utility.GetRandomDouble * i));
+        for (var i = 0; i < max; i++) sortedDictionary.Remove((int)(Utility.getRandomDouble * i));
 
         Console.WriteLine($"sortedDictionary 运行时间{Utility.GetStopwatchElapsedMilliseconds()}ms");
 
         Utility.RestartStopwatch();
-        for (var i = max; i >= 0; i--) avl.Remove((int)(Utility.GetRandomDouble * i));
+        for (var i = max; i >= 0; i--) avl.Remove((int)(Utility.getRandomDouble * i));
 
         Console.WriteLine($"avl 运行时间{Utility.GetStopwatchElapsedMilliseconds()}ms");
 
         Utility.RestartStopwatch();
-        for (var i = max; i >= 0; i--) sbt.Remove((int)(Utility.GetRandomDouble * i));
+        for (var i = max; i >= 0; i--) sbt.Remove((int)(Utility.getRandomDouble * i));
 
         Console.WriteLine($"sbt 运行时间{Utility.GetStopwatchElapsedMilliseconds()}ms");
 
         Utility.RestartStopwatch();
-        for (var i = max; i >= 0; i--) skip.Remove((int)(Utility.GetRandomDouble * i));
+        for (var i = max; i >= 0; i--) skip.Remove((int)(Utility.getRandomDouble * i));
 
         Console.WriteLine($"skip 运行时间{Utility.GetStopwatchElapsedMilliseconds()}ms");
 

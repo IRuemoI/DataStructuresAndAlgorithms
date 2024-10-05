@@ -208,10 +208,10 @@ public class RestoreWays
     {
         var ans = new int[len];
         for (var i = 0; i < ans.Length; i++)
-            if (Utility.GetRandomDouble < 0.5)
+            if (Utility.getRandomDouble < 0.5)
                 ans[i] = 0;
             else
-                ans[i] = (int)(Utility.GetRandomDouble * 200) + 1;
+                ans[i] = (int)(Utility.getRandomDouble * 200) + 1;
 
         return ans;
     }
@@ -233,7 +233,7 @@ public class RestoreWays
         Console.WriteLine("功能测试开始");
         for (var i = 0; i < testTime; i++)
         {
-            var n1 = (int)(Utility.GetRandomDouble * len) + 2;
+            var n1 = (int)(Utility.getRandomDouble * len) + 2;
             var arrA = GenerateRandomArray(n1);
             var ans0 = Ways0(arrA);
             var ans1 = Ways1(arrA);

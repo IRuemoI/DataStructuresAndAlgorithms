@@ -107,9 +107,9 @@ public class AvgLessEqualValueLongestSubarray
     // 用于测试
     private static int[] RandomArray(int maxLen, int maxValue)
     {
-        var len = (int)(Utility.GetRandomDouble * maxLen) + 1;
+        var len = (int)(Utility.getRandomDouble * maxLen) + 1;
         var ans = new int[len];
-        for (var i = 0; i < len; i++) ans[i] = (int)(Utility.GetRandomDouble * maxValue);
+        for (var i = 0; i < len; i++) ans[i] = (int)(Utility.getRandomDouble * maxValue);
 
         return ans;
     }
@@ -141,7 +141,7 @@ public class AvgLessEqualValueLongestSubarray
         for (var i = 0; i < testTime; i++)
         {
             var arr = RandomArray(maxLen, maxValue);
-            var value = (int)(Utility.GetRandomDouble * maxValue);
+            var value = (int)(Utility.getRandomDouble * maxValue);
             var arr1 = CopyArray(arr);
             var arr2 = CopyArray(arr);
             var arr3 = CopyArray(arr);

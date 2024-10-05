@@ -48,9 +48,9 @@ public class MaxXor
     //用于测试
     private static int[] GetRandomStringArray(int maxSize, int maxValue)
     {
-        var arr = new int[(int)((maxSize + 1) * Utility.GetRandomDouble)];
+        var arr = new int[(int)((maxSize + 1) * Utility.getRandomDouble)];
         for (var i = 0; i < arr.Length; i++)
-            arr[i] = (int)((maxValue + 1) * Utility.GetRandomDouble) - (int)(maxValue * Utility.GetRandomDouble);
+            arr[i] = (int)((maxValue + 1) * Utility.getRandomDouble) - (int)(maxValue * Utility.getRandomDouble);
         return arr;
     }
 
@@ -93,7 +93,7 @@ public class MaxXor
     // nexts[0] != null 0方向有路，可以跳下一个节点
     // nexts[1] == null 1方向上没路！
     // nexts[1] != null 1方向有路，可以跳下一个节点
-    public class Node
+    private class Node
     {
         public readonly Node?[] NextList = new Node[2];
     }
