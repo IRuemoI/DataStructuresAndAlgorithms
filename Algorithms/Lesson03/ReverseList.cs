@@ -35,6 +35,7 @@ public class ReverseList
 
     private static DoubleNode? ReverseDoubleList(DoubleNode? head)
     {
+        //与反转单链表相同，只需要处理prev指针即可
         DoubleNode? pre = null;
         var current = head;
         while (current != null)
