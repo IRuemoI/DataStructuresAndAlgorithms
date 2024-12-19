@@ -82,8 +82,10 @@ public class EncodeNaryTreeToBinaryTree
                 //使用多叉树中子节点的值创建二叉树节点
                 var tNode = new TreeNode(child.Val);
                 
+                //如果当前节点为空，则将当前节点设置为头节点
                 if (head == null)
                     head = tNode;
+                //如果当前节点不为空，则将当前节点的右子节点设置为tNode
                 else if (cur != null) cur.Right = tNode;
 
                 cur = tNode;

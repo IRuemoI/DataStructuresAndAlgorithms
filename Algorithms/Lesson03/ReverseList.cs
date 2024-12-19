@@ -10,25 +10,24 @@ namespace Algorithms.Lesson03;
 
 public class ReverseList
 {
-    //  head
-    //   a    ->   b    ->  c  ->  null
-    //   c    ->   b    ->  a  ->  null
     private static Node? ReverseLinkedList(Node? head)
     {
         //将链表分为两个部分:已反转链表和未反转链表
         //next指向未反转链表的头节点
+        //current指向正在移动的节点
         //pre指向已反转链表的头节点
-        var pre = head;
-        while (head != null)
+        Node? pre = null;
+        var current = head;
+        while (current != null)
         {
             //向右缩短next指向的未反转链表
-            var next = head.Next;
+            var next = current.Next;
             //让原本的下一个节点指向上一个节点
-            head.Next = pre;
+            current.Next = pre;
             //让pre指向已反转链表的头节点
-            pre = head;
+            pre = current;
             //向右扩展已反转区
-            head = next;
+            current = next;
         }
 
         return pre; //返回最终已反转链表的头节点
@@ -37,13 +36,23 @@ public class ReverseList
     private static DoubleNode? ReverseDoubleList(DoubleNode? head)
     {
         DoubleNode? pre = null;
-        while (head != null)
+        var current = head;
+        while (current != null)
         {
-            var next = head.Next;
-            head.Next = pre;
-            head.Last = next;
-            pre = head;
-            head = next;
+            // 保存下一个节点
+            var next = current.Next;
+
+            // 反转当前节点的Next指针
+            current.Next = pre;
+
+            // 反转当前节点的Prev指针
+            current.Prev = next;
+
+            // pre移动到当前节点
+            pre = current;
+
+            // current移动到下一个节点
+            current = next;
         }
 
         return pre;
@@ -84,9 +93,9 @@ public class ReverseList
         for (var i = 1; i < length; i++)
         {
             var cur = list[i];
-            cur.Last = null;
+            cur.Prev = null;
             cur.Next = pre;
-            pre.Last = cur;
+            pre.Prev = cur;
             pre = cur;
         }
 
@@ -126,7 +135,7 @@ public class ReverseList
         {
             var cur = new DoubleNode((int)(Utility.getRandomDouble * (value + 1)));
             pre.Next = cur;
-            cur.Last = pre;
+            cur.Prev = pre;
             pre = cur;
             size--;
         }
@@ -137,7 +146,7 @@ public class ReverseList
     //获取单链表原始顺序
     private static List<int> GetLinkedListOriginOrder(Node? head)
     {
-        List<int> ans = new();
+        List<int> ans = [];
         while (head != null)
         {
             ans.Add(head.Value);
@@ -150,13 +159,43 @@ public class ReverseList
     //检查单链表是否反转成功
     private static bool CheckLinkedListReverse(List<int> origin, Node? head)
     {
-        for (var i = origin.Count - 1; i >= 0; i--)
-            if (head != null)
+        // 检测链表是否有环
+        var validLength = origin.Count;
+        var temp = head;
+        while (temp != null)
+        {
+            temp = temp.Next;
+            validLength--;
+            if (validLength < 0)
             {
-                if (!origin[i].Equals(head.Value)) return false;
-
-                head = head.Next;
+                Console.WriteLine("链表理论上应该遍历完成，但是某个节点上出现了环");
+                return false;
             }
+        }
+
+        // 检查链表是否是列表的逆序
+        for (var i = origin.Count - 1; i >= 0; i--)
+        {
+            if (head == null)
+            {
+                Console.WriteLine("链表比列表短");
+                return false;
+            }
+
+            if (!origin[i].Equals(head.Value))
+            {
+                return false;
+            }
+
+            head = head.Next;
+        }
+
+        // 确保链表没有比列表长
+        if (head != null)
+        {
+            Console.WriteLine("链表比列表长");
+            return false;
+        }
 
         return true;
     }
@@ -177,25 +216,43 @@ public class ReverseList
     //检查双链表是否反转成功
     private static bool CheckDoubleListReverse(List<int> origin, DoubleNode? head)
     {
-        DoubleNode? end = null;
-        for (var i = origin.Count - 1; i >= 0; i--)
-            if (head != null)
-            {
-                if (!origin[i].Equals(head.Value)) return false;
+        // 如果原始列表为空，双链表头也应该是空的
+        if (origin.Count == 0)
+        {
+            return head == null;
+        }
 
-                end = head;
-                head = head.Next;
+        // 从双链表头开始遍历
+        DoubleNode? current = head;
+        int index = origin.Count - 1; // 从原始列表的最后一个元素开始比较
+
+        while (current != null)
+        {
+            // 检查当前节点的值是否与原始列表中对应位置的值相等
+            if (current.Value != origin[index])
+            {
+                return false;
             }
 
-        foreach (var t in origin)
-            if (end != null)
+            // 检查前驱指针是否正确
+            if (current.Prev != null && current.Prev.Next != current)
             {
-                if (!t.Equals(end.Value)) return false;
-
-                end = end.Last;
+                return false;
             }
 
-        return true;
+            // 检查后继指针是否正确
+            if (current.Next != null && current.Next.Prev != current)
+            {
+                return false;
+            }
+
+            // 移动到下一个节点，并更新索引
+            current = current.Next;
+            index--;
+        }
+
+        // 如果所有节点都检查完毕，且索引回到-1，则表示双链表反转成功
+        return index == -1;
     }
 
     public static void Run()
@@ -220,7 +277,7 @@ public class ReverseList
             var list3 = GetDoubleListOriginOrder(node3);
             node3 = ReverseDoubleList(node3);
             if (!CheckDoubleListReverse(list3, node3)) Console.WriteLine("Oops3!");
-
+            
             var node4 = GenerateRandomDoubleList(len, value);
             var list4 = GetDoubleListOriginOrder(node4);
             node4 = TestReverseDoubleList(node4);
@@ -239,7 +296,7 @@ public class ReverseList
     public class DoubleNode(int data)
     {
         public readonly int Value = data;
-        public DoubleNode? Last;
+        public DoubleNode? Prev;
         public DoubleNode? Next;
     }
 }

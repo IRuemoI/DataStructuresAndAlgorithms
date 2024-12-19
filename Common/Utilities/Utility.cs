@@ -185,38 +185,51 @@ public static class Utility
 
     public static void PrintBinaryTreeTest()
     {
+        // var root = new TreeNode<int>()
+        // {
+        //     value = 1,
+        //     leftChild = new TreeNode<int>
+        //     {
+        //         value = 2,
+        //         leftChild = new TreeNode<int>
+        //         {
+        //             value = 4,
+        //             leftChild = new TreeNode<int> { value = 8 },
+        //             rightChild = new TreeNode<int> { value = 9 }
+        //         },
+        //         rightChild = new TreeNode<int>
+        //         {
+        //             value = 5,
+        //             leftChild = new TreeNode<int> { value = 10 },
+        //             rightChild = new TreeNode<int> { value = 11 }
+        //         }
+        //     },
+        //     rightChild = new TreeNode<int>
+        //     {
+        //         value = 3,
+        //         leftChild = new TreeNode<int>
+        //         {
+        //             value = 6,
+        //             leftChild = new TreeNode<int>
+        //             {
+        //                 value = 12,
+        //                 leftChild = new TreeNode<int> { value = 13 }
+        //             }
+        //         },
+        //         rightChild = new TreeNode<int> { value = 7 }
+        //     }
+        // };
+        
         var root = new TreeNode<int>()
         {
             value = 1,
             leftChild = new TreeNode<int>
             {
-                value = 2,
-                leftChild = new TreeNode<int>
-                {
-                    value = 4,
-                    leftChild = new TreeNode<int> { value = 8 },
-                    rightChild = new TreeNode<int> { value = 9 }
-                },
-                rightChild = new TreeNode<int>
-                {
-                    value = 5,
-                    leftChild = new TreeNode<int> { value = 10 },
-                    rightChild = new TreeNode<int> { value = 11 }
-                }
+                value = 2
             },
             rightChild = new TreeNode<int>
             {
-                value = 3,
-                leftChild = new TreeNode<int>
-                {
-                    value = 6,
-                    leftChild = new TreeNode<int>
-                    {
-                        value = 12,
-                        leftChild = new TreeNode<int> { value = 13 }
-                    }
-                },
-                rightChild = new TreeNode<int> { value = 7 }
+                value = 3
             }
         };
         PrintBinaryTree(root);
