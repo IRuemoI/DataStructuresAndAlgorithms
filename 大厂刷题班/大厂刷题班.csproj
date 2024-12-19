@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>AdvancedTraining</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\通用代码\通用代码.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="Utilities\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Remove="Utilities\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Utilities\**"/>
+    </ItemGroup>
+
+</Project>
