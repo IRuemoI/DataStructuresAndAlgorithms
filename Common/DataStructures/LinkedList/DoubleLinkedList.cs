@@ -20,29 +20,35 @@ public class DoubleLinkedList : ICloneable
     private DNode? _head;
     private DNode? _tail;
 
-    private bool IsEmpty => _head == null && _tail == null;
+    private bool isEmpty => _head == null && _tail == null;
 
     private static DNode? Reverse(DNode? head)
     {
-        //将链表分为两个部分：已反转链表和未反转链表
+        //将链表分为两个部分:已反转链表和未反转链表
         //next指向未反转链表的头节点
+        //current指向正在移动的节点
         //pre指向已反转链表的头节点
-        var pre = head;
-        while (head != null)
+        DNode? pre = null;
+        var current = head;
+        while (current != null)
         {
-            //缩短next指向的未反转链表
-            var next = head.Next;
-            //让原本的下一个节点指向上一个节点
-            head.Next = pre;
-            //让原本的上一个节点指向下一个节点
-            head.Pre = next;
-            //让pre指向已反转链表的头节点
-            pre = head;
-            //向右扩展已反转区
-            head = next;
+            // 保存下一个节点
+            var next = current.Next;
+
+            // 反转当前节点的Next指针
+            current.Next = pre;
+
+            // 反转当前节点的Prev指针
+            current.Pre = next;
+
+            // pre移动到当前节点
+            pre = current;
+
+            // current移动到下一个节点
+            current = next;
         }
 
-        return pre; //返回最终已反转链表的头节点
+        return pre;
     }
 
     private void AddAtHead(int value)
@@ -255,39 +261,56 @@ public class DoubleLinkedList : ICloneable
 
     private static bool CheckReverse(List<int>? origin, DNode? head)
     {
-        DNode? end = null;
-        if (origin != null)
+        // 如果原始列表为空，双链表头也应该是空的
+        if (origin.Count == 0)
         {
-            for (var i = origin.Count - 1; i >= 0; i--)
-                if (head != null)
-                {
-                    if (!origin[i].Equals(head.Value)) return false;
-                    end = head;
-                    head = head.Next;
-                }
-
-            for (var i = 0; i < origin.Count(); i++)
-                if (end != null)
-                {
-                    if (!origin[i].Equals(end.Value)) return false;
-                    end = end.Pre;
-                }
+            return head == null;
         }
 
-        return true;
+        // 从双链表头开始遍历
+        DNode? current = head;
+        int index = origin.Count - 1; // 从原始列表的最后一个元素开始比较
+
+        while (current != null)
+        {
+            // 检查当前节点的值是否与原始列表中对应位置的值相等
+            if (current.Value != origin[index])
+            {
+                return false;
+            }
+
+            // 检查前驱指针是否正确
+            if (current.Pre != null && current.Pre.Next != current)
+            {
+                return false;
+            }
+
+            // 检查后继指针是否正确
+            if (current.Next != null && current.Next.Pre != current)
+            {
+                return false;
+            }
+
+            // 移动到下一个节点，并更新索引
+            current = current.Next;
+            index--;
+        }
+
+        // 如果所有节点都检查完毕，且索引回到-1，则表示双链表反转成功
+        return index == -1;
     }
 
     public static void Run()
     {
         //双链表测试
         var doubleLinkedList = new DoubleLinkedList();
-        Console.WriteLine(doubleLinkedList.IsEmpty);
+        Console.WriteLine(doubleLinkedList.isEmpty);
         doubleLinkedList.AddAtHead(0);
         doubleLinkedList.AddAtHead(1);
         doubleLinkedList.AddAtHead(2);
         doubleLinkedList.AddAtTail(3);
         doubleLinkedList.AddAtTail(4);
-        Console.WriteLine(doubleLinkedList.IsEmpty);
+        Console.WriteLine(doubleLinkedList.isEmpty);
         var copy = (DoubleLinkedList)doubleLinkedList.Clone();
         doubleLinkedList.Print();
         Console.WriteLine(doubleLinkedList.RemoveAt(3)?.Value);

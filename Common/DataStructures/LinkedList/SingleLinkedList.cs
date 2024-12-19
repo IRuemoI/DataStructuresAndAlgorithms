@@ -1,4 +1,6 @@
-﻿#region
+﻿//测试通过
+
+#region
 
 using Common.Utilities;
 
@@ -16,24 +18,26 @@ public class SingleLinkedList : ICloneable
 {
     private SNode? _head;
 
-    private bool IsEmpty => _head == null;
+    private bool isEmpty => _head == null;
 
     private static SNode? Reverse(SNode? head)
     {
         //将链表分为两个部分:已反转链表和未反转链表
         //next指向未反转链表的头节点
+        //current指向正在移动的节点
         //pre指向已反转链表的头节点
-        var pre = head;
-        while (head != null)
+        SNode? pre = null;
+        var current = head;
+        while (current != null)
         {
-            //缩短next指向的未反转链表
-            var next = head.Next;
+            //向右缩短next指向的未反转链表
+            var next = current.Next;
             //让原本的下一个节点指向上一个节点
-            head.Next = pre;
+            current.Next = pre;
             //让pre指向已反转链表的头节点
-            pre = head;
+            pre = current;
             //向右扩展已反转区
-            head = next;
+            current = next;
         }
 
         return pre; //返回最终已反转链表的头节点
@@ -241,13 +245,13 @@ public class SingleLinkedList : ICloneable
     {
         //单链表测试
         var singleLinkedList = new SingleLinkedList();
-        Console.WriteLine(singleLinkedList.IsEmpty);
+        Console.WriteLine(singleLinkedList.isEmpty);
         singleLinkedList.AddAtHead(0);
         singleLinkedList.AddAtHead(1);
         singleLinkedList.AddAtHead(2);
         singleLinkedList.AddAtTail(3);
         singleLinkedList.AddAtTail(4);
-        Console.WriteLine(singleLinkedList.IsEmpty);
+        Console.WriteLine(singleLinkedList.isEmpty);
         var copy = (SingleLinkedList)singleLinkedList.Clone();
         singleLinkedList.Print();
         Console.WriteLine(singleLinkedList.RemoveAt(3)?.Value);
