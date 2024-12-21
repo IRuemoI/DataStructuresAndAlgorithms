@@ -26,7 +26,7 @@ public class MaxAltitude
             }
 
             // 将当前高度添加到双向链表
-            deque.AddLast(heights[i]);
+            deque.AddLast(heights[i]);   
         }
 
         // 如果双向链表为空，则返回结果数组

@@ -28,20 +28,22 @@ public class SlidingWindowMaxArray
     private static int[]? GetMaxWindow(int[]? arr, int w)
     {
         if (arr == null || w < 1 || arr.Length < w) return null;
-        // qmax 窗口最大值的更新结构
-        // 放下标
-        LinkedList<int> qMax = new();
-        var res = new int[arr.Length - w + 1];
+        LinkedList<int> queueMax = new();
+        var result = new int[arr.Length - w + 1];
         var index = 0;
         for (var r = 0; r < arr.Length; r++)
         {
-            while (qMax.Count != 0 && arr[qMax.Last()] <= arr[r]) qMax.RemoveLast();
-            qMax.AddLast(r);
-            if (qMax.First() == r - w) qMax.RemoveFirst();
-            if (r >= w - 1) res[index++] = arr[qMax.First()];
+            //如果新的要添加到双向链表的新元素大于链表下标代表的原始值。那么将这些值对应的下标以从尾部移除方式进行移除
+            while (queueMax.Count != 0 && arr[queueMax.Last()] <= arr[r]) queueMax.RemoveLast();
+            //将新元素的下标添加到双向链表尾部
+            queueMax.AddLast(r);
+            //如果双向链表头部下标对应的元素已经过期，移除过期的所引
+            if (queueMax.First() == r - w) queueMax.RemoveFirst();
+            //只有在窗口的大小达到规定的大小时才会收集答案
+            if (r >= w - 1) result[index++] = arr[queueMax.First()];
         }
 
-        return res;
+        return result;
     }
 
     //用于测试
