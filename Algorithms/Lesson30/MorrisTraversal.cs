@@ -166,7 +166,7 @@ public class MorrisTraversal
         return pre;
     }
 
-    //���ڲ��� -- print tree
+    //打印tree
     private static void PrintTree(Node head)
     {
         Console.WriteLine("Binary Tree:");

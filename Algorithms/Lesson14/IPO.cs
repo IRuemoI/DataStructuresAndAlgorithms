@@ -16,8 +16,6 @@ public class Ipo
     // 返回最终最大的资金
     private static int FindMaximizedCapital(int k, int w, int[] profits, int[] capital)
     {
-        // var minCostQ = new MinHeap<Project>((x, y) => x.C - y.C);
-        // var maxProfitQ = new MinHeap<Project>((x, y) => y.C - x.C);
         var minCostQ = new Heap<Project>((x, y) => x.C - y.C);
         var maxProfitQ = new Heap<Project>((x, y) => x.C - y.C);
 

@@ -8,10 +8,11 @@ using Common.Utilities;
 
 namespace Algorithms.Lesson12;
 
+// 判断一棵二叉树是否是完全二叉树
 public class IsCbt
 {
     private static bool IsCbt1(Node? head)
-    {
+    { 
         if (head == null) return true;
 
         Queue<Node> queue = new();
@@ -128,30 +129,18 @@ public class IsCbt
         Console.WriteLine("测试完成");
     }
 
-    private class Node
+    private class Node(int data)
     {
         public Node? Left;
         public Node? Right;
-        public int Value;
-
-        public Node(int data)
-        {
-            Value = data;
-        }
+        public int Value = data;
     }
 
     // 对每一棵子树，是否是满二叉树、是否是完全二叉树、高度
-    private class Info
+    private class Info(bool full, bool cbt, int h)
     {
-        public readonly int Height;
-        public readonly bool IsCbt;
-        public readonly bool IsFull;
-
-        public Info(bool full, bool cbt, int h)
-        {
-            IsFull = full;
-            IsCbt = cbt;
-            Height = h;
-        }
+        public readonly int Height = h;
+        public readonly bool IsCbt = cbt;
+        public readonly bool IsFull = full;
     }
 }

@@ -1,4 +1,3 @@
-//通过
 
 #region
 
@@ -49,15 +48,12 @@ public class IsBalanced
 
         return new Info(isBalanced, height);
     }
-
-
-    //���ڲ���
+    
     private static Node? GenerateRandomBst(int maxLevel, int maxValue)
     {
         return Generate(1, maxLevel, maxValue);
     }
-
-    //���ڲ���
+    
     private static Node? Generate(int level, int maxLevel, int maxValue)
     {
         if (level > maxLevel || Utility.getRandomDouble < 0.5) return null;
@@ -78,22 +74,17 @@ public class IsBalanced
         for (var i = 0; i < testTimes; i++)
         {
             var head = GenerateRandomBst(maxLevel, maxValue);
-            if (head != null && IsBalanced1(head) != IsBalanced2(head)) Console.WriteLine("��������");
+            if (head != null && IsBalanced1(head) != IsBalanced2(head)) Console.WriteLine("出错了！");
         }
 
         Console.WriteLine("测试完成");
     }
 
-    private class Node
+    private class Node(int data)
     {
         public Node? Left;
         public Node? Right;
-        public int Value;
-
-        public Node(int data)
-        {
-            Value = data;
-        }
+        public int Value = data;
     }
 
     private class Info

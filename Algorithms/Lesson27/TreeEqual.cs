@@ -121,13 +121,13 @@ public class TreeEqual
         return a.Equals(b);
     }
 
-    //���ڲ���
+    
     private static Node? GenerateRandomBst(int maxLevel, int maxValue)
     {
         return Generate(1, maxLevel, maxValue);
     }
 
-    //���ڲ���
+    
     private static Node? Generate(int level, int maxLevel, int maxValue)
     {
         if (level > maxLevel || new Random().NextDouble() < 0.5) return null;
@@ -153,7 +153,7 @@ public class TreeEqual
             var small = GenerateRandomBst(smallTreeLevel, nodeMaxValue);
             var ans1 = ContainsTree1(big, small);
             var ans2 = ContainsTree2(big, small);
-            if (ans1 != ans2) Console.WriteLine("��������");
+            if (ans1 != ans2) Console.WriteLine("出错了！");
         }
 
         Console.WriteLine("测试完成");

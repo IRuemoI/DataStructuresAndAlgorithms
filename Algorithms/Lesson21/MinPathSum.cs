@@ -49,7 +49,7 @@ public class MinPathSum
     }
 
 
-    //���ڲ���
+    
     private static int[,]? GenerateRandomMatrix(int rowSize, int colSize)
     {
         if (rowSize < 0 || colSize < 0) return null;
@@ -62,7 +62,7 @@ public class MinPathSum
         return result;
     }
 
-    //���ڲ���
+    
     private static void PrintMatrix(int[,] matrix)
     {
         for (var i = 0; i != matrix.Length; i++)

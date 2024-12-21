@@ -8,6 +8,7 @@ using Common.Utilities;
 
 namespace Algorithms.Lesson12;
 
+//二叉树是否是二叉搜索树
 public class IsBst
 {
     private static bool IsBst1(Node? head)
@@ -64,14 +65,12 @@ public class IsBst
 
         return new Info(isBst, max, min);
     }
-
-    //���ڲ���
+    
     private static Node? GenerateRandomBst(int maxLevel, int maxValue)
     {
         return Generate(1, maxLevel, maxValue);
     }
-
-    //���ڲ���
+    
     private static Node? Generate(int level, int maxLevel, int maxValue)
     {
         if (level > maxLevel || Utility.getRandomDouble < 0.5) return null;
@@ -92,35 +91,23 @@ public class IsBst
         for (var i = 0; i < testTimes; i++)
         {
             var head = GenerateRandomBst(maxLevel, maxValue);
-            if (IsBst1(head) != IsBst2(head)) Console.WriteLine("��������");
+            if (IsBst1(head) != IsBst2(head)) Console.WriteLine("出错了！");
         }
 
         Console.WriteLine("测试完成");
     }
 
-    private class Node
+    private class Node(int data)
     {
-        public readonly int Value;
+        public readonly int Value = data;
         public Node? Left;
         public Node? Right;
-
-        public Node(int data)
-        {
-            Value = data;
-        }
     }
 
-    private class Info
+    private class Info(bool i, int ma, int mi)
     {
-        public readonly bool IsBst;
-        public readonly int Max;
-        public readonly int Min;
-
-        public Info(bool i, int ma, int mi)
-        {
-            IsBst = i;
-            Max = ma;
-            Min = mi;
-        }
+        public readonly bool IsBst = i;
+        public readonly int Max = ma;
+        public readonly int Min = mi;
     }
 }

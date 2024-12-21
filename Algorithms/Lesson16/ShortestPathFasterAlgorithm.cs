@@ -60,10 +60,9 @@ public class ShortestPathFasterAlgorithm
     public static void Run()
     {
         var br = new StreamReader(new FileStream(
-            @"D:\Code\CS\DataStructuresAndAlgorithms\Algorithms\Lesson\Lesson16\SPFA-input.txt", FileMode.Open));
+            @"D:\Code\CS\DataStructuresAndAlgorithms\Algorithms\Lesson16\SPFA-input.txt", FileMode.Open));
         var @out = new StreamWriter(new FileStream(
-            @"D:\Code\CS\DataStructuresAndAlgorithms\Algorithms\Lesson\Lesson16\SPFA-output.txt",
-            FileMode.OpenOrCreate));
+            @"D:\Code\CS\DataStructuresAndAlgorithms\Algorithms\Lesson16\SPFA-output.txt", FileMode.OpenOrCreate));
         var cases = int.Parse(br.ReadLine() ?? string.Empty);
         for (var i = 0; i < cases; i++)
         {

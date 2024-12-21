@@ -14,7 +14,7 @@ public class MaxSubBstSize
     {
         if (head == null) return 0;
 
-        List<Node> arr = new();
+        List<Node> arr = [];
         In1(head, arr);
         for (var i = 1; i < arr.Count; i++)
             if (arr[i].Value <= arr[i - 1].Value)

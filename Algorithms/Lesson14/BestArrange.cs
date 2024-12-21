@@ -11,7 +11,7 @@ namespace Algorithms.Lesson14;
 public class BestArrange
 {
     // 暴力！所有情况都尝试！
-    private static int BestArrange1(Program1[]? programs)
+    private static int BestArrange1(ProgramItem[]? programs)
     {
         if (programs == null || programs.Length == 0) return 0;
 
@@ -24,7 +24,7 @@ public class BestArrange
 
     // 目前来到timeLine的时间点，已经安排了done多的会议，剩下的会议programs可以自由安排
     // 返回能安排的最多会议数量
-    private static int Process(Program1[] programs, int done, int timeLine)
+    private static int Process(ProgramItem[] programs, int done, int timeLine)
     {
         if (programs.Length == 0) return done;
 
@@ -41,9 +41,9 @@ public class BestArrange
         return max;
     }
 
-    private static Program1[] CopyButExcept(Program1[] programs, int i)
+    private static ProgramItem[] CopyButExcept(ProgramItem[] programs, int i)
     {
-        var ans = new Program1[programs.Length - 1];
+        var ans = new ProgramItem[programs.Length - 1];
         var index = 0;
         for (var k = 0; k < programs.Length; k++)
             if (k != i)
@@ -53,7 +53,7 @@ public class BestArrange
     }
 
     // 会议的开始时间和结束时间，都是数值，不会 < 0
-    private static int BestArrange2(Program1[] programs)
+    private static int BestArrange2(ProgramItem[] programs)
     {
         Array.Sort(programs, (a, b) => a.End - b.End);
         var timeLine = 0;
@@ -70,17 +70,17 @@ public class BestArrange
     }
 
     //用于测试
-    private static Program1[] GeneratePrograms(int programSize, int timeMax)
+    private static ProgramItem[] GeneratePrograms(int programSize, int timeMax)
     {
-        var ans = new Program1[(int)(Utility.getRandomDouble * (programSize + 1))];
+        var ans = new ProgramItem[(int)(Utility.getRandomDouble * (programSize + 1))];
         for (var i = 0; i < ans.Length; i++)
         {
             var r1 = (int)(Utility.getRandomDouble * (timeMax + 1));
             var r2 = (int)(Utility.getRandomDouble * (timeMax + 1));
             if (r1 == r2)
-                ans[i] = new Program1(r1, r1 + 1);
+                ans[i] = new ProgramItem(r1, r1 + 1);
             else
-                ans[i] = new Program1(Math.Min(r1, r2), Math.Max(r1, r2));
+                ans[i] = new ProgramItem(Math.Min(r1, r2), Math.Max(r1, r2));
         }
 
         return ans;
@@ -100,15 +100,9 @@ public class BestArrange
         Console.WriteLine("测试完成");
     }
 
-    private class Program1
+    private class ProgramItem(int start, int end)
     {
-        public readonly int End;
-        public readonly int Start;
-
-        public Program1(int start, int end)
-        {
-            Start = start;
-            End = end;
-        }
+        public readonly int End = end;
+        public readonly int Start = start;
     }
 }

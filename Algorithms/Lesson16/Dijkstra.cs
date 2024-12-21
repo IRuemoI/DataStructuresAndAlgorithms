@@ -208,10 +208,7 @@ public static class Dijkstra
             (_nodes[index1], _nodes[index2]) = (_nodes[index2], _nodes[index1]);
         }
     }
-}
-
-public static class DijkstraTest
-{
+    
     public static void Run()
     {
         int[,] matrix =
@@ -229,11 +226,11 @@ public static class DijkstraTest
         };
         var graph = GraphGenerator.CreateGraph(matrix, GraphType.Directed);
         Console.WriteLine("迪杰斯特拉算法1:");
-        foreach (var keyValuePair in Dijkstra.Dijkstra1(graph.Dots[0]!).OrderBy(x => x.Key.Label))
+        foreach (var keyValuePair in Dijkstra1(graph.Dots[0]!).OrderBy(x => x.Key.Label))
             Console.WriteLine(keyValuePair.Key.Label + " : " + keyValuePair.Value);
 
         Console.WriteLine("迪杰斯特拉算法2:");
-        foreach (var keyValuePair in Dijkstra.Dijkstra2(graph.Dots[0]!, 7).OrderBy(x => x.Key.Label))
+        foreach (var keyValuePair in Dijkstra2(graph.Dots[0]!, 7).OrderBy(x => x.Key.Label))
             Console.WriteLine(keyValuePair.Key.Label + " : " + keyValuePair.Value);
     }
 }

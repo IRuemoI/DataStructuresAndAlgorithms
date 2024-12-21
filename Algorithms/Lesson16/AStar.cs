@@ -3,7 +3,7 @@ using Common.Utilities;
 
 namespace Algorithms.Lesson16;
 
-// A*算法模版（对数器验证）
+// A*算法模版（对数器验证） 相关视频：B站左程云23版系列
 public class AStar
 {
     // 0:上，1:右，2:下，3:左

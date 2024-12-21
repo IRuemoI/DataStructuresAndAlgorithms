@@ -64,7 +64,7 @@ public class MaxDistance
 
     private static int Distance(Dictionary<Node, Node?> parentMap, Node? o1, Node? o2)
     {
-        HashSet<Node?> o1Set = new();
+        HashSet<Node?> o1Set = [];
         var cur = o1;
         o1Set.Add(cur);
         while (parentMap[cur ?? throw new InvalidOperationException()] != null)
@@ -95,34 +95,7 @@ public class MaxDistance
 
         return distance1 + distance2 - 1;
     }
-
-//	private static int maxDistance2(Node head) {
-//		return process(head).maxDistance;
-//	}
-//
-//	public static class Info {
-//		public int maxDistance;
-//		public int height;
-//
-//		public Info(int dis, int h) {
-//			maxDistance = dis;
-//			height = h;
-//		}
-//	}
-//
-//	private static Info process(Node X) {
-//		if (X == null) {
-//			return new Info(0, 0);
-//		}
-//		Info leftInfo = process(X.left);
-//		Info rightInfo = process(X.right);
-//		int height = Math.Max(leftInfo.height, rightInfo.height) + 1;
-//		int maxDistance = Math.Max(
-//				Math.Max(leftInfo.maxDistance, rightInfo.maxDistance),
-//				leftInfo.height + rightInfo.height + 1);
-//		return new Info(maxDistance, height);
-//	}
-
+    
     private static int MaxDistance2(Node? head)
     {
         return Process(head).MaxDistance;
@@ -141,14 +114,12 @@ public class MaxDistance
         var maxDistance = Math.Max(Math.Max(p1, p2), p3);
         return new Info(maxDistance, height);
     }
-
-    //���ڲ���
+    
     private static Node? GenerateRandomBst(int maxLevel, int maxValue)
     {
         return Generate(1, maxLevel, maxValue);
     }
-
-    //���ڲ���
+    
     private static Node? Generate(int level, int maxLevel, int maxValue)
     {
         if (level > maxLevel || Utility.getRandomDouble < 0.5) return null;
@@ -169,7 +140,7 @@ public class MaxDistance
         for (var i = 0; i < testTimes; i++)
         {
             var head = GenerateRandomBst(maxLevel, maxValue);
-            if (MaxDistance1(head) != MaxDistance2(head)) Console.WriteLine("��������");
+            if (MaxDistance1(head) != MaxDistance2(head)) Console.WriteLine("出错了！");
         }
 
         Console.WriteLine("测试完成");

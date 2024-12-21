@@ -39,17 +39,17 @@ public class CopyListWithRandom
         if (head == null) return null; //空链表直接返回
 
         var current = head;
-        Node? next;
+        Node? originNext;
 
         // 将原链表的每个节点复制并发到本节点的后方
         while (current != null)
         {
-            next = current.Next;
+            originNext = current.Next;
             current.Next = new Node(current.Value)
             {
-                Next = next
+                Next = originNext
             };
-            current = next;
+            current = originNext;
         }
 
         // 复制各节点的random指向
@@ -57,10 +57,10 @@ public class CopyListWithRandom
         Node? currentCopy;
         while (current != null)
         {
-            next = current.Next?.Next;
+            originNext = current.Next?.Next;
             currentCopy = current.Next;
             if (currentCopy != null) currentCopy.Rand = current.Rand?.Next;
-            current = next;
+            current = originNext;
         }
 
         // 新链表的头节点是原链表头节点的下个节点
@@ -70,11 +70,11 @@ public class CopyListWithRandom
         current = head;
         while (current != null)
         {
-            next = current.Next?.Next;
+            originNext = current.Next?.Next;
             currentCopy = current.Next;
-            current.Next = next;
-            if (currentCopy != null) currentCopy.Next = next?.Next;
-            current = next;
+            current.Next = originNext;
+            if (currentCopy != null) currentCopy.Next = originNext?.Next;
+            current = originNext;
         }
 
         return newHead;
@@ -201,7 +201,7 @@ public class CopyListWithRandom
     public static void Run()
     {
         const int maxLength = 30;
-        const int testTimes = 3;
+        const int testTimes = 10;
         var randomGen = new Random();
         for (var i = 0; i < testTimes; i++)
         {

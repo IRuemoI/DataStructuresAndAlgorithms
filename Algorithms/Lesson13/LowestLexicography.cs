@@ -8,6 +8,7 @@ using Common.Utilities;
 
 namespace Algorithms.Lesson13;
 
+//最小的字典序
 public class LowestLexicography
 {
     private static string LowestString1(string?[] strings)
@@ -114,13 +115,5 @@ public class LowestLexicography
         }
 
         Console.WriteLine("测试完成");
-    }
-
-    public class MyComparator : IComparable<string>
-    {
-        public int CompareTo(string? other)
-        {
-            return string.Compare(this + other, other + this, StringComparison.Ordinal);
-        }
     }
 }

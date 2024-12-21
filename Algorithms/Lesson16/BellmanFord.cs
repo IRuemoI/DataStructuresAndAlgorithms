@@ -1,4 +1,5 @@
-﻿namespace Algorithms.Lesson16;
+﻿//通过
+namespace Algorithms.Lesson16;
 
 // Bellman-Ford算法应用（不是模版）
 // k站中转内最便宜的航班

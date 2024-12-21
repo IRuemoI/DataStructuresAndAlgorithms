@@ -23,7 +23,7 @@ public class IndexTree
             }
             else
             {
-                if (tree.Sum(index) != test.Sum(index)) Console.WriteLine("��������");
+                if (tree.Sum(index) != test.Sum(index)) Console.WriteLine("出错了！");
             }
         }
 

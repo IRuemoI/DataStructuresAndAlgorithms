@@ -247,6 +247,7 @@ public class SingleLinkedList : ICloneable
         var singleLinkedList = new SingleLinkedList();
         Console.WriteLine(singleLinkedList.isEmpty);
         singleLinkedList.AddAtHead(0);
+        singleLinkedList.AddAtHead(0);
         singleLinkedList.AddAtHead(1);
         singleLinkedList.AddAtHead(2);
         singleLinkedList.AddAtTail(3);

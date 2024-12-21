@@ -13,7 +13,7 @@ public class Light
     private static int MinLight1(string road)
     {
         if (string.IsNullOrEmpty(road)) return 0;
-        return Process(road.ToCharArray(), 0, new HashSet<int>());
+        return Process(road.ToCharArray(), 0, []);
     }
 
     // str[index....]位置，自由选择放灯还是不放灯

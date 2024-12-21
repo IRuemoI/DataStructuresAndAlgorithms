@@ -52,13 +52,13 @@ public class IsFull
         return new Info(height, nodes);
     }
 
-    //���ڲ���
+    
     private static Node? GenerateRandomBst(int maxLevel, int maxValue)
     {
         return Generate(1, maxLevel, maxValue);
     }
 
-    //���ڲ���
+    
     private static Node? Generate(int level, int maxLevel, int maxValue)
     {
         if (level > maxLevel || Utility.getRandomDouble < 0.5) return null;
@@ -79,33 +79,22 @@ public class IsFull
         for (var i = 0; i < testTimes; i++)
         {
             var head = GenerateRandomBst(maxLevel, maxValue);
-            if (IsFull1(head) != IsFull2(head)) Console.WriteLine("��������");
+            if (IsFull1(head) != IsFull2(head)) Console.WriteLine("出错了！");
         }
 
         Console.WriteLine("测试完成");
     }
 
-    private class Node
+    private class Node(int data)
     {
         public Node? Left;
         public Node? Right;
-        public int Value;
-
-        public Node(int data)
-        {
-            Value = data;
-        }
+        public int Value = data;
     }
 
-    private class Info
+    private class Info(int h, int n)
     {
-        public readonly int Height;
-        public readonly int Nodes;
-
-        public Info(int h, int n)
-        {
-            Height = h;
-            Nodes = n;
-        }
+        public readonly int Height = h;
+        public readonly int Nodes = n;
     }
 }
