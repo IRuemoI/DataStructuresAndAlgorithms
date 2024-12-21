@@ -21,7 +21,7 @@ public class RobotWalk
     // 机器人还有rest步需要去走，
     // 最终的目标是aim，
     // 有哪些位置？1~N
-    // 返回：机器人从cur出发，走过rest步之后，最终停在aim的方法数，是多少？
+    // 返回：机器人从cur出发，走过rest步之后，最终停在aim的方案数，是多少？
     private static int Process1(int cur, int rest, int target, int n)
     {
         if (rest == 0)
