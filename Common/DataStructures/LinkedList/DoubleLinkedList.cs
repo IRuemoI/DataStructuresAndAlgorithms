@@ -259,7 +259,7 @@ public class DoubleLinkedList : ICloneable
     }
 
 
-    private static bool CheckReverse(List<int>? origin, DNode? head)
+    private static bool CheckReverse(List<int> origin, DNode? head)
     {
         // 如果原始列表为空，双链表头也应该是空的
         if (origin.Count == 0)

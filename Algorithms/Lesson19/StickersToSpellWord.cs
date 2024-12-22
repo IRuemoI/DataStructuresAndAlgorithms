@@ -12,7 +12,7 @@ namespace Algorithms.Lesson19;
 // 本题测试链接：https://leetcode.cn/problems/stickers-to-spell-word
 public static class StickersToSpellWord
 {
-    public static int MinStickers1(string[] stickers, string target)
+    private static int MinStickers1(string[] stickers, string target)
     {
         var ans = Process1(stickers, target);
         return ans == int.MaxValue ? -1 : ans;
@@ -25,16 +25,17 @@ public static class StickersToSpellWord
     {
         if (target.Length == 0) return 0;
 
-        var min = int.MaxValue;
+        var min = int.MaxValue;//刚开始是最大值，表示无效
         foreach (var first in stickers)
         {
-            var rest = Minus(target, first);
-            if (rest.Length != target.Length) min = Math.Min(min, Process1(stickers, rest));
+            var rest = Minus(target, first);//减去第一个贴纸
+            if (rest.Length != target.Length) min = Math.Min(min, Process1(stickers, rest));//如果能让剩余的匹配目标减小,说明有效
         }
 
-        return min + (min == int.MaxValue ? 0 : 1);
+        return min + (min == int.MaxValue ? 0 : 1);//当可行方案中有第一个可用贴纸时，min=1,当整个方案不可用时min始终为整型最大值
     }
 
+    // 将贴纸中的已有字符从目标中减去
     private static string Minus(string s1, string s2)
     {
         var str1 = s1.ToCharArray();
@@ -53,7 +54,7 @@ public static class StickersToSpellWord
         return builder.ToString();
     }
 
-    public static int MinStickers2(string[] stickers, string target)
+    private static int MinStickers2(string[] stickers, string target)
     {
         var n = stickers.Length;
         // 关键优化(用词频表替代贴纸数组)
@@ -110,7 +111,7 @@ public static class StickersToSpellWord
         return min + (min == int.MaxValue ? 0 : 1);
     }
 
-    public static int MinStickers3(string[] stickers, string target)
+    private static int MinStickers3(string[] stickers, string target)
     {
         var n = stickers.Length;
         var counts = new int[n][];
@@ -159,10 +160,6 @@ public static class StickersToSpellWord
         dp.Add(t, ans);
         return ans;
     }
-}
-
-public class StickerTest
-{
     public static void Run()
     {
         string[] stickers1 = ["with", "example", "science"];
@@ -172,23 +169,23 @@ public class StickerTest
 
 
         Utility.RestartStopwatch();
-        Console.WriteLine("方法1结果:" + StickersToSpellWord.MinStickers1(stickers1, target1) + ",耗时:" +
+        Console.WriteLine("方法1结果:" + MinStickers1(stickers1, target1) + ",耗时:" +
                           Utility.GetStopwatchElapsedMilliseconds() + "ms");
         Utility.RestartStopwatch();
-        Console.WriteLine("方法2结果:" + StickersToSpellWord.MinStickers2(stickers1, target1) + ",耗时:" +
+        Console.WriteLine("方法2结果:" + MinStickers2(stickers1, target1) + ",耗时:" +
                           Utility.GetStopwatchElapsedMilliseconds() + "ms");
         Utility.RestartStopwatch();
-        Console.WriteLine("方法3结果:" + StickersToSpellWord.MinStickers3(stickers1, target1) + ",耗时:" +
+        Console.WriteLine("方法3结果:" + MinStickers3(stickers1, target1) + ",耗时:" +
                           Utility.GetStopwatchElapsedMilliseconds() + "ms");
         Console.WriteLine("----------");
         Utility.RestartStopwatch();
-        Console.WriteLine("方法1结果:" + StickersToSpellWord.MinStickers1(stickers2, target2) + ",耗时:" +
+        Console.WriteLine("方法1结果:" + MinStickers1(stickers2, target2) + ",耗时:" +
                           Utility.GetStopwatchElapsedMilliseconds() + "ms");
         Utility.RestartStopwatch();
-        Console.WriteLine("方法2结果:" + StickersToSpellWord.MinStickers2(stickers2, target2) + ",耗时:" +
+        Console.WriteLine("方法2结果:" + MinStickers2(stickers2, target2) + ",耗时:" +
                           Utility.GetStopwatchElapsedMilliseconds() + "ms");
         Utility.RestartStopwatch();
-        Console.WriteLine("方法3结果:" + StickersToSpellWord.MinStickers3(stickers2, target2) + ",耗时:" +
+        Console.WriteLine("方法3结果:" + MinStickers3(stickers2, target2) + ",耗时:" +
                           Utility.GetStopwatchElapsedMilliseconds() + "ms");
     }
 }
