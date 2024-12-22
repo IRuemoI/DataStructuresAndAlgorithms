@@ -11,7 +11,8 @@ namespace Algorithms.Lesson20;
 // 测试链接：https://leetcode.cn/problems/longest-palindromic-subsequence/
 public static class PalindromeSubsequence
 {
-    public static int Code1(string? s)
+    //范围尝试模型，暴力递归
+    private static int Code1(string? s)
     {
         if (string.IsNullOrEmpty(s)) return 0;
 
@@ -22,18 +23,19 @@ public static class PalindromeSubsequence
     // str[L..R]最长回文子序列长度返回
     private static int F(char[] str, int l, int r)
     {
-        if (l == r) return 1;
+        if (l == r) return 1; //如果区间上只剩下一个字符，回文长度为1
 
-        if (l == r - 1) return str[l] == str[r] ? 2 : 1;
+        if (l == r - 1) return str[l] == str[r] ? 2 : 1; //如果区间上剩下两个字符，如果两个字符相同，回文长度为2，否则长度为1
 
-        var p1 = F(str, l + 1, r - 1);
-        var p2 = F(str, l, r - 1);
-        var p3 = F(str, l + 1, r);
-        var p4 = str[l] != str[r] ? 0 : 2 + F(str, l + 1, r - 1);
+        var p1 = F(str, l + 1, r - 1); //如果去掉区间两端的字符可以构成回文
+        var p2 = F(str, l, r - 1); //如果去掉区间右端的字符可以构成回文
+        var p3 = F(str, l + 1, r); //如果去掉区间左端的字符可以构成回文
+        var p4 = str[l] != str[r] ? 0 : 2 + F(str, l + 1, r - 1); //如果区间两端字符相同，则回文长度为2+去掉区间两端字符后可以构成回文的长度
         return Math.Max(Math.Max(p1, p2), Math.Max(p3, p4));
     }
 
-    public static int Code2(string? s)
+    //范围尝试模型，动态规划
+    private static int Code1Dp(string s)
     {
         if (string.IsNullOrEmpty(s)) return 0;
 
@@ -50,6 +52,13 @@ public static class PalindromeSubsequence
         for (var l = n - 3; l >= 0; l--)
         for (var r = l + 2; r < n; r++)
         {
+            //优化前
+            //var p1 = dp[l + 1, r - 1];//被优化掉了
+            //var p2 = dp[l, r - 1];
+            //var p3 = dp[l + 1, r];
+            //var p4 = str[l] != str[r] ? 0 : 2 + dp[l + 1, r - 1];
+
+            //优化掉左下的依赖，用左和下两个依赖填写dp[l, r]
             dp[l, r] = Math.Max(dp[l, r - 1], dp[l + 1, r]);
             if (str[l] == str[r]) dp[l, r] = Math.Max(dp[l, r], 2 + dp[l + 1, r - 1]);
         }
@@ -57,7 +66,8 @@ public static class PalindromeSubsequence
         return dp[0, n - 1];
     }
 
-    private static int LongestPalindromeSubsequence1(string? s)
+    //反转字符串求最长公共子序列的方式求解(样本对应模型):暴力递归
+    private static int Code2(string? s)
     {
         if (string.IsNullOrEmpty(s)) return 0;
 
@@ -65,7 +75,7 @@ public static class PalindromeSubsequence
 
         var str = s.ToCharArray();
         var reverse = Reverse(str);
-        return LongestCommonSubsequence(str, reverse);
+        return Process(str, reverse);
     }
 
     private static char[] Reverse(char[] str)
@@ -77,7 +87,7 @@ public static class PalindromeSubsequence
         return reverse;
     }
 
-    private static int LongestCommonSubsequence(char[] str1, char[] str2)
+    private static int Process(char[] str1, char[] str2)
     {
         var n = str1.Length;
         var m = str2.Length;
@@ -97,7 +107,8 @@ public static class PalindromeSubsequence
         return dp[n - 1, m - 1];
     }
 
-    private static int LongestPalindromeSubsequence2(string? s)
+    //反转字符串求最长公共子序列的方式求解(样本对应模型):动态规划
+    private static int Code2Dp(string s)
     {
         if (string.IsNullOrEmpty(s)) return 0;
 
@@ -122,30 +133,30 @@ public static class PalindromeSubsequence
 
         return dp[0, n - 1];
     }
-}
 
-public class PalindromeSubsequenceTest
-{
     public static void Run()
     {
         const string str1 = "bbbab"; //4
         const string str2 = "cbbd"; //2
 
-
         Console.WriteLine("参数1:" + str1 + " ----------");
         Utility.RestartStopwatch();
-        Console.WriteLine("方法1结果:" + PalindromeSubsequence.Code1(str1) + ",耗时:" +
-                          Utility.GetStopwatchElapsedMilliseconds() + "ms");
+        Console.WriteLine("方法1结果:" + Code1(str1) + ",耗时:" + Utility.GetStopwatchElapsedMilliseconds() + "ms");
         Utility.RestartStopwatch();
-        Console.WriteLine("方法2结果:" + PalindromeSubsequence.Code2(str1) + ",耗时:" +
-                          Utility.GetStopwatchElapsedMilliseconds() + "ms");
+        Console.WriteLine("方法2结果:" + Code1Dp(str1) + ",耗时:" + Utility.GetStopwatchElapsedMilliseconds() + "ms");
+        Utility.RestartStopwatch();
+        Console.WriteLine("方法3结果:" + Code2(str1) + ",耗时:" + Utility.GetStopwatchElapsedMilliseconds() + "ms");
+        Utility.RestartStopwatch();
+        Console.WriteLine("方法3结果:" + Code2Dp(str1) + ",耗时:" + Utility.GetStopwatchElapsedMilliseconds() + "ms");
 
         Console.WriteLine("参数1:" + str2 + " ----------");
         Utility.RestartStopwatch();
-        Console.WriteLine("方法1结果:" + PalindromeSubsequence.Code1(str2) + ",耗时:" +
-                          Utility.GetStopwatchElapsedMilliseconds() + "ms");
+        Console.WriteLine("方法1结果:" + Code1(str2) + ",耗时:" + Utility.GetStopwatchElapsedMilliseconds() + "ms");
         Utility.RestartStopwatch();
-        Console.WriteLine("方法2结果:" + PalindromeSubsequence.Code2(str2) + ",耗时:" +
-                          Utility.GetStopwatchElapsedMilliseconds() + "ms");
+        Console.WriteLine("方法2结果:" + Code1Dp(str2) + ",耗时:" + Utility.GetStopwatchElapsedMilliseconds() + "ms");
+        Utility.RestartStopwatch();
+        Console.WriteLine("方法3结果:" + Code2(str2) + ",耗时:" + Utility.GetStopwatchElapsedMilliseconds() + "ms");
+        Utility.RestartStopwatch();
+        Console.WriteLine("方法3结果:" + Code2Dp(str2) + ",耗时:" + Utility.GetStopwatchElapsedMilliseconds() + "ms");
     }
 }

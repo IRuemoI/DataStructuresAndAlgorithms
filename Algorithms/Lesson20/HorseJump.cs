@@ -52,6 +52,7 @@ public class HorseJump
         return dp[0, 0, k];
     }
 
+    //防止下标越界的方法
     private static int Pick(int[,,] dp, int x, int y, int rest)
     {
         if (x < 0 || x > 9 || y < 0 || y > 8) return 0;
