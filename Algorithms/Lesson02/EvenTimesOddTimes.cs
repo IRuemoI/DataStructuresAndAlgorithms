@@ -14,6 +14,7 @@ public class EvenTimesOddTimes //偶次奇次
     }
 
     // arr中，有两种数，出现奇数次
+    //leetcode:https://leetcode.cn/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-lcof/
     private static void PrintOddTimesNum2(int[] arr)
     {
         //使用两种不同的维度来筛选这两个数字
@@ -25,7 +26,7 @@ public class EvenTimesOddTimes //偶次奇次
 
         var number1 = 0;
         foreach (var item in arr)
-            if ((item & rightmost1Bit) == 1) //将最右侧1相同的异或到一起
+            if ((item & rightmost1Bit) != 0) //将最右侧1相同的异或到一起
                 number1 ^= item; //因为出现偶数次的都被消掉，循环后的结果就是两个奇数中的一个
 
         var number2 = sumEor ^ number1;
@@ -58,10 +59,13 @@ public class EvenTimesOddTimes //偶次奇次
     {
         int[] arr1 = [3, 3, 2, 3, 1, 1, 1, 3, 1, 1, 1];
         PrintOddTimesNum1(arr1);
-
+        
         int[] arr2 = [4, 3, 4, 2, 2, 2, 4, 1, 1, 1, 3, 3, 1, 1, 1, 4, 2, 2];
         PrintOddTimesNum2(arr2);
+        Console.WriteLine("----------");
+        int[] arr3 = [1, 2, 4, 1, 4, 3, 12, 3];
+        PrintOddTimesNum2(arr3);
 
-        Console.WriteLine(Bit1Counts(0b1101));
+        //Console.WriteLine(Bit1Counts(0b1101));
     }
 }

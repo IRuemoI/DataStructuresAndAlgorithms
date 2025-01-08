@@ -12,20 +12,21 @@ public class ShellSort
 
         while (true)
         {
-            d = d / 2; //每次都将gap的值减半
+            d /= 2; //每次都将gap的值减半
 
-            for (var x = 0; x < d; x++)
-                //对于gap所分的每一个组
-            for (var i = x + d; i < a.Length; i = i + d)
+            for (var x = 0; x < d; x++) //对于gap所分的每一个组
             {
-                //进行插入排序
-                var temp = a[i];
+                for (var i = x + d; i < a.Length; i += d)
+                {
+                    //进行插入排序
+                    var temp = a[i];
 
-                int j;
+                    int j;
 
-                for (j = i - d; j >= 0 && a[j] > temp; j = j - d) a[j + d] = a[j];
+                    for (j = i - d; j >= 0 && a[j] > temp; j -= d) a[j + d] = a[j];
 
-                a[j + d] = temp;
+                    a[j + d] = temp;
+                }
             }
 
             if (d == 1)
