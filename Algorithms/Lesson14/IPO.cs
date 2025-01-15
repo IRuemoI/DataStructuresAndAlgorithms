@@ -24,9 +24,9 @@ public class Ipo
 
         for (var i = 0; i < k; i++)
         {
-            while (minCostQ.Count != 0 && minCostQ.Peek().C <= w) maxProfitQ.Push(minCostQ.Pop());
+            while (minCostQ.count != 0 && minCostQ.Peek().C <= w) maxProfitQ.Push(minCostQ.Pop());
 
-            if (maxProfitQ.Count == 0) return w;
+            if (maxProfitQ.count == 0) return w;
 
             w += maxProfitQ.Pop().P;
         }

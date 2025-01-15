@@ -53,7 +53,7 @@ public class AvoidFloodInTheCity //Problem_1488
             else
             {
                 // 今天干活！
-                if (minHeap.IsEmpty)
+                if (minHeap.isEmpty)
                 {
                     ans[i] = 1;
                 }

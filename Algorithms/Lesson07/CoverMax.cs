@@ -34,7 +34,7 @@ public class CoverMax
         foreach (var tempLine in lines)
         {
             //弹出堆中所有不大于将要添加线段的开始位置的所有值
-            while (!minHeap.IsEmpty && minHeap.Peek() <= tempLine.LeftEnd)
+            while (!minHeap.isEmpty && minHeap.Peek() <= tempLine.LeftEnd)
             {
                 minHeap.Pop();
             }
@@ -42,7 +42,7 @@ public class CoverMax
             //将当前线段的结束位置加入堆中
             minHeap.Push(tempLine.RightEnd);
             //记录最大覆盖数
-            maxCover = Math.Max(maxCover, minHeap.Count);
+            maxCover = Math.Max(maxCover, minHeap.count);
         }
 
         return maxCover;

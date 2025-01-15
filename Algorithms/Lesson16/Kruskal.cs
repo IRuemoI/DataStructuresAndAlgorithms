@@ -24,7 +24,7 @@ public static class Kruskal
             minHeap.Push(edge); // O(logM)
 
         HashSet<Edge> result = new();
-        while (minHeap.Count != 0)
+        while (minHeap.count != 0)
         {
             // M 条边
             var edge = minHeap.Pop(); // O(logM)

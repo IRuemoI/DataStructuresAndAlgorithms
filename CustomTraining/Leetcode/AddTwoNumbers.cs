@@ -8,7 +8,7 @@ public class AddTwoNumbers
         public int Val = val;
     }
 
-    public static ListNode AddTwoNumbersCode(ListNode l1, ListNode l2)
+    public static ListNode? AddTwoNumbersCode(ListNode? l1, ListNode? l2)
     {
         //思路：
         //1.先将链表L1和L2中数据组成整数
@@ -35,8 +35,10 @@ public class AddTwoNumbers
         var cur = head;
         while (sum > 0)
         {
-            cur.Next = new ListNode();
-            cur.Next.Val = sum % 10;
+            cur.Next = new ListNode
+            {
+                Val = sum % 10
+            };
             cur = cur.Next;
             sum /= 10;
         }

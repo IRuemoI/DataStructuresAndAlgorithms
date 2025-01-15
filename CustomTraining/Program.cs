@@ -15,12 +15,12 @@ public static class Program
     {
         private int preIndex;
 
-        public TreeNode BuildTree(int[] preorder, int[] inorder)
+        public TreeNode? BuildTree(int[] preorder, int[] inorder)
         {
             return ArrayToTree(preorder, inorder, 0, inorder.Length - 1);
         }
 
-        private TreeNode ArrayToTree(int[] preorder, int[] inorder, int inStart, int inEnd)
+        private TreeNode? ArrayToTree(int[] preorder, int[] inorder, int inStart, int inEnd)
         {
             // 递归终止条件
             if (inStart > inEnd)

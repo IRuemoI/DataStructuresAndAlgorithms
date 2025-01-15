@@ -33,7 +33,7 @@ public class Prim
                         // 由一个点，解锁所有相连的边
                         minHeap.Push(edge);
 
-                    while (minHeap.Count != 0)
+                    while (minHeap.count != 0)
                     {
                         var edge = minHeap.Pop(); // 弹出解锁的边中，最小的边
                         var toNode = edge.To; // 可能的一个新的点

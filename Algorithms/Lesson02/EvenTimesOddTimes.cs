@@ -66,6 +66,6 @@ public class EvenTimesOddTimes //偶次奇次
         int[] arr3 = [1, 2, 4, 1, 4, 3, 12, 3];
         PrintOddTimesNum2(arr3);
 
-        //Console.WriteLine(Bit1Counts(0b1101));
+        Console.WriteLine(Bit1Counts(0b1101));
     }
 }

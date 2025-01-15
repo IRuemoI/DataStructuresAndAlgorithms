@@ -36,7 +36,7 @@ public class SortArrayDistanceLessK
         }
 
         // 将窗口内剩下的值全部取出
-        while (minHeap.Count != 0) arr[current++] = minHeap.Pop();
+        while (minHeap.count != 0) arr[current++] = minHeap.Pop();
     }
 
     #region 用于测试

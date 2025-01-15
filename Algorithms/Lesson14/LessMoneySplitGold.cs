@@ -51,7 +51,7 @@ public class LessMoneySplitGold
         foreach (var element in arr) pQ.Push(element);
 
         var sum = 0;
-        while (pQ.Count > 1)
+        while (pQ.count > 1)
         {
             var cur = pQ.Pop() + pQ.Pop();
             sum += cur;

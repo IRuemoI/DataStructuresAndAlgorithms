@@ -38,7 +38,7 @@ public class AStar
         // 1 : 列
         // 2 : 从源点出发到达当前点的距离
         heap.Push([startX, startY, 1]);
-        while (!heap.IsEmpty)
+        while (!heap.isEmpty)
         {
             var cur = heap.Pop();
             var x = cur[0];
@@ -91,7 +91,7 @@ public class AStar
         // 2 : 从源点出发到达当前点的距离 + 当前点到终点的预估距离
         Heap<int[]> heap = new((a, b) => a[2] - b[2], _heapCapacity);
         heap.Push(new[] { startX, startY, 1 + ManhattanDistance(startX, startY, targetX, targetY) });
-        while (!heap.IsEmpty)
+        while (!heap.isEmpty)
         {
             var cur = heap.Pop();
             var x = cur[0];

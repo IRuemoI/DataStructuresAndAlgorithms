@@ -62,7 +62,7 @@ public class HuffmanTree
             minHeap.Push(cur);
         }
 
-        while (minHeap.Count != 1)
+        while (minHeap.count != 1)
         {
             var a = minHeap.Pop();
             var b = minHeap.Pop();

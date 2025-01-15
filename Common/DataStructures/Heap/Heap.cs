@@ -4,10 +4,10 @@ public class Heap<T>
 {
     private readonly int _capacity;
     private readonly T[] _elements;
-    private Func<T, T, int> Comparison { get; }
-    public int Count { get; private set; }
-    public bool IsEmpty => Count == 0;
-    public bool IsFull => Count == _capacity;
+    private Func<T, T, int> comparison { get; }
+    public int count { get; private set; }
+    public bool isEmpty => count == 0;
+    public bool isFull => count == _capacity;
 
     /// <summary>
     /// 初始化堆
@@ -17,30 +17,30 @@ public class Heap<T>
     public Heap(Func<T, T, int> comparison, int capacity = 200)
     {
         _elements = new T[capacity];
-        Comparison = comparison ?? throw new ArgumentNullException(nameof(comparison));
+        this.comparison = comparison ?? throw new ArgumentNullException(nameof(comparison));
         _capacity = capacity > 0 ? capacity : throw new ArgumentException(nameof(capacity));
-        Count = 0;
+        count = 0;
     }
 
     private int Compare(T x, T y)
     {
-        return Comparison(x, y);
+        return comparison(x, y);
     }
 
     public void Push(T value)
     {
-        if (IsFull) throw new Exception("The heap is full");
-        _elements[Count] = value; //将数据放到最后一个
-        HeapInsert(Count); //将元素插入到合适的位置
-        Count++; //增加堆内元素计数
+        if (isFull) throw new Exception("The heap is full");
+        _elements[count] = value; //将数据放到最后一个
+        HeapInsert(count); //将元素插入到合适的位置
+        count++; //增加堆内元素计数
     }
 
     public T Pop()
     {
-        if (IsEmpty) throw new Exception("The heap is empty");
+        if (isEmpty) throw new Exception("The heap is empty");
         var removedElement = _elements[0]; //移除堆顶元素
-        Count--; //减少堆内元素计数
-        (_elements[Count], _elements[0]) = (_elements[0], _elements[Count]); //将堆内最后一个元素移动到第一个位置
+        count--; //减少堆内元素计数
+        (_elements[count], _elements[0]) = (_elements[0], _elements[count]); //将堆内最后一个元素移动到第一个位置
         Heapify(0); //将元素移动到合适的位置
         return removedElement; //返回被移除的元素
     }
@@ -62,11 +62,11 @@ public class Heap<T>
     {
         var leftChild = currentIndex * 2 + 1; //获取左子节点的下标
         
-        while (leftChild < Count) //如果左子节点的下标还在堆内元素的范围内
+        while (leftChild < count) //如果左子节点的下标还在堆内元素的范围内
         {
             var rightChild = leftChild + 1; //获取右子节点的下标
             //如果右子节点的下标在堆内元素的范围内且右子节点是需要交换的节点
-            var swappedIndex = rightChild < Count && Compare(_elements[rightChild], _elements[leftChild]) < 0
+            var swappedIndex = rightChild < count && Compare(_elements[rightChild], _elements[leftChild]) < 0
                 ? rightChild
                 : leftChild;
             //在将被选择那一边子节点和当前节点进行比较，决定是否交换，如果不需要交换swappedIndex将被重新赋值为currentIndex
@@ -81,7 +81,7 @@ public class Heap<T>
 
     public T Peek()
     {
-        return Count > 0 ? _elements[0] : throw new Exception("The heap is empty");
+        return count > 0 ? _elements[0] : throw new Exception("The heap is empty");
     }
 }
 
@@ -102,8 +102,8 @@ public static class HeapTest
         maxHeap.Push(7);
         maxHeap.Push(6);
         maxHeap.Push(5);
-        Console.WriteLine(maxHeap.IsFull);
-        while (!maxHeap.IsEmpty) Console.WriteLine(maxHeap.Pop());
+        Console.WriteLine(maxHeap.isFull);
+        while (!maxHeap.isEmpty) Console.WriteLine(maxHeap.Pop());
         //myMaxHeap.Pop();
 
         Console.WriteLine("小根堆");
@@ -119,8 +119,8 @@ public static class HeapTest
         minHeap.Push(7);
         minHeap.Push(6);
         minHeap.Push(5);
-        Console.WriteLine(minHeap.IsFull);
-        while (!minHeap.IsEmpty) Console.WriteLine(minHeap.Pop());
+        Console.WriteLine(minHeap.isFull);
+        while (!minHeap.isEmpty) Console.WriteLine(minHeap.Pop());
         //myMinHeap.Pop();
     }
 }

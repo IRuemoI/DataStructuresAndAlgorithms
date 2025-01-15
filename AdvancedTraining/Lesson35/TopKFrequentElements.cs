@@ -21,14 +21,14 @@ public class TopKFrequentElements //Problem_0347
         var heap = new Heap<Node>((x, y) => x.Count - y.Count);
         foreach (var node in map.Values)
         {
-            if (heap.Count < k || (heap.Count == k && node.Count > heap.Peek().Count)) heap.Push(node);
+            if (heap.count < k || (heap.count == k && node.Count > heap.Peek().Count)) heap.Push(node);
 
-            if (heap.Count > k) heap.Pop();
+            if (heap.count > k) heap.Pop();
         }
 
         var ans = new int[k];
         var index = 0;
-        while (!heap.IsEmpty) ans[index++] = heap.Pop().Num;
+        while (!heap.isEmpty) ans[index++] = heap.Pop().Num;
 
         return ans;
     }
