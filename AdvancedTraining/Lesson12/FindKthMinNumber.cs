@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson12;
+﻿//pass
+namespace AdvancedTraining.Lesson12;
 
 // 本题测试链接 : https://leetcode.cn/problems/median-of-two-sorted-arrays/
 public class FindKthMinNumber

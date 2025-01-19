@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson06;
+﻿//pass
+namespace AdvancedTraining.Lesson06;
 
 public class Nim
 {

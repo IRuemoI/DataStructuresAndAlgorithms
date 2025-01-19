@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson03;
+﻿//pass
+namespace AdvancedTraining.Lesson03;
 
 public class DistanceKNodes
 {

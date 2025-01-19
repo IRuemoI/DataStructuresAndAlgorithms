@@ -1,4 +1,6 @@
-﻿using Common.Utilities;
+﻿//pass
+
+using Common.Utilities;
 
 namespace AdvancedTraining.Lesson13;
 

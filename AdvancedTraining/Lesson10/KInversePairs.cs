@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson10;
+﻿//pass
+namespace AdvancedTraining.Lesson10;
 
 // 测试链接 : https://leetcode.cn/problems/k-inverse-pairs-array/
 public class KInversePairs

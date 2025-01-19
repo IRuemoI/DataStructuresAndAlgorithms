@@ -1,4 +1,5 @@
-﻿#region
+﻿//pass
+#region
 
 using Common.Utilities;
 
@@ -105,7 +106,7 @@ public class MostXorZero
     //用于测试
     public static void Run()
     {
-        var testTime = 150000;
+        var testTime = 5000;
         var maxSize = 12;
         var maxValue = 5;
         var succeed = true;

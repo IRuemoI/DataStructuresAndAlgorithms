@@ -89,4 +89,10 @@ public class ExpressionCompute
 
         return res;
     }
+
+    public static void Run()
+    {
+        Console.WriteLine(Calculate("(2+6*3+5-(3*14/7+2)*5)+3")); //todo:待修复 -12 但是输出10
+        Console.WriteLine(Calculate("2*(5+5*2)/3+(6/2+8)")); //21
+    }
 }

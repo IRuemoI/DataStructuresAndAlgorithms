@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson06;
+﻿//pass
+namespace AdvancedTraining.Lesson06;
 
 // 测试链接 : https://leetcode.cn/problems/maximum-xor-with-an-element-from-array/
 public class MaximumXorWithAnElementFromArray
@@ -20,7 +21,7 @@ public class MaximumXorWithAnElementFromArray
         int[][] queries = [[3, 1], [1, 3], [5, 6]];
         var result = maximizeXor(arr, queries);
 
-        foreach (var item in result) Console.Write(item + " ");
+        foreach (var item in result) Console.Write(item + " "); //输出[3,3,7]
     }
 
     private class Node

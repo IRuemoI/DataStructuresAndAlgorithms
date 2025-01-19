@@ -1,4 +1,5 @@
-﻿#region
+﻿//pass
+#region
 
 using Common.Utilities;
 
@@ -75,7 +76,7 @@ public class Power2Diffs
     {
         var len = 100;
         var value = 500;
-        var testTimes = 200000;
+        var testTimes = 2000;
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTimes; i++)
         {

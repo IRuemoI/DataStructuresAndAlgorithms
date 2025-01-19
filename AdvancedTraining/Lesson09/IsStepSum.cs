@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson09;
+﻿//pass
+namespace AdvancedTraining.Lesson09;
 
 public class IsStepSum
 {

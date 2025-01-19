@@ -48,3 +48,22 @@
 
 ### 代办列表
 * B站30-47没有添加章节标签
+
+**大厂刷题班待修复**
+
+* Lesson01:AoeQuestion**程序死循环**
+* Lesson02:ChooseWork**未测试**
+* Lesson02:Drive**运行报错**
+* Lesson02:SetAll**未测试**
+* Lesson03:Largest1BorderedSquare**运行报错**
+* Lesson04:SubArrayMaxSumFollowUp**未测试**
+* Lesson04:SubMatrixMaxSum**未测试**
+* Lesson07:MinCameraCover**未测试**
+* Lesson08:ExpressionCompute**结果错误**
+* Lesson08:FindWordInMatrix**运行报错**,数组维度获取不正确
+* Lesson08:SnakeGame**运行报错**,数组维度获取不正确
+* Lesson09:RemoveInvalidParentheses**结果错误**
+* Lesson10:BstToDoubleLinkedList**未测试**
+* Lesson10:TopK**未测试**
+
+### 整理进度大厂刷题班14

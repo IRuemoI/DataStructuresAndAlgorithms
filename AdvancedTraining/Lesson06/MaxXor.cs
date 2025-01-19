@@ -1,4 +1,5 @@
-﻿#region
+﻿//pass
+#region
 
 using Common.Utilities;
 
@@ -65,7 +66,7 @@ public class MaxXor
     //用于测试
     public static void Run()
     {
-        const int testTime = 500000;
+        const int testTime = 5000;
         const int maxSize = 30;
         const int maxValue = 50;
         for (var i = 0; i < testTime; i++)

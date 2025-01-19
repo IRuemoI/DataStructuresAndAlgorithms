@@ -144,11 +144,11 @@ public class FindWordInMatrix
     public static void Run()
     {
         char[][] m =
-        {
-            new[] { 'a', 'b', 'z' },
-            new[] { 'c', 'd', 'o' },
-            new[] { 'f', 'e', 'o' }
-        };
+        [
+            ['a', 'b', 'z'],
+            ['c', 'd', 'o'],
+            ['f', 'e', 'o']
+        ];
         var word1 = "zoooz";
         var word2 = "zoo";
         // 可以走重复路的设定

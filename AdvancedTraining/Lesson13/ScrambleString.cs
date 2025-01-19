@@ -1,6 +1,6 @@
-﻿namespace AdvancedTraining.Lesson13;
+﻿//pass
+namespace AdvancedTraining.Lesson13;
 
-//todo:待整理
 // 本题测试链接 : https://leetcode.cn/problems/scramble-string/
 public class ScrambleString
 {
@@ -144,5 +144,13 @@ public class ScrambleString
             }
 
         return dp[0, 0, N];
+    }
+
+    public static void Run()
+    {
+        Console.WriteLine(IsScramble0("great", "rgeat")); //true
+        Console.WriteLine(IsScramble1("great", "rgeat")); //true
+        Console.WriteLine(IsScramble2("great", "rgeat")); //true
+        Console.WriteLine(IsScramble3("great", "rgeat")); //true
     }
 }

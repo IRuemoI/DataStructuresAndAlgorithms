@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson09;
+﻿//pass
+namespace AdvancedTraining.Lesson09;
 
 // 本题测试链接 : https://leetcode.cn/problems/russian-doll-envelopes/
 public class EnvelopesProblem

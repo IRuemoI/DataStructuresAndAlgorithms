@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson05;
+﻿//pass
+namespace AdvancedTraining.Lesson05;
 
 public class EditCost
 {

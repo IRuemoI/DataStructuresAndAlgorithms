@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson03;
+﻿//pass
+namespace AdvancedTraining.Lesson03;
 
 // 给定一个正数数组arr，代表若干人的体重
 // 再给定一个正数limit，表示所有船共同拥有的载重量

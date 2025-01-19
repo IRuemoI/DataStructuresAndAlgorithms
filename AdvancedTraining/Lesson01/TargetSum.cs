@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson01;
+﻿//pass
+namespace AdvancedTraining.Lesson01;
 
 // leetcode 494题
 // https://leetcode.cn/problems/target-sum/description/

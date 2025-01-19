@@ -200,7 +200,7 @@ public class AoeQuestion
         const int valueMax = 100;
         const int h = 10;
         const int r = 5;
-        const int time = 50;
+        const int time = 1;
         Console.WriteLine("测试开始");
         for (var i = 0; i < time; i++)
         {

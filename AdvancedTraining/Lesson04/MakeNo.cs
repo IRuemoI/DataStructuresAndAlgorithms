@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson04;
+﻿//pass
+namespace AdvancedTraining.Lesson04;
 
 public class MakeNo
 {

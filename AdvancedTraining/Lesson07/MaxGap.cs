@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson07;
+﻿//pass
+namespace AdvancedTraining.Lesson07;
 
 // 测试链接 : https://leetcode.cn/problems/maximum-gap/
 public class MaxGap

@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson03;
+﻿//pass
+namespace AdvancedTraining.Lesson03;
 
 // 本题测试链接 : https://leetcode.cn/problems/closest-subsequence-sum/
 // 本题数据量描述:

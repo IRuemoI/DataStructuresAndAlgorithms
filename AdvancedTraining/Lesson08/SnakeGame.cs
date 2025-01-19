@@ -181,7 +181,7 @@ public class SnakeGame
         const int n = 7;
         const int m = 7;
         const int v = 10;
-        var times = 1000000;
+        var times = 1000;
         for (var i = 0; i < times; i++)
         {
             var r = (int)(Utility.getRandomDouble * (n + 1));

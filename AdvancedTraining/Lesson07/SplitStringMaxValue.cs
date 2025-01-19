@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson07;
+﻿//pass
+namespace AdvancedTraining.Lesson07;
 
 public class SplitStringMaxValue
 {

@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson08;
+﻿//pass
+namespace AdvancedTraining.Lesson08;
 
 // 本题测试链接 : https://leetcode.cn/problems/container-with-most-water/
 public class ContainerWithMostWater

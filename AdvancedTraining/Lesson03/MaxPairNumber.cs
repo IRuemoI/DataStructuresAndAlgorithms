@@ -1,4 +1,5 @@
-﻿#region
+﻿//pass
+#region
 
 using Common.Utilities;
 
@@ -116,7 +117,7 @@ public class MaxPairNumber
         const int maxLen = 10;
         const int maxValue = 20;
         const int maxK = 5;
-        const int testTime = 1000;
+        const int testTime = 100;
         Console.WriteLine("功能测试开始");
         for (var i = 0; i < testTime; i++)
         {

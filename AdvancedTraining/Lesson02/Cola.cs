@@ -1,4 +1,5 @@
-﻿#region
+﻿//pass
+#region
 
 using Common.Utilities;
 
@@ -146,7 +147,6 @@ public class Cola
         var user2Max = 10;
         var colaMax = 10;
         var priceMax = 20;
-        Console.WriteLine("如果错误会打印错误数据，否则就是正确");
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {

@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson01;
+﻿//pass
+namespace AdvancedTraining.Lesson01;
 
 public class LongestIncreasingPath
 {

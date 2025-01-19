@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson05;
+﻿//pass
+namespace AdvancedTraining.Lesson05;
 
 // 本题测试链接 : https://leetcode.cn/problems/construct-binary-search-tree-from-preorder-traversal/
 public class ConstructBinarySearchTreeFromPreorderTraversal

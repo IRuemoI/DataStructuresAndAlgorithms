@@ -300,7 +300,7 @@ public class EveryStepShowBoss
             //如果这个顾客是第一次购买(并不在两个区中)
             if (!_candidateHeap.Contains(customer) && !_awardeeHeap.Contains(customer))
             {
-                if (_awardeeHeap.Count < _awardeeLimit) //如果测试获奖区还没满
+                if (_awardeeHeap.count < _awardeeLimit) //如果测试获奖区还没满
                 {
                     customer.EnterTime = time; //设置顾客的时间为本次处理的时间
                     _awardeeHeap.Push(customer); //将他放到获奖区中
@@ -340,9 +340,9 @@ public class EveryStepShowBoss
 
         private void AwardeeMove(int time)
         {
-            if (_candidateHeap.IsEmpty) return; //如果候选区为空，直接退出
+            if (_candidateHeap.isEmpty) return; //如果候选区为空，直接退出
 
-            if (_awardeeHeap.Count < _awardeeLimit) //如果获奖区还没满
+            if (_awardeeHeap.count < _awardeeLimit) //如果获奖区还没满
             {
                 var customer = _candidateHeap.Pop(); //取出候选区中购买数最多的顾客
                 customer.EnterTime = time; //设置顾客的时间为本次处理的时间

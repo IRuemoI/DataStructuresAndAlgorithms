@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson13;
+﻿//pass
+namespace AdvancedTraining.Lesson13;
 
 // 本题测试链接 : https://leetcode.cn/problems/bricks-falling-when-hit/
 public class BricksFallingWhenHit
@@ -22,7 +23,7 @@ public class BricksFallingWhenHit
     {
         int[][] grid = [[1, 0, 0, 0], [1, 1, 1, 0]], hits = [[1, 0]];
         var result = HitBricks(grid, hits);
-        foreach (var item in result) Console.WriteLine(item);
+        foreach (var item in result) Console.WriteLine(item); //2
     }
 
     // 并查集

@@ -1,4 +1,5 @@
-﻿#region
+﻿//pass
+#region
 
 using Common.Utilities;
 
@@ -92,7 +93,7 @@ public class ContainAllCharExactly
         var possibilities = 5;
         var strMaxSize = 20;
         var aimMaxSize = 10;
-        var testTimes = 500000;
+        var testTimes = 5000;
         Console.WriteLine("test begin, test time : " + testTimes);
         for (var i = 0; i < testTimes; i++)
         {

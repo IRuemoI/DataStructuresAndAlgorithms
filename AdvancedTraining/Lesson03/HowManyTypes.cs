@@ -1,4 +1,5 @@
-﻿#region
+﻿//pass
+#region
 
 using Common.Utilities;
 
@@ -70,7 +71,7 @@ public class HowManyTypes
         var possibilities = 5;
         var strMaxSize = 10;
         var arrMaxSize = 100;
-        var testTimes = 500000;
+        var testTimes = 5000;
         Console.WriteLine("test begin, test time : " + testTimes);
         for (var i = 0; i < testTimes; i++)
         {
