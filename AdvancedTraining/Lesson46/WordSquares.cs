@@ -41,7 +41,7 @@ namespace AdvancedTraining.Lesson46;
 // 原题说的是：一个N*N的二维矩阵，并且i行和i列都是某个单词，不要求全部N个单词都在这个方阵里
 // 讲的过程没错，但是介绍题意的时候，这里失误了
 // https://www.cnblogs.com/jasminemzy/p/9644282.html
-public class WordSquares //Problem_0425
+public class WordSquares //leetcode_0425
 {
     private static List<List<string>> wordSquares(string[] words)
     {

@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson32;
 
 //https://blog.csdn.net/qq_44631615/article/details/138450068
-public class MissingRanges //Problem_0163
+public class MissingRanges //leetcode_0163
 {
     private static IList<string> FindMissingRanges(int[] numbers, int lower, int upper)
     {

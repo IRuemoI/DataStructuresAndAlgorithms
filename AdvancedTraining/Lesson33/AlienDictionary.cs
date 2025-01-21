@@ -7,7 +7,7 @@ using System.Text;
 namespace AdvancedTraining.Lesson33;
 
 //https://www.cnblogs.com/lishiblog/p/5681041.html
-public class AlienDictionary //Problem_0269
+public class AlienDictionary //leetcode_0269
 {
     private static string AlienOrder(string[]? words)
     {

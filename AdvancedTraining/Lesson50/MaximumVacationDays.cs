@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson50;
 
-public class MaximumVacationDays //Problem_0568
+public class MaximumVacationDays //leetcode_0568
 {
     private static int MaxVacationDays(int[][] fly, int[][] day)
     {

@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson30;
+﻿//pass
+namespace AdvancedTraining.Lesson30;
 
-public class DecodeWays //Problem_0091
+public class DecodeWays //leetcode_0091
 {
     private static int NumDecode1(string s)
     {

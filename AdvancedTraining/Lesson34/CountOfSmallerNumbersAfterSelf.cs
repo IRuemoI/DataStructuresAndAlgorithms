@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson34;
 
-public class CountOfSmallerNumbersAfterSelf //Problem_0315
+public class CountOfSmallerNumbersAfterSelf //leetcode_0315
 {
     private static IList<int> CountSmaller(int[]? numbers)
     {

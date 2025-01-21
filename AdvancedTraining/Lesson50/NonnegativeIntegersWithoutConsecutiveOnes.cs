@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson50;
 
-public class NonnegativeIntegersWithoutConsecutiveOnes //Problem_0600
+public class NonnegativeIntegersWithoutConsecutiveOnes //leetcode_0600
 {
     //	// F(0, false, 5,n)
     //	// 6 5 ... 0 -1 n

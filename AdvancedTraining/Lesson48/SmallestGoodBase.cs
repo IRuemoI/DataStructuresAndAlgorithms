@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson48;
 
-public class SmallestGoodBase //Problem_0483
+public class SmallestGoodBase //leetcode_0483
 {
     // ""4651" -> 4651
     private static string Code(string n)

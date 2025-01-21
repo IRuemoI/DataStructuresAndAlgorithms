@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson38;
 
-public class TaskScheduler //Problem_0621
+public class TaskScheduler //leetcode_0621
 {
     // ['A', 'B', 'A']
     private static int LeastInterval(char[] tasks, int free)

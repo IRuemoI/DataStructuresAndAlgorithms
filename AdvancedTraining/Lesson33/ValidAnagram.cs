@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson33;
 
 //https://leetcode.cn/problems/valid-anagram/description/
-public class ValidAnagram //Problem_0242
+public class ValidAnagram //leetcode_0242
 {
     private static bool IsAnagram(string s, string t)
     {

@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson32;
 
-public class ReverseBits //Problem_0190
+public class ReverseBits //leetcode_0190
 {
     // 代码看着很魔幻吧？
     // 给个例子，假设n二进制为：

@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson42;
 
 //https://www.jianshu.com/p/a80f5f7b88f9
-public class PaintHouseIi //Problem_0265
+public class PaintHouseIi //leetcode_0265
 {
     // costs[i][k] i号房子用k颜色刷的花费
     // 要让0...N-1的房子相邻不同色

@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson28;
+﻿//pass
+namespace AdvancedTraining.Lesson28;
 
-public class LetterCombinationsOfAPhoneNumber //Problem_0017
+public class LetterCombinationsOfAPhoneNumber //leetcode_0017
 {
     private static readonly char[][] Phone =
     [
@@ -13,8 +14,7 @@ public class LetterCombinationsOfAPhoneNumber //Problem_0017
         ['t', 'u', 'v'],
         ['w', 'x', 'y', 'z']
     ];
-
-    // "23"
+    
     private static IList<string> LetterCombinations(string digits)
     {
         IList<string> ans = new List<string>();

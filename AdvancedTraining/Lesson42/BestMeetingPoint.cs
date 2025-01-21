@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson42;
 
 //https://www.cnblogs.com/songchengyu/p/15091107.html
-public class BestMeetingPoint //Problem_0296
+public class BestMeetingPoint //leetcode_0296
 {
     private static int MinTotalDistance(int[][] grid)
     {

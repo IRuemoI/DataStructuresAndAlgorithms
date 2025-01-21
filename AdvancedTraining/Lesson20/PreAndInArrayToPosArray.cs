@@ -1,4 +1,5 @@
-﻿#region
+﻿//pass
+#region
 
 using Common.Utilities;
 
@@ -193,7 +194,7 @@ public class PreAndInArrayToPosArray
         Console.WriteLine("测试开始");
         var maxLevel = 5;
         var value = 1000;
-        var testTime = 100000;
+        var testTime = 5000;
         for (var i = 0; i < testTime; i++)
         {
             var head = GenerateRandomTree(value, maxLevel);

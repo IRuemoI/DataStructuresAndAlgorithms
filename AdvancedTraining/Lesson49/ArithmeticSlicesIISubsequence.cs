@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson49;
 
-public class ArithmeticSlicesIiSubsequence //Problem_0446
+public class ArithmeticSlicesIiSubsequence //leetcode_0446
 {
     // 时间复杂度是O(N^2)，最优解的时间复杂度
     private static int NumberOfArithmeticSlices(int[] arr)

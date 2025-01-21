@@ -7,7 +7,7 @@ using Common.Utilities;
 namespace AdvancedTraining.Lesson34;
 
 //todo:待整理
-public class InsertDeleteGetRandom //Problem_0380
+public class InsertDeleteGetRandom //leetcode_0380
 {
     public class RandomizedSet
     {

@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson42;
 
 //https://leetcode.cn/problems/integer-to-english-words/description/
-public class IntegerToEnglishWords //Problem_0273
+public class IntegerToEnglishWords //leetcode_0273
 {
     private static string Num1To19(int num)
     {

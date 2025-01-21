@@ -2,7 +2,7 @@
 
 //https://leetcode.cn/problems/longest-univalue-path/
 //todo:待整理
-public class LongestUnivaluePath //Problem_0687
+public class LongestUnivaluePath //leetcode_0687
 {
     private static int LongestUnivaluePathCode(TreeNode? root)
     {

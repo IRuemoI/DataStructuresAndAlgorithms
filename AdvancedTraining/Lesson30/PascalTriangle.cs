@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson30;
+﻿//pass
+namespace AdvancedTraining.Lesson30;
 
-public class PascalTriangle //Problem_0118
+public class PascalTriangle //leetcode_0118
 {
     private static List<List<int>> Generate(int numRows)
     {

@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson38;
 
-public class DailyTemperatures //Problem_0739
+public class DailyTemperatures //leetcode_0739
 {
     private static int[] DailyTemperaturesCode(int[]? arr)
     {

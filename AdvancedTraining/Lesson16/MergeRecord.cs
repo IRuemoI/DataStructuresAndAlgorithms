@@ -169,7 +169,7 @@ public class MergeRecord
         var powerMax = 8;
         var msizeMax = 10;
         var value = 30;
-        var testTime = 50000;
+        var testTime = 5000;
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {

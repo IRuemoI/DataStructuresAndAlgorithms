@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson31;
+﻿//pass
+namespace AdvancedTraining.Lesson31;
 
-public class SurroundedRegions //Problem_0130
+public class SurroundedRegions //leetcode_0130
 {
     //	// m -> 二维数组， 不是0就是1
     //	//

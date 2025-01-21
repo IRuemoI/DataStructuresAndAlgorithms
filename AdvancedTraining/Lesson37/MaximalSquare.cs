@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson37;
 
-public class MaximalSquare //Problem_0221
+public class MaximalSquare //leetcode_0221
 {
     private static int MaximalSquareCode(char[,]? m)
     {

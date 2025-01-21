@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AdvancedTraining.Lesson46;
 
-public class MinimumUniqueWordAbbreviation //Problem_0411
+public class MinimumUniqueWordAbbreviation //leetcode_0411
 {
     // 区分出来之后，缩写的长度，最短是多少？
     private static int _min = int.MaxValue;

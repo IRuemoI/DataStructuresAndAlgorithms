@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson30;
+﻿//pass
+namespace AdvancedTraining.Lesson30;
 
-public class SymmetricTree //Problem_0101
+public class SymmetricTree //leetcode_0101
 {
     public virtual bool IsSymmetric(TreeNode root)
     {

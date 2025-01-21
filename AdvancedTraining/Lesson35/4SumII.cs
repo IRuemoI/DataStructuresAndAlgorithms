@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson35;
 
 //https://leetcode.cn/problems/4sum-ii/description/
-public class FourNumSumIi //Problem_0454
+public class FourNumSumIi //leetcode_0454
 {
     private static int FourSumCount(int[] a, int[] b, int[] c, int[] d)
     {

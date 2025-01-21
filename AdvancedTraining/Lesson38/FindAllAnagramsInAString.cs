@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson38;
 
-public class FindAllAnagramsInAString //Problem_0438
+public class FindAllAnagramsInAString //leetcode_0438
 {
     private static IList<int> FindAnagrams(string s, string p)
     {

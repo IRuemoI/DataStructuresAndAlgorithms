@@ -1,4 +1,5 @@
-﻿#region
+﻿//pass
+#region
 
 using System.Text;
 
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace AdvancedTraining.Lesson32;
 
-public class FractionToRecurringDecimal //Problem_0166
+public class FractionToRecurringDecimal //leetcode_0166
 {
     private static string FractionToDecimal(int numerator, int denominator)
     {

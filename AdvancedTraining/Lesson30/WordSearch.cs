@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson30;
+﻿//pass
+namespace AdvancedTraining.Lesson30;
 
-public class WordSearch //Problem_0079
+public class WordSearch //leetcode_0079
 {
     private static bool Exist(char[][] board, string word)
     {

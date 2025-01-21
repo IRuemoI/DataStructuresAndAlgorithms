@@ -1,7 +1,8 @@
-﻿namespace AdvancedTraining.Lesson31;
+﻿//pass
+namespace AdvancedTraining.Lesson31;
 
 // lintcode也有测试，数据量比leetcode大很多 : https://www.lintcode.com/problem/107/
-public class WordBreak //Problem_0139
+public class WordBreak //leetcode_0139
 {
     private static bool WordBreak1(string s, IList<string> wordDict)
     {

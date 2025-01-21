@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson23;
+﻿//pass
+namespace AdvancedTraining.Lesson23;
 
 public class FindKMajority
 {

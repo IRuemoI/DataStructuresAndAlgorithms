@@ -3,7 +3,7 @@
 // 这道题在leetcode上，所有题解都只能做到O( (logN) 平方)的解
 // 我们课上讲的是O(logN)的解
 // 打败所有题解
-public class KthSmallestInLexicographicalOrder //Problem_0440
+public class KthSmallestInLexicographicalOrder //leetcode_0440
 {
     private static readonly int[] Offset =
     [

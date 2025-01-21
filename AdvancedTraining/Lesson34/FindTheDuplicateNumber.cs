@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson34;
 
-public class FindTheDuplicateNumber //Problem_0287
+public class FindTheDuplicateNumber //leetcode_0287
 {
     private static int FindDuplicate(int[]? numbers)
     {

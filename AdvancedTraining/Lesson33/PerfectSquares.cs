@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson33;
 
-public class PerfectSquares //Problem_0279
+public class PerfectSquares //leetcode_0279
 {
     // 暴力解
     private static int NumSquares1(int n)

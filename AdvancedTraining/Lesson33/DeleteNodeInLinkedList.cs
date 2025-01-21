@@ -2,7 +2,7 @@
 
 //https://leetcode.com/problems/delete-node-in-a-linked-list/
 //todo:待整理
-public class DeleteNodeInLinkedList //Problem_0237
+public class DeleteNodeInLinkedList //leetcode_0237
 {
     public virtual void DeleteNode(ListNode node)
     {

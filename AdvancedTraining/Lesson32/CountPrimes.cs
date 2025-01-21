@@ -1,6 +1,6 @@
-﻿namespace AdvancedTraining.Lesson32;
-
-public class CountPrimes //Problem_0204
+﻿//pass
+namespace AdvancedTraining.Lesson32;
+public class CountPrimes //leetcode_0204
 {
     private static int CountPrimesCode(int n)
     {

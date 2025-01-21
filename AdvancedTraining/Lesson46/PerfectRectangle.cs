@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson46;
 
-public class PerfectRectangle //Problem_0391
+public class PerfectRectangle //leetcode_0391
 {
     private static bool IsRectangleCover(int[][] matrix)
     {

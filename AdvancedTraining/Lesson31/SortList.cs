@@ -1,4 +1,5 @@
-﻿#region
+﻿//pass
+#region
 
 using Common.Utilities;
 
@@ -7,7 +8,7 @@ using Common.Utilities;
 namespace AdvancedTraining.Lesson31;
 
 //todo:待整理
-public class SortList //Problem_0148
+public class SortList //leetcode_0148
 {
     // 链表的归并排序
     // 时间复杂度O(N*logN), 因为是链表所以空间复杂度O(1)

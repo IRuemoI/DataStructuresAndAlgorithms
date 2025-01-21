@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson44;
 
 //https://www.cnblogs.com/lishiblog/p/5691466.html
-public class ShortestDistanceFromAllBuildings //Problem_0317
+public class ShortestDistanceFromAllBuildings //leetcode_0317
 {
     // 如果grid中0比较少，用这个方法比较好
     private static int ShortestDistance1(int[,] grid)

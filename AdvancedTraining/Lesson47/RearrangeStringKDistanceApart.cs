@@ -7,7 +7,7 @@ using System.Text;
 namespace AdvancedTraining.Lesson47;
 
 // 本题的解法思路与leetcode 621题 TaskScheduler 问题是一样的
-public class RearrangeStringKDistanceApart //Problem_0358
+public class RearrangeStringKDistanceApart //leetcode_0358
 {
     public virtual string RearrangeString(string s, int k)
     {

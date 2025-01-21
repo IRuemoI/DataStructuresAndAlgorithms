@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson38;
 
 //https://leetcode.cn/problems/partition-labels/description/
-public class PartitionLabels //Problem_0763
+public class PartitionLabels //leetcode_0763
 {
     private static List<int> PartitionLabelsCode(string s)
     {

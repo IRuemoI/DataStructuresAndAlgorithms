@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson45;
 
-public class PartitionArrayIntoTwoArraysToMinimizeSumDifference //Problem_2035
+public class PartitionArrayIntoTwoArraysToMinimizeSumDifference //leetcode_2035
 {
     private static int MinimumDifference(int[] arr)
     {

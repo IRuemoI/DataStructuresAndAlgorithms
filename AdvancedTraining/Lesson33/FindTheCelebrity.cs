@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson33;
 
 //https://blog.csdn.net/qq_41543888/article/details/102811390
-public class FindTheCelebrity //Problem_0277
+public class FindTheCelebrity //leetcode_0277
 {
     // 提交时不要提交这个函数，因为默认系统会给你这个函数
     // knows方法，自己不认识自己

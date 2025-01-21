@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson50;
 
-public class ErectTheFence //Problem_0587
+public class ErectTheFence //leetcode_0587
 {
     private static int[][] OuterTrees(int[][] points)
     {

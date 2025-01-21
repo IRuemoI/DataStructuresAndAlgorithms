@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson29;
+﻿//pass
+namespace AdvancedTraining.Lesson29;
 
-public class SearchInRotatedSortedArray //Problem_0033
+public class SearchInRotatedSortedArray //leetcode_0033
 {
     // arr，原本是有序数组，旋转过，而且左部分长度不知道
     // 找num

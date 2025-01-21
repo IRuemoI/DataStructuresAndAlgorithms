@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson24;
+﻿//pass
+namespace AdvancedTraining.Lesson24;
 
 // 本题测试链接 : https://leetcode.cn/problems/remove-duplicate-letters/
 public class RemoveDuplicateLettersLessLexi

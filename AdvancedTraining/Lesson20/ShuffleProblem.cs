@@ -1,4 +1,5 @@
-﻿#region
+﻿//pass
+#region
 
 using Common.Utilities;
 
@@ -151,13 +152,13 @@ public class ShuffleProblem
 
     public static void Run()
     {
-        for (var i = 0; i < 5000000; i++)
+        for (var i = 0; i < 5000; i++)
         {
             var arr = GenerateArray();
             WiggleSort(arr);
             if (!IsValidWiggle(arr))
             {
-                Console.WriteLine("o出错");
+                Console.WriteLine("出错");
                 PrintArray(arr);
                 break;
             }

@@ -2,7 +2,7 @@
 
 //https://www.cnblogs.com/lautsie/p/12271195.html
 //todo:待整理
-public class DesignTicTacToe //Problem_0348
+public class DesignTicTacToe //leetcode_0348
 {
     internal class TicTacToe(int n)
     {

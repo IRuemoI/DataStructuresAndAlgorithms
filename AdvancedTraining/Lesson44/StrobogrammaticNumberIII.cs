@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson44;
 
 //https://www.cnblogs.com/EdwardLiu/p/5063082.html
-public class StrobogrammaticNumberIii //Problem_0248
+public class StrobogrammaticNumberIii //leetcode_0248
 {
     private static int StrobogrammaticInRange(string l, string h)
     {

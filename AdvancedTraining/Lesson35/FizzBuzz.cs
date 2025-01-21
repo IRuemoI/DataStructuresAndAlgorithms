@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson35;
 
-public class FizzBuzz //Problem_0412
+public class FizzBuzz //leetcode_0412
 {
     private static List<string> FizzBuzzCode(int n)
     {

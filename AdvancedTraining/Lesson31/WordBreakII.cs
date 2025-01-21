@@ -1,4 +1,5 @@
-﻿#region
+﻿//pass
+#region
 
 using System.Text;
 
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace AdvancedTraining.Lesson31;
 
-public class WordBreakIi //Problem_0140
+public class WordBreakIi //leetcode_0140
 {
     private static IList<string> WordBreak(string s, IList<string> wordDict)
     {

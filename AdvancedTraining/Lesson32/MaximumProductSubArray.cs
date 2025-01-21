@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson32;
+﻿//pass
+namespace AdvancedTraining.Lesson32;
 
-public class MaximumProductSubArray //Problem_0152
+public class MaximumProductSubArray //leetcode_0152
 {
     private static double Max(double[]? arr)
     {

@@ -3,10 +3,10 @@
 using System.Text;
 
 #endregion
-
+//pass
 namespace AdvancedTraining.Lesson28;
 
-public class GroupAnagrams //Problem_0049
+public class GroupAnagrams //leetcode_0049
 {
     private static IList<IList<string>> GroupAnagrams1(string[] strings)
     {
@@ -16,7 +16,7 @@ public class GroupAnagrams //Problem_0049
             var record = new int[26];
             foreach (var cha in str) record[cha - 'a']++;
             var builder = new StringBuilder();
-            foreach (var value in record) builder.Append(value.ToString()).Append("_");
+            foreach (var value in record) builder.Append(value).Append('_');
             var key = builder.ToString();
             if (!map.ContainsKey(key)) map[key] = new List<string>();
             map[key].Add(str);

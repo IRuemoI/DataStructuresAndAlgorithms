@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson37;
 
 // https://leetcode.cn/problems/invert-binary-tree/description/
-public class InvertBinaryTree //Problem_0226
+public class InvertBinaryTree //leetcode_0226
 {
     private static TreeNode? InvertTree(TreeNode? root)
     {

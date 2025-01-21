@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AdvancedTraining.Lesson50;
 
-public class DesignInMemoryFileSystem //Problem_0588
+public class DesignInMemoryFileSystem //leetcode_0588
 {
     internal class FileSystem
     {

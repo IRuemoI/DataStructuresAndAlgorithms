@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson35;
 
-public class LongestSubstringWithAtLeastKRepeatingCharacters //Problem_0395
+public class LongestSubstringWithAtLeastKRepeatingCharacters //leetcode_0395
 {
     private static int LongestSubstring1(string s, int k)
     {

@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson14;
+﻿//pass
+namespace AdvancedTraining.Lesson14;
 
 public class Parentheses
 {

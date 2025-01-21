@@ -6,7 +6,7 @@ using Common.Utilities;
 
 namespace AdvancedTraining.Lesson47;
 
-public class Heaters //Problem_0475
+public class Heaters //leetcode_0475
 {
     // 比如地点是7, 9, 14
     // 供暖点的位置: 1 3 4 5 13 15 17

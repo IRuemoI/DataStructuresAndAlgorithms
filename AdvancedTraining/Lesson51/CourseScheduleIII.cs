@@ -6,7 +6,7 @@ using Common.DataStructures.Heap;
 
 namespace AdvancedTraining.Lesson51;
 
-public class CourseScheduleIii //Problem_0630
+public class CourseScheduleIii //leetcode_0630
 {
     private static int ScheduleCourse(int[][] courses)
     {

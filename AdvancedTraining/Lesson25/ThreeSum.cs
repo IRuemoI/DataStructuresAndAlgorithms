@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson25;
+﻿//pass
+namespace AdvancedTraining.Lesson25;
 
 // 本题测试链接 : https://leetcode.cn/problems/3sum/
 public class ThreeSum

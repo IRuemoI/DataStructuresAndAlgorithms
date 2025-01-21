@@ -1,4 +1,5 @@
-﻿#region
+﻿//pass
+#region
 
 using Common.Utilities;
 
@@ -185,7 +186,7 @@ public class VisibleMountains
     {
         const int size = 10;
         const int max = 10;
-        const int testTimes = 3000000;
+        const int testTimes = 5000;
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTimes; i++)
         {

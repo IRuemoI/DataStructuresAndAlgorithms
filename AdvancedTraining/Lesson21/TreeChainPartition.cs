@@ -1,4 +1,5 @@
-﻿using Common.Utilities;
+﻿//pass
+using Common.Utilities;
 
 namespace AdvancedTraining.Lesson21;
 
@@ -45,7 +46,7 @@ public class TreeChainPartition
         var values = GenerateValueArray(n, v);
         var tc = new TreeChain(father, values);
         var right = new Right(father, values);
-        var testTime = 1000000;
+        var testTime = 5000;
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {

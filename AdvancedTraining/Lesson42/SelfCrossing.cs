@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson42;
 
-public class SelfCrossing //Problem_0335
+public class SelfCrossing //leetcode_0335
 {
     private static bool IsSelfCrossing(int[]? x)
     {

@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson30;
+﻿//pass
+namespace AdvancedTraining.Lesson30;
 
-public class PopulatingNextRightPointersInEachNode //Problem_0116
+public class PopulatingNextRightPointersInEachNode //leetcode_0116
 {
     // 提交下面的代码
     private static Node? Connect(Node? root)

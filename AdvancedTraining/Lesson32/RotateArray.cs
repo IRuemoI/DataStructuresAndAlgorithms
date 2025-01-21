@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson32;
 
-public class RotateArray //Problem_0189
+public class RotateArray //leetcode_0189
 {
     private static void Rotate1(int[] numbers, int k)
     {

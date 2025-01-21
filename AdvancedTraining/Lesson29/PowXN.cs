@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson29;
+﻿//pass
+namespace AdvancedTraining.Lesson29;
 
-public class PowXn //Problem_0050
+public class PowXn //leetcode_0050
 {
     private static int Pow(int a, int n)
     {

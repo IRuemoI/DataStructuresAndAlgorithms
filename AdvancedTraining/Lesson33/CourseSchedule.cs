@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson33;
 
-public class CourseSchedule //Problem_0207
+public class CourseSchedule //leetcode_0207
 {
     private static bool CanFinish1(int numCourses, int[][]? prerequisites)
     {

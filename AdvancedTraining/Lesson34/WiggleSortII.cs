@@ -7,7 +7,7 @@ using Common.Utilities;
 namespace AdvancedTraining.Lesson34;
 
 //https://leetcode.cn/problems/wiggle-sort-ii/description/
-public class WiggleSortIi //Problem_0324
+public class WiggleSortIi //leetcode_0324
 {
     // 时间复杂度O(N)，额外空间复杂度O(1)
     private static void WiggleSort(int[]? numbers)

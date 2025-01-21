@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson33;
 
-public class CourseScheduleIi //Problem_0210
+public class CourseScheduleIi //leetcode_0210
 {
     private static int[] FindOrder(int numCourses, int[][]? prerequisites)
     {

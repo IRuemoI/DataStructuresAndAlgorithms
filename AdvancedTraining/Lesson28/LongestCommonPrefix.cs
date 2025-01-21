@@ -1,7 +1,8 @@
-﻿namespace AdvancedTraining.Lesson28;
+﻿//pass
+namespace AdvancedTraining.Lesson28;
 
 //Question@https://leetcode.cn/problems/longest-common-prefix/
-public class LongestCommonPrefix
+public class LongestCommonPrefix//leetcode_14
 {
     private static string Code(string[]? strings)
     {
@@ -23,7 +24,7 @@ public class LongestCommonPrefix
             if (min == 0) return "";
         }
 
-        return strings[0].Substring(0, min);
+        return strings[0][..min];
     }
 
     public static void Run()

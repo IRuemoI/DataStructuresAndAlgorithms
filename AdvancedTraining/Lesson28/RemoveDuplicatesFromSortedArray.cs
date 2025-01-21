@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson28;
+﻿//pass
+namespace AdvancedTraining.Lesson28;
 
-public class RemoveDuplicatesFromSortedArray //Problem_0026
+public class RemoveDuplicatesFromSortedArray //leetcode_0026
 {
     private static int RemoveDuplicates(int[]? numbers)
     {

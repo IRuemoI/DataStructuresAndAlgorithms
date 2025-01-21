@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson28;
 
-public class RemoveNthNodeFromEndOfList //Problem_0019
+public class RemoveNthNodeFromEndOfList //leetcode_0019
 {
     private static ListNode? RemoveNthFromEnd(ListNode? head, int n)
     {

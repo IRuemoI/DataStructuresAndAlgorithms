@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson29;
+﻿//pass
+namespace AdvancedTraining.Lesson29;
 
-public class UniquePaths //Problem_0062
+public class UniquePaths //leetcode_0062
 {
     // m 行
     // n 列

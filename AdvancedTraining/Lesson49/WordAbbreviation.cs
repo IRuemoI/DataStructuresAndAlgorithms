@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AdvancedTraining.Lesson49;
 
-public class WordAbbreviation //Problem_0527
+public class WordAbbreviation //leetcode_0527
 {
     private static IList<string> wordsAbbreviation(IList<string> words)
     {

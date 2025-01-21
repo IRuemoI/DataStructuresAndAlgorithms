@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson30;
+﻿//pass
+namespace AdvancedTraining.Lesson30;
 
-public class DecodeWaysIi //Problem_0639
+public class DecodeWaysIi //leetcode_0639
 {
     private const long Mod = 1000000007;
 

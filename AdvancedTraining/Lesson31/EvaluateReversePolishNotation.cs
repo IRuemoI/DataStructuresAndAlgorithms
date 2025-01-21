@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson31;
+﻿//pass
+namespace AdvancedTraining.Lesson31;
 
-public class EvaluateReversePolishNotation //Problem_0150
+public class EvaluateReversePolishNotation //leetcode_0150
 {
     private static int EvalRpn(string[] tokens)
     {

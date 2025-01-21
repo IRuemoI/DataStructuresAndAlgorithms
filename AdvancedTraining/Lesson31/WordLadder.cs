@@ -1,6 +1,6 @@
-﻿namespace AdvancedTraining.Lesson31;
-
-public class WordLadder //Problem_0127
+﻿//pass
+namespace AdvancedTraining.Lesson31;
+public class WordLadder //leetcode_0127
 {
     // start，出发的单词
     // to, 目标单位

@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson52;
 
-public class CoinPath //Problem_0656
+public class CoinPath //leetcode_0656
 {
     // arr 0 -> n-1
     // arr[i] = -1 死了！

@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson16;
+﻿//pass
+namespace AdvancedTraining.Lesson16;
 
 // 本题测试链接 : https://leetcode-cn.com/problems/yuan-quan-zhong-zui-hou-sheng-xia-de-shu-zi-lcof/
 public class JosephusProblem

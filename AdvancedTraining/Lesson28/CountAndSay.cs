@@ -1,4 +1,5 @@
-﻿#region
+﻿//pass
+#region
 
 using System.Text;
 
@@ -7,7 +8,7 @@ using System.Text;
 namespace AdvancedTraining.Lesson28;
 
 //https://leetcode.cn/problems/count-and-say/description/
-public class CountAndSay //Problem_0038
+public class CountAndSay //leetcode_0038
 {
     private static string Code(int n)
     {
@@ -23,13 +24,13 @@ public class CountAndSay //Problem_0038
             }
             else
             {
-                ans.Append(times.ToString());
-                ans.Append(last[i - 1].ToString());
+                ans.Append(times);
+                ans.Append(last[i - 1]);
                 times = 1;
             }
 
-        ans.Append(times.ToString());
-        ans.Append(last[^1].ToString());
+        ans.Append(times);
+        ans.Append(last[^1]);
         return ans.ToString();
     }
 

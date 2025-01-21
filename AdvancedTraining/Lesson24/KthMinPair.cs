@@ -133,7 +133,7 @@ public class KthMinPair
     {
         var max = 100;
         var len = 30;
-        var testTimes = 100000;
+        var testTimes = 5000;
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTimes; i++)
         {

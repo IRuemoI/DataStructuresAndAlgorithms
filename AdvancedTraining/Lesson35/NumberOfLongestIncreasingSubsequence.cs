@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson35;
 
-public class NumberOfLongestIncreasingSubsequence //Problem_0673
+public class NumberOfLongestIncreasingSubsequence //leetcode_0673
 {
     // 好理解的方法，时间复杂度O(N^2)
     private static int FindNumberOfLis1(int[]? numbers)

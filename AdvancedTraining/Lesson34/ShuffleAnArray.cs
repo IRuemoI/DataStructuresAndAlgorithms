@@ -8,7 +8,7 @@ namespace AdvancedTraining.Lesson34;
 
 //https://leetcode.cn/problems/shuffle-an-array/description/
 //todo:待整理
-public class ShuffleAnArray //Problem_0384
+public class ShuffleAnArray //leetcode_0384
 {
     internal class Solution
     {

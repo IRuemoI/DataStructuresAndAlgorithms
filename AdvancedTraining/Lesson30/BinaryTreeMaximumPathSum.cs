@@ -1,7 +1,8 @@
-﻿namespace AdvancedTraining.Lesson30;
+﻿//pass
+namespace AdvancedTraining.Lesson30;
 
 // follow up : 如果要求返回整个路径怎么做？
-public class BinaryTreeMaximumPathSum //Problem_0124
+public class BinaryTreeMaximumPathSum //leetcode_0124
 {
     private static int MaxPathSum(TreeNode? root)
     {

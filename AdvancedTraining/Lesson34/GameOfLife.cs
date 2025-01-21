@@ -5,7 +5,7 @@
 // 有关这个游戏更有意思、更完整的内容：
 // https://www.bilibili.com/video/BV1rJ411n7ri
 // 也推荐这个up主
-public class GameOfLife //Problem_0289
+public class GameOfLife //leetcode_0289
 {
     private static void GameOfLifeCode(int[][] board)
     {

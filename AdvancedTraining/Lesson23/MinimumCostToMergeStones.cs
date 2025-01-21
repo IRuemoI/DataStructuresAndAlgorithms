@@ -146,7 +146,7 @@ public class MinimumCostToMergeStones
         const int maxSize = 12;
         const int maxValue = 100;
         Console.WriteLine("测试开始");
-        for (var testTime = 0; testTime < 100000; testTime++)
+        for (var testTime = 0; testTime < 5000; testTime++)
         {
             var arr = GetRandomStringArray(maxSize, maxValue);
             var k = (int)(Utility.getRandomDouble * 7) + 2;

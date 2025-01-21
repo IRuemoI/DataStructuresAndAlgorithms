@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson24;
+﻿//pass
+namespace AdvancedTraining.Lesson24;
 
 public class MinWindowLength
 {

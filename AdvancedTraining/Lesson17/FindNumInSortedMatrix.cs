@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson17;
+﻿//pass
+namespace AdvancedTraining.Lesson17;
 
 public class FindNumInSortedMatrix
 {

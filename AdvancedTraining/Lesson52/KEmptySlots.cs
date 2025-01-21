@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson52;
 
-public class KEmptySlots //Problem_0683
+public class KEmptySlots //leetcode_0683
 {
     private static int KEmptySlots1(int[] bulbs, int k)
     {

@@ -6,7 +6,7 @@
 // 所以我更新了代码，这个代码是leetcode 114的实现
 // 利用morris遍历
 // https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/description/
-public class FlattenBinaryTreeToLinkedList //Problem_0114
+public class FlattenBinaryTreeToLinkedList //leetcode_0114
 {
     // 普通解
     private static void Flatten1(TreeNode root)

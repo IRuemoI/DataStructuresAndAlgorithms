@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson45;
 
-public class WordPatternIi //Problem_0291
+public class WordPatternIi //leetcode_0291
 {
     private static bool WordPatternMatch(string pattern, string str)
     {

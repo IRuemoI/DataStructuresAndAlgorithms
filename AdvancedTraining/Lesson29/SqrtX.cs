@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson29;
+﻿//pass
+namespace AdvancedTraining.Lesson29;
 
-public class SqrtX //Problem_0069
+public class SqrtX //leetcode_0069
 {
     // x一定非负，输入可以保证
     private static int MySqrt(int x)

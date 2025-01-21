@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson29;
+﻿//pass
+namespace AdvancedTraining.Lesson29;
 
-public class SetMatrixZeroes //Problem_0073
+public class SetMatrixZeroes //leetcode_0073
 {
     private static int[][] Zeroes1(int[][] value)
     {

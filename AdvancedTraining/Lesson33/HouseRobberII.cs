@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson33;
 
 //https://leetcode.cn/problems/house-robber-ii/description/
-public class HouseRobberIi //Problem_0213
+public class HouseRobberIi //leetcode_0213
 {
     // arr 长度大于等于1
     private static int PickMaxSum(int[] arr)

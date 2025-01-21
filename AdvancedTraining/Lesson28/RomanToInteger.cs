@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson28;
 
-public class RomanToInteger //Problem_0013
+public class RomanToInteger //leetcode_0013
 {
     private static int RomanToInt(string s)
     {

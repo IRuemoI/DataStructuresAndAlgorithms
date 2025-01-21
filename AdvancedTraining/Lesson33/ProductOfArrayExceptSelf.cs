@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson33;
 
-public class ProductOfArrayExceptSelf //Problem_0238
+public class ProductOfArrayExceptSelf //leetcode_0238
 {
     public static int[] ProductExceptSelfCode(int[] numbers)
     {

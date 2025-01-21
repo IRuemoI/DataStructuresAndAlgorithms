@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson22;
+﻿//pass
+namespace AdvancedTraining.Lesson22;
 
 // 本题测试链接 : https://leetcode.cn/problems/tallest-billboard/
 public class TallestBillboard

@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson28;
+﻿//pass
+namespace AdvancedTraining.Lesson28;
 
-public class ValidParentheses //Problem_0020
+public class ValidParentheses //leetcode_0020
 {
     private static bool IsValid(string s)
     {

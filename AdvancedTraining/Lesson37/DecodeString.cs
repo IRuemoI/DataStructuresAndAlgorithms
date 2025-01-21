@@ -7,7 +7,7 @@ using System.Text;
 namespace AdvancedTraining.Lesson37;
 
 //https://leetcode.cn/problems/decode-string/
-public class DecodeString //Problem_0394
+public class DecodeString //leetcode_0394
 {
     private static string DecodeStringCode(string s)
     {

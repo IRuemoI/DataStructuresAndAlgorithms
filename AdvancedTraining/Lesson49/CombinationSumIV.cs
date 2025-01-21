@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson49;
 
-public class CombinationSumIv //Problem_0377
+public class CombinationSumIv //leetcode_0377
 {
     private static readonly int[] Dp = new int[1001];
 

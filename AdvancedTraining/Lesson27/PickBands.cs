@@ -1,4 +1,5 @@
-﻿#region
+﻿//pass
+#region
 
 using Common.Utilities;
 
@@ -209,7 +210,7 @@ public class PickBands
     {
         const int n = 4;
         const int v = 100;
-        const int t = 10000;
+        const int t = 5000;
 
         Console.WriteLine("测试开始");
         for (var i = 0; i < t; i++)

@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson32;
+﻿//pass
+namespace AdvancedTraining.Lesson32;
 
-public class HappyNumber //Problem_0202
+public class HappyNumber //leetcode_0202
 {
     private static bool IsHappy1(int n)
     {

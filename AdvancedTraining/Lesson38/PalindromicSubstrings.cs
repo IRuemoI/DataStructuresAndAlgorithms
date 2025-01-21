@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson38;
 
-public class PalindromicSubstrings //Problem_0647
+public class PalindromicSubstrings //leetcode_0647
 {
     private static int CountSubstrings(string s)
     {

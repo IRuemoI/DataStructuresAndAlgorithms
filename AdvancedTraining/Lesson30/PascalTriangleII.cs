@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson30;
+﻿//pass
+namespace AdvancedTraining.Lesson30;
 
-public class PascalTriangleIi //Problem_0119
+public class PascalTriangleIi //leetcode_0119
 {
     private static IList<int> GetRow(int rowIndex)
     {

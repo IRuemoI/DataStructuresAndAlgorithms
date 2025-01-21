@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson42;
 
 //https://www.cnblogs.com/fuxuemingzhu/p/15435876.html
-public class ClosestBinarySearchTreeValueIi //Problem_0272
+public class ClosestBinarySearchTreeValueIi //leetcode_0272
 {
     // 这个解法来自讨论区的回答，最优解实现的很易懂且漂亮
     private static List<int> ClosestKValues(TreeNode root, double target, int k)

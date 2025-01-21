@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson15;
+﻿//pass
+namespace AdvancedTraining.Lesson15;
 
 // leetcode 121
 public class BestTimeToBuyAndSellStock

@@ -11,7 +11,7 @@ namespace AdvancedTraining.Lesson47;
 // 不管该集合用了什么样的0集合划分方案，当一个新的数到来时：
 // 1) 如果该数是-K，那么任何0集合的划分方案中，因为新数字的加入，0集合的数量都会+1
 // 2) 如果该数不是-K，那么任何0集合的划分方案中，0集合的数量都会不变
-public class OptimalAccountBalancing //Problem_0465
+public class OptimalAccountBalancing //leetcode_0465
 {
     // 用位信息替代集合结构的暴力尝试
     private static int MinTransfers1(int[][] transactions)

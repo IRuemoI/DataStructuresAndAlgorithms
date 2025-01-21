@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson28;
+﻿//pass
+namespace AdvancedTraining.Lesson28;
 
-public class GenerateParentheses //Problem_0022
+public class GenerateParentheses //leetcode_0022
 {
     private static IList<string> GenerateParenthesis(int n)
     {

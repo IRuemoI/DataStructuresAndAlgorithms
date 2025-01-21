@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson18;
+﻿//pass
+namespace AdvancedTraining.Lesson18;
 
 public class HanoiProblem
 {

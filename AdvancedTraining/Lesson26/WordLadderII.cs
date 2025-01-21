@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson26;
+﻿//pass
+namespace AdvancedTraining.Lesson26;
 
 // 本题测试链接 : https://leetcode.cn/problems/word-ladder-ii/
 public class WordLadderIi
@@ -92,8 +93,7 @@ public class WordLadderIi
     {
         foreach (var row in FindLadders("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]))
         {
-            foreach (var item in
-                     row)
+            foreach (var item in row)
                 Console.Write(item + ","); // 输出：[["hit","hot","dot","dog","cog"],["hit","hot","lot","log","cog"]]
 
             Console.WriteLine();

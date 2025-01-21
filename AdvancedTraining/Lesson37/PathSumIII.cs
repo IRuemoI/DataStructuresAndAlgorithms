@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson37;
 
 //https://leetcode.cn/problems/path-sum-iii/description/
-public class PathSumIii //Problem_0437
+public class PathSumIii //leetcode_0437
 {
     private static int PathSum(TreeNode root, int sum)
     {

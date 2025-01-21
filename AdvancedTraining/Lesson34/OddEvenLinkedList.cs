@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson34;
 
 //https://leetcode.cn/problems/odd-even-linked-list/description/
-public class OddEvenLinkedList //Problem_0328
+public class OddEvenLinkedList //leetcode_0328
 {
     private static ListNode? OddEvenList(ListNode? head)
     {

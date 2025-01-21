@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson49;
 
-public class RobotRoomCleaner //Problem_0489
+public class RobotRoomCleaner //leetcode_0489
 {
     private static readonly int[][] Ds =
     [

@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson41;
 
 //https://leetcode.cn/problems/next-permutation/description/
-public class NextPermutation //Problem_0031
+public class NextPermutation //leetcode_0031
 {
     private static void NextPermutationCode(int[] numbers)
     {

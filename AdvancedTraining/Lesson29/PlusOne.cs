@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson29;
+﻿//pass
+namespace AdvancedTraining.Lesson29;
 
-public class PlusOne //Problem_0066
+public class PlusOne //leetcode_0066
 {
     private static int[] PlusOneCode(int[] digits)
     {

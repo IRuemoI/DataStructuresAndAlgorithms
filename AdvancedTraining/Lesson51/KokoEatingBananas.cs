@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson51;
 
-public class KokoEatingBananas //Problem_0875
+public class KokoEatingBananas //leetcode_0875
 {
     private static int MinEatingSpeed(int[] piles, int h)
     {

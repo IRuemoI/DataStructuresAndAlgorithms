@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson29;
+﻿//pass
+namespace AdvancedTraining.Lesson29;
 
-public class MergeIntervals //Problem_0056
+public class MergeIntervals //leetcode_0056
 {
     private static int[][] Merge(int[][] intervals)
     {

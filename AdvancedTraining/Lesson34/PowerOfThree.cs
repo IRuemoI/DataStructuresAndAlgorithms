@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson34;
 
 //https://leetcode.cn/problems/power-of-three/description/
-public class PowerOfThree //Problem_0326
+public class PowerOfThree //leetcode_0326
 {
     // 如果一个数字是3的某次幂，那么这个数一定只含有3这个质数因子
     // 1162261467是int型范围内，最大的3的幂，它是3的19次方

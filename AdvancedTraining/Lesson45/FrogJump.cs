@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson45;
 
 //https://leetcode.cn/problems/frog-jump/description/
-public class FrogJump //Problem_0403
+public class FrogJump //leetcode_0403
 {
     private static bool CanCross(int[] stones)
     {

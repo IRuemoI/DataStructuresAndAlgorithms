@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson30;
+﻿//pass
+namespace AdvancedTraining.Lesson30;
 
-public class ValidateBinarySearchTree //Problem_0098
+public class ValidateBinarySearchTree //leetcode_0098
 {
     public virtual bool IsValidBst(TreeNode? root)
     {

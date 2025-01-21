@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson49;
 
 //https://www.cnblogs.com/cnoodle/p/13527007.html
-public class SplitArrayEithEqualSum //Problem_0548
+public class SplitArrayEithEqualSum //leetcode_0548
 {
     private static bool SplitArray(int[] nums)
     {

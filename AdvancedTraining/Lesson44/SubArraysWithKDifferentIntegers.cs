@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson44;
 
 //https://leetcode.cn/problems/subarrays-with-k-different-integers/description/
-public class SubArraysWithKDifferentIntegers //Problem_0992
+public class SubArraysWithKDifferentIntegers //leetcode_0992
 {
     // nums 数组，题目规定，nums中的数字，不会超过nums的长度
     // [ ]长度为5，0~5

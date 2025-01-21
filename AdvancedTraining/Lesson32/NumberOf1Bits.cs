@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson32;
 
-public class NumberOf1Bits //Problem_0191
+public class NumberOf1Bits //leetcode_0191
 {
     // n的二进制形式，有几个1？
     private static int HammingWeight1(int n)

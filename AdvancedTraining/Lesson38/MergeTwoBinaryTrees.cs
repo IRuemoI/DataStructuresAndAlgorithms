@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson38;
 
 //https://leetcode.cn/problems/merge-two-binary-trees/description/
-public class MergeTwoBinaryTrees //Problem_0617
+public class MergeTwoBinaryTrees //leetcode_0617
 {
     // 当前，一棵树的头是t1，另一颗树的头是t2
     // 请返回，整体merge之后的头

@@ -7,21 +7,14 @@ public class BiggestBstTopologyInTree
 {
     public static void Run()
     {
-        var n = Console.Read();
-        var h = Console.Read();
-        var tree = new int[n + 1, 3];
-        for (var i = 1; i <= n; i++)
+        var tree = new[,]
         {
-            var c = Console.Read();
-            var l = Console.Read();
-            var r = Console.Read();
-            tree[l, 0] = c;
-            tree[r, 0] = c;
-            tree[c, 1] = l;
-            tree[c, 2] = r;
-        }
+            { 2, 1, 3 },
+            { 1, 0, 0 },
+            { 3, 0, 0 }
+        };
 
-        Console.WriteLine(MaxBstTopology(h, tree, new int[n + 1]));
+        Console.WriteLine(MaxBstTopology(2, tree, new int[4]));
     }
 
     // h: 代表当前的头节点

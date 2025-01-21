@@ -7,7 +7,7 @@ using System.Text;
 namespace AdvancedTraining.Lesson47;
 
 //todo:待整理
-public class SerializeAndDeserializeNaryTree //Problem_0428
+public class SerializeAndDeserializeNaryTree //leetcode_0428
 {
     public static void Run()
     {

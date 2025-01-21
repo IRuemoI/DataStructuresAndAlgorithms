@@ -65,5 +65,17 @@
 * Lesson09:RemoveInvalidParentheses**结果错误**
 * Lesson10:BstToDoubleLinkedList**未测试**
 * Lesson10:TopK**未测试**
+* Lesson14:BiggestBstTopologyInTree**结果错误**
+* Lesson14:GetMaxLessOrEqualK**未测试**
+* Lesson14:RecoverBinarySearchTree**未测试**
+* Lesson17:PalindromePairs**运行报错**
+* Lesson18:CherryPickup**结果错误**
+* Lesson18:ShortestBridge**运行报错**
+* Lesson19:LFUCache**未整理**
+* Lesson19:LRUCache**未整理**
+* Lesson23:LcaTarjanAndTreeChainPartition**运行报错** 
+* Lesson23:LongestIntegratedLength**运行报错**
+* Lesson30:BinaryTreeZigzagLevelOrderTraversal**运行报错**
+* 
 
-### 整理进度大厂刷题班14
+整理进度大厂刷题班32

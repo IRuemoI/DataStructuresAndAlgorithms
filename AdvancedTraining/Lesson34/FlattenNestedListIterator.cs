@@ -8,7 +8,7 @@ namespace AdvancedTraining.Lesson34;
 
 //https://leetcode.cn/problems/flatten-nested-list-iterator/description/
 //todo:待整理
-public class FlattenNestedListIterator //Problem_0341
+public class FlattenNestedListIterator //leetcode_0341
 {
     // 不要提交这个接口类
     public interface INestedInteger

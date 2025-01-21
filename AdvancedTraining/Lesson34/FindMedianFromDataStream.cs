@@ -8,7 +8,7 @@ namespace AdvancedTraining.Lesson34;
 
 //https://leetcode.cn/problems/find-median-from-data-stream/description/
 //todo:待整理
-public class FindMedianFromDataStream //Problem_0295
+public class FindMedianFromDataStream //leetcode_0295
 {
     public static void Run()
     {

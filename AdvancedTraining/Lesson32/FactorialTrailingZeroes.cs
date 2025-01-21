@@ -1,6 +1,6 @@
-﻿namespace AdvancedTraining.Lesson32;
-
-public class FactorialTrailingZeroes //Problem_0172
+﻿//pass
+namespace AdvancedTraining.Lesson32;
+public class FactorialTrailingZeroes //leetcode_0172
 {
     private static int TrailingZeroes(int n)
     {

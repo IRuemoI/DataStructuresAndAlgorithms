@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson30;
+﻿//pass
+namespace AdvancedTraining.Lesson30;
 
-public class MergeSortedArray //Problem_0088
+public class MergeSortedArray //leetcode_0088
 {
     private static void Merge(int[] numbers1, int m, int[] numbers2, int n)
     {

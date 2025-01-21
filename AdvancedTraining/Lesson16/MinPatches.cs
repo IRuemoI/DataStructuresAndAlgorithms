@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson16;
+﻿//pass
+namespace AdvancedTraining.Lesson16;
 
 public class MinPatches
 {

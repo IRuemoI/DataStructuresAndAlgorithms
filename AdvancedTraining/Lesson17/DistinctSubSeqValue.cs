@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson17;
+﻿//pass
+namespace AdvancedTraining.Lesson17;
 
 // 本题测试链接 : https://leetcode.cn/problems/distinct-subsequences-ii/
 public class DistinctSubSeqValue

@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson46;
 
 //https://leetcode.cn/problems/max-sum-of-rectangle-no-larger-than-k/description/
-public class MaxSumOfRectangleNoLargerThanK //Problem_0363
+public class MaxSumOfRectangleNoLargerThanK //leetcode_0363
 {
     private static int NearK(int[]? arr, int k)
     {

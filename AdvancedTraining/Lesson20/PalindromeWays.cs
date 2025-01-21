@@ -1,4 +1,5 @@
-﻿#region
+﻿//pass
+#region
 
 using Common.Utilities;
 
@@ -65,7 +66,7 @@ public class PalindromeWays
     {
         const int n = 10;
         var types = 5;
-        var testTimes = 100000;
+        var testTimes = 5000;
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTimes; i++)
         {

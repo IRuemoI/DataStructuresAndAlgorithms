@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson28;
+﻿//pass
+namespace AdvancedTraining.Lesson28;
 
-public class FindFirstAndLastPositionOfElementInSortedArray //Problem_0034
+public class FindFirstAndLastPositionOfElementInSortedArray //leetcode_0034
 {
     private static int[] SearchRange(int[]? numbers, int target)
     {

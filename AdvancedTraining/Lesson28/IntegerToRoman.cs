@@ -1,4 +1,5 @@
-﻿#region
+﻿//pass
+#region
 
 using System.Text;
 
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace AdvancedTraining.Lesson28;
 
-public class IntegerToRoman //Problem_0012
+public class IntegerToRoman //leetcode_0012
 {
     private static string IntToRoman(int num)
     {

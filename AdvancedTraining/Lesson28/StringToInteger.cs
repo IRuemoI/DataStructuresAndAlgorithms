@@ -1,8 +1,8 @@
 ﻿namespace AdvancedTraining.Lesson28;
 
-public class StringToInteger //Problem_0008
+public class StringToInteger //leetcode_0008
 {
-    private static int MyAToI(string s)
+    private static int MyAsciiToInt(string s)
     {
         if (s is null or "") return 0;
         s = RemoveHeadZero(s.Trim());
@@ -57,6 +57,6 @@ public class StringToInteger //Problem_0008
 
     public static void Run()
     {
-        Console.WriteLine(MyAToI(" -042")); //输出-42
+        Console.WriteLine(MyAsciiToInt(" -042")); //输出-42
     }
 }

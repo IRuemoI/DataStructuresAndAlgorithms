@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson30;
 
-public class BinaryTreeZigzagLevelOrderTraversal //Problem_0103
+public class BinaryTreeZigzagLevelOrderTraversal //leetcode_0103
 {
     private static IList<IList<int>> ZigzagLevelOrder(TreeNode? root)
     {

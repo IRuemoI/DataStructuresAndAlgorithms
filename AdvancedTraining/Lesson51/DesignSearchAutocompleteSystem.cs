@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson51;
 
 //todo:待整理
-public class DesignSearchAutocompleteSystem //Problem_0642
+public class DesignSearchAutocompleteSystem //leetcode_0642
 {
     internal class AutocompleteSystem
     {

@@ -2,7 +2,7 @@
 
 // 利用只支持单点增加 + 范围查询的动态开点线段树（累加和），解决leetcode 315
 //https://leetcode.cn/problems/count-of-smaller-numbers-after-self/description/
-public class CountOfSmallerNumbersAfterSelf //Problem_0315
+public class CountOfSmallerNumbersAfterSelf //leetcode_0315
 {
     private static List<int> CountSmaller(int[]? numbers)
     {

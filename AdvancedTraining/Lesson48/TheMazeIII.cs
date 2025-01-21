@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson48;
 
-public class TheMazeIii //Problem_0499
+public class TheMazeIii //leetcode_0499
 {
     private static readonly int[][] To =
     [

@@ -6,7 +6,7 @@ using Common.DataStructures.Heap;
 
 namespace AdvancedTraining.Lesson52;
 
-public class AvoidFloodInTheCity //Problem_1488
+public class AvoidFloodInTheCity //leetcode_1488
 {
     // rains[i] = j 第i天轮到j号湖泊下雨
     // 规定，下雨日，干啥 : -1

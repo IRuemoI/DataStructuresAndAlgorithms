@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson38;
 
 //https://leetcode.cn/problems/find-all-numbers-disappeared-in-an-array/description/
-public class FindAllNumbersDisappearedInAnArray //Problem_0448
+public class FindAllNumbersDisappearedInAnArray //leetcode_0448
 {
     private static IList<int> FindDisappearedNumbers(int[]? numbers)
     {

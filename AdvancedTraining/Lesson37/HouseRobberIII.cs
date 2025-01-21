@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson37;
 
 //https://leetcode.cn/problems/house-robber-iii/description/
-public class HouseRobberIii //Problem_0337
+public class HouseRobberIii //leetcode_0337
 {
     private static int Rob(TreeNode root)
     {

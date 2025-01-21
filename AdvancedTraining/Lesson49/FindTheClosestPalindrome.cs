@@ -1,6 +1,6 @@
 ﻿namespace AdvancedTraining.Lesson49;
 
-public class FindTheClosestPalindrome //Problem_0564
+public class FindTheClosestPalindrome //leetcode_0564
 {
     private static string? NearestPalindromic(string n)
     {

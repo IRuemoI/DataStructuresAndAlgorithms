@@ -7,7 +7,7 @@ using Common.Utilities;
 namespace AdvancedTraining.Lesson37;
 
 //https://leetcode.cn/problems/queue-reconstruction-by-height/description/
-public class QueueReconstructionByHeight //Problem_0406
+public class QueueReconstructionByHeight //leetcode_0406
 {
     private static int[,] reconstructQueue1(int[,] people)
     {

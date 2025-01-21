@@ -1,4 +1,5 @@
-﻿#region
+﻿//pass
+#region
 
 using Common.DataStructures.Heap;
 
@@ -14,18 +15,12 @@ public class TopKSumCrossTwoArrays
 {
     public static void Run()
     {
-        var n = Console.Read();
-        var k = Console.Read();
-        var arr1 = new int[n];
-        var arr2 = new int[n];
-        for (var i = 0; i < n; i++) arr1[i] = Console.Read();
-
-        for (var i = 0; i < n; i++) arr2[i] = Console.Read();
+        const int k = 4;
+        var arr1 = new[] { 1, 2, 3, 4, 5 };
+        var arr2 = new[] { 3, 5, 7, 9, 11 };
 
         var topK = topKSum(arr1, arr2, k);
-        for (var i = 0; i < k; i++) Console.Write(topK?[i] + " ");
-
-        Console.WriteLine();
+        for (var i = 0; i < k; i++) Console.Write(topK?[i] + " "); //16 15 14 14
     }
 
     private static int[]? topKSum(int[]? arr1, int[]? arr2, int topK)

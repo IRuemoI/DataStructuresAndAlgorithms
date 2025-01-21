@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson33;
 
 //https://leetcode.cn/problems/move-zeroes/description/
-public class MoveZeroes //Problem_0283
+public class MoveZeroes //leetcode_0283
 {
     private static void MoveZeroesCode(int[] numbers)
     {

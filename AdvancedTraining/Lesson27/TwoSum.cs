@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson27;
+﻿//pass
+namespace AdvancedTraining.Lesson27;
 
-public class TwoSum //Problem_0001
+public class TwoSum //leetcode_0001
 {
     private static int[] TwoSumCode(int[] numbers, int target)
     {

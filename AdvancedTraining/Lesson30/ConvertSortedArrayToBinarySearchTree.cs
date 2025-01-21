@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson30;
+﻿//pass
+namespace AdvancedTraining.Lesson30;
 
-public class ConvertSortedArrayToBinarySearchTree //Problem_0108
+public class ConvertSortedArrayToBinarySearchTree //leetcode_0108
 {
     public virtual TreeNode? SortedArrayToBst(int[] numbers)
     {

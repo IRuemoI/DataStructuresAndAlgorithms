@@ -7,7 +7,7 @@ using Common.DataStructures.Heap;
 namespace AdvancedTraining.Lesson35;
 
 //https://leetcode.cn/problems/top-k-frequent-elements/description/
-public class TopKFrequentElements //Problem_0347
+public class TopKFrequentElements //leetcode_0347
 {
     private static int[] TopKFrequent(int[] numbers, int k)
     {

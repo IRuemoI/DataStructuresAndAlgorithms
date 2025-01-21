@@ -1,6 +1,7 @@
-﻿namespace AdvancedTraining.Lesson28;
+﻿//pass
+namespace AdvancedTraining.Lesson28;
 
-public class SudokuSolver //Problem_0037
+public class SudokuSolver //leetcode_0037
 {
     private static void SolveSudoku(char[,] board)
     {

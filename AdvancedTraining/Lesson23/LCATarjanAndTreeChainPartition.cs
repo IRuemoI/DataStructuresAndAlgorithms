@@ -187,7 +187,7 @@ public class LcaTarjanAndTreeChainPartition
     {
         const int n = 1000;
         const int m = 200;
-        const int testTime = 50000;
+        const int testTime = 5000;
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {

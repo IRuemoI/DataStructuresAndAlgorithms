@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson48;
 
 //todo:待整理
-public class ConcatenatedWords //Problem_0472
+public class ConcatenatedWords //leetcode_0472
 {
     // 提前准备好动态规划表
     private static readonly int[] Dp = new int[1000];
