@@ -15,17 +15,17 @@ public class FlattenNestedListIterator //leetcode_0341
     {
         // @return true if this NestedInteger holds a single integer, rather than a
         // nested list.
-        bool Integer1 { get; }
+        bool integer1 { get; }
 
         // @return the single integer that this NestedInteger holds, if it holds a
         // single integer
         // Return null if this NestedInteger holds a nested list
-        int? Integer2 { get; }
+        int? integer2 { get; }
 
         // @return the nested list that this NestedInteger holds, if it holds a nested
         // list
         // Return null if this NestedInteger holds a single integer
-        IList<INestedInteger> List { get; }
+        IList<INestedInteger> list { get; }
     }
 
     public class NestedIterator : IEnumerator<int>
@@ -33,17 +33,17 @@ public class FlattenNestedListIterator //leetcode_0341
         private readonly FlattenNestedListIterator outerInstance;
 
 
-        internal IList<INestedInteger> list;
-        internal Stack<int> stack;
-        internal bool used;
+        private readonly IList<INestedInteger> _list;
+        private readonly Stack<int> _stack;
+        private bool _used;
 
         public NestedIterator(FlattenNestedListIterator outerInstance, IList<INestedInteger> nestedList)
         {
             this.outerInstance = outerInstance;
-            list = nestedList;
-            stack = new Stack<int>();
-            stack.Push(-1);
-            used = true;
+            _list = nestedList;
+            _stack = new Stack<int>();
+            _stack.Push(-1);
+            _used = true;
             HasNext();
         }
 
@@ -69,10 +69,10 @@ public class FlattenNestedListIterator //leetcode_0341
         public int? next()
         {
             int? ans = null;
-            if (!used)
+            if (!_used)
             {
-                ans = get(list, stack);
-                used = true;
+                ans = get(_list, _stack);
+                _used = true;
                 HasNext();
             }
 
@@ -81,10 +81,10 @@ public class FlattenNestedListIterator //leetcode_0341
 
         public bool HasNext()
         {
-            if (stack.Count == 0) return false;
-            if (!used) return true;
-            if (FindNext(list, stack)) used = false;
-            return !used;
+            if (_stack.Count == 0) return false;
+            if (!_used) return true;
+            if (FindNext(_list, _stack)) _used = false;
+            return !_used;
         }
 
         internal virtual int? get(IList<INestedInteger> nestedList, Stack<int> stack)
@@ -92,9 +92,9 @@ public class FlattenNestedListIterator //leetcode_0341
             var index = stack.Pop();
             int? ans = null;
             if (stack.Count > 0)
-                ans = get(nestedList[index].List, stack);
+                ans = get(nestedList[index].list, stack);
             else
-                ans = nestedList[index].Integer2;
+                ans = nestedList[index].integer2;
             stack.Push(index);
             return ans;
         }
@@ -102,7 +102,7 @@ public class FlattenNestedListIterator //leetcode_0341
         internal virtual bool FindNext(IList<INestedInteger> nestedList, Stack<int> stack)
         {
             var index = stack.Pop();
-            if (stack.Count > 0 && FindNext(nestedList[index].List, stack))
+            if (stack.Count > 0 && FindNext(nestedList[index].list, stack))
             {
                 stack.Push(index);
                 return true;
@@ -116,13 +116,13 @@ public class FlattenNestedListIterator //leetcode_0341
 
         internal virtual bool PickFirst(INestedInteger nested, int position, Stack<int> stack)
         {
-            if (nested.Integer1)
+            if (nested.integer1)
             {
                 stack.Push(position);
                 return true;
             }
 
-            var actualList = nested.List;
+            var actualList = nested.list;
             for (var i = 0; i < actualList.Count; i++)
                 if (PickFirst(actualList[i], i, stack))
                 {

@@ -7,7 +7,7 @@ using Common.DataStructures.Heap;
 namespace AdvancedTraining.Lesson34;
 
 //https://leetcode.cn/problems/find-median-from-data-stream/description/
-//todo:待整理
+//pass
 public class FindMedianFromDataStream //leetcode_0295
 {
     public static void Run()
@@ -20,7 +20,7 @@ public class FindMedianFromDataStream //leetcode_0295
         medianFinder.FindMedian(); // return 2.0
     }
 
-    public class MedianFinder
+    private class MedianFinder
     {
         private readonly Heap<int> _maxHeap;
         private readonly Heap<int> _minHeap;
@@ -31,7 +31,7 @@ public class FindMedianFromDataStream //leetcode_0295
             _minHeap = new Heap<int>((a, b) => a - b);
         }
 
-        public virtual void AddNum(int num)
+        public void AddNum(int num)
         {
             if (_maxHeap.isEmpty || _maxHeap.Peek() >= num)
                 _maxHeap.Push(num);
@@ -40,14 +40,14 @@ public class FindMedianFromDataStream //leetcode_0295
             Balance();
         }
 
-        public virtual double FindMedian()
+        public double FindMedian()
         {
             if (_maxHeap.count == _minHeap.count)
                 return (double)(_maxHeap.Peek() + _minHeap.Peek()) / 2;
             return _maxHeap.count > _minHeap.count ? _maxHeap.Peek() : _minHeap.Peek();
         }
 
-        protected virtual void Balance()
+        protected void Balance()
         {
             if (Math.Abs(_maxHeap.count - _minHeap.count) == 2)
             {

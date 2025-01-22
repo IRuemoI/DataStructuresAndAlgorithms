@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson33;
 
 //https://leetcode.com/problems/delete-node-in-a-linked-list/
-//todo:待整理
+//pass
 public class DeleteNodeInLinkedList //leetcode_0237
 {
     public virtual void DeleteNode(ListNode node)

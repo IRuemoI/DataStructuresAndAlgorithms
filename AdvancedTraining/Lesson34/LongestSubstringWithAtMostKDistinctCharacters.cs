@@ -1,6 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson34;
 
 //https://blog.csdn.net/zhizhengguan/article/details/126262037
+//pass
 public class LongestSubstringWithAtMostKDistinctCharacters //leetcode_0340
 {
     private static int LengthOfLongestSubstringKDistinct(string s, int k)

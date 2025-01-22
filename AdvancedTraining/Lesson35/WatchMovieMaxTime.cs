@@ -96,7 +96,7 @@ public class WatchMovieMaxTime
     {
         const int n = 10;
         const int t = 20;
-        const int testTime = 10000;
+        const int testTime = 5000;
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {

@@ -32,7 +32,7 @@ public class PickAddMax
         var ans = 0;
         for (var i = 0; i < arr.Length; i++)
         {
-            var rest = removeAddOthers(arr, i);
+            var rest = RemoveAddOthers(arr, i);
             ans = Math.Max(ans, arr[i] + Test(rest));
         }
 
@@ -40,7 +40,7 @@ public class PickAddMax
     }
 
     // 为了测试
-    private static int[] removeAddOthers(int[] arr, int i)
+    private static int[] RemoveAddOthers(int[] arr, int i)
     {
         var rest = new int[arr.Length - 1];
         var ri = 0;
@@ -50,7 +50,7 @@ public class PickAddMax
     }
 
     // 为了测试
-    private static int[] randomArray(int len, int value)
+    private static int[] RandomArray(int len, int value)
     {
         var arr = new int[len];
         for (var i = 0; i < len; i++) arr[i] = (int)(Utility.getRandomDouble * value) + 1;
@@ -67,7 +67,7 @@ public class PickAddMax
         for (var i = 0; i < testTime; i++)
         {
             var len = (int)(Utility.getRandomDouble * n) + 1;
-            var arr = randomArray(len, v);
+            var arr = RandomArray(len, v);
             var ans1 = Pick(arr);
             var ans2 = Test(arr);
             if (ans1 != ans2)

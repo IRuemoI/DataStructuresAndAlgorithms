@@ -1,4 +1,5 @@
-﻿namespace AdvancedTraining.Lesson32;
+﻿//pass
+namespace AdvancedTraining.Lesson32;
 
 public class ReverseBits //leetcode_0190
 {

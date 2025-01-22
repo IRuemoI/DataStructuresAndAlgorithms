@@ -16,7 +16,7 @@ public class ArrangeProject
 {
     private static int DayCount(int[][] numbers, int[] days, int[] headCount)
     {
-        var head = countHead(headCount);
+        var head = CountHead(headCount);
         var maxDay = 0;
         var countDay = new int[days.Length];
         while (head.Count > 0)
@@ -38,7 +38,7 @@ public class ArrangeProject
         return maxDay;
     }
 
-    private static LinkedList<int> countHead(int[] headCount)
+    private static LinkedList<int> CountHead(int[] headCount)
     {
         var queue = new LinkedList<int>();
         for (var i = 0; i < headCount.Length; i++)

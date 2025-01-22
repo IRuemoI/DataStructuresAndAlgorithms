@@ -6,63 +6,47 @@ using Common.Utilities;
 
 namespace AdvancedTraining.Lesson34;
 
-//todo:待整理
-public class InsertDeleteGetRandom //leetcode_0380
+//pass
+
+public class RandomizedSet //leetcode_0380
 {
-    public class RandomizedSet
+    private readonly Dictionary<int, int> _indexKeyMap = new();
+    private readonly Dictionary<int, int> _keyIndexMap = new();
+    private int _size;
+    private readonly Random _random = new();
+
+    public int GetRandom()
     {
-        private readonly InsertDeleteGetRandom outerInstance;
-        internal Dictionary<int, int> indexKeyMap;
+        if (_size == 0) return -1;
+        var randomIndex = (int)(_random.NextDouble() * _size);
+        return _indexKeyMap[randomIndex];
+    }
 
-
-        internal Dictionary<int, int> keyIndexMap;
-        internal int size;
-
-        public RandomizedSet(InsertDeleteGetRandom outerInstance)
+    public bool Insert(int val)
+    {
+        if (_keyIndexMap.TryAdd(val, _size))
         {
-            this.outerInstance = outerInstance;
-            keyIndexMap = new Dictionary<int, int>();
-            indexKeyMap = new Dictionary<int, int>();
-            size = 0;
+            _indexKeyMap[_size++] = val;
+            return true;
         }
 
-        public virtual int Random
+        return false;
+    }
+
+    public bool Remove(int val)
+    {
+        if (_keyIndexMap.ContainsKey(val))
         {
-            get
-            {
-                if (size == 0) return -1;
-                var randomIndex = (int)(Utility.getRandomDouble * size);
-                return indexKeyMap[randomIndex];
-            }
+            var deleteIndex = _keyIndexMap[val];
+            var lastIndex = --_size;
+            var lastKey = _indexKeyMap[lastIndex];
+            _keyIndexMap[lastKey] = deleteIndex;
+            _indexKeyMap[deleteIndex] = lastKey;
+            _keyIndexMap.Remove(val);
+            _indexKeyMap.Remove(lastIndex);
+            return true;
         }
 
-        public virtual bool Insert(int val)
-        {
-            if (!keyIndexMap.ContainsKey(val))
-            {
-                keyIndexMap[val] = size;
-                indexKeyMap[size++] = val;
-                return true;
-            }
-
-            return false;
-        }
-
-        public virtual bool Remove(int val)
-        {
-            if (keyIndexMap.ContainsKey(val))
-            {
-                var deleteIndex = keyIndexMap[val];
-                var lastIndex = --size;
-                var lastKey = indexKeyMap[lastIndex];
-                keyIndexMap[lastKey] = deleteIndex;
-                indexKeyMap[deleteIndex] = lastKey;
-                keyIndexMap.Remove(val);
-                indexKeyMap.Remove(lastIndex);
-                return true;
-            }
-
-            return false;
-        }
+        return false;
     }
 }

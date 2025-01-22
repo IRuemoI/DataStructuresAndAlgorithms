@@ -1,5 +1,5 @@
 ﻿namespace AdvancedTraining.Lesson33;
-
+//pass
 public class CourseSchedule //leetcode_0207
 {
     private static bool CanFinish1(int numCourses, int[][]? prerequisites)
@@ -88,6 +88,10 @@ public class CourseSchedule //leetcode_0207
         int[][] prerequisites = [[1, 0]];
         Console.WriteLine(CanFinish1(numCourses, prerequisites)); //输出True
         Console.WriteLine(CanFinish2(numCourses, prerequisites)); //输出True
+        numCourses = 2;
+        prerequisites = [[1, 0], [0, 1]];
+        Console.WriteLine(CanFinish1(numCourses, prerequisites)); //输出False
+        Console.WriteLine(CanFinish2(numCourses, prerequisites)); //输出False
     }
 
     // 一个node，就是一个课程

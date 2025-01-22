@@ -1,8 +1,8 @@
 ﻿namespace AdvancedTraining.Lesson33;
-
+//pass
 public class ProductOfArrayExceptSelf //leetcode_0238
 {
-    public static int[] ProductExceptSelfCode(int[] numbers)
+    private static int[] ProductExceptSelfCode(int[] numbers)
     {
         var n = numbers.Length;
         var ans = new int[n];

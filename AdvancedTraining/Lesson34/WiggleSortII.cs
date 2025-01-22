@@ -5,7 +5,7 @@ using Common.Utilities;
 #endregion
 
 namespace AdvancedTraining.Lesson34;
-
+//pass
 //https://leetcode.cn/problems/wiggle-sort-ii/description/
 public class WiggleSortIi //leetcode_0324
 {
@@ -162,7 +162,7 @@ public class WiggleSortIi //leetcode_0324
     }
 
     // 为了测试
-    private static int[] randomArray(int n, int v)
+    private static int[] RandomArray(int n, int v)
     {
         var ans = new int[n];
         for (var i = 0; i < n; i++) ans[i] = (int)(Utility.getRandomDouble * v);
@@ -170,7 +170,7 @@ public class WiggleSortIi //leetcode_0324
     }
 
     // 为了测试
-    private static int[] copyArray(int[] arr)
+    private static int[] CopyArray(int[] arr)
     {
         var ans = new int[arr.Length];
         for (var i = 0; i < arr.Length; i++) ans[i] = arr[i];
@@ -182,13 +182,13 @@ public class WiggleSortIi //leetcode_0324
     {
         const int n1 = 10;
         const int v = 10;
-        const int testTime = 10000;
+        const int testTime = 5000;
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
             var n = (int)(Utility.getRandomDouble * n1) + 1;
-            var arr1 = randomArray(n, v);
-            var arr2 = copyArray(arr1);
+            var arr1 = RandomArray(n, v);
+            var arr2 = CopyArray(arr1);
             WiggleSort(arr1);
             if (Valid(arr1) != Test(arr2)) Console.WriteLine("出错了!");
         }

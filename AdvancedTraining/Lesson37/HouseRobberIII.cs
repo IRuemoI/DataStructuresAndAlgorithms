@@ -19,12 +19,6 @@ public class HouseRobberIii //leetcode_0337
         return new Info(no, yes);
     }
 
-
-    //todo:待整理
-    public static void Run()
-    {
-    }
-
     public class TreeNode
     {
         public TreeNode? Left;

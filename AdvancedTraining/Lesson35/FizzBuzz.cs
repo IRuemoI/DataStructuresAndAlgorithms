@@ -1,5 +1,5 @@
 ﻿namespace AdvancedTraining.Lesson35;
-
+//pass
 public class FizzBuzz //leetcode_0412
 {
     private static List<string> FizzBuzzCode(int n)

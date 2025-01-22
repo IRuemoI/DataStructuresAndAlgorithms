@@ -1,7 +1,7 @@
 ﻿namespace AdvancedTraining.Lesson35;
 
 //https://leetcode.cn/problems/longest-univalue-path/
-//todo:待整理
+//pass
 public class LongestUnivaluePath //leetcode_0687
 {
     private static int LongestUnivaluePathCode(TreeNode? root)
@@ -30,11 +30,6 @@ public class LongestUnivaluePath //leetcode_0687
         if (l != null && r != null && l.Val == x.Val && r.Val == x.Val)
             max = Math.Max(max, leftInfo.Len + rinfo.Len + 1);
         return new Info(len, max);
-    }
-
-
-    public static void Run()
-    {
     }
 
     public class TreeNode(int v, TreeNode? left, TreeNode? right)

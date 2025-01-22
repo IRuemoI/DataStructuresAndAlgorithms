@@ -50,7 +50,7 @@ public class StringKth
     }
 
     // 为了测试
-    private static List<string> all(int len)
+    private static List<string> All(int len)
     {
         var ans = new List<string>();
         for (var i = 1; i <= len; i++)
@@ -79,7 +79,7 @@ public class StringKth
     {
         var len = 4;
         // 暴力方法得到所有字符串
-        var ans = all(len);
+        var ans = All(len);
         // 根据字典序排序，所有字符串都在其中
         ans.Sort((a, b) => string.Compare(a, b, StringComparison.Ordinal));
 

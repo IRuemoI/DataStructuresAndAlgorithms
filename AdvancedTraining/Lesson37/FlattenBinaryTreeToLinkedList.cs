@@ -1,5 +1,5 @@
 ﻿namespace AdvancedTraining.Lesson37;
-
+//pass
 // 注意，我们课上讲了一个别的题，并不是leetcode 114
 // 我们课上讲的是，把一棵搜索二叉树变成有序链表，怎么做
 // 而leetcode 114是，把一棵树先序遍历的结果串成链表
@@ -67,11 +67,6 @@ public class FlattenBinaryTreeToLinkedList //leetcode_0114
             cur.Right = next;
             cur = next;
         }
-    }
-
-    //todo:待整理
-    public static void Run()
-    {
     }
 
     // 这个类不用提交

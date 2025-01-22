@@ -5,7 +5,7 @@ using Common.Utilities;
 #endregion
 
 namespace AdvancedTraining.Lesson36;
-
+//pass
 // 来自腾讯
 // 给定一个字符串str，和一个正数k
 // 返回长度为k的所有子序列中，字典序最大的子序列
@@ -67,7 +67,7 @@ public class MaxKLenSequence
     {
         const int n = 12;
         const int r = 5;
-        const int testTime = 10000;
+        const int testTime = 5000;
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {

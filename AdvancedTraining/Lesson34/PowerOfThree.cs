@@ -1,5 +1,5 @@
 ﻿namespace AdvancedTraining.Lesson34;
-
+//pass
 //https://leetcode.cn/problems/power-of-three/description/
 public class PowerOfThree //leetcode_0326
 {

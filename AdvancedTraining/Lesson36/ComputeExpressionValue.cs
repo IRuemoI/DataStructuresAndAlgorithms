@@ -1,4 +1,5 @@
 ﻿namespace AdvancedTraining.Lesson36;
+//pass
 
 // 来自美团
 // () 分值为2
@@ -15,25 +16,25 @@ public class ComputeExpressionValue
 {
     private static int Sores(string s)
     {
-        return compute(s.ToCharArray(), 0)[0];
+        return Compute(s.ToCharArray(), 0)[0];
     }
 
     // s[i.....] 遇到 ')' 或者 终止位置  停！
     // 返回值：int[]  长度就是2
     // 0 ：分数是多少
     // 1 : 来到了什么位置停的！
-    private static int[] compute(char[] s, int i)
+    private static int[] Compute(char[] s, int i)
     {
-        if (s[i] == ')') return new[] { 1, i };
+        if (s[i] == ')') return [1, i];
         var ans = 1;
         while (i < s.Length && s[i] != ')')
         {
-            var info = compute(s, i + 1);
+            var info = Compute(s, i + 1);
             ans *= info[0] + 1;
             i = info[1] + 1;
         }
 
-        return new[] { ans, i };
+        return [ans, i];
     }
 
     public static void Run()

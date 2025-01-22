@@ -3,7 +3,7 @@
 using System.Text;
 
 #endregion
-
+//pass
 namespace AdvancedTraining.Lesson37;
 
 //https://leetcode.cn/problems/decode-string/

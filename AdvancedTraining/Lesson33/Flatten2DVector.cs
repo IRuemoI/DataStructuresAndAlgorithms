@@ -1,5 +1,5 @@
 ﻿namespace AdvancedTraining.Lesson33;
-
+//pass
 //https://www.cnblogs.com/fenshen371/p/5806352.html
 public class Flatten2DVector //leetcode_0251
 {

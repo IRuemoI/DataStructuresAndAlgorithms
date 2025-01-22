@@ -76,6 +76,19 @@
 * Lesson23:LcaTarjanAndTreeChainPartition**运行报错** 
 * Lesson23:LongestIntegratedLength**运行报错**
 * Lesson30:BinaryTreeZigzagLevelOrderTraversal**运行报错**
-* 
+* Lesson33:FindTheCelebrity**未整理**
+* Lesson34:DesignTicTacToe**未整理**
+* Lesson34:FlattenNestedListIterator**未整理**
+* Lesson35:CircleCandy**未整理**
+* Lesson35:MagicStone**未整理**
+* Lesson35:NumberOfLongestIncreasingSubsequence**未整理**
+* Lesson35:WalkToEnd**未整理**
+* Lesson35:WatchMovieMaxTime**运行报错**
+* Lesson36:NodeWeight**运行报错**
+* Lesson36:Query3Problems**未整理**
+* Lesson36:Ratio01Split**结果错误**
+* Lesson37:ArrangeProject**结果错误**
+* Lesson37:GameForEveryStepWin**未整理**
+* Lesson37:QueueReconstructionByHeight**未整理**
 
-整理进度大厂刷题班32
+整理进度大厂刷题班37
