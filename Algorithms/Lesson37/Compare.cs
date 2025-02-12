@@ -237,15 +237,15 @@ public static class Compare
                 }
             }
 
-            if (sortedDictionary.Count != avl.Size ||
-                avl.Size != sbt.Size ||
-                sbt.Size != skip.Size)
+            if (sortedDictionary.Count != avl.size ||
+                avl.size != sbt.size ||
+                sbt.size != skip.size)
             {
                 Console.WriteLine("size Oops");
                 Console.WriteLine(sortedDictionary.Count);
-                Console.WriteLine(avl.Size);
-                Console.WriteLine(sbt.Size);
-                Console.WriteLine(skip.Size);
+                Console.WriteLine(avl.size);
+                Console.WriteLine(sbt.size);
+                Console.WriteLine(skip.size);
                 break;
             }
         }

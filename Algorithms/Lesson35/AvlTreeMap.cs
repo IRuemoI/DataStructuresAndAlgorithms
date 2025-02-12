@@ -4,15 +4,9 @@ public class AvlTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
 {
     private AvlNode<TK, TV>? _root;
 
-    public AvlTreeMap()
-    {
-        _root = null;
-        Size = 0;
-    }
+    public int size { private set; get; }
 
-    public int Size { private set; get; }
-
-    protected virtual AvlNode<TK, TV> RightRotate(AvlNode<TK, TV> cur)
+    private AvlNode<TK, TV> RightRotate(AvlNode<TK, TV> cur)
     {
         var left = cur.LeftChild;
         if (left == null) throw new InvalidOperationException();
@@ -23,7 +17,7 @@ public class AvlTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
         return left;
     }
 
-    protected virtual AvlNode<TK, TV> LeftRotate(AvlNode<TK, TV> cur)
+    private AvlNode<TK, TV> LeftRotate(AvlNode<TK, TV> cur)
     {
         var right = cur.RightChild;
         if (right == null) throw new InvalidOperationException();
@@ -34,7 +28,7 @@ public class AvlTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
         return right;
     }
 
-    protected virtual AvlNode<TK, TV>? Maintain(AvlNode<TK, TV>? cur)
+    private AvlNode<TK, TV>? Maintain(AvlNode<TK, TV>? cur)
     {
         if (cur == null) return null;
 
@@ -75,7 +69,7 @@ public class AvlTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
         return cur;
     }
 
-    protected virtual AvlNode<TK, TV>? FindLastIndex(TK key)
+    private AvlNode<TK, TV>? FindLastIndex(TK key)
     {
         var pre = _root;
         var cur = _root;
@@ -90,7 +84,7 @@ public class AvlTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
         return pre;
     }
 
-    protected virtual AvlNode<TK, TV>? FindLastNoSmallIndex(TK key)
+    private AvlNode<TK, TV>? FindLastNoSmallIndex(TK key)
     {
         AvlNode<TK, TV>? ans = null;
         var cur = _root;
@@ -113,7 +107,7 @@ public class AvlTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
         return ans;
     }
 
-    protected virtual AvlNode<TK, TV>? FindLastNoBigIndex(TK key)
+    private AvlNode<TK, TV>? FindLastNoBigIndex(TK key)
     {
         AvlNode<TK, TV>? ans = null;
         var cur = _root;
@@ -136,7 +130,7 @@ public class AvlTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
         return ans;
     }
 
-    protected virtual AvlNode<TK, TV>? Add(AvlNode<TK, TV>? cur, TK key, TV value)
+    private AvlNode<TK, TV>? Add(AvlNode<TK, TV>? cur, TK key, TV value)
     {
         if (cur == null) return new AvlNode<TK, TV>(key, value);
 
@@ -151,7 +145,7 @@ public class AvlTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
 
     // 在cur这棵树上，删掉key所代表的节点
     // 返回cur这棵树的新头部
-    protected virtual AvlNode<TK, TV>? Delete(AvlNode<TK, TV>? cur, TK? key)
+    private AvlNode<TK, TV>? Delete(AvlNode<TK, TV>? cur, TK? key)
     {
         if (key != null && cur != null && key.CompareTo(cur.K) > 0)
         {
@@ -195,7 +189,7 @@ public class AvlTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
         return Maintain(cur);
     }
 
-    public virtual bool ContainsKey(TK key)
+    public bool ContainsKey(TK key)
     {
         if (key.Equals(default)) return false;
 
@@ -203,7 +197,7 @@ public class AvlTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
         return lastNode != null && key.CompareTo(lastNode.K) == 0;
     }
 
-    public virtual void Put(TK key, TV value)
+    public void Put(TK key, TV value)
     {
         if (key.Equals(default)) return;
 
@@ -214,23 +208,23 @@ public class AvlTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
         }
         else
         {
-            Size++;
+            size++;
             _root = Add(_root, key, value);
         }
     }
 
-    public virtual void Remove(TK key)
+    public void Remove(TK key)
     {
         if (key.Equals(default)) return;
 
         if (ContainsKey(key))
         {
-            Size--;
+            size--;
             _root = Delete(_root, key);
         }
     }
 
-    public virtual TV? Get(TK key)
+    public TV? Get(TK key)
     {
         if (key.Equals(default)) return default;
 
@@ -241,7 +235,7 @@ public class AvlTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
     }
 
 
-    public virtual TK? FirstKey()
+    public TK? FirstKey()
     {
         if (_root == null) return default;
 
@@ -251,7 +245,7 @@ public class AvlTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
         return cur.K;
     }
 
-    public virtual TK? LastKey()
+    public TK? LastKey()
     {
         if (_root == null) return default;
 
@@ -261,7 +255,7 @@ public class AvlTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
         return cur.K;
     }
 
-    public virtual TK? FloorKey(TK key)
+    public TK? FloorKey(TK key)
     {
         if (key.Equals(default)) return default;
 
@@ -269,7 +263,7 @@ public class AvlTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
         return lastNoBigNode == null ? default : lastNoBigNode.K;
     }
 
-    public virtual TK? CeilingKey(TK key)
+    public TK? CeilingKey(TK key)
     {
         if (key.Equals(default)) return default;
 

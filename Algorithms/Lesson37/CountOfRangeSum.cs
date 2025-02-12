@@ -112,20 +112,13 @@ public class CountOfRangeSum
         Console.WriteLine("测试完成");
     }
 
-    public class SbtNode
+    public class SbtNode(long k)
     {
-        public readonly long Key;
-        public long All; // 总的size
+        public readonly long Key = k;
+        public long All = 1; // 总的size
         public SbtNode? L;
         public SbtNode? R;
-        public long Size; // 不同key的size
-
-        public SbtNode(long k)
-        {
-            Key = k;
-            Size = 1;
-            All = 1;
-        }
+        public long Size = 1; // 不同key的size
     }
 
     private class SizeBalancedTreeSet

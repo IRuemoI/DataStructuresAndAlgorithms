@@ -7,37 +7,27 @@ using Common.Utilities;
 namespace Algorithms.Lesson36;
 
 // 跳表的节点定义
-public class SkipListNode<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
+public class SkipListNode<TK, TV>(TK k, TV v)
+    where TK : IComparable<TK>, IEquatable<TK>
 {
-    public readonly List<SkipListNode<TK, TV>?> NextNodes;
-    public TK Key;
-    public TV Value;
+    public readonly List<SkipListNode<TK, TV>?> NextNodes = new();
+    public TK Key = k;
+    public TV Value = v;
 
-
-    public SkipListNode(TK k, TV v)
-    {
-        Key = k;
-        Value = v;
-        NextNodes = new List<SkipListNode<TK, TV>?>();
-    }
 
     // 遍历的时候，如果是往右遍历到的null(next == null), 遍历结束
     // 头(null), 头节点的null，认为最小
     // node  -> 头，node(null, "")  node.isKeyLess(!null)  true
     // node里面的key是否比otherKey小，true，不是false
-    public virtual bool IsKeyLess(TK? otherKey)
+    public bool IsKeyLess(TK? otherKey)
     {
         //  otherKey == null -> false 
         return otherKey != null && (Key.Equals(default) || Key.CompareTo(otherKey) < 0);
     }
 
-    public virtual bool IsKeyEqual(TK? otherKey)
+    public bool IsKeyEqual(TK? otherKey)
     {
-        return (Key == null && otherKey == null)
-               || (
-                   Key != null && otherKey != null &&
-                   Key.CompareTo(otherKey) == 0
-               );
+        return (Key == null && otherKey == null) || (Key != null && otherKey != null && Key.CompareTo(otherKey) == 0);
     }
 }
 
@@ -50,15 +40,15 @@ public class SkipListMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
     public SkipListMap()
     {
         _head?.NextNodes.Add(null); // 0
-        Size = 0;
+        size = 0;
         _maxLevel = 0;
     }
 
-    public int Size { private set; get; }
+    public int size { private set; get; }
 
     // 从最高层开始，一路找下去，
     // 最终，找到第0层的<key的最右的节点
-    protected virtual SkipListNode<TK, TV>? MostRightLessNodeInTree(TK key)
+    private SkipListNode<TK, TV>? MostRightLessNodeInTree(TK key)
     {
         if (key.Equals(default)) return null;
 
@@ -74,7 +64,7 @@ public class SkipListMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
 
     // 在level层里，如何往右移动
     // 现在来到的节点是cur，来到了cur的level层，在level层上，找到<key最后一个节点并返回
-    protected virtual SkipListNode<TK, TV>? MostRightLessNodeInLevel(TK key, SkipListNode<TK, TV>? cur, int level)
+    private SkipListNode<TK, TV>? MostRightLessNodeInLevel(TK key, SkipListNode<TK, TV>? cur, int level)
     {
         var next = cur?.NextNodes[level];
         while (next != null && next.IsKeyLess(key))
@@ -86,7 +76,7 @@ public class SkipListMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
         return cur;
     }
 
-    public virtual bool ContainsKey(TK key)
+    public bool ContainsKey(TK key)
     {
         if (key.Equals(default)) return false;
 
@@ -96,7 +86,7 @@ public class SkipListMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
     }
 
     // 新增、改value
-    public virtual void Put(TK key, TV value)
+    public void Put(TK key, TV value)
     {
         if (key.Equals(default)) return;
 
@@ -110,7 +100,7 @@ public class SkipListMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
         else
         {
             // find == null   8   7   9
-            Size++;
+            size++;
             var newNodeLevel = 0;
             while (Utility.getRandomDouble < Probability) newNodeLevel++;
 
@@ -142,7 +132,7 @@ public class SkipListMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
         }
     }
 
-    public virtual TV? Get(TK key)
+    public TV? Get(TK key)
     {
         if (key.Equals(default)) return default;
 
@@ -151,11 +141,11 @@ public class SkipListMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
         return next != null && next.IsKeyEqual(key) ? next.Value : default;
     }
 
-    public virtual void Remove(TK key)
+    public void Remove(TK key)
     {
         if (ContainsKey(key))
         {
-            Size--;
+            size--;
             var level = _maxLevel;
             var pre = _head;
             while (level >= 0)
@@ -183,12 +173,12 @@ public class SkipListMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
         }
     }
 
-    public virtual TK? FirstKey()
+    public TK? FirstKey()
     {
         return _head?.NextNodes[0] != null ? _head.NextNodes[0]!.Key : default;
     }
 
-    public virtual TK? LastKey()
+    public TK? LastKey()
     {
         var level = _maxLevel;
         var cur = _head;
@@ -207,7 +197,7 @@ public class SkipListMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
         return cur != null ? cur.Key : default;
     }
 
-    public virtual TK? CeilingKey(TK key)
+    public TK? CeilingKey(TK key)
     {
         if (key.Equals(default)) return default;
 
@@ -216,7 +206,7 @@ public class SkipListMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
         return next != null ? next.Key : default;
     }
 
-    public virtual TK? FloorKey(TK key)
+    public TK? FloorKey(TK key)
     {
         if (key.Equals(default)) return default;
 

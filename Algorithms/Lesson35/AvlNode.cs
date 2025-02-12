@@ -1,17 +1,11 @@
 ﻿namespace Algorithms.Lesson35;
 
-public class AvlNode<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
+public class AvlNode<TK, TV>(TK key, TV value)
+    where TK : IComparable<TK>, IEquatable<TK>
 {
-    public readonly TK K;
-    public int H;
+    public readonly TK K = key;
+    public int H = 1;
     public AvlNode<TK, TV>? LeftChild;
     public AvlNode<TK, TV>? RightChild;
-    public TV V;
-
-    public AvlNode(TK key, TV value)
-    {
-        K = key;
-        V = value;
-        H = 1;
-    }
+    public TV V = value;
 }

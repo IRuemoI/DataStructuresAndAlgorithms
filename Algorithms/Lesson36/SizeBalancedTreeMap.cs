@@ -56,9 +56,9 @@ public class SizeBalancedTreeMapTest
         sbt.Put("a", 111);
         Console.WriteLine(sbt.Get("a"));
         sbt.Put("a", 1);
-        Console.WriteLine("size:" + sbt.Size);
+        Console.WriteLine("size:" + sbt.size);
         Console.WriteLine(sbt.Get("a"));
-        for (var i = 0; i < sbt.Size; i++) Console.WriteLine(sbt.GetIndexKey(i) + " , " + sbt.GetIndexValue(i));
+        for (var i = 0; i < sbt.size; i++) Console.WriteLine(sbt.GetIndexKey(i) + " , " + sbt.GetIndexValue(i));
 
         PrintAll(sbt.Root);
         Console.WriteLine(sbt.FirstKey());
@@ -78,28 +78,22 @@ public class SizeBalancedTreeMapTest
     }
 }
 
-public class SbtNode<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
+public class SbtNode<TK, TV>(TK key, TV value)
+    where TK : IComparable<TK>, IEquatable<TK>
 {
-    public readonly TK Key;
+    public readonly TK Key = key;
     public SbtNode<TK, TV>? LeftChild;
     public SbtNode<TK, TV>? RightChild;
-    public int Size; // 不同的key的数量
-    public TV Value;
-
-    public SbtNode(TK key, TV value)
-    {
-        Key = key;
-        Value = value;
-        Size = 1;
-    }
+    public int Size = 1; // 不同的key的数量
+    public TV Value = value;
 }
 
 public class SizeBalancedTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<TK>
 {
     public SbtNode<TK, TV>? Root;
-    public int Size => Root?.Size ?? 0;
+    public int size => Root?.Size ?? 0;
 
-    protected virtual SbtNode<TK, TV> RightRotate(SbtNode<TK, TV>? cur)
+    private SbtNode<TK, TV> RightRotate(SbtNode<TK, TV>? cur)
     {
         if (cur != null)
         {
@@ -117,7 +111,7 @@ public class SizeBalancedTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<
         throw new InvalidOperationException();
     }
 
-    protected virtual SbtNode<TK, TV> LeftRotate(SbtNode<TK, TV>? cur)
+    private SbtNode<TK, TV> LeftRotate(SbtNode<TK, TV>? cur)
     {
         if (cur != null)
         {
@@ -135,7 +129,7 @@ public class SizeBalancedTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<
         throw new InvalidOperationException();
     }
 
-    protected virtual SbtNode<TK, TV>? Maintain(SbtNode<TK, TV>? cur)
+    private SbtNode<TK, TV>? Maintain(SbtNode<TK, TV>? cur)
     {
         if (cur == null) return null;
         var leftSize = cur.LeftChild?.Size ?? 0;
@@ -176,7 +170,7 @@ public class SizeBalancedTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<
         return cur;
     }
 
-    protected virtual SbtNode<TK, TV>? FindLastIndex(TK key)
+    private SbtNode<TK, TV>? FindLastIndex(TK key)
     {
         var pre = Root;
         var cur = Root;
@@ -191,7 +185,7 @@ public class SizeBalancedTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<
         return pre;
     }
 
-    protected virtual SbtNode<TK, TV>? FindLastNoSmallIndex(TK key)
+    private SbtNode<TK, TV>? FindLastNoSmallIndex(TK key)
     {
         SbtNode<TK, TV>? ans = null;
         var cur = Root;
@@ -214,7 +208,7 @@ public class SizeBalancedTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<
         return ans;
     }
 
-    protected virtual SbtNode<TK, TV>? FindLastNoBigIndex(TK key)
+    private SbtNode<TK, TV>? FindLastNoBigIndex(TK key)
     {
         SbtNode<TK, TV>? ans = null;
         var cur = Root;
@@ -240,7 +234,7 @@ public class SizeBalancedTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<
     // 现在，以cur为头的树上，新增，加(key, value)这样的记录
     // 加完之后，会对cur做检查，该调整调整
     // 返回，调整完之后，整棵树的新头部
-    protected virtual SbtNode<TK, TV>? Add(SbtNode<TK, TV>? cur, TK key, TV value)
+    private SbtNode<TK, TV>? Add(SbtNode<TK, TV>? cur, TK key, TV value)
     {
         if (cur == null) return new SbtNode<TK, TV>(key, value);
 
@@ -255,7 +249,7 @@ public class SizeBalancedTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<
 
     // 在cur这棵树上，删掉key所代表的节点
     // 返回cur这棵树的新头部
-    protected virtual SbtNode<TK, TV>? Delete(SbtNode<TK, TV>? cur, TK key)
+    private SbtNode<TK, TV>? Delete(SbtNode<TK, TV>? cur, TK key)
     {
         if (cur != null)
         {
@@ -322,7 +316,7 @@ public class SizeBalancedTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<
         throw new InvalidOperationException();
     }
 
-    protected virtual SbtNode<TK, TV> GetIndex(SbtNode<TK, TV>? cur, int kth)
+    private SbtNode<TK, TV> GetIndex(SbtNode<TK, TV>? cur, int kth)
     {
         if (cur != null)
         {
@@ -335,7 +329,7 @@ public class SizeBalancedTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<
         throw new InvalidOperationException();
     }
 
-    public virtual bool ContainsKey(TK? key)
+    public bool ContainsKey(TK? key)
     {
         if (key == null) throw new Exception("invalid parameter.");
 
@@ -344,7 +338,7 @@ public class SizeBalancedTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<
     }
 
     // （key，value） put -> 有序表 新增、改value
-    public virtual void Put(TK? key, TV value)
+    public void Put(TK? key, TV value)
     {
         if (key == null) throw new Exception("invalid parameter.");
 
@@ -356,28 +350,28 @@ public class SizeBalancedTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<
             Root = Add(Root, key, value); //添加值
     }
 
-    public virtual void Remove(TK? key)
+    public void Remove(TK? key)
     {
         if (key == null) throw new Exception("invalid parameter.");
 
         if (ContainsKey(key)) Root = Delete(Root, key);
     }
 
-    public virtual TK GetIndexKey(int index)
+    public TK GetIndexKey(int index)
     {
-        if (index < 0 || index >= Size) throw new Exception("invalid parameter.");
+        if (index < 0 || index >= size) throw new Exception("invalid parameter.");
 
         return GetIndex(Root, index + 1).Key;
     }
 
-    public virtual TV GetIndexValue(int index)
+    public TV GetIndexValue(int index)
     {
-        if (index < 0 || index >= Size) throw new Exception("invalid parameter.");
+        if (index < 0 || index >= size) throw new Exception("invalid parameter.");
 
         return GetIndex(Root, index + 1).Value;
     }
 
-    public virtual TV? Get(TK? key)
+    public TV? Get(TK? key)
     {
         if (key == null) throw new Exception("invalid parameter.");
 
@@ -387,7 +381,7 @@ public class SizeBalancedTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<
         return default;
     }
 
-    public virtual TK? FirstKey()
+    public TK? FirstKey()
     {
         if (Root == null) return default;
 
@@ -397,7 +391,7 @@ public class SizeBalancedTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<
         return cur.Key;
     }
 
-    public virtual TK? LastKey()
+    public TK? LastKey()
     {
         if (Root == null) return default;
 
@@ -407,7 +401,7 @@ public class SizeBalancedTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<
         return cur.Key;
     }
 
-    public virtual TK? FloorKey(TK key)
+    public TK? FloorKey(TK key)
     {
         if (key.Equals(default)) throw new Exception("invalid parameter.");
 
@@ -415,7 +409,7 @@ public class SizeBalancedTreeMap<TK, TV> where TK : IComparable<TK>, IEquatable<
         return lastNoBigNode == null ? default : lastNoBigNode.Key;
     }
 
-    public virtual TK? CeilingKey(TK key)
+    public TK? CeilingKey(TK key)
     {
         if (key.Equals(default)) throw new Exception("invalid parameter.");
 
