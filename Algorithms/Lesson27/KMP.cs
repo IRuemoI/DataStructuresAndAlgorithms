@@ -15,6 +15,7 @@ public class Kmp
         // O(M) m <= n
         var next = GetNextArray(str2);
         // O(N)
+        //x >= str1.Length表示str1已经比较完了；y >= str2.Length表示已经完全匹配
         while (x < str1.Length && y < str2.Length)
             if (str1[x] == str2[y])
             {
