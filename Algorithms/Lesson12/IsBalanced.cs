@@ -30,15 +30,15 @@ public class IsBalanced
 
     private static bool IsBalanced2(Node head)
     {
-        return Process(head).IsBalanced;
+        return Process2(head).IsBalanced;
     }
 
-    private static Info Process(Node? x)
+    private static Info Process2(Node? x)
     {
         if (x == null) return new Info(true, 0);
 
-        var leftInfo = Process(x.Left);
-        var rightInfo = Process(x.Right);
+        var leftInfo = Process2(x.Left);
+        var rightInfo = Process2(x.Right);
         var height = Math.Max(leftInfo.Height, rightInfo.Height) + 1;
         var isBalanced = leftInfo.IsBalanced;
 

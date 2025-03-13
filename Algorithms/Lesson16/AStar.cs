@@ -3,7 +3,8 @@ using Common.Utilities;
 
 namespace Algorithms.Lesson16;
 
-// A*算法模版（对数器验证） 相关视频：B站左程云23版系列
+// https://www.bilibili.com/video/BV1t94y187zW
+// A*算法模版
 public class AStar
 {
     // 0:上，1:右，2:下，3:左
@@ -18,10 +19,18 @@ public class AStar
     // 返回从(startX, startY)到(targetX, targetY)的最短距离
     private static int MinDistance1(int[][] grid, int startX, int startY, int targetX, int targetY)
     {
-        if (grid[startX][startY] == 0 || grid[targetX][targetY] == 0) return -1;
-
+        // 新增参数合法性校验 
+        if (grid == null || grid.Length == 0 || grid[0].Length == 0)
+            return -1;
         var n = grid.Length;
         var m = grid[0].Length;
+        if (startX < 0 || startX >= n || startY < 0 || startY >= m)
+            return -1;
+        if (targetX < 0 || targetX >= n || targetY < 0 || targetY >= m)
+            return -1;
+        if (grid[startX][startY] == 0 || grid[targetX][targetY] == 0)
+            return -1;
+
         var distance = new int [n][];
         for (var i = 0; i < n; i++)
         {
@@ -33,7 +42,7 @@ public class AStar
         var visited = new bool [n][];
         for (var i = 0; i < n; i++) visited[i] = new bool [m];
 
-        Heap<int[]> heap = new((a, b) => a[2] - b[2]);
+        Heap<int[]> heap = new((a, b) => a[2] - b[2], _heapCapacity);
         // 0 : 行
         // 1 : 列
         // 2 : 从源点出发到达当前点的距离
@@ -56,7 +65,7 @@ public class AStar
                     distance[x][y] + 1 < distance[nx][ny])
                 {
                     distance[nx][ny] = distance[x][y] + 1;
-                    heap.Push(new[] { nx, ny, distance[x][y] + 1 });
+                    heap.Push([nx, ny, distance[x][y] + 1]);
                 }
             }
         }
@@ -71,10 +80,17 @@ public class AStar
     // 返回从(startX, startY)到(targetX, targetY)的最短距离
     private static int MinDistance2(int[][] grid, int startX, int startY, int targetX, int targetY)
     {
-        if (grid[startX][startY] == 0 || grid[targetX][targetY] == 0) return -1;
-
+        // 新增参数合法性校验 
+        if (grid == null || grid.Length == 0 || grid[0].Length == 0)
+            return -1;
         var n = grid.Length;
         var m = grid[0].Length;
+        if (startX < 0 || startX >= n || startY < 0 || startY >= m)
+            return -1;
+        if (targetX < 0 || targetX >= n || targetY < 0 || targetY >= m)
+            return -1;
+        if (grid[startX][startY] == 0 || grid[targetX][targetY] == 0)
+            return -1;
         var distance = new int[n][];
         for (var i = 0; i < n; i++)
         {
@@ -138,17 +154,17 @@ public class AStar
     // 为了测试
     private static int[][] RandomGrid(int n)
     {
-        var grid = new int [n][];
-        for (var i = 0; i < n; i++) grid[i] = new int [n];
-
+        var grid = new int[n][];
         for (var i = 0; i < n; i++)
-        for (var j = 0; j < n; j++)
-            if (Utility.getRandomDouble < 0.3)
-                // 每个格子有30%概率是0
-                grid[i][j] = 0;
-            else
-                // 每个格子有70%概率是1
-                grid[i][j] = 1;
+        {
+            grid[i] = new int[n];
+            for (var j = 0; j < n; j++)
+                // 确保起点和终点始终可通行 
+                if ((i == 0 && j == 0) || (i == n - 1 && j == n - 1))
+                    grid[i][j] = 1;
+                else
+                    grid[i][j] = Utility.getRandomDouble < 0.3 ? 0 : 1;
+        }
 
         return grid;
     }
@@ -164,29 +180,31 @@ public class AStar
             var n = (int)(Utility.getRandomDouble * len) + 2;
             _heapCapacity = n * n;
             var grid1 = RandomGrid(n);
-            var startX1 = (int)(Utility.getRandomDouble * n);
-            var startY1 = (int)(Utility.getRandomDouble * n);
-            var targetX1 = (int)(Utility.getRandomDouble * n);
-            var targetY2 = (int)(Utility.getRandomDouble * n);
-            var ans11 = MinDistance1(grid1, startX1, startY1, targetX1, targetY2);
-            var ans12 = MinDistance2(grid1, startX1, startY1, targetX1, targetY2);
+            var startX1 = (int)(Utility.getRandomDouble * (n - 1)); // 确保索引在 [0, n-1]
+            var startY1 = (int)(Utility.getRandomDouble * (n - 1));
+            var targetX1 = (int)(Utility.getRandomDouble * (n - 1));
+            var targetY1 = (int)(Utility.getRandomDouble * (n - 1));
+            var ans11 = MinDistance1(grid1, startX1, startY1, targetX1, targetY1);
+            var ans12 = MinDistance2(grid1, startX1, startY1, targetX1, targetY1);
             if (ans11 != ans12) Console.WriteLine("出错了!");
         }
 
         Console.WriteLine("功能测试结束");
 
         Console.WriteLine("性能测试开始");
-        var grid = RandomGrid(4000);
-        var startX = 0;
-        var startY = 0;
-        var targetX = 3900;
-        var targetY = 3900;
+        _heapCapacity = 1000 * 1000;
+        var grid = RandomGrid(1000);
+        // 修正目标坐标为合法值 
+        var startX2 = 0;
+        var startY2 = 0;
+        var targetX2 = 999; // 1000x1000网格的合法最大索引 
+        var targetY2 = 999;
 
         Utility.RestartStopwatch();
-        var ans1 = MinDistance1(grid, startX, startY, targetX, targetY);
+        var ans1 = MinDistance1(grid, startX2, startY2, targetX2, targetY2);
         Console.WriteLine("运行dijskra算法结果: " + ans1 + ", 运行时间(毫秒) : " + Utility.GetStopwatchElapsedMilliseconds());
         Utility.RestartStopwatch();
-        var ans2 = MinDistance2(grid, startX, startY, targetX, targetY);
+        var ans2 = MinDistance2(grid, startX2, startY2, targetX2, targetY2);
         Console.WriteLine("运行A*算法结果: " + ans2 + ", 运行时间(毫秒) : " + Utility.GetStopwatchElapsedMilliseconds());
         Console.WriteLine("性能测试结束");
     }

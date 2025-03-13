@@ -8,13 +8,15 @@ using Common.DataStructures.Graph;
 
 namespace Algorithms.Lesson16;
 
-// no negative weight
+// https://www.bilibili.com/video/BV1Cm4y1g77W
+// 无负权边
 public static class Dijkstra
 {
     public static Dictionary<Dot, int> Dijkstra1(Dot from)
     {
+        // 记录所有点的最小距离，key是点的对象，value是开始节点到该点的最小距离，如果查不到那么默认为正无穷大
         Dictionary<Dot, int> distanceMap = new() { { from, 0 } };
-        // 打过对号的点
+        // 打过对号的点，也就是已经确定最短距离的点
         HashSet<Dot?> selectedNodes = new();
         var minNode = GetMinDistanceAndUnselectedNode(distanceMap, selectedNodes);
         while (minNode != null)
@@ -44,8 +46,7 @@ public static class Dijkstra
 
         return distanceMap;
     }
-
-
+    
     private static Dot? GetMinDistanceAndUnselectedNode(Dictionary<Dot, int> distanceMap, HashSet<Dot?> touchedNodes)
     {
         Dot? minNode = null;
@@ -64,7 +65,7 @@ public static class Dijkstra
         return minNode;
     }
 
-    // 改进后的dijkstra算法
+    // 使用加强堆改进后的dijkstra算法
     // 从head出发，所有head能到达的节点，生成到达每个节点的最小路径记录并返回
     // 使用加强堆解决每次遍历都要遍历所有点的问题
     public static Dictionary<Dot, int> Dijkstra2(Dot head, int size)
@@ -91,35 +92,21 @@ public static class Dijkstra
         return result;
     }
 
-    private class NodeRecord
+    private class NodeRecord(Dot? node, int distance)
     {
-        public readonly int Distance;
-        public readonly Dot? Node;
-
-        public NodeRecord(Dot? node, int distance)
-        {
-            Node = node;
-            Distance = distance;
-        }
+        public readonly int Distance = distance;
+        public readonly Dot? Node = node;
     }
 
-    private class NodeHeap
+    private class NodeHeap(int size)
     {
         // key 某一个节点， value 从源节点出发到该节点的目前最小距离
-        private readonly Dictionary<Dot, int> _distanceMap;
+        private readonly Dictionary<Dot, int> _distanceMap = new();
 
         // key 某一个node， value 上面堆中的位置
-        private readonly Dictionary<Dot, int> _heapIndexMap;
-        private readonly Dot?[] _nodes; // 实际的堆结构
-        private int _size; // 堆上有多少个点
-
-        public NodeHeap(int size)
-        {
-            _nodes = new Dot?[size];
-            _heapIndexMap = new Dictionary<Dot, int>();
-            _distanceMap = new Dictionary<Dot, int>();
-            //size = 0;
-        }
+        private readonly Dictionary<Dot, int> _heapIndexMap = new();
+        private readonly Dot?[] _nodes = new Dot?[size]; // 实际的堆结构
+        private int _size; // 堆上有多少个点，初始size = 0;
 
         public bool IsEmpty()
         {
