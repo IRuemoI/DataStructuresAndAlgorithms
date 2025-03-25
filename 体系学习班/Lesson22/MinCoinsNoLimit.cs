@@ -17,14 +17,22 @@ public class MinCoinsNoLimit
 
     // arr[index...]面值，每种面值张数自由选择，
     // 搞出rest正好这么多钱，返回最小张数
-    // 拿Integer.MAX_VALUE标记怎么都搞定不了
     private static int Process(int[] arr, int index, int rest)
     {
+        //rest不可能小于0，因为上游已经控制了
+        //if (rest < 0) { //钱数小于0时，认为无穷多张才能组成它，用最大值标记无效解
+        //    return Integer.MAX_VALUE;
+        //}
+
+        //没钱了，且rest=0，那么只需要0张组成rest
         if (index == arr.Length) return rest == 0 ? 0 : int.MaxValue;
 
         var ans = int.MaxValue;
+        //index位置的面值从0张开始尝试
         for (var zhang = 0; zhang * arr[index] <= rest; zhang++)
         {
+            //当前index位置已经做了决定，接下来该index+1位置及其往后的面值做决定
+            //剩下的面值搞定剩下的钱的最小张数
             var next = Process(arr, index + 1, rest - zhang * arr[index]);
             if (next != int.MaxValue) ans = Math.Min(ans, zhang + next);
         }
@@ -36,6 +44,8 @@ public class MinCoinsNoLimit
     {
         if (aim == 0) return 0;
 
+        //index: 0~n
+        //rest: 0~aim
         var n = arr.Length;
         var dp = new int[n + 1, aim + 1];
         dp[n, 0] = 0;
@@ -70,8 +80,7 @@ public class MinCoinsNoLimit
         for (var rest = 0; rest <= aim; rest++)
         {
             dp[index, rest] = dp[index + 1, rest];
-            if (rest - arr[index] >= 0
-                && dp[index, rest - arr[index]] != int.MaxValue)
+            if (rest - arr[index] >= 0 && dp[index, rest - arr[index]] != int.MaxValue)
                 dp[index, rest] = Math.Min(dp[index, rest], dp[index, rest - arr[index]] + 1);
         }
 

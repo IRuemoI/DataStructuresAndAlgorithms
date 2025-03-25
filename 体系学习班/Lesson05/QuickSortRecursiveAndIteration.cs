@@ -13,9 +13,9 @@ public class QuickSortRecursiveAndIteration
     // 三分荷兰国旗问题
     private static int[] NetherlandsFlag(int[] arr, int leftEdge, int rightEdge)
     {
-        if (leftEdge > rightEdge) return new[] { -1, -1 };
+        if (leftEdge > rightEdge) return [-1, -1];
 
-        if (leftEdge == rightEdge) return new[] { leftEdge, rightEdge };
+        if (leftEdge == rightEdge) return [leftEdge, rightEdge];
 
         var less = leftEdge - 1;
         var more = rightEdge;
@@ -29,7 +29,7 @@ public class QuickSortRecursiveAndIteration
                 Swap(arr, index, --more);
 
         Swap(arr, more, rightEdge);
-        return new[] { less + 1, more };
+        return [less + 1, more];
     }
 
     private static void Swap(int[] arr, int i, int j)

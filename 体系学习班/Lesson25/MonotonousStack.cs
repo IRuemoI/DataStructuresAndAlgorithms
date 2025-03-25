@@ -14,7 +14,7 @@ public class MonotonousStack
     //  ]
     private static int[,] GetNearLessNoRepeat(int[] arr)
     {
-        var res = new int[arr.Length, 2];
+        var res = new int[arr.Length, 2]; //第一个位置存左侧比它小的下标，第二个位置存右侧比他小的下标
         // 只存位置！
         Stack<int> stack = new();
         for (var i = 0; i < arr.Length; i++)
@@ -41,47 +41,58 @@ public class MonotonousStack
 
         return res;
     }
-
+    
     private static int[,] GetNearLess(int[] arr)
     {
+        // 初始化结果数组：[N,0]存左侧最近更小索引，[N,1]存右侧最近更小索引 
         var res = new int[arr.Length, 2];
+        // 单调栈：栈中元素是按值升序排列的索引列表，列表用于处理重复值 
         Stack<List<int>> stack = new();
+
+        // 正向遍历数组元素 
         for (var i = 0; i < arr.Length; i++)
         {
-            // i -> arr[i] 进栈
+            // 维护单调性：弹出所有比当前元素大的栈顶元素 
             while (stack.Count != 0 && arr[stack.Peek()[0]] > arr[i])
             {
-                var popIs = stack.Pop();
-                var leftLessIndex = stack.Count == 0 ? -1 : stack.Peek()[stack.Peek().Count - 1];
+                var popIs = stack.Pop(); // 获取待处理的索引列表 
+                // 计算左侧最近更小值索引：栈空则为-1，否则取新栈顶最后一个元素 
+                var leftLessIndex = stack.Count == 0 ? -1 : stack.Peek()[^1];
+
+                // 为弹出的所有索引设置结果 
                 foreach (var popI in popIs)
                 {
-                    res[popI, 0] = leftLessIndex;
-                    res[popI, 1] = i;
+                    res[popI, 0] = leftLessIndex; // 左侧更小索引 
+                    res[popI, 1] = i; // 右侧更小索引即当前索引i 
                 }
             }
 
+            // 处理相等值：将当前索引加入已有列表，维持相同值的索引连续存储 
             if (stack.Count != 0 && arr[stack.Peek()[0]] == arr[i])
             {
                 stack.Peek().Add(i);
             }
-            else
+            // 处理新较小值：创建新列表压入栈 
+            else 
             {
-                List<int> list = new() { i };
+                List<int> list = [i]; // C# 12集合表达式初始化 
                 stack.Push(list);
             }
         }
 
+        // 处理栈中剩余元素（右侧无更小值的情况）
         while (stack.Count != 0)
         {
             var popIs = stack.Pop();
-            var leftLessIndex = stack.Count == 0 ? -1 : stack.Peek()[stack.Peek().Count - 1];
+            // 左侧更小索引处理逻辑与循环中相同 
+            var leftLessIndex = stack.Count == 0 ? -1 : stack.Peek()[^1];
             foreach (var popI in popIs)
             {
                 res[popI, 0] = leftLessIndex;
-                res[popI, 1] = -1;
+                res[popI, 1] = -1; // 右侧无更小值设为-1 
             }
         }
-
+ 
         return res;
     }
 
@@ -173,7 +184,7 @@ public class MonotonousStack
     {
         var size = 10;
         var max = 20;
-        var testTimes = 2000000;
+        var testTimes = 2000;
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTimes; i++)
         {

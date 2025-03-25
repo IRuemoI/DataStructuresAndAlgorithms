@@ -207,15 +207,9 @@ public class Coffee
     }
 
     // 以下为贪心+优良暴力
-    private class Machine
+    private class Machine(int t, int w)
     {
-        public readonly int WorkTime;
-        public int TimePoint;
-
-        public Machine(int t, int w)
-        {
-            TimePoint = t;
-            WorkTime = w;
-        }
+        public readonly int WorkTime = w;
+        public int TimePoint = t;
     }
 }

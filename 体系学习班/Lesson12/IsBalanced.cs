@@ -1,4 +1,3 @@
-
 #region
 
 using Common.Utilities;
@@ -87,15 +86,9 @@ public class IsBalanced
         public int Value = data;
     }
 
-    private class Info
+    private class Info(bool i, int h)
     {
-        public readonly int Height;
-        public readonly bool IsBalanced;
-
-        public Info(bool i, int h)
-        {
-            IsBalanced = i;
-            Height = h;
-        }
+        public readonly int Height = h;
+        public readonly bool IsBalanced = i;
     }
 }

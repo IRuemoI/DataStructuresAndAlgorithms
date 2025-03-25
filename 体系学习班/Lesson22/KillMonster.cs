@@ -23,14 +23,14 @@ public class KillMonster
     // 每次的伤害在[0~M]范围上
     // 还有times次可以砍
     // 返回砍死的情况数！
-    private static long Process(int times, int m, int hp)
+    private static long Process(int times, int maxDamage, int hp)
     {
         if (times == 0) return hp <= 0 ? 1 : 0;
 
-        if (hp <= 0) return (long)Math.Pow(m + 1, times);
+        if (hp <= 0) return (long)Math.Pow(maxDamage + 1, times);
 
         long ways = 0;
-        for (var i = 0; i <= m; i++) ways += Process(times - 1, m, hp - i);
+        for (var i = 0; i <= maxDamage; i++) ways += Process(times - 1, maxDamage, hp - i);
 
         return ways;
     }
