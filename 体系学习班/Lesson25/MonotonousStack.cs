@@ -41,7 +41,7 @@ public class MonotonousStack
 
         return res;
     }
-    
+
     private static int[,] GetNearLess(int[] arr)
     {
         // 初始化结果数组：[N,0]存左侧最近更小索引，[N,1]存右侧最近更小索引 
@@ -73,7 +73,7 @@ public class MonotonousStack
                 stack.Peek().Add(i);
             }
             // 处理新较小值：创建新列表压入栈 
-            else 
+            else
             {
                 List<int> list = [i]; // C# 12集合表达式初始化 
                 stack.Push(list);
@@ -92,7 +92,7 @@ public class MonotonousStack
                 res[popI, 1] = -1; // 右侧无更小值设为-1 
             }
         }
- 
+
         return res;
     }
 

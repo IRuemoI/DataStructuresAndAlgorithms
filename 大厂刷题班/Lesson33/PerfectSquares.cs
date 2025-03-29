@@ -1,4 +1,5 @@
 ﻿namespace AdvancedTraining.Lesson33;
+
 //pass
 public class PerfectSquares //leetcode_0279
 {

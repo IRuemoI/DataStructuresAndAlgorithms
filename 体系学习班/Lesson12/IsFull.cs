@@ -52,13 +52,13 @@ public class IsFull
         return new Info(height, nodes);
     }
 
-    
+
     private static Node? GenerateRandomBst(int maxLevel, int maxValue)
     {
         return Generate(1, maxLevel, maxValue);
     }
 
-    
+
     private static Node? Generate(int level, int maxLevel, int maxValue)
     {
         if (level > maxLevel || Utility.getRandomDouble < 0.5) return null;

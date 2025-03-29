@@ -49,6 +49,10 @@ public class RobotRoomCleaner //leetcode_0489
         robot.turnRight();
     }
 
+    public static void Run()
+    {
+    }
+
     // 不要提交这个接口的内容
     private interface IRobot
     {
@@ -59,9 +63,5 @@ public class RobotRoomCleaner //leetcode_0489
         void turnRight();
 
         void Clean();
-    }
-
-    public static void Run()
-    {
     }
 }

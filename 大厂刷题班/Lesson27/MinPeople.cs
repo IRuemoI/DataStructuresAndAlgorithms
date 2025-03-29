@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson27;
 
 public class MinPeople

@@ -2,7 +2,7 @@
 
 namespace Algorithms.Lesson11;
 
-public class SuccessorNode
+public class PredecessorAndSuccessorNode
 {
     private static Node? GetSuccessorNode(Node? node)
     {
@@ -20,6 +20,12 @@ public class SuccessorNode
         }
 
         return parent;
+    }
+
+    private static Node? GetPredecessor(Node? node)
+    {
+        //todo:待补充
+        return null;
     }
 
     private static Node? GetLeftMost(Node? node)
@@ -96,16 +102,11 @@ public class SuccessorNode
         Console.WriteLine(test.Value + " next: " + GetSuccessorNode(test));
     }
 
-    private class Node
+    private class Node(int data)
     {
-        public readonly int Value;
+        public readonly int Value = data;
         public Node? Left;
         public Node? Parent;
         public Node? Right;
-
-        public Node(int data)
-        {
-            Value = data;
-        }
     }
 }

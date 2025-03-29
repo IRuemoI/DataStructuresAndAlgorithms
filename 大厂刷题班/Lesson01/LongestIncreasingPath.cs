@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson01;
 
 public class LongestIncreasingPath
@@ -54,9 +55,9 @@ public class LongestIncreasingPath
     {
         int[][] arr =
         [
-            [9, 9, 4],
-            [6, 6, 8],
-            [2, 1, 1]
+            [3, 4, 5],
+            [3, 2, 6],
+            [2, 2, 1]
         ];
         Console.WriteLine("参数一:");
         Console.WriteLine($"方法1:{LongestIncreasingPath1(arr)}"); //输出4

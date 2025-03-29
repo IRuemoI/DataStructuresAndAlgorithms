@@ -1,4 +1,5 @@
 ﻿namespace AdvancedTraining.Lesson35;
+
 //pass
 public class LongestSubstringWithAtLeastKRepeatingCharacters //leetcode_0395
 {

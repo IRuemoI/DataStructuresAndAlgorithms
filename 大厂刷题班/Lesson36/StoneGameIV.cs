@@ -1,4 +1,5 @@
 ﻿namespace AdvancedTraining.Lesson36;
+
 //pass
 // 来自哈喽单车
 // 本题是leetcode原题 : https://leetcode.cn/problems/stone-game-iv/

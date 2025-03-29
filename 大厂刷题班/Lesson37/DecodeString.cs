@@ -3,6 +3,7 @@
 using System.Text;
 
 #endregion
+
 //pass
 namespace AdvancedTraining.Lesson37;
 

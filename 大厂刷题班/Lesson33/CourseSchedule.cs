@@ -1,4 +1,5 @@
 ﻿namespace AdvancedTraining.Lesson33;
+
 //pass
 public class CourseSchedule //leetcode_0207
 {

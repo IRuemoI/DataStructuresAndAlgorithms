@@ -6,18 +6,12 @@ public class StatisticalResult
     private static int[] StatisticalResultCode(int[] arrayA)
     {
         var length = arrayA.Length;
-        if (length == 0)
-        {
-            return [];
-        }
+        if (length == 0) return [];
 
         var arrayB = new int[length];
         arrayB[0] = 1;
         int i;
-        for (i = 1; i < length; i++)
-        {
-            arrayB[i] = arrayB[i - 1] * arrayA[i - 1];
-        }
+        for (i = 1; i < length; i++) arrayB[i] = arrayB[i - 1] * arrayA[i - 1];
 
         var temp = 1;
         for (i = length - 2; i >= 0; i--)

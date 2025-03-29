@@ -20,6 +20,33 @@ public class SingleLinkedList : ICloneable
 
     private bool isEmpty => _head == null;
 
+    public object Clone()
+    {
+        // 创建一个新的SingleLinkedList实例
+        var clonedList = new SingleLinkedList();
+
+        // 如果原始链表为空，则直接返回新链表
+        if (_head == null) return clonedList;
+
+        // 复制头节点
+        clonedList._head = new SNode(_head.Value);
+
+        // 用于遍历原始链表的当前节点和克隆链表的当前节点
+        var currentOriginal = _head.Next;
+        var currentCloned = clonedList._head;
+
+        // 遍历原始链表并复制每个节点
+        while (currentOriginal != null)
+        {
+            var newNode = new SNode(currentOriginal.Value);
+            currentCloned.Next = newNode;
+            currentCloned = newNode;
+            currentOriginal = currentOriginal.Next;
+        }
+
+        return clonedList;
+    }
+
     private static SNode? Reverse(SNode? head)
     {
         //将链表分为两个部分:已反转链表和未反转链表
@@ -121,15 +148,11 @@ public class SingleLinkedList : ICloneable
         {
             //如果当前节点的值等于目标值num，并且pre不为空
             if (cur.Value == num && pre != null)
-            {
                 //则将pre的next指向cur的next(cur节点内存之后被回收)
                 pre.Next = cur.Next;
-            }
             else
-            {
                 //否则将pre向后移动至cur
                 pre = cur;
-            }
 
             //将cur向后移动
             cur = cur.Next;
@@ -148,36 +171,6 @@ public class SingleLinkedList : ICloneable
         }
 
         Console.WriteLine();
-    }
-
-    public object Clone()
-    {
-        // 创建一个新的SingleLinkedList实例
-        var clonedList = new SingleLinkedList();
-
-        // 如果原始链表为空，则直接返回新链表
-        if (_head == null)
-        {
-            return clonedList;
-        }
-
-        // 复制头节点
-        clonedList._head = new SNode(_head.Value);
-
-        // 用于遍历原始链表的当前节点和克隆链表的当前节点
-        var currentOriginal = _head.Next;
-        var currentCloned = clonedList._head;
-
-        // 遍历原始链表并复制每个节点
-        while (currentOriginal != null)
-        {
-            var newNode = new SNode(currentOriginal.Value);
-            currentCloned.Next = newNode;
-            currentCloned = newNode;
-            currentOriginal = currentOriginal.Next;
-        }
-
-        return clonedList;
     }
 
     #region 用于测试

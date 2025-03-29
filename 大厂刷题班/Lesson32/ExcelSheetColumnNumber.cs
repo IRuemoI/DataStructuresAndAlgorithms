@@ -1,5 +1,7 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson32;
+
 public class ExcelSheetColumnNumber //leetcode_0171
 {
     // 这道题反过来也要会写

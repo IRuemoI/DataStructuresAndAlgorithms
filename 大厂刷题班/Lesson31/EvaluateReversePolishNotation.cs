@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson31;
 
 public class EvaluateReversePolishNotation //leetcode_0150

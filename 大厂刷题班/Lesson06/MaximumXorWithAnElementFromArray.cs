@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson06;
 
 // 测试链接 : https://leetcode.cn/problems/maximum-xor-with-an-element-from-array/

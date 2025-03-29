@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson12;
 
 // 本题测试链接 : https://leetcode.cn/problems/median-of-two-sorted-arrays/
@@ -8,7 +9,7 @@ public class FindKthMinNumber
     public static double FindMedianSortedArrays(int[] nums1, int[] nums2)
     {
         var size = nums1.Length + nums2.Length;
-        var even = (size & 1) == 0;//true是偶数情况，false是奇数情况
+        var even = (size & 1) == 0; //true是偶数情况，false是奇数情况
         if (nums1.Length != 0 && nums2.Length != 0)
         {
             if (even)

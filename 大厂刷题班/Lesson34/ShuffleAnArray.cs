@@ -10,6 +10,14 @@ namespace AdvancedTraining.Lesson34;
 //pass
 public class ShuffleAnArray //leetcode_0384
 {
+    public static void Run()
+    {
+        var solution = new Solution([1, 2, 3]);
+        solution.Shuffle(); // 打乱数组 [1,2,3] 并返回结果。任何 [1,2,3]的排列返回的概率应该相同。例如，返回 [3, 1, 2]
+        solution.Reset(); // 重设数组到它的初始状态 [1, 2, 3] 。返回 [1, 2, 3]
+        solution.Shuffle(); // 随机返回数组 [1, 2, 3] 打乱后的结果。例如，返回 [1, 3, 2]
+    }
+
     private class Solution
     {
         private readonly int _n;
@@ -41,13 +49,5 @@ public class ShuffleAnArray //leetcode_0384
 
             return _shuffleArray;
         }
-    }
-
-    public static void Run()
-    {
-        var solution = new Solution([1, 2, 3]);
-        solution.Shuffle(); // 打乱数组 [1,2,3] 并返回结果。任何 [1,2,3]的排列返回的概率应该相同。例如，返回 [3, 1, 2]
-        solution.Reset(); // 重设数组到它的初始状态 [1, 2, 3] 。返回 [1, 2, 3]
-        solution.Shuffle(); // 随机返回数组 [1, 2, 3] 打乱后的结果。例如，返回 [1, 3, 2]
     }
 }

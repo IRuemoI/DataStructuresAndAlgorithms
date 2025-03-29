@@ -77,6 +77,30 @@ public class HeapSort
         (arr[i], arr[j]) = (arr[j], arr[i]);
     }
 
+    public static void Run()
+    {
+        var testTime = 10;
+        var maxSize = 100;
+        var maxValue = 100;
+        var succeed = true;
+        for (var i = 0; i < testTime; i++)
+        {
+            var arr1 = GenerateRandomArray(maxSize, maxValue);
+            var arr2 = CopyArray(arr1);
+            Code(arr1);
+            Comparator(arr2);
+            if (!IsEqual(arr1, arr2))
+            {
+                succeed = false;
+                break;
+            }
+
+            Console.WriteLine("出错的输入:" + string.Join(",", arr1.Select(element => element.ToString())));
+        }
+
+        Console.WriteLine(succeed ? "测试通过" : "出现错误");
+    }
+
     #region 用于测试
 
     private static void Comparator(int[]? arr)
@@ -129,28 +153,4 @@ public class HeapSort
     }
 
     #endregion
-    
-    public static void Run()
-    {
-        var testTime = 10;
-        var maxSize = 100;
-        var maxValue = 100;
-        var succeed = true;
-        for (var i = 0; i < testTime; i++)
-        {
-            var arr1 = GenerateRandomArray(maxSize, maxValue);
-            var arr2 = CopyArray(arr1);
-            Code(arr1);
-            Comparator(arr2);
-            if (!IsEqual(arr1, arr2))
-            {
-                succeed = false;
-                break;
-            }
-
-            Console.WriteLine("出错的输入:" + string.Join(",", arr1.Select(element => element.ToString())));
-        }
-
-        Console.WriteLine(succeed ? "测试通过" : "出现错误");
-    }
 }

@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson32;
 
 public class NumberOf1Bits //leetcode_0191

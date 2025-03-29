@@ -4,6 +4,14 @@ namespace CustomTraining;
 
 public static class Program
 {
+    public static void Main()
+    {
+        int[] preorder = [3, 9, 20, 15, 7];
+        int[] inorder = [9, 3, 15, 20, 7];
+        var solution = new TreeBuilder();
+        var root = solution.BuildTree(preorder, inorder);
+    }
+
     public class TreeNode(int x)
     {
         public readonly int Val = x;
@@ -49,13 +57,5 @@ public static class Program
                     break;
             return i;
         }
-    }
-
-    public static void Main()
-    {
-        int[] preorder = [3, 9, 20, 15, 7];
-        int[] inorder = [9, 3, 15, 20, 7];
-        var solution = new TreeBuilder();
-        var root = solution.BuildTree(preorder, inorder);
     }
 }

@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson01;
 
 public class CountFiles
@@ -37,7 +38,7 @@ public class CountFiles
     public static void Run()
     {
         // 你可以自己更改目录  
-        const string path = @"D:\Library\Documents\参考资料\";
-        Console.WriteLine(GetFileNumber(path));
+        const string path = @"D:\Library\Documents\MyArchive\Vim";
+        Console.WriteLine($"该目录共有文件{GetFileNumber(path)}个");
     }
 }

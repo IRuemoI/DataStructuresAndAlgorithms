@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson03;
 
 // 本题测试链接 : https://leetcode.cn/problems/freedom-trail/

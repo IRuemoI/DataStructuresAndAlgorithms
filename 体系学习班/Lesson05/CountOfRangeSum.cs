@@ -27,11 +27,11 @@ public class CountOfRangeSum
     {
         #region 统计符合标准的情况
 
-        int result = 0;
+        var result = 0;
         var windowLeftEdge = leftEdge;
         var windowRightEdge = leftEdge;
         //对于所有的右组元素
-        for (int i = middle + 1; i <= rightEdge; i++)
+        for (var i = middle + 1; i <= rightEdge; i++)
         {
             //获取比较的标准
             var min = prefixSum[i] - upper;
@@ -48,9 +48,9 @@ public class CountOfRangeSum
         #region 合并的基本操作
 
         var help = new long[rightEdge - leftEdge + 1];
-        int helpIndex = 0;
-        int leftPartIndex = leftEdge;
-        int rightPartIndex = middle + 1;
+        var helpIndex = 0;
+        var leftPartIndex = leftEdge;
+        var rightPartIndex = middle + 1;
         //比较左右两部分的元素，每次将较小的元素放入help数组中
         while (leftPartIndex <= middle && rightPartIndex <= rightEdge)
             help[helpIndex++] = prefixSum[leftPartIndex] < prefixSum[rightPartIndex]

@@ -95,7 +95,7 @@ public class MaxDistance
 
         return distance1 + distance2 - 1;
     }
-    
+
     private static int MaxDistance2(Node? head)
     {
         return Process(head).MaxDistance;
@@ -114,12 +114,12 @@ public class MaxDistance
         var maxDistance = Math.Max(Math.Max(p1, p2), p3);
         return new Info(maxDistance, height);
     }
-    
+
     private static Node? GenerateRandomBst(int maxLevel, int maxValue)
     {
         return Generate(1, maxLevel, maxValue);
     }
-    
+
     private static Node? Generate(int level, int maxLevel, int maxValue)
     {
         if (level > maxLevel || Utility.getRandomDouble < 0.5) return null;

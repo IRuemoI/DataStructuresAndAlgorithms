@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson38;
 
 //https://leetcode.cn/problems/merge-two-binary-trees/description/

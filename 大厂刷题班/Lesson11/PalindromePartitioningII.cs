@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson11;
 
 // 本题测试链接 : https://leetcode.cn/problems/palindrome-partitioning-ii/

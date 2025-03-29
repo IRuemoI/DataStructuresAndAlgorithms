@@ -2,7 +2,6 @@
 
 #region
 
-using Common.DataStructures.Heap;
 using Common.Utilities;
 
 #endregion
@@ -147,26 +146,26 @@ public class Heap
     private class MyMinHeap(int limit)
     {
         private readonly int[] _heap = new int[limit];
-        private int _heapSize = 0;
+        private int _heapSize;
 
         public bool IsEmpty()
         {
             return _heapSize == 0;
         }
-    
+
         public bool IsFull()
         {
             return _heapSize == limit;
         }
-    
+
         public void Push(int value)
         {
             if (_heapSize == limit) throw new Exception("heap is full");
-    
+
             _heap[_heapSize] = value;
             HeapInsert(_heap, _heapSize++);
         }
-    
+
         // 用户此时，让你返回最小值，并且在小根堆中，把最小值删掉
         // 剩下的数，依然保持小根堆组织
         public int Pop()
@@ -176,7 +175,7 @@ public class Heap
             Heapify(_heap, 0, _heapSize);
             return ans;
         }
-    
+
         // 新加进来的数，现在停在了index位置，请依次往上移动，
         // 移动到0位置，或者干不掉自己的父亲了，停！
         private void HeapInsert(int[] arr, int index)
@@ -187,7 +186,7 @@ public class Heap
                 index = (index - 1) / 2;
             }
         }
-    
+
         // 从index位置，往下看，不断的下沉
         // 停：较小的孩子都不再比index位置的数小；已经没孩子了
         private void Heapify(int[] arr, int index, int heapSize)
@@ -200,19 +199,19 @@ public class Heap
                 var smallest = left + 1 < heapSize && arr[left + 1] < arr[left] ? left + 1 : left;
                 smallest = arr[smallest] < arr[index] ? smallest : index;
                 if (smallest == index) break;
-    
+
                 // index和较小孩子，要互换
                 Swap(arr, smallest, index);
                 index = smallest;
                 left = index * 2 + 1;
             }
         }
-    
+
         private static void Swap(int[] arr, int i, int j)
         {
             (arr[i], arr[j]) = (arr[j], arr[i]);
         }
-    
+
         public int Peek()
         {
             return _heap[0];

@@ -84,6 +84,38 @@ public class QuickSortRecursiveAndIteration
         }
     }
 
+    public static void Run()
+    {
+        var testTime = 500000;
+        var maxSize = 100;
+        var maxValue = 100;
+        var succeed = true;
+        Console.WriteLine("测试开始");
+        for (var i = 0; i < testTime; i++)
+        {
+            var arr1 = GenerateRandomArray(maxSize, maxValue);
+            var arr2 = CopyArray(arr1);
+            QuickSort1(arr1);
+            QuickSort2(arr2);
+            if (!IsEqual(arr1, arr2))
+            {
+                succeed = false;
+                break;
+            }
+        }
+
+        Console.WriteLine("测试结束");
+        Console.WriteLine("测试" + testTime + "组是否全部通过：" + (succeed ? "是" : "否"));
+    }
+
+    // 快排非递归版本需要的辅助类
+    // 要处理的是什么范围上的排序
+    private class Op(int left, int right)
+    {
+        public readonly int Left = left;
+        public readonly int Right = right;
+    }
+
     #region 用于测试
 
     // 生成随机数组（用于测试）
@@ -125,39 +157,6 @@ public class QuickSortRecursiveAndIteration
 
         return true;
     }
-    
 
     #endregion
-
-    public static void Run()
-    {
-        var testTime = 500000;
-        var maxSize = 100;
-        var maxValue = 100;
-        var succeed = true;
-        Console.WriteLine("测试开始");
-        for (var i = 0; i < testTime; i++)
-        {
-            var arr1 = GenerateRandomArray(maxSize, maxValue);
-            var arr2 = CopyArray(arr1);
-            QuickSort1(arr1);
-            QuickSort2(arr2);
-            if (!IsEqual(arr1, arr2))
-            {
-                succeed = false;
-                break;
-            }
-        }
-
-        Console.WriteLine("测试结束");
-        Console.WriteLine("测试" + testTime + "组是否全部通过：" + (succeed ? "是" : "否"));
-    }
-
-    // 快排非递归版本需要的辅助类
-    // 要处理的是什么范围上的排序
-    private class Op(int left, int right)
-    {
-        public readonly int Left = left;
-        public readonly int Right = right;
-    }
 }

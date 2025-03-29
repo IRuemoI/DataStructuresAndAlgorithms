@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson30;
 
 public class ValidateBinarySearchTree //leetcode_0098

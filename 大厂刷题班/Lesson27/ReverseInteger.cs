@@ -1,5 +1,7 @@
 ﻿//pass
- namespace AdvancedTraining.Lesson27;
+
+namespace AdvancedTraining.Lesson27;
+
 public class ReverseInteger //leetcode_0007
 {
     private static int Reverse(int x)

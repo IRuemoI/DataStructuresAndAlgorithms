@@ -39,6 +39,39 @@ public class SortArrayDistanceLessK
         while (minHeap.count != 0) arr[current++] = minHeap.Pop();
     }
 
+    public static void Run()
+    {
+        Console.WriteLine("测试开始");
+        var testTime = 10000;
+        var maxSize = 100;
+        var maxValue = 100;
+        var succeed = true;
+
+        for (var i = 0; i < testTime; i++)
+        {
+            var k = (int)(Utility.getRandomDouble * maxSize) + 1;
+            var arr = RandomArrayNoMoveMoreK(maxSize, maxValue, k);
+            var arr1 = CopyArray(arr);
+            var arr2 = CopyArray(arr);
+            if (arr1 != null && arr2 != null)
+            {
+                SortedArrDistanceLessK(arr1, k);
+                Comparator(arr2);
+                if (!IsEqual(arr1, arr2))
+                {
+                    succeed = false;
+                    Console.WriteLine("K : " + k);
+                    PrintArray(arr);
+                    PrintArray(arr1);
+                    PrintArray(arr2);
+                    break;
+                }
+            }
+        }
+
+        Console.WriteLine(succeed ? "测试通过" : "出现错误");
+    }
+
     #region 用于测试
 
     private static void Comparator(int[] arr)
@@ -108,37 +141,4 @@ public class SortArrayDistanceLessK
     }
 
     #endregion
-
-    public static void Run()
-    {
-        Console.WriteLine("测试开始");
-        var testTime = 10000;
-        var maxSize = 100;
-        var maxValue = 100;
-        var succeed = true;
-
-        for (var i = 0; i < testTime; i++)
-        {
-            var k = (int)(Utility.getRandomDouble * maxSize) + 1;
-            var arr = RandomArrayNoMoveMoreK(maxSize, maxValue, k);
-            var arr1 = CopyArray(arr);
-            var arr2 = CopyArray(arr);
-            if (arr1 != null && arr2 != null)
-            {
-                SortedArrDistanceLessK(arr1, k);
-                Comparator(arr2);
-                if (!IsEqual(arr1, arr2))
-                {
-                    succeed = false;
-                    Console.WriteLine("K : " + k);
-                    PrintArray(arr);
-                    PrintArray(arr1);
-                    PrintArray(arr2);
-                    break;
-                }
-            }
-        }
-
-        Console.WriteLine(succeed ? "测试通过" : "出现错误");
-    }
 }

@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson14;
 
 public class CompleteTreeNodeNumber

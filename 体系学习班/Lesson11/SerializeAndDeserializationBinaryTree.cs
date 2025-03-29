@@ -157,51 +157,6 @@ public class SerializeAndDeserializationBinaryTree
         return head;
     }
 
-    #region 用于测试
-
-    private static Utility.TreeNode<int>? GenerateNode(string? val)
-    {
-        if (val == null) return null;
-
-        return new Utility.TreeNode<int>(int.Parse(val));
-    }
-
-    //用于测试
-    private static Utility.TreeNode<int>? GenerateRandomBst(int maxLevel, int maxValue)
-    {
-        return Generate(1, maxLevel, maxValue);
-    }
-
-    //用于测试
-    private static Utility.TreeNode<int>? Generate(int level, int maxLevel, int maxValue)
-    {
-        if (level > maxLevel || Utility.getRandomDouble < 0.5) return null;
-
-        var head = new Utility.TreeNode<int>((int)(Utility.getRandomDouble * maxValue))
-        {
-            leftChild = Generate(level + 1, maxLevel, maxValue),
-            rightChild = Generate(level + 1, maxLevel, maxValue)
-        };
-        return head;
-    }
-
-    //用于测试
-    private static bool IsSameValueStructure(Utility.TreeNode<int>? head1, Utility.TreeNode<int>? head2)
-    {
-        if (head1 == null && head2 != null) return false;
-
-        if (head1 != null && head2 == null) return false;
-
-        if (head1 == null && head2 == null) return true;
-
-        if (head1?.value != head2?.value) return false;
-
-        return IsSameValueStructure(head1?.leftChild, head2?.leftChild) &&
-               IsSameValueStructure(head1?.rightChild, head2?.rightChild);
-    }
-
-    #endregion
-
     /*
      * 二叉树可以通过先序、后序或者按层遍历的方式序列化和反序列化，
      * 以下代码全部实现了。
@@ -246,10 +201,7 @@ public class SerializeAndDeserializationBinaryTree
         Utility.PrintBinaryTree(inHeadRoot);
         var inQueue = InOrderSerialization(inHeadRoot);
         Console.WriteLine();
-        foreach (var node in inQueue)
-        {
-            Console.Write(node ?? ",#" + ",");
-        }
+        foreach (var node in inQueue) Console.Write(node ?? ",#" + ",");
 
         Console.WriteLine();
 
@@ -269,7 +221,52 @@ public class SerializeAndDeserializationBinaryTree
             if (!IsSameValueStructure(preBuild, posBuild) || !IsSameValueStructure(posBuild, levelBuild))
                 Console.WriteLine("出错啦！");
         }
-        
+
         Console.WriteLine("测试完成");
     }
+
+    #region 用于测试
+
+    private static Utility.TreeNode<int>? GenerateNode(string? val)
+    {
+        if (val == null) return null;
+
+        return new Utility.TreeNode<int>(int.Parse(val));
+    }
+
+    //用于测试
+    private static Utility.TreeNode<int>? GenerateRandomBst(int maxLevel, int maxValue)
+    {
+        return Generate(1, maxLevel, maxValue);
+    }
+
+    //用于测试
+    private static Utility.TreeNode<int>? Generate(int level, int maxLevel, int maxValue)
+    {
+        if (level > maxLevel || Utility.getRandomDouble < 0.5) return null;
+
+        var head = new Utility.TreeNode<int>((int)(Utility.getRandomDouble * maxValue))
+        {
+            leftChild = Generate(level + 1, maxLevel, maxValue),
+            rightChild = Generate(level + 1, maxLevel, maxValue)
+        };
+        return head;
+    }
+
+    //用于测试
+    private static bool IsSameValueStructure(Utility.TreeNode<int>? head1, Utility.TreeNode<int>? head2)
+    {
+        if (head1 == null && head2 != null) return false;
+
+        if (head1 != null && head2 == null) return false;
+
+        if (head1 == null && head2 == null) return true;
+
+        if (head1?.value != head2?.value) return false;
+
+        return IsSameValueStructure(head1?.leftChild, head2?.leftChild) &&
+               IsSameValueStructure(head1?.rightChild, head2?.rightChild);
+    }
+
+    #endregion
 }

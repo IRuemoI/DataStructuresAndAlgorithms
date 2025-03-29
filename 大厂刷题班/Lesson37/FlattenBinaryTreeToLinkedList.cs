@@ -1,4 +1,5 @@
 ﻿namespace AdvancedTraining.Lesson37;
+
 //pass
 // 注意，我们课上讲了一个别的题，并不是leetcode 114
 // 我们课上讲的是，把一棵搜索二叉树变成有序链表，怎么做

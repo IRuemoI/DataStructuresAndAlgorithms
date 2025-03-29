@@ -1,5 +1,7 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson20;
+
 // 本题为leetcode原题
 // 测试链接：https://leetcode.cn/problems/largest-component-size-by-common-factor/
 // 方法1会超时，但是方法2直接通过

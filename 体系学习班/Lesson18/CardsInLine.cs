@@ -9,8 +9,8 @@ public class CardsInLine
     {
         if (arr == null || arr.Length == 0) return 0;
 
-        var first = OnFirst1(arr, 0, arr.Length - 1);//先手拿
-        var second = OnSecond1(arr, 0, arr.Length - 1);//后手拿
+        var first = OnFirst1(arr, 0, arr.Length - 1); //先手拿
+        var second = OnSecond1(arr, 0, arr.Length - 1); //后手拿
         return Math.Max(first, second);
     }
 
@@ -19,9 +19,9 @@ public class CardsInLine
     {
         if (l == r) return arr[l];
 
-        var p1 = arr[l] + OnSecond1(arr, l + 1, r);//先手拿走了最左位置的牌加上后续的牌
-        var p2 = arr[r] + OnSecond1(arr, l, r - 1);//先手拿走了最右位置的牌加上后续的牌
-        return Math.Max(p1, p2);//返回先手拿牌的最大值
+        var p1 = arr[l] + OnSecond1(arr, l + 1, r); //先手拿走了最左位置的牌加上后续的牌
+        var p2 = arr[r] + OnSecond1(arr, l, r - 1); //先手拿走了最右位置的牌加上后续的牌
+        return Math.Max(p1, p2); //返回先手拿牌的最大值
     }
 
     // // arr[L..R]，后手获得的最好分数返回
@@ -31,7 +31,7 @@ public class CardsInLine
 
         var p1 = OnFirst1(arr, l + 1, r); // 对手拿走了L位置的数
         var p2 = OnFirst1(arr, l, r - 1); // 对手拿走了R位置的数
-        return Math.Min(p1, p2);//对手会拿走大的牌会留给你小的
+        return Math.Min(p1, p2); //对手会拿走大的牌会留给你小的
     }
 
     private static int Win2(int[]? arr)
@@ -40,7 +40,7 @@ public class CardsInLine
 
         var n = arr.Length;
         //这种相互依赖的情况准备两张表
-        var firstMap = new int[n, n];//变换的维度有两个，l和r，他们的的取值为[0,n-1]
+        var firstMap = new int[n, n]; //变换的维度有两个，l和r，他们的的取值为[0,n-1]
         var secondMap = new int[n, n];
         for (var i = 0; i < n; i++)
         for (var j = 0; j < n; j++)

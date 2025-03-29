@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson29;
 
 public class SetMatrixZeroes //leetcode_0073

@@ -183,10 +183,7 @@ public class ReverseList
                 return false;
             }
 
-            if (!origin[i].Equals(head.Value))
-            {
-                return false;
-            }
+            if (!origin[i].Equals(head.Value)) return false;
 
             head = head.Next;
         }
@@ -218,34 +215,22 @@ public class ReverseList
     private static bool CheckDoubleListReverse(List<int> origin, DoubleNode? head)
     {
         // 如果原始列表为空，双链表头也应该是空的
-        if (origin.Count == 0)
-        {
-            return head == null;
-        }
+        if (origin.Count == 0) return head == null;
 
         // 从双链表头开始遍历
-        DoubleNode? current = head;
-        int index = origin.Count - 1; // 从原始列表的最后一个元素开始比较
+        var current = head;
+        var index = origin.Count - 1; // 从原始列表的最后一个元素开始比较
 
         while (current != null)
         {
             // 检查当前节点的值是否与原始列表中对应位置的值相等
-            if (current.Value != origin[index])
-            {
-                return false;
-            }
+            if (current.Value != origin[index]) return false;
 
             // 检查前驱指针是否正确
-            if (current.Prev != null && current.Prev.Next != current)
-            {
-                return false;
-            }
+            if (current.Prev != null && current.Prev.Next != current) return false;
 
             // 检查后继指针是否正确
-            if (current.Next != null && current.Next.Prev != current)
-            {
-                return false;
-            }
+            if (current.Next != null && current.Next.Prev != current) return false;
 
             // 移动到下一个节点，并更新索引
             current = current.Next;
@@ -278,7 +263,7 @@ public class ReverseList
             var list3 = GetDoubleListOriginOrder(node3);
             node3 = ReverseDoubleList(node3);
             if (!CheckDoubleListReverse(list3, node3)) Console.WriteLine("Oops3!");
-            
+
             var node4 = GenerateRandomDoubleList(len, value);
             var list4 = GetDoubleListOriginOrder(node4);
             node4 = TestReverseDoubleList(node4);
@@ -297,7 +282,7 @@ public class ReverseList
     public class DoubleNode(int data)
     {
         public readonly int Value = data;
-        public DoubleNode? Prev;
         public DoubleNode? Next;
+        public DoubleNode? Prev;
     }
 }

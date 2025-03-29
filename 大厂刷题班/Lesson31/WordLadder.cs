@@ -1,5 +1,7 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson31;
+
 public class WordLadder //leetcode_0127
 {
     // start，出发的单词

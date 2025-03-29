@@ -22,6 +22,38 @@ public class DoubleLinkedList : ICloneable
 
     private bool isEmpty => _head == null && _tail == null;
 
+    public object Clone()
+    {
+        // 创建一个新的DoubleLinkedList实例
+        var clonedList = new DoubleLinkedList();
+
+        // 如果原始链表为空，直接返回新的空链表
+        if (_head == null)
+            return clonedList;
+
+        // 从头节点开始复制
+        var currentOriginalNode = _head;
+        var newHead = new DNode(currentOriginalNode.Value);
+        var currentNewNode = newHead;
+        clonedList._head = newHead;
+
+        // 遍历原始链表，并复制每个节点
+        while (currentOriginalNode.Next != null)
+        {
+            currentOriginalNode = currentOriginalNode.Next;
+            currentNewNode.Next = new DNode(currentOriginalNode.Value)
+            {
+                Pre = currentNewNode
+            };
+            currentNewNode = currentNewNode.Next;
+        }
+
+        // 设置尾节点
+        clonedList._tail = currentNewNode;
+
+        return clonedList;
+    }
+
     private static DNode? Reverse(DNode? head)
     {
         //将链表分为两个部分:已反转链表和未反转链表
@@ -139,15 +171,11 @@ public class DoubleLinkedList : ICloneable
         {
             //如果当前节点的值等于目标值num，并且pre不为空
             if (cur.Value == num && pre != null)
-            {
                 //则将pre的next指向cur的next(cur节点内存之后被回收)
                 pre.Next = cur.Next;
-            }
             else
-            {
                 //否则将pre向后移动至cur
                 pre = cur;
-            }
 
             cur = cur.Next;
         }
@@ -166,38 +194,6 @@ public class DoubleLinkedList : ICloneable
         }
 
         Console.WriteLine();
-    }
-
-    public object Clone()
-    {
-        // 创建一个新的DoubleLinkedList实例
-        var clonedList = new DoubleLinkedList();
-
-        // 如果原始链表为空，直接返回新的空链表
-        if (_head == null)
-            return clonedList;
-
-        // 从头节点开始复制
-        var currentOriginalNode = _head;
-        var newHead = new DNode(currentOriginalNode.Value);
-        var currentNewNode = newHead;
-        clonedList._head = newHead;
-
-        // 遍历原始链表，并复制每个节点
-        while (currentOriginalNode.Next != null)
-        {
-            currentOriginalNode = currentOriginalNode.Next;
-            currentNewNode.Next = new DNode(currentOriginalNode.Value)
-            {
-                Pre = currentNewNode
-            };
-            currentNewNode = currentNewNode.Next;
-        }
-
-        // 设置尾节点
-        clonedList._tail = currentNewNode;
-
-        return clonedList;
     }
 
     # region 用于测试
@@ -262,34 +258,22 @@ public class DoubleLinkedList : ICloneable
     private static bool CheckReverse(List<int> origin, DNode? head)
     {
         // 如果原始列表为空，双链表头也应该是空的
-        if (origin.Count == 0)
-        {
-            return head == null;
-        }
+        if (origin.Count == 0) return head == null;
 
         // 从双链表头开始遍历
-        DNode? current = head;
-        int index = origin.Count - 1; // 从原始列表的最后一个元素开始比较
+        var current = head;
+        var index = origin.Count - 1; // 从原始列表的最后一个元素开始比较
 
         while (current != null)
         {
             // 检查当前节点的值是否与原始列表中对应位置的值相等
-            if (current.Value != origin[index])
-            {
-                return false;
-            }
+            if (current.Value != origin[index]) return false;
 
             // 检查前驱指针是否正确
-            if (current.Pre != null && current.Pre.Next != current)
-            {
-                return false;
-            }
+            if (current.Pre != null && current.Pre.Next != current) return false;
 
             // 检查后继指针是否正确
-            if (current.Next != null && current.Next.Pre != current)
-            {
-                return false;
-            }
+            if (current.Next != null && current.Next.Pre != current) return false;
 
             // 移动到下一个节点，并更新索引
             current = current.Next;

@@ -3,6 +3,7 @@
 using Common.Utilities;
 
 #endregion
+
 //pass
 namespace AdvancedTraining.Lesson32;
 
@@ -51,7 +52,7 @@ public class SequenceM
         if (arr == null || arr.Length == 0) return 0;
         Array.Sort(arr);
         var all = 1;
-        for (var i = 1; i < arr.Length; i++) all *= (Num(arr, i - 1, arr[i] - m) + 1);
+        for (var i = 1; i < arr.Length; i++) all *= Num(arr, i - 1, arr[i] - m) + 1;
         return all;
     }
 

@@ -1,4 +1,5 @@
 ﻿namespace AdvancedTraining.Lesson36;
+
 //pass
 // 来自美团
 // 给定两个字符串s1和s2

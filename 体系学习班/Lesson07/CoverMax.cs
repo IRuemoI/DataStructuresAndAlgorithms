@@ -11,6 +11,47 @@ namespace Algorithms.Lesson07;
 
 public class CoverMax
 {
+    private static int MaxCover2(int[,] m)
+    {
+        var maxCover = -1;
+        var lines = new List<Line>();
+        for (var i = 0; i < m.GetLength(0); i++) lines.Add(new Line(m[i, 0], m[i, 1]));
+        lines.Sort();
+        var minHeap = new Heap<int>((x, y) => x.CompareTo(y));
+        foreach (var tempLine in lines)
+        {
+            //弹出堆中所有不大于将要添加线段的开始位置的所有值
+            while (!minHeap.isEmpty && minHeap.Peek() <= tempLine.LeftEnd) minHeap.Pop();
+
+            //将当前线段的结束位置加入堆中
+            minHeap.Push(tempLine.RightEnd);
+            //记录最大覆盖数
+            maxCover = Math.Max(maxCover, minHeap.count);
+        }
+
+        return maxCover;
+    }
+
+    public static void Run()
+    {
+        const int n = 100;
+        const int l = 0;
+        const int r = 200;
+        const int testTimes = 10000;
+
+        Console.WriteLine("测试开始");
+        Utility.RestartStopwatch();
+        for (var i = 0; i < testTimes; i++)
+        {
+            var lines = GenerateLines(n, l, r);
+            var ans1 = MaxCover1(lines);
+            var ans2 = MaxCover2(lines);
+            if (ans1 != ans2) Console.WriteLine("出错啦！");
+        }
+
+        Console.WriteLine($"测试结束，总耗时:{Utility.GetStopwatchElapsedMilliseconds()}ms");
+    }
+
     private class Line(int leftEnd, int rightEnd) : IComparable<Line>
     {
         public readonly int LeftEnd = leftEnd;
@@ -22,30 +63,6 @@ public class CoverMax
                 return LeftEnd - other.LeftEnd;
             throw new ArgumentNullException();
         }
-    }
-    
-    private static int MaxCover2(int[,] m)
-    {
-        int maxCover = -1;
-        var lines = new List<Line>();
-        for (int i = 0; i < m.GetLength(0); i++) lines.Add(new Line(m[i, 0], m[i, 1]));
-        lines.Sort();
-        var minHeap = new Heap<int>((x, y) => x.CompareTo(y));
-        foreach (var tempLine in lines)
-        {
-            //弹出堆中所有不大于将要添加线段的开始位置的所有值
-            while (!minHeap.isEmpty && minHeap.Peek() <= tempLine.LeftEnd)
-            {
-                minHeap.Pop();
-            }
-
-            //将当前线段的结束位置加入堆中
-            minHeap.Push(tempLine.RightEnd);
-            //记录最大覆盖数
-            maxCover = Math.Max(maxCover, minHeap.count);
-        }
-
-        return maxCover;
     }
 
     #region 用于测试
@@ -76,7 +93,7 @@ public class CoverMax
 
         return cover;
     }
-    
+
     private static int[,] GenerateLines(int n, int l, int r)
     {
         var size = (int)(Utility.getRandomDouble * n) + 1;
@@ -95,24 +112,4 @@ public class CoverMax
     }
 
     #endregion
-
-    public static void Run()
-    {
-        const int n = 100;
-        const int l = 0;
-        const int r = 200;
-        const int testTimes = 10000;
-
-        Console.WriteLine("测试开始");
-        Utility.RestartStopwatch();
-        for (var i = 0; i < testTimes; i++)
-        {
-            var lines = GenerateLines(n, l, r);
-            var ans1 = MaxCover1(lines);
-            var ans2 = MaxCover2(lines);
-            if (ans1 != ans2) Console.WriteLine("出错啦！");
-        }
-
-        Console.WriteLine($"测试结束，总耗时:{Utility.GetStopwatchElapsedMilliseconds()}ms");
-    }
 }

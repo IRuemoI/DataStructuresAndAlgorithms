@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\通用代码\通用代码.csproj" />
+        <ProjectReference Include="..\通用代码\通用代码.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
+        <PackageReference Include="MathNet.Numerics" Version="5.0.0"/>
     </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson07;
 
 // 测试链接 : https://leetcode.cn/problems/maximum-gap/

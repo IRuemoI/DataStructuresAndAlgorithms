@@ -121,13 +121,13 @@ public class TreeEqual
         return a.Equals(b);
     }
 
-    
+
     private static Node? GenerateRandomBst(int maxLevel, int maxValue)
     {
         return Generate(1, maxLevel, maxValue);
     }
 
-    
+
     private static Node? Generate(int level, int maxLevel, int maxValue)
     {
         if (level > maxLevel || new Random().NextDouble() < 0.5) return null;

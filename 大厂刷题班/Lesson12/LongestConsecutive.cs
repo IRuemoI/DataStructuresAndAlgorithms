@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson12;
 
 // 本题测试链接 : https://leetcode.cn/problems/longest-consecutive-sequence/

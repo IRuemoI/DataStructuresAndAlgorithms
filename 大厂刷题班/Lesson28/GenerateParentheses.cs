@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson28;
 
 public class GenerateParentheses //leetcode_0022

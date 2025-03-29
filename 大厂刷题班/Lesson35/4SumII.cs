@@ -1,4 +1,5 @@
 ﻿namespace AdvancedTraining.Lesson35;
+
 //pass
 //https://leetcode.cn/problems/4sum-ii/description/
 public class FourNumSumIi //leetcode_0454

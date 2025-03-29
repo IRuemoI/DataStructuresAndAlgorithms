@@ -1,4 +1,5 @@
 ﻿namespace AdvancedTraining.Lesson34;
+
 //pass
 public class CountOfSmallerNumbersAfterSelf //leetcode_0315
 {

@@ -1,4 +1,5 @@
 ﻿//pass
+
 using Common.Utilities;
 
 namespace AdvancedTraining.Lesson21;

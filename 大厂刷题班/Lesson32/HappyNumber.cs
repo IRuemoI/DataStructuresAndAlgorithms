@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson32;
 
 public class HappyNumber //leetcode_0202

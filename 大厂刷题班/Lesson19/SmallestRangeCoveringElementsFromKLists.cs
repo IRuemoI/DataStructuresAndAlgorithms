@@ -1,5 +1,7 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson19;
+
 // 本题测试链接 : https://leetcode.cn/problems/smallest-range-covering-elements-from-k-lists/
 public class SmallestRangeCoveringElementsFromKLists
 {

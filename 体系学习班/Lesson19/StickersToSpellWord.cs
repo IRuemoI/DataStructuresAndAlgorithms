@@ -25,14 +25,14 @@ public static class StickersToSpellWord
     {
         if (target.Length == 0) return 0;
 
-        var min = int.MaxValue;//刚开始是最大值，表示无效
+        var min = int.MaxValue; //刚开始是最大值，表示无效
         foreach (var first in stickers)
         {
-            var rest = Minus(target, first);//减去第一个贴纸
-            if (rest.Length != target.Length) min = Math.Min(min, Process1(stickers, rest));//如果能让剩余的匹配目标减小,说明有效
+            var rest = Minus(target, first); //减去第一个贴纸
+            if (rest.Length != target.Length) min = Math.Min(min, Process1(stickers, rest)); //如果能让剩余的匹配目标减小,说明有效
         }
 
-        return min + (min == int.MaxValue ? 0 : 1);//当可行方案中有第一个可用贴纸时，min=1,当整个方案不可用时min始终为整型最大值
+        return min + (min == int.MaxValue ? 0 : 1); //当可行方案中有第一个可用贴纸时，min=1,当整个方案不可用时min始终为整型最大值
     }
 
     // 将贴纸中的已有字符从目标中减去
@@ -160,6 +160,7 @@ public static class StickersToSpellWord
         dp.Add(t, ans);
         return ans;
     }
+
     public static void Run()
     {
         string[] stickers1 = ["with", "example", "science"];

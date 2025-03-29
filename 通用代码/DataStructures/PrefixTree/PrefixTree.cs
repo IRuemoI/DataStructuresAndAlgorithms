@@ -2,14 +2,6 @@
 
 public class PrefixTree
 {
-    private class DictionaryNode
-    {
-        //存储下一个字符节点的地址的字典(对于非ASCII字符可以将字符转换为unicode或者utf-8编码作为字典的key)
-        public readonly Dictionary<int, DictionaryNode> NextCharDict = new();
-        public int Pass; //经过当前节点的单词个数
-        public int End; //以当前节点字符结尾的单词个数
-    }
-
     private readonly DictionaryNode _root = new();
 
     //将单词加入前缀树
@@ -95,5 +87,13 @@ public class PrefixTree
         }
 
         return currentNode.Pass; //返回经过当前节点字符的单词数
+    }
+
+    private class DictionaryNode
+    {
+        //存储下一个字符节点的地址的字典(对于非ASCII字符可以将字符转换为unicode或者utf-8编码作为字典的key)
+        public readonly Dictionary<int, DictionaryNode> NextCharDict = new();
+        public int End; //以当前节点字符结尾的单词个数
+        public int Pass; //经过当前节点的单词个数
     }
 }

@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson02;
 
 public class ReceiveAndPrintOrderLine

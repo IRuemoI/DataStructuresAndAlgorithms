@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson30;
 
 // follow up : 如果要求返回整个路径怎么做？

@@ -8,7 +8,7 @@ public static class CrackPassword
     private static string CrackPasswordCode(int[] password)
     {
         var strings = new string[password.Length];
-        for (int i = 0; i < password.Length; i++)
+        for (var i = 0; i < password.Length; i++)
             strings[i] = password[i].ToString();
         Array.Sort(strings, (x, y) => string.Compare(x + y, y + x, StringComparison.Ordinal));
         var res = new StringBuilder();

@@ -2,15 +2,9 @@
 
 public class DeduceTree
 {
-    public class TreeNode(int value = 0)
-    {
-        public int val = value;
-        public TreeNode? left;
-        public TreeNode? right;
-    }
+    private readonly Dictionary<int, int> _dict = new();
 
     private int[] preOrder;
-    private readonly Dictionary<int, int> _dict = new();
 
     public TreeNode DeduceTreeCode(int[] preOrder, int[] inOrder)
     {
@@ -28,5 +22,12 @@ public class DeduceTree
         node.left = Recur(root + 1, left, i - 1);
         node.right = Recur(root + 1 - left, i + 1, right);
         return node;
+    }
+
+    public class TreeNode(int value = 0)
+    {
+        public TreeNode? left;
+        public TreeNode? right;
+        public int val = value;
     }
 }

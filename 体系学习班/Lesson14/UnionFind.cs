@@ -2,14 +2,8 @@
 
 namespace Algorithms.Lesson14;
 
-
 public class UnionFind<T> where T : notnull
 {
-    private class Node<T>(T v)
-    {
-        public T Value { set; get; } = v;
-    }
-
     //每个元素与包装对象的对应关系
     private readonly Dictionary<T, Node<T>> _nodes;
 
@@ -72,6 +66,11 @@ public class UnionFind<T> where T : notnull
     public int Sets()
     {
         return _sizeMap.Count;
+    }
+
+    private class Node<T>(T v)
+    {
+        public T Value { set; get; } = v;
     }
 }
 

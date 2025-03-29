@@ -17,7 +17,7 @@ public class SelfCrossing //leetcode_0335
 
     public static void Run()
     {
-        int[] arr = [2,1,1,2];
-        Console.WriteLine(IsSelfCrossing(arr));//true
+        int[] arr = [2, 1, 1, 2];
+        Console.WriteLine(IsSelfCrossing(arr)); //true
     }
 }

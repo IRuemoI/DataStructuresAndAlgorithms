@@ -11,7 +11,7 @@ public class MergeSort
     private static void Process(int[] arr, int leftEdge, int rightEdge)
     {
         if (leftEdge == rightEdge) return;
-        int mid = leftEdge + ((rightEdge - leftEdge) >> 1);
+        var mid = leftEdge + ((rightEdge - leftEdge) >> 1);
         Process(arr, leftEdge, mid); //左半部分排序
         Process(arr, mid + 1, rightEdge); //右半部分排序
         Merge(arr, leftEdge, mid, rightEdge); //合并
@@ -19,10 +19,10 @@ public class MergeSort
 
     private static void Merge(int[] arr, int leftEdge, int middle, int rightEdge)
     {
-        int[] help = new int[rightEdge - leftEdge + 1];
-        int helpIndex = 0;
-        int leftPartIndex = leftEdge;
-        int rightPartIndex = middle + 1;
+        var help = new int[rightEdge - leftEdge + 1];
+        var helpIndex = 0;
+        var leftPartIndex = leftEdge;
+        var rightPartIndex = middle + 1;
         //比较左右两部分的元素，每次将较小的元素放入help数组中
         while (leftPartIndex <= middle && rightPartIndex <= rightEdge)
             help[helpIndex++] = arr[leftPartIndex] < arr[rightPartIndex] ? arr[leftPartIndex++] : arr[rightPartIndex++];
@@ -40,7 +40,7 @@ public class MergeSort
     {
         var arrayLength = arr.Length;
         if (arrayLength <= 1) return;
-        int stepSize = 1;
+        var stepSize = 1;
         //如果步长小于数组长度，则继续循环(如果超过则说明已经遍历完所有元素)
         while (stepSize < arr.Length)
         {

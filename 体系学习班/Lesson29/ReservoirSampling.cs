@@ -55,18 +55,10 @@ public class ReservoirSampling
         for (var i = 0; i < counts.Length; i++) Console.WriteLine(i + " times : " + counts[i]);
     }
 
-    private class RandomBox
+    private class RandomBox(int capacity)
     {
-        private readonly int[] _bag;
-        private readonly int _n;
+        private readonly int[] _bag = new int[capacity];
         private int _count;
-
-        public RandomBox(int capacity)
-        {
-            _bag = new int[capacity];
-            _n = capacity;
-            _count = 0;
-        }
 
         private static int Rand(int max)
         {
@@ -76,20 +68,20 @@ public class ReservoirSampling
         public void Add(int num)
         {
             _count++;
-            if (_count <= _n)
+            if (_count <= capacity)
             {
                 _bag[_count - 1] = num;
             }
             else
             {
-                if (Rand(_count) <= _n) _bag[Rand(_n) - 1] = num;
+                if (Rand(_count) <= capacity) _bag[Rand(capacity) - 1] = num;
             }
         }
 
         public int[] Choices()
         {
-            var ans = new int[_n];
-            for (var i = 0; i < _n; i++) ans[i] = _bag[i];
+            var ans = new int[capacity];
+            for (var i = 0; i < capacity; i++) ans[i] = _bag[i];
 
             return ans;
         }

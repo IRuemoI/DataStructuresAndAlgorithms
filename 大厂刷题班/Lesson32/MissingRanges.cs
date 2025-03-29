@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson32;
 
 //https://blog.csdn.net/qq_44631615/article/details/138450068
@@ -33,6 +34,6 @@ public class MissingRanges //leetcode_0163
         var lower = 0;
         var upper = 99;
 
-        Console.WriteLine(string.Join(", ", FindMissingRanges(numbers, lower, upper)));//[[2,2],[4,49],[51,74],[76,99]]
+        Console.WriteLine(string.Join(", ", FindMissingRanges(numbers, lower, upper))); //[[2,2],[4,49],[51,74],[76,99]]
     }
 }

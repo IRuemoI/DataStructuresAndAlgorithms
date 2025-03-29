@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson11;
 
 // 本题测试链接 : https://leetcode.cn/problems/minimum-insertion-steps-to-make-a-string-palindrome/

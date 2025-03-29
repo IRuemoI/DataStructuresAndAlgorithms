@@ -5,6 +5,7 @@ using Common.Utilities;
 #endregion
 
 namespace AdvancedTraining.Lesson36;
+
 //pass
 // 来自腾讯
 // 给定一个字符串str，和一个正数k

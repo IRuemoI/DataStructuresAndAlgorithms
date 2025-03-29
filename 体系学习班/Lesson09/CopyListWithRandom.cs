@@ -80,6 +80,32 @@ public class CopyListWithRandom
         return newHead;
     }
 
+    public static void Run()
+    {
+        const int maxLength = 30;
+        const int testTimes = 10;
+        var randomGen = new Random();
+        for (var i = 0; i < testTimes; i++)
+        {
+            var listLength = randomGen.Next(maxLength) + 1;
+            Console.WriteLine("本轮生成的链表长度为{0}", listLength);
+            var origin = RandomizedList.GenerateRandomizedList(listLength);
+            PrintRandLinkedList(origin);
+
+            var copy1 = CopyListWithRand1(origin);
+            PrintRandLinkedList(copy1);
+
+            var copy2 = CopyListWithRand2(origin);
+            PrintRandLinkedList(copy2);
+
+            if (!(IsEquals(origin, copy1) && IsEquals(copy1, copy2))) Console.WriteLine("oops");
+
+            Console.WriteLine("========================");
+        }
+
+        Console.WriteLine("测试完成");
+    }
+
     # region 用于测试
 
     private static void PrintRandLinkedList(Node? head)
@@ -141,7 +167,7 @@ public class CopyListWithRandom
 
         return true;
     }
-    
+
     private class Node(int data)
     {
         public readonly int Value = data;
@@ -197,30 +223,4 @@ public class CopyListWithRandom
     }
 
     #endregion
-
-    public static void Run()
-    {
-        const int maxLength = 30;
-        const int testTimes = 10;
-        var randomGen = new Random();
-        for (var i = 0; i < testTimes; i++)
-        {
-            var listLength = randomGen.Next(maxLength) + 1;
-            Console.WriteLine("本轮生成的链表长度为{0}", listLength);
-            var origin = RandomizedList.GenerateRandomizedList(listLength);
-            PrintRandLinkedList(origin);
-
-            var copy1 = CopyListWithRand1(origin);
-            PrintRandLinkedList(copy1);
-
-            var copy2 = CopyListWithRand2(origin);
-            PrintRandLinkedList(copy2);
-
-            if (!(IsEquals(origin, copy1) && IsEquals(copy1, copy2))) Console.WriteLine("oops");
-
-            Console.WriteLine("========================");
-        }
-
-        Console.WriteLine("测试完成");
-    }
 }

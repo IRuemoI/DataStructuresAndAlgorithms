@@ -26,20 +26,41 @@ public class CountSort
         //申请合适大小的"桶"，作为计数数组
         var bucket = new int[max - min + 1];
         //把数组中的所有元素放入桶中
-        foreach (var element in arr)
-        {
-            bucket[element - min]++;//可以处理负数的情况
-        }
+        foreach (var element in arr) bucket[element - min]++; //可以处理负数的情况
 
         var index = 0; //定义用于写入数组时所使用的指针
         //把桶中的元素按照从小到大的索引从桶中取出放入元素数组(降序排序时逆向写入)
         for (var i = 0; i < bucket.Length; i++)
-        {
             while (bucket[i]-- > 0)
-            {
                 arr[index++] = min + i;
+    }
+
+    public static void Run()
+    {
+        var testTime = 500000;
+        var maxSize = 100;
+        var minValue = -20;
+        var maxValue = 60;
+        var succeed = true;
+        for (var i = 0; i < testTime; i++)
+        {
+            var arr1 = GenerateRandomArray(maxSize, minValue, maxValue);
+            var arr2 = CopyArray(arr1);
+            Code(arr1);
+            if (arr2 != null)
+            {
+                Comparator(arr2);
+                if (!IsEqual(arr1, arr2))
+                {
+                    succeed = false;
+                    PrintArray(arr1);
+                    PrintArray(arr2);
+                    break;
+                }
             }
         }
+
+        Console.WriteLine(succeed ? "测试通过" : "出现错误");
     }
 
     #region 用于测试
@@ -93,32 +114,4 @@ public class CountSort
     }
 
     #endregion
-
-    public static void Run()
-    {
-        var testTime = 500000;
-        var maxSize = 100;
-        var minValue = -20;
-        var maxValue = 60;
-        var succeed = true;
-        for (var i = 0; i < testTime; i++)
-        {
-            var arr1 = GenerateRandomArray(maxSize, minValue, maxValue);
-            var arr2 = CopyArray(arr1);
-            Code(arr1);
-            if (arr2 != null)
-            {
-                Comparator(arr2);
-                if (!IsEqual(arr1, arr2))
-                {
-                    succeed = false;
-                    PrintArray(arr1);
-                    PrintArray(arr2);
-                    break;
-                }
-            }
-        }
-
-        Console.WriteLine(succeed ? "测试通过" : "出现错误");
-    }
 }

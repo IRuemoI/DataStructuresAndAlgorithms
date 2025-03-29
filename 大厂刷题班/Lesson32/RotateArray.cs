@@ -1,4 +1,5 @@
 ﻿namespace AdvancedTraining.Lesson32;
+
 //pass
 public class RotateArray //leetcode_0189
 {

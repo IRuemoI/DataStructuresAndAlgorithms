@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson10;
 
 // 本题测试链接 : https://leetcode.cn/problems/Jump-game-ii/

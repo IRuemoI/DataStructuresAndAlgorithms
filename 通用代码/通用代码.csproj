@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="DataStructures\BinaryTree\" />
+        <Folder Include="DataStructures\BinaryTree\"/>
     </ItemGroup>
 
 </Project>

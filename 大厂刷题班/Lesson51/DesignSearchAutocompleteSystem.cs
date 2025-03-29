@@ -5,13 +5,12 @@ public class DesignSearchAutocompleteSystem //leetcode_0642
 {
     internal class AutocompleteSystem
     {
+        private readonly bool InstanceFieldsInitialized;
         private readonly DesignSearchAutocompleteSystem outerInstance;
 
         // 题目的要求，只输出排名前3的列表
         private readonly int top = 3;
         private TrieNode cur;
-
-        private readonly bool InstanceFieldsInitialized;
 
         // 某个前缀树节点，上面的有序表，不在这个节点内部
         // 外挂

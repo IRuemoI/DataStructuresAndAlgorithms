@@ -1,4 +1,5 @@
 //通过
+
 namespace Algorithms.Lesson24;
 
 public class AllLessNumSubArray

@@ -1,14 +1,9 @@
 //二叉树从下向上层次遍历
+
 namespace AdvancedTraining.算法新手班补充;
 
 public class BinaryTreeLevelOrderTraversal
 {
-    public class TreeNode(int value)
-    {
-        public int val = value;
-        public TreeNode? left;
-        public TreeNode? right;
-    }
     public IList<IList<int>> LevelOrderBottom(TreeNode root)
     {
         IList<IList<int>> result = new List<IList<int>>();
@@ -29,15 +24,20 @@ public class BinaryTreeLevelOrderTraversal
                 if (node.right != null)
                     queue2.Enqueue(node.right);
             }
+
             stack.Push(layerResult);
             (queue, queue2) = (queue2, queue);
         }
 
-        while (stack.Count > 0)
-        {
-            result.Add(stack.Pop());
-        }
+        while (stack.Count > 0) result.Add(stack.Pop());
 
         return result;
+    }
+
+    public class TreeNode(int value)
+    {
+        public TreeNode? left;
+        public TreeNode? right;
+        public int val = value;
     }
 }

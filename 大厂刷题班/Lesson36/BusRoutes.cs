@@ -1,4 +1,5 @@
 ﻿namespace AdvancedTraining.Lesson36;
+
 //pass
 // 来自三七互娱
 // Leetcode原题 : https://leetcode.cn/problems/bus-routes/description/

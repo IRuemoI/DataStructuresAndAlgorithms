@@ -5,15 +5,12 @@ public class MyAsciiToInt
 {
     public static int MyAsciiToIntCode(string str)
     {
-        int n = str.Length;
-        int i = 0;
-        int sign = 1;
+        var n = str.Length;
+        var i = 0;
+        var sign = 1;
         long num = 0;
         if (n == 0) return 0;
-        while (i < n && str[i] == ' ')
-        {
-            i++;
-        }
+        while (i < n && str[i] == ' ') i++;
 
         if (i == n) return 0;
 
@@ -24,14 +21,10 @@ public class MyAsciiToInt
         }
 
         while (i < n)
-        {
             if (char.IsDigit(str[i]))
             {
                 num = num * 10 + str[i] - '0';
-                if (num > int.MaxValue)
-                {
-                    return sign == 1 ? int.MaxValue : int.MinValue;
-                }
+                if (num > int.MaxValue) return sign == 1 ? int.MaxValue : int.MinValue;
 
                 i++;
             }
@@ -39,7 +32,6 @@ public class MyAsciiToInt
             {
                 break;
             }
-        }
 
         return (int)num * sign;
     }

@@ -67,42 +67,42 @@ public class GetMinStack
     //这个能随时获得栈中最小值的结构它所使用的_stackMin内部的数据个数总是等于_stackData的，
     //内部的两个栈时同时入栈和出栈的。
     private class MyStack2
-         {
-             private readonly Stack<int> _stackData = new();
-             private readonly Stack<int> _stackMin = new();
-     
-             public void Push(int newNum)
-             {
-                 if (_stackMin.Count == 0)
-                 {
-                     _stackMin.Push(newNum);
-                 }
-                 else if (newNum < GetMin())
-                 {
-                     _stackMin.Push(newNum);
-                 }
-                 else
-                 {
-                     var newMin = _stackMin.Peek();
-                     _stackMin.Push(newMin);
-                 }
-     
-                 _stackData.Push(newNum);
-             }
-     
-             public int Pop()
-             {
-                 if (_stackData.Count == 0) throw new Exception("Your stack is empty.");
-     
-                 _stackMin.Pop();
-                 return _stackData.Pop();
-             }
-     
-             public int GetMin()
-             {
-                 if (_stackMin.Count == 0) throw new Exception("Your stack is empty.");
-     
-                 return _stackMin.Peek();
-             }
-         }
+    {
+        private readonly Stack<int> _stackData = new();
+        private readonly Stack<int> _stackMin = new();
+
+        public void Push(int newNum)
+        {
+            if (_stackMin.Count == 0)
+            {
+                _stackMin.Push(newNum);
+            }
+            else if (newNum < GetMin())
+            {
+                _stackMin.Push(newNum);
+            }
+            else
+            {
+                var newMin = _stackMin.Peek();
+                _stackMin.Push(newMin);
+            }
+
+            _stackData.Push(newNum);
+        }
+
+        public int Pop()
+        {
+            if (_stackData.Count == 0) throw new Exception("Your stack is empty.");
+
+            _stackMin.Pop();
+            return _stackData.Pop();
+        }
+
+        public int GetMin()
+        {
+            if (_stackMin.Count == 0) throw new Exception("Your stack is empty.");
+
+            return _stackMin.Peek();
+        }
+    }
 }

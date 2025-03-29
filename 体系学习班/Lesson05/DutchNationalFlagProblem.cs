@@ -5,8 +5,8 @@ public static class DutchNationalFlagProblem
     //小于等于、大于的情况
     private static void LessEqualAndGreater(int[] arr, int target)
     {
-        int lessEqualEdge = 0;
-        int currentIndex = 0;
+        var lessEqualEdge = 0;
+        var currentIndex = 0;
         while (currentIndex < arr.Length)
         {
             if (arr[currentIndex] <= target)
@@ -22,11 +22,10 @@ public static class DutchNationalFlagProblem
     //小于、等于、大于的情况
     private static void LessAndEqualAndGreater(int[] arr, int target)
     {
-        int lessEdge = 0;
-        int greaterEdge = arr.Length - 1;
-        int currentIndex = 0;
+        var lessEdge = 0;
+        var greaterEdge = arr.Length - 1;
+        var currentIndex = 0;
         while (currentIndex <= greaterEdge)
-        {
             if (arr[currentIndex] < target)
             {
                 (arr[currentIndex], arr[lessEdge]) = (arr[lessEdge], arr[currentIndex]);
@@ -43,43 +42,28 @@ public static class DutchNationalFlagProblem
             {
                 currentIndex++;
             }
-        }
     }
 
     //验证小于、等于、大于的情况
     private static bool ValidLorEorG(int[] arr, int target)
     {
-        int equalLeftEdge = 0;
-        int equalRightEdge = arr.Length - 1;
+        var equalLeftEdge = 0;
+        var equalRightEdge = arr.Length - 1;
         //设置一个循环，当equalLeftEdge < target时，equalLeftEdge向右移动
-        while (equalLeftEdge < arr.Length && arr[equalLeftEdge] < target)
-        {
-            equalLeftEdge++;
-        }
+        while (equalLeftEdge < arr.Length && arr[equalLeftEdge] < target) equalLeftEdge++;
 
         //设置一个循环，当equalRightEdge > target时，equalRightEdge向左移动
-        while (equalRightEdge > -1 && arr[equalRightEdge] > target)
-        {
-            equalRightEdge--;
-        }
+        while (equalRightEdge > -1 && arr[equalRightEdge] > target) equalRightEdge--;
 
         //没有等于target的数直接返回false
-        if (equalLeftEdge > equalRightEdge)
-        {
-            return false;
-        }
+        if (equalLeftEdge > equalRightEdge) return false;
 
         //设置一个循环，验证equalLeftEdge到equalRightEdge的所有数是否都等于target
         while (equalLeftEdge <= equalRightEdge)
         {
-            if (arr[equalLeftEdge] != target)
-            {
-                return false;
-            }
-            else
-            {
-                equalLeftEdge++;
-            }
+            if (arr[equalLeftEdge] != target) return false;
+
+            equalLeftEdge++;
         }
 
         return true;
@@ -88,25 +72,16 @@ public static class DutchNationalFlagProblem
     //验证小于等于、大于的情况
     private static bool ValidLEorG(int[] arr, int target)
     {
-        int equalLeftEdge = 0;
+        var equalLeftEdge = 0;
         //设置一个循环，当equalLeftEdge <= target时，equalLeftEdge向右移动
-        while (equalLeftEdge < arr.Length && arr[equalLeftEdge] <= target)
-        {
-            equalLeftEdge++;
-        }
+        while (equalLeftEdge < arr.Length && arr[equalLeftEdge] <= target) equalLeftEdge++;
 
         //设置一个循环，验证equalLeftEdge到arr.Length-1的所有数是否都大于target
         while (equalLeftEdge < arr.Length)
-        {
             if (arr[equalLeftEdge] > target)
-            {
                 equalLeftEdge++;
-            }
             else
-            {
                 return false;
-            }
-        }
 
         return true;
     }
@@ -115,19 +90,19 @@ public static class DutchNationalFlagProblem
     {
         #region 验证小于、等于、大于
 
-        for (int i = 0; i < 100000; i++)
+        for (var i = 0; i < 100000; i++)
         {
             // 创建一个随机长度和随机值的数组
-            int maxSize = 30;
-            int maxValue = 100;
+            var maxSize = 30;
+            var maxValue = 100;
             List<int> numbers = [];
             Random random = new();
             var length = random.Next(10, maxSize);
-            for (int j = 0; j < length; j++) numbers.Add(random.Next(0, maxValue));
-            int[] arr = numbers.ToArray();
-            int target = arr[random.Next(0, arr.Length)];
+            for (var j = 0; j < length; j++) numbers.Add(random.Next(0, maxValue));
+            var arr = numbers.ToArray();
+            var target = arr[random.Next(0, arr.Length)];
 
-            int[] original = (int[])arr.Clone();
+            var original = (int[])arr.Clone();
 
             LessAndEqualAndGreater(arr, target);
             if (!ValidLorEorG(arr, target))
@@ -143,21 +118,21 @@ public static class DutchNationalFlagProblem
 
         #region 验证小于等于、大于
 
-        for (int i = 0; i < 100000; i++)
+        for (var i = 0; i < 100000; i++)
         {
             // 创建一个随机长度和随机值的数组
 
-            int maxSize = 30;
-            int maxValue = 100;
+            var maxSize = 30;
+            var maxValue = 100;
             List<int> numbers = [];
             Random random = new();
             var length = random.Next(10, maxSize);
-            for (int j = 0; j < length; j++) numbers.Add(random.Next(0, maxValue));
-            int[] arr = numbers.ToArray();
-            int target = arr[random.Next(0, arr.Length)];
+            for (var j = 0; j < length; j++) numbers.Add(random.Next(0, maxValue));
+            var arr = numbers.ToArray();
+            var target = arr[random.Next(0, arr.Length)];
 
 
-            int[] original = (int[])arr.Clone();
+            var original = (int[])arr.Clone();
 
             LessEqualAndGreater(arr, target);
             if (!ValidLEorG(arr, target))

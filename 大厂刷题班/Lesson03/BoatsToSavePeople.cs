@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson03;
 
 // 给定一个正数数组arr，代表若干人的体重

@@ -1,4 +1,5 @@
 //通过
+
 #region
 
 using Common.Utilities;
@@ -25,15 +26,11 @@ public static class LongestCommonSubsequence
     {
         if (i == 0 && j == 0) return str1[i] == str2[j] ? 1 : 0;
 
-        if (i == 0)//如果字符串1只剩下一个字符
-        {
+        if (i == 0) //如果字符串1只剩下一个字符
             return str1[i] == str2[j] ? 1 : Process1(str1, str2, i, j - 1);
-        }
 
-        if (j == 0)//如果字符串2只剩下一个字符
-        {
+        if (j == 0) //如果字符串2只剩下一个字符
             return str1[i] == str2[j] ? 1 : Process1(str1, str2, i - 1, j);
-        }
 
         // i != 0 && j != 0
         // 三种情况
@@ -71,7 +68,7 @@ public static class LongestCommonSubsequence
 
         return dp[n - 1, m - 1];
     }
-    
+
     public static void Run()
     {
         const string? text1A = "abcde", text2A = "ace"; //3

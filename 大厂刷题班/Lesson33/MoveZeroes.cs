@@ -1,4 +1,5 @@
 ﻿namespace AdvancedTraining.Lesson33;
+
 //pass
 //https://leetcode.cn/problems/move-zeroes/description/
 public class MoveZeroes //leetcode_0283

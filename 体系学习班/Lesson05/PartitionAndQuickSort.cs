@@ -120,6 +120,30 @@ public class PartitionAndQuickSort
         Process3(arr, equalArea[1] + 1, rightEdge);
     }
 
+    public static void Run()
+    {
+        var testTime = 100000;
+        var maxSize = 100;
+        var maxValue = 100;
+        var succeed = true;
+        for (var i = 0; i < testTime; i++)
+        {
+            var arr1 = GenerateRandomArray(maxSize, maxValue);
+            var arr2 = CopyArray(arr1);
+            var arr3 = CopyArray(arr1);
+            QuickSort1(arr1);
+            QuickSort2(arr2);
+            QuickSort3(arr3);
+            if (!IsEqual(arr1, arr2) || !IsEqual(arr2, arr3))
+            {
+                succeed = false;
+                break;
+            }
+        }
+
+        Console.WriteLine(succeed ? "通过!" : "出错");
+    }
+
     #region 用于测试
 
     private static int[] GenerateRandomArray(int maxSize, int maxValue)
@@ -160,27 +184,4 @@ public class PartitionAndQuickSort
     }
 
     #endregion
-    public static void Run()
-    {
-        var testTime = 100000;
-        var maxSize = 100;
-        var maxValue = 100;
-        var succeed = true;
-        for (var i = 0; i < testTime; i++)
-        {
-            var arr1 = GenerateRandomArray(maxSize, maxValue);
-            var arr2 = CopyArray(arr1);
-            var arr3 = CopyArray(arr1);
-            QuickSort1(arr1);
-            QuickSort2(arr2);
-            QuickSort3(arr3);
-            if (!IsEqual(arr1, arr2) || !IsEqual(arr2, arr3))
-            {
-                succeed = false;
-                break;
-            }
-        }
-
-        Console.WriteLine(succeed ? "通过!" : "出错");
-    }
 }

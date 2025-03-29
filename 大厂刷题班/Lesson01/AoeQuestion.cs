@@ -176,7 +176,7 @@ public class AoeQuestion
     }
 
     //用于测试
-    private static int[] randomArray(int n, int valueMax)
+    private static int[] RandomArray(int n, int valueMax)
     {
         var ans = new int[n];
         for (var i = 0; i < n; i++)
@@ -185,7 +185,7 @@ public class AoeQuestion
     }
 
     //用于测试
-    private static int[] copyArray(int[] arr)
+    private static int[] CopyArray(int[] arr)
     {
         var n = arr.Length;
         var ans = new int[n];
@@ -205,17 +205,17 @@ public class AoeQuestion
         for (var i = 0; i < time; i++)
         {
             var len = (int)(Utility.getRandomDouble * n) + 1;
-            var x = randomArray(len, valueMax);
+            var x = RandomArray(len, valueMax);
             Array.Sort(x);
-            var hp = randomArray(len, h);
+            var hp = RandomArray(len, h);
             var range = (int)(Utility.getRandomDouble * r) + 1;
-            var x2 = copyArray(x);
-            var hp2 = copyArray(hp);
+            var x2 = CopyArray(x);
+            var hp2 = CopyArray(hp);
             var ans2 = MinAoe2(x2, hp2, range);
             // 已经测过下面注释掉的内容，注意minAoe1非常慢，
             // 所以想加入对比需要把数据量(n, valueMax, h, r, time)改小
-            var x1 = copyArray(x);
-            var hp1 = copyArray(hp);
+            var x1 = CopyArray(x);
+            var hp1 = CopyArray(hp);
             var ans1 = MinAoe1(x1, hp1, range);
             if (ans1 != ans2)
             {
@@ -223,8 +223,8 @@ public class AoeQuestion
                 Console.WriteLine(ans1 + "," + ans2);
             }
 
-            var x3 = copyArray(x);
-            var hp3 = copyArray(hp);
+            var x3 = CopyArray(x);
+            var hp3 = CopyArray(hp);
             var ans3 = MinAoe3(x3, hp3, range);
             if (ans2 != ans3)
             {
@@ -255,15 +255,15 @@ public class AoeQuestion
 
         public SegmentTree(int[] origin)
         {
-            var maxn = origin.Length + 1;
-            _arr = new int[maxn]; // arr[0] 不用 从1开始使用
-            for (var i = 1; i < maxn; i++)
+            var maxN = origin.Length + 1;
+            _arr = new int[maxN]; // arr[0] 不用 从1开始使用
+            for (var i = 1; i < maxN; i++)
                 _arr[i] = origin[i - 1];
-            _sum = new int[maxn << 2]; // 用来支持脑补概念中，某一个范围的累加和信息
+            _sum = new int[maxN << 2]; // 用来支持脑补概念中，某一个范围的累加和信息
 
-            _lazy = new int[maxn << 2]; // 用来支持脑补概念中，某一个范围沒有往下傳遞的纍加任務
-            _change = new int[maxn << 2]; // 用来支持脑补概念中，某一个范围有没有更新操作的任务
-            _updateArray = new bool[maxn << 2]; // 用来支持脑补概念中，某一个范围更新任务，更新成了什么
+            _lazy = new int[maxN << 2]; // 用来支持脑补概念中，某一个范围沒有往下傳遞的纍加任務
+            _change = new int[maxN << 2]; // 用来支持脑补概念中，某一个范围有没有更新操作的任务
+            _updateArray = new bool[maxN << 2]; // 用来支持脑补概念中，某一个范围更新任务，更新成了什么
         }
 
         private void PushUp(int rt)

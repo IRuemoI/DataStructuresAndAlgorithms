@@ -2,13 +2,6 @@
 
 public class ReverseBinaryTree
 {
-    public class TreeNode(int x)
-    {
-        public readonly int Val = x;
-        public TreeNode? Left;
-        public TreeNode? Right;
-    }
-
     public void Print(TreeNode node)
     {
         if (node == null) return;
@@ -33,5 +26,12 @@ public class ReverseBinaryTree
         Reverse(root.Right);
         (root.Right, root.Left) = (root.Left, root.Right);
         return root;
+    }
+
+    public class TreeNode(int x)
+    {
+        public readonly int Val = x;
+        public TreeNode? Left;
+        public TreeNode? Right;
     }
 }

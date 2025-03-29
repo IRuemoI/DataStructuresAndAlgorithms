@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson28;
 
 public class LetterCombinationsOfAPhoneNumber //leetcode_0017
@@ -14,7 +15,7 @@ public class LetterCombinationsOfAPhoneNumber //leetcode_0017
         ['t', 'u', 'v'],
         ['w', 'x', 'y', 'z']
     ];
-    
+
     private static IList<string> LetterCombinations(string digits)
     {
         IList<string> ans = new List<string>();

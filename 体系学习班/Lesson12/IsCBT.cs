@@ -12,7 +12,7 @@ namespace Algorithms.Lesson12;
 public class IsCbt
 {
     private static bool IsCbt1(Node? head)
-    { 
+    {
         if (head == null) return true;
 
         Queue<Node> queue = new();

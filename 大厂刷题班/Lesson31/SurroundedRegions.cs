@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson31;
 
 public class SurroundedRegions //leetcode_0130

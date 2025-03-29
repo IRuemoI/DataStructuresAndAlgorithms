@@ -2,12 +2,6 @@
 
 public class AddTwoNumber
 {
-    public class ListNode(int val = 0, ListNode? next = null)
-    {
-        public int Val = val;
-        public ListNode? Next = next;
-    }
-
     public ListNode? AddTwoNumbers(ListNode? l1, ListNode? l2)
     {
         if (l1 == null) return l2;
@@ -63,5 +57,11 @@ public class AddTwoNumber
         }
 
         return length;
+    }
+
+    public class ListNode(int val = 0, ListNode? next = null)
+    {
+        public ListNode? Next = next;
+        public int Val = val;
     }
 }

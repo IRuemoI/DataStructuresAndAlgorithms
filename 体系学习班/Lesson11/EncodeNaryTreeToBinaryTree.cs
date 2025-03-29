@@ -20,7 +20,7 @@ public class EncodeNaryTreeToBinaryTree
             new Node(4),
             new Node(8)
         ]);
-        
+
         var encoded = NaryTreeEncoder.Encode(root);
         var nAryTree = NaryTreeEncoder.Decode(encoded);
         //结构调试看内存
@@ -58,7 +58,6 @@ public class EncodeNaryTreeToBinaryTree
     // 只提交这个类即可
     private static class NaryTreeEncoder
     {
-
         //将多叉数转换为二叉树
         public static TreeNode? Encode(Node? root)
         {
@@ -81,7 +80,7 @@ public class EncodeNaryTreeToBinaryTree
             {
                 //使用多叉树中子节点的值创建二叉树节点
                 var tNode = new TreeNode(child.Val);
-                
+
                 //如果当前节点为空，则将当前节点设置为头节点
                 if (head == null)
                     head = tNode;

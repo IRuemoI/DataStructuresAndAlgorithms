@@ -1,4 +1,5 @@
 ﻿namespace Algorithms.Lesson16;
+
 //todo:未通过
 public class Floyd
 {
@@ -21,8 +22,7 @@ public class Floyd
         using var reader = new StreamReader(new FileStream(
             @"D:\Code\CS\DataStructuresAndAlgorithms\体系学习班\Lesson\Lesson16\Floyd-input.txt", FileMode.Open));
         using var writer = new StreamWriter(new FileStream(
-            @"D:\Code\CS\DataStructuresAndAlgorithms\体系学习班\Lesson\Lesson16\Floyd-output.txt",
-            FileMode.OpenOrCreate));
+            @"D:\Code\CS\DataStructuresAndAlgorithms\体系学习班\Lesson\Lesson16\Floyd-output.txt", FileMode.OpenOrCreate));
         while (!reader.EndOfStream)
         {
             _n = int.Parse(reader.ReadLine()!);
@@ -30,19 +30,12 @@ public class Floyd
             var paths = Array.ConvertAll(reader.ReadLine()!.Split(), int.Parse);
             for (var i = 0; i < _m; i++) Path[i] = paths[i] - 1;
 
-            // 这道题给的图是邻接矩阵的形式
-            // 任意两点之间的边权都会给定
-            // 所以显得distance初始化不太必要
-            // 但是一般情况下，distance初始化一定要做
-            Build();
-
             for (var i = 0; i < _n; i++)
             {
                 var distances = Array.ConvertAll(reader.ReadLine()!.Split(), int.Parse);
                 for (var j = 0; j < _n; j++) Distance[i, j] = distances[j];
             }
 
-            Code();
             _ans = 0;
             for (var i = 1; i < _m; i++) _ans += Distance[Path[i - 1], Path[i]];
 

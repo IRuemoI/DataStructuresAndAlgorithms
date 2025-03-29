@@ -1,8 +1,9 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson28;
 
 //Question@https://leetcode.cn/problems/longest-common-prefix/
-public class LongestCommonPrefix//leetcode_14
+public class LongestCommonPrefix //leetcode_14
 {
     private static string Code(string[]? strings)
     {

@@ -1,4 +1,5 @@
 ﻿namespace AdvancedTraining.Lesson36;
+
 //pass
 // 来自网易
 // 规定：L[1]对应a，L[2]对应b，L[3]对应c，...，L[25]对应y

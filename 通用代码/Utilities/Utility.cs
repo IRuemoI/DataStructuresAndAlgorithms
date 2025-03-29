@@ -219,8 +219,8 @@ public static class Utility
         //         rightChild = new TreeNode<int> { value = 7 }
         //     }
         // };
-        
-        var root = new TreeNode<int>()
+
+        var root = new TreeNode<int>
         {
             value = 1,
             leftChild = new TreeNode<int>

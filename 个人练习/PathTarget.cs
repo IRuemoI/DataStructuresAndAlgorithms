@@ -2,15 +2,9 @@
 
 public class PathTarget
 {
-    public class TreeNode(int value = 0)
-    {
-        public int val = value;
-        public TreeNode? left;
-        public TreeNode? right;
-    }
+    private readonly List<int> path = new();
 
     private readonly List<List<int>> res = new();
-    private readonly List<int> path = new();
 
     public List<List<int>> PathTargetCode(TreeNode root, int target)
     {
@@ -29,5 +23,12 @@ public class PathTarget
         Recur(root.left, target);
         Recur(root.right, target);
         path.RemoveAt(path.Count - 1);
+    }
+
+    public class TreeNode(int value = 0)
+    {
+        public TreeNode? left;
+        public TreeNode? right;
+        public int val = value;
     }
 }

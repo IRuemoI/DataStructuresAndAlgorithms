@@ -31,9 +31,8 @@ public static class UnRecursiveTraversalBinaryTree
         {
             var stack = new Stack<Node>();
             while (stack.Count != 0 || head != null)
-            {
                 //模拟左根右
-                if (head != null)//先尽可能压入左子树
+                if (head != null) //先尽可能压入左子树
                 {
                     stack.Push(head);
                     head = head.Left;
@@ -42,9 +41,8 @@ public static class UnRecursiveTraversalBinaryTree
                 {
                     head = stack.Pop();
                     Console.Write(head.Value + " ");
-                    head = head.Right;//输出之后压入右子树
+                    head = head.Right; //输出之后压入右子树
                 }
-            }
         }
 
         Console.WriteLine();
@@ -90,7 +88,7 @@ public static class UnRecursiveTraversalBinaryTree
                     //把左子节点压入栈
                     stack.Push(current.Left);
                 }
-                else if (current.Right != null && head != current.Right)//如果当前节点的右子节点不为空，且右子节点没去过
+                else if (current.Right != null && head != current.Right) //如果当前节点的右子节点不为空，且右子节点没去过
                 {
                     //把右子节点压入栈
                     stack.Push(current.Right);
@@ -119,7 +117,8 @@ public static class UnRecursiveTraversalBinaryTree
             },
             Right = new Node(5)
             {
-                Left = new Node(6){
+                Left = new Node(6)
+                {
                     Left = new Node(8),
                     Right = new Node(9)
                 },

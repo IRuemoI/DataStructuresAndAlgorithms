@@ -62,6 +62,6 @@ public class Ratio01Split
     {
         int[] arr = [0, 1, 0, 1, 0, 1, 1, 0];
         var ans = Split(arr);
-        foreach (var t in ans) Console.Write(t + " ");//[1, 1, 1, 2, 1, 2, 1, 1, 3]
+        foreach (var t in ans) Console.Write(t + " "); //[1, 1, 1, 2, 1, 2, 1, 1, 3]
     }
 }

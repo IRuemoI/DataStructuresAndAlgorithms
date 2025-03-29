@@ -7,58 +7,34 @@ public class SpiralOrder
     {
         if (matrix.Length == 0) return [];
 
-        int left = 0;
-        int right = matrix[0].Length - 1;
-        int top = 0;
-        int bottom = matrix.Length - 1;
+        var left = 0;
+        var right = matrix[0].Length - 1;
+        var top = 0;
+        var bottom = matrix.Length - 1;
 
-        int index = 0;
+        var index = 0;
         IList<int> result = new int[(right + 1) * (bottom + 1)];
         while (true)
         {
-            for (int i = left; i <= right; i++)
-            {
-                result[index++] = matrix[top][i];
-            }
+            for (var i = left; i <= right; i++) result[index++] = matrix[top][i];
 
             top++;
-            if (top > bottom)
-            {
-                break;
-            }
+            if (top > bottom) break;
 
-            for (int i = top; i <= bottom; i++)
-            {
-                result[index++] = matrix[i][right];
-            }
+            for (var i = top; i <= bottom; i++) result[index++] = matrix[i][right];
 
             right--;
-            if (left > right)
-            {
-                break;
-            }
+            if (left > right) break;
 
-            for (int i = right; i >= left; i--)
-            {
-                result[index++] = matrix[bottom][i];
-            }
+            for (var i = right; i >= left; i--) result[index++] = matrix[bottom][i];
 
             bottom--;
-            if (top > bottom)
-            {
-                break;
-            }
+            if (top > bottom) break;
 
-            for (int i = bottom; i >= top; i--)
-            {
-                result[index++] = matrix[i][left];
-            }
+            for (var i = bottom; i >= top; i--) result[index++] = matrix[i][left];
 
             left++;
-            if (left > right)
-            {
-                break;
-            }
+            if (left > right) break;
         }
 
         return result;

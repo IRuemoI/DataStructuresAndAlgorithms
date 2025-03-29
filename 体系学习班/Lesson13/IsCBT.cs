@@ -97,29 +97,17 @@ public class IsCbt
         Console.WriteLine("测试完成");
     }
 
-    private class Node
+    private class Node(int data)
     {
         public Node? Left;
         public Node? Right;
-        public int Value;
-
-        public Node(int data)
-        {
-            Value = data;
-        }
+        public int Value = data;
     }
 
-    private class Info
+    private class Info(bool full, bool cbt, int h)
     {
-        public readonly int Height;
-        public readonly bool IsCbt;
-        public readonly bool IsFull;
-
-        public Info(bool full, bool cbt, int h)
-        {
-            IsFull = full;
-            IsCbt = cbt;
-            Height = h;
-        }
+        public readonly int Height = h;
+        public readonly bool IsCbt = cbt;
+        public readonly bool IsFull = full;
     }
 }

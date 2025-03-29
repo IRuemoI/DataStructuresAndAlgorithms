@@ -133,29 +133,17 @@ public class LowestAncestor
         Console.WriteLine("测试完成");
     }
 
-    private class Node
+    private class Node(int data)
     {
         public Node? Left;
         public Node? Right;
-        public int Value;
-
-        public Node(int data)
-        {
-            Value = data;
-        }
+        public int Value = data;
     }
 
-    private class Info
+    private class Info(bool fA, bool fB, Node? an)
     {
-        public readonly Node? Ans;
-        public readonly bool FindA;
-        public readonly bool FindB;
-
-        public Info(bool fA, bool fB, Node? an)
-        {
-            FindA = fA;
-            FindB = fB;
-            Ans = an;
-        }
+        public readonly Node? Ans = an;
+        public readonly bool FindA = fA;
+        public readonly bool FindB = fB;
     }
 }

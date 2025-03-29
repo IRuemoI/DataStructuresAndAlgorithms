@@ -5,23 +5,6 @@ namespace CustomTraining;
 //todo：右子树节点值的位置打印偏右
 public static class TreePrinter
 {
-    // 树数据类型  
-    public class TreeNode<T>
-    {
-        public TreeNode()
-        {
-        }
-
-        public TreeNode(T v)
-        {
-            value = v;
-        }
-
-        public T? value { get; init; }
-        public TreeNode<T>? leftChild { get; init; }
-        public TreeNode<T>? rightChild { get; init; }
-    }
-
     private static int _originTreeDepth;
     private static StringBuilder[]? _nodeLines;
     private static StringBuilder[]? _branchLines;
@@ -155,7 +138,7 @@ public static class TreePrinter
 
     public static void PrintBinaryTreeTest()
     {
-        var root = new TreeNode<int>()
+        var root = new TreeNode<int>
         {
             value = 1,
             leftChild = new TreeNode<int>
@@ -204,5 +187,22 @@ public static class TreePrinter
         // };
         PrintBinaryTree(root);
         Console.WriteLine("打印完成");
+    }
+
+    // 树数据类型  
+    public class TreeNode<T>
+    {
+        public TreeNode()
+        {
+        }
+
+        public TreeNode(T v)
+        {
+            value = v;
+        }
+
+        public T? value { get; init; }
+        public TreeNode<T>? leftChild { get; init; }
+        public TreeNode<T>? rightChild { get; init; }
     }
 }

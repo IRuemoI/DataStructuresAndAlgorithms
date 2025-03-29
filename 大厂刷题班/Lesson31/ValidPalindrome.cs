@@ -1,5 +1,7 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson31;
+
 public class ValidPalindrome //leetcode_0125
 {
     // 忽略空格、忽略大小写 -> 是不是回文

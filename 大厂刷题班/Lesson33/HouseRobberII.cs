@@ -1,4 +1,5 @@
 ﻿namespace AdvancedTraining.Lesson33;
+
 //pass
 //https://leetcode.cn/problems/house-robber-ii/description/
 public class HouseRobberIi //leetcode_0213

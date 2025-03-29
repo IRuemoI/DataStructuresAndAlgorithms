@@ -1,4 +1,5 @@
 ﻿namespace AdvancedTraining.Lesson34;
+
 //pass
 //https://leetcode.cn/problems/odd-even-linked-list/description/
 public class OddEvenLinkedList //leetcode_0328

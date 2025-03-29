@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson32;
 
 public class MaximumProductSubArray //leetcode_0152

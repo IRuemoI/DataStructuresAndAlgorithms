@@ -41,7 +41,6 @@ public class SmallerEqualBigger
         var big = nodeArr.Length;
         var index = 0;
         while (index != big)
-        {
             if (nodeArr[index]?.Value < target)
             {
                 small++;
@@ -57,7 +56,6 @@ public class SmallerEqualBigger
                 big--;
                 (nodeArr[big], nodeArr[index]) = (nodeArr[index], nodeArr[big]);
             }
-        }
     }
 
     private static Node? ListPartition2(Node? head, int target)
@@ -129,7 +127,7 @@ public class SmallerEqualBigger
             lessRegionTail.Next = equalRegionHead;
             equalRegionTail ??= lessRegionTail; // 如果没有等于区域，等于区域的尾指针指向小于区域的尾指针
         }
-        
+
         // 等于区域的尾巴，连大于区域的头
         if (equalRegionTail != null) // 如果小于区域和等于区域，不是都没有
             equalRegionTail.Next = greaterRegionHead;

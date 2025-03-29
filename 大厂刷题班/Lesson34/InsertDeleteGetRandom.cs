@@ -1,7 +1,5 @@
 ﻿#region
 
-using Common.Utilities;
-
 #endregion
 
 namespace AdvancedTraining.Lesson34;
@@ -12,8 +10,8 @@ public class RandomizedSet //leetcode_0380
 {
     private readonly Dictionary<int, int> _indexKeyMap = new();
     private readonly Dictionary<int, int> _keyIndexMap = new();
-    private int _size;
     private readonly Random _random = new();
+    private int _size;
 
     public int GetRandom()
     {

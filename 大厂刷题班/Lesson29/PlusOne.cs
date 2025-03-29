@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson29;
 
 public class PlusOne //leetcode_0066

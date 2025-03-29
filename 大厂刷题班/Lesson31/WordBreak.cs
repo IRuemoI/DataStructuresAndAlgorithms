@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson31;
 
 // lintcode也有测试，数据量比leetcode大很多 : https://www.lintcode.com/problem/107/

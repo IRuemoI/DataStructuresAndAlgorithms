@@ -3,6 +3,7 @@
 using Common.DataStructures.Heap;
 
 #endregion
+
 //pass
 namespace AdvancedTraining.Lesson35;
 

@@ -8,67 +8,6 @@ namespace Algorithms.Lesson08;
 
 public class PrefixTree
 {
-    # region 用于测试
-
-    private static string GenerateRandomString(int strLen)
-    {
-        var ans = new char[(int)(Utility.getRandomDouble * strLen) + 1];
-        for (var i = 0; i < ans.Length; i++)
-        {
-            var value = (int)(Utility.getRandomDouble * 26);
-            ans[i] = (char)('a' + value);
-        }
-
-        return new string(ans);
-    }
-
-    private static string[] GenerateRandomStringArray(int arrLen, int strLen)
-    {
-        var ans = new string[(int)(Utility.getRandomDouble * arrLen) + 1];
-        for (var i = 0; i < ans.Length; i++) ans[i] = GenerateRandomString(strLen);
-
-        return ans;
-    }
-
-    private class Right
-    {
-        private readonly Dictionary<string, int> _box = new();
-
-        public void Insert(string word)
-        {
-            if (!_box.TryAdd(word, 1))
-                _box[word] += 1;
-        }
-
-        public void Delete(string word)
-        {
-            if (_box.ContainsKey(word))
-            {
-                if (_box[word] == 1)
-                    _box.Remove(word);
-                else
-                    _box[word] -= 1;
-            }
-        }
-
-        public int Search(string word)
-        {
-            return _box.GetValueOrDefault(word, 0);
-        }
-
-        public int PrefixNumber(string pre)
-        {
-            var count = 0;
-            foreach (var cur in _box.Keys)
-                if (cur.StartsWith(pre))
-                    count += _box[cur];
-
-            return count;
-        }
-    }
-
-    #endregion
-
     public static void Run()
     {
         var arrLen = 100;
@@ -216,30 +155,30 @@ public class PrefixTree
         public int End; //存储以当前字符结尾的单词个数
         public int Pass; //存储经过当前节点的单词个数
     }
-    
+
     private class DictionaryPrefixTree
     {
         private readonly DictionaryNode _root = new(); //根节点
-    
+
         //将新的单词加入前缀树中
         public void Insert(string? word)
         {
             if (word == null) return;
-    
+
             var chs = word.ToCharArray();
             var node = _root;
             node.Pass++;
             foreach (int index in chs)
             {
                 if (!node.NextCharDict.ContainsKey(index)) node.NextCharDict.Add(index, new DictionaryNode());
-    
+
                 node = node.NextCharDict[index];
                 node.Pass++;
             }
-    
+
             node.End++;
         }
-    
+
         public void Delete(string word)
         {
             if (Search(word) != 0)
@@ -255,19 +194,19 @@ public class PrefixTree
                         return;
                         //注意：对于没有GC的语言比如C++可以将需要销毁的节点放入栈中然后依次销毁
                     }
-    
+
                     node = node.NextCharDict[index];
                 }
-    
+
                 node.End--;
             }
         }
-    
+
         // 单词word在前缀树中出现的次数 
         public int Search(string? word)
         {
             if (word == null) return 0;
-    
+
             var chars = word.ToCharArray();
             var node = _root;
             foreach (int index in chars)
@@ -275,25 +214,86 @@ public class PrefixTree
                 if (!node.NextCharDict.TryGetValue(index, out var value)) return 0;
                 node = value;
             }
-    
+
             return node.End;
         }
-    
+
         // 所有加入的字符串中，有几个是以pre这个字符串作为前缀的
         public int PrefixNumber(string? pre)
         {
             if (pre == null) return 0;
-    
+
             var chs = pre.ToCharArray();
             var node = _root;
             foreach (int index in chs)
             {
                 if (!node.NextCharDict.TryGetValue(index, out var value)) return 0;
-    
+
                 node = value;
             }
-    
+
             return node.Pass;
         }
     }
+
+    # region 用于测试
+
+    private static string GenerateRandomString(int strLen)
+    {
+        var ans = new char[(int)(Utility.getRandomDouble * strLen) + 1];
+        for (var i = 0; i < ans.Length; i++)
+        {
+            var value = (int)(Utility.getRandomDouble * 26);
+            ans[i] = (char)('a' + value);
+        }
+
+        return new string(ans);
+    }
+
+    private static string[] GenerateRandomStringArray(int arrLen, int strLen)
+    {
+        var ans = new string[(int)(Utility.getRandomDouble * arrLen) + 1];
+        for (var i = 0; i < ans.Length; i++) ans[i] = GenerateRandomString(strLen);
+
+        return ans;
+    }
+
+    private class Right
+    {
+        private readonly Dictionary<string, int> _box = new();
+
+        public void Insert(string word)
+        {
+            if (!_box.TryAdd(word, 1))
+                _box[word] += 1;
+        }
+
+        public void Delete(string word)
+        {
+            if (_box.ContainsKey(word))
+            {
+                if (_box[word] == 1)
+                    _box.Remove(word);
+                else
+                    _box[word] -= 1;
+            }
+        }
+
+        public int Search(string word)
+        {
+            return _box.GetValueOrDefault(word, 0);
+        }
+
+        public int PrefixNumber(string pre)
+        {
+            var count = 0;
+            foreach (var cur in _box.Keys)
+                if (cur.StartsWith(pre))
+                    count += _box[cur];
+
+            return count;
+        }
+    }
+
+    #endregion
 }

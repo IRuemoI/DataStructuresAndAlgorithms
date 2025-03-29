@@ -46,7 +46,7 @@ public static class Dijkstra
 
         return distanceMap;
     }
-    
+
     private static Dot? GetMinDistanceAndUnselectedNode(Dictionary<Dot, int> distanceMap, HashSet<Dot?> touchedNodes)
     {
         Dot? minNode = null;
@@ -90,6 +90,31 @@ public static class Dijkstra
         }
 
         return result;
+    }
+
+    public static void Run()
+    {
+        int[,] matrix =
+        {
+            { 5, 0, 1 },
+            { 2, 0, 2 },
+            { 8, 2, 5 },
+            { 6, 2, 3 },
+            { 1, 1, 3 },
+            { 6, 1, 4 },
+            { 2, 3, 5 },
+            { 1, 3, 4 },
+            { 3, 5, 6 },
+            { 7, 4, 6 }
+        };
+        var graph = GraphGenerator.CreateGraph(matrix, GraphType.Directed);
+        Console.WriteLine("迪杰斯特拉算法1:");
+        foreach (var keyValuePair in Dijkstra1(graph.Dots[0]!).OrderBy(x => x.Key.Label))
+            Console.WriteLine(keyValuePair.Key.Label + " : " + keyValuePair.Value);
+
+        Console.WriteLine("迪杰斯特拉算法2:");
+        foreach (var keyValuePair in Dijkstra2(graph.Dots[0]!, 7).OrderBy(x => x.Key.Label))
+            Console.WriteLine(keyValuePair.Key.Label + " : " + keyValuePair.Value);
     }
 
     private class NodeRecord(Dot? node, int distance)
@@ -194,30 +219,5 @@ public static class Dijkstra
             _heapIndexMap[_nodes[index2] ?? throw new InvalidOperationException()] = index1;
             (_nodes[index1], _nodes[index2]) = (_nodes[index2], _nodes[index1]);
         }
-    }
-    
-    public static void Run()
-    {
-        int[,] matrix =
-        {
-            { 5, 0, 1 },
-            { 2, 0, 2 },
-            { 8, 2, 5 },
-            { 6, 2, 3 },
-            { 1, 1, 3 },
-            { 6, 1, 4 },
-            { 2, 3, 5 },
-            { 1, 3, 4 },
-            { 3, 5, 6 },
-            { 7, 4, 6 }
-        };
-        var graph = GraphGenerator.CreateGraph(matrix, GraphType.Directed);
-        Console.WriteLine("迪杰斯特拉算法1:");
-        foreach (var keyValuePair in Dijkstra1(graph.Dots[0]!).OrderBy(x => x.Key.Label))
-            Console.WriteLine(keyValuePair.Key.Label + " : " + keyValuePair.Value);
-
-        Console.WriteLine("迪杰斯特拉算法2:");
-        foreach (var keyValuePair in Dijkstra2(graph.Dots[0]!, 7).OrderBy(x => x.Key.Label))
-            Console.WriteLine(keyValuePair.Key.Label + " : " + keyValuePair.Value);
     }
 }

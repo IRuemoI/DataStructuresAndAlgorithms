@@ -8,7 +8,7 @@ public static class FindKthNumber
     public static int FindKthNumberCode(int k1)
     {
         long k = k1;
-        int digit = 1;
+        var digit = 1;
         long start = 1;
         long count = 9;
         while (k > count)
@@ -19,8 +19,8 @@ public static class FindKthNumber
             count = digit * start * 9;
         }
 
-        long num = start + (k - 1) / digit;
-        int temp = (int)((k - 1) % digit);
-        return int.Parse(num.ToString().Substring(temp,1));
+        var num = start + (k - 1) / digit;
+        var temp = (int)((k - 1) % digit);
+        return int.Parse(num.ToString().Substring(temp, 1));
     }
 }

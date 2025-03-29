@@ -2,12 +2,6 @@
 
 public class AddTwoNumbers
 {
-    public class ListNode(int val = 0, ListNode? next = null)
-    {
-        public ListNode? Next = next;
-        public int Val = val;
-    }
-
     public static ListNode? AddTwoNumbersCode(ListNode? l1, ListNode? l2)
     {
         //思路：
@@ -44,5 +38,11 @@ public class AddTwoNumbers
         }
 
         return head.Next;
+    }
+
+    public class ListNode(int val = 0, ListNode? next = null)
+    {
+        public ListNode? Next = next;
+        public int Val = val;
     }
 }

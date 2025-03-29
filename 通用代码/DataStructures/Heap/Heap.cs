@@ -4,13 +4,9 @@ public class Heap<T>
 {
     private readonly int _capacity;
     private readonly T[] _elements;
-    private Func<T, T, int> comparison { get; }
-    public int count { get; private set; }
-    public bool isEmpty => count == 0;
-    public bool isFull => count == _capacity;
 
     /// <summary>
-    /// 初始化堆
+    ///     初始化堆
     /// </summary>
     /// <param name="comparison">对象比较表达式</param>
     /// <param name="capacity">堆最大容量，默认200</param>
@@ -21,6 +17,11 @@ public class Heap<T>
         _capacity = capacity > 0 ? capacity : throw new ArgumentException(nameof(capacity));
         count = 0;
     }
+
+    private Func<T, T, int> comparison { get; }
+    public int count { get; private set; }
+    public bool isEmpty => count == 0;
+    public bool isFull => count == _capacity;
 
     private int Compare(T x, T y)
     {
@@ -53,7 +54,7 @@ public class Heap<T>
         {
             var parentIndex = (currentIndex - 1) / 2; //获得父节点的下标
             //交换当前节点和父节点
-            (_elements[parentIndex], _elements[currentIndex]) = (_elements[currentIndex], _elements[parentIndex]); 
+            (_elements[parentIndex], _elements[currentIndex]) = (_elements[currentIndex], _elements[parentIndex]);
             currentIndex = (currentIndex - 1) / 2; //更新当前节点的下标
         }
     }
@@ -61,7 +62,7 @@ public class Heap<T>
     private void Heapify(int currentIndex)
     {
         var leftChild = currentIndex * 2 + 1; //获取左子节点的下标
-        
+
         while (leftChild < count) //如果左子节点的下标还在堆内元素的范围内
         {
             var rightChild = leftChild + 1; //获取右子节点的下标
@@ -73,7 +74,7 @@ public class Heap<T>
             swappedIndex = Compare(_elements[swappedIndex], _elements[currentIndex]) < 0 ? swappedIndex : currentIndex;
             if (swappedIndex == currentIndex) break; //如果被交换的节点就是当前节点，那么退出函数
             //和需要交换的节点进行交换
-            (_elements[swappedIndex], _elements[currentIndex]) = (_elements[currentIndex], _elements[swappedIndex]); 
+            (_elements[swappedIndex], _elements[currentIndex]) = (_elements[currentIndex], _elements[swappedIndex]);
             currentIndex = swappedIndex; //更新当前节点所在的下标
             leftChild = currentIndex * 2 + 1; //更新左子节点的下标
         }

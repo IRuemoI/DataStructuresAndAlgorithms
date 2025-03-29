@@ -30,11 +30,9 @@ public class FlattenNestedListIterator //leetcode_0341
 
     public class NestedIterator : IEnumerator<int>
     {
-        private readonly FlattenNestedListIterator outerInstance;
-
-
         private readonly IList<INestedInteger> _list;
         private readonly Stack<int> _stack;
+        private readonly FlattenNestedListIterator outerInstance;
         private bool _used;
 
         public NestedIterator(FlattenNestedListIterator outerInstance, IList<INestedInteger> nestedList)

@@ -122,40 +122,6 @@ public class IsPalindromeList
         throw new InvalidOperationException();
     }
 
-    # region 用于测试
-
-    private static void PrintLinkedList(Node? node)
-    {
-        while (node != null)
-        {
-            Console.Write(node.Value + "->");
-            node = node.Next;
-        }
-
-        Console.WriteLine("null");
-    }
-
-    private class Node(int data)
-    {
-        public readonly int Value = data;
-        public Node? Next;
-    }
-
-    private static void Test(Node? head)
-    {
-        Console.Write("运行前的链表：");
-        PrintLinkedList(head);
-        var result1 = IsPalindrome1(head);
-        var result2 = IsPalindrome2(head);
-        var result3 = IsPalindrome3(head);
-        Console.WriteLine(result1 == result2 && result2 == result3 ? "Pass" : "Error");
-        Console.Write("复原后的链表：");
-        PrintLinkedList(head);
-        Console.WriteLine("=========================");
-    }
-
-    #endregion
-
     public static void Run()
     {
         Node? head = null;
@@ -233,4 +199,38 @@ public class IsPalindromeList
         };
         Test(head);
     }
+
+    # region 用于测试
+
+    private static void PrintLinkedList(Node? node)
+    {
+        while (node != null)
+        {
+            Console.Write(node.Value + "->");
+            node = node.Next;
+        }
+
+        Console.WriteLine("null");
+    }
+
+    private class Node(int data)
+    {
+        public readonly int Value = data;
+        public Node? Next;
+    }
+
+    private static void Test(Node? head)
+    {
+        Console.Write("运行前的链表：");
+        PrintLinkedList(head);
+        var result1 = IsPalindrome1(head);
+        var result2 = IsPalindrome2(head);
+        var result3 = IsPalindrome3(head);
+        Console.WriteLine(result1 == result2 && result2 == result3 ? "Pass" : "Error");
+        Console.Write("复原后的链表：");
+        PrintLinkedList(head);
+        Console.WriteLine("=========================");
+    }
+
+    #endregion
 }

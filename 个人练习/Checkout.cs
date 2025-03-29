@@ -2,8 +2,8 @@
 
 public class Checkout
 {
-    private readonly LinkedList<int> _queue = new();
     private readonly LinkedList<int> _deque = new();
+    private readonly LinkedList<int> _queue = new();
 
     public int Get_max()
     {

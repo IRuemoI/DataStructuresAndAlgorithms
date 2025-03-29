@@ -25,7 +25,7 @@ public static class FindFirstIntersectNode
     private static Node? GetLoopNode(Node? head)
     {
         if (head?.Next?.Next == null) return null;
-        
+
         var slow = head.Next;
         var fast = head.Next.Next;
         while (slow != fast)
@@ -35,7 +35,7 @@ public static class FindFirstIntersectNode
             fast = fast.Next.Next;
             slow = slow?.Next;
         }
-        
+
         fast = head;
         while (slow != fast)
         {
@@ -45,7 +45,7 @@ public static class FindFirstIntersectNode
 
         return slow;
     }
-    
+
     // 如果两个链表都无环，返回第一个相交节点，如果不想交，返回null
     private static Node? NoLoop(Node? head1, Node? head2)
     {
@@ -67,7 +67,7 @@ public static class FindFirstIntersectNode
         }
 
         if (cur1 != cur2) return null;
-        
+
         cur1 = lengthGap > 0 ? head1 : head2; // 谁长，谁的头变成cur1
         cur2 = cur1 == head1 ? head2 : head1; // 谁短，谁的头变成cur2
         lengthGap = Math.Abs(lengthGap);
@@ -141,16 +141,16 @@ public static class FindFirstIntersectNode
         //两个链表有环但不相交
         return null;
     }
-    
+
     private static Node? GetIntersectNode2(Node? head1, Node? head2)
     {
-        ISet<Node> visited = new HashSet<Node>();//记录链表A中访问过的节点
+        ISet<Node> visited = new HashSet<Node>(); //记录链表A中访问过的节点
         //将访问过的链表放入集合中
         var temp = head1;
         while (temp != null)
         {
             //如果添加了重复的节点说明已经将环上的节点添加完毕，退出循环
-            if(!visited.Add(temp)) break;
+            if (!visited.Add(temp)) break;
             temp = temp.Next;
         }
 
@@ -158,10 +158,7 @@ public static class FindFirstIntersectNode
         temp = head2;
         while (temp != null)
         {
-            if (visited.Contains(temp))
-            {
-                return temp;
-            }
+            if (visited.Contains(temp)) return temp;
 
             temp = temp.Next;
         }
@@ -204,7 +201,7 @@ public static class FindFirstIntersectNode
             }
         };
         Console.WriteLine("算法1:" + GetIntersectNode1(head1, head2)?.Value);
-        Console.WriteLine("算法2:" + GetIntersectNode2(head1, head2)?.Value);//输出6
+        Console.WriteLine("算法2:" + GetIntersectNode2(head1, head2)?.Value); //输出6
 
         // 1->2->3->4->5->6->7->4...
         head1 = new Node(1)
@@ -240,7 +237,7 @@ public static class FindFirstIntersectNode
             }
         };
         Console.WriteLine("算法1:" + GetIntersectNode1(head1, head2)?.Value);
-        Console.WriteLine("算法2:" + GetIntersectNode2(head1, head2)?.Value);//输出2
+        Console.WriteLine("算法2:" + GetIntersectNode2(head1, head2)?.Value); //输出2
 
         // 1->2->3->4->5->6->7->4...
         head1 = new Node(1)
@@ -263,7 +260,7 @@ public static class FindFirstIntersectNode
             }
         };
         head1.Next.Next.Next.Next.Next!.Next = head1.Next.Next.Next; // 7->4
-        
+
         // 0->9->8->6->4->5->6..
         head2 = new Node(0)
         {
@@ -276,7 +273,7 @@ public static class FindFirstIntersectNode
             }
         };
         Console.WriteLine("算法1:" + GetIntersectNode1(head1, head2)?.Value);
-        Console.WriteLine("算法2:" + GetIntersectNode2(head1, head2)?.Value);//输出4或者6
+        Console.WriteLine("算法2:" + GetIntersectNode2(head1, head2)?.Value); //输出4或者6
     }
 
     private class Node(int data)

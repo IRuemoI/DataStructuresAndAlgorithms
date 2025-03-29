@@ -77,6 +77,61 @@ public class LinkedListMid
         return slow;
     }
 
+    public static void Run()
+    {
+        var test = new Node(0)
+        {
+            Next = new Node(1)
+            {
+                Next = new Node(2)
+                {
+                    Next = new Node(3)
+                    {
+                        Next = new Node(4)
+                        {
+                            Next = new Node(5)
+                            {
+                                Next = new Node(6)
+                                {
+                                    Next = new Node(7)
+                                    {
+                                        Next = new Node(8)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        var ans1 = MidOrUpMidNode(test);
+        var ans2 = Right1(test);
+        Console.WriteLine(ans1 != null ? ans1.Value : "无");
+        Console.WriteLine(ans2 != null ? ans2.Value : "无");
+
+        ans1 = MidOrDownMidNode(test);
+        ans2 = Right2(test);
+        Console.WriteLine(ans1 != null ? ans1.Value : "无");
+        Console.WriteLine(ans2 != null ? ans2.Value : "无");
+
+        ans1 = MidOrUpMidPreNode(test);
+        ans2 = Right3(test);
+        Console.WriteLine(ans1 != null ? ans1.Value : "无");
+        Console.WriteLine(ans2 != null ? ans2.Value : "无");
+
+        ans1 = MidOrDownMidPreNode(test);
+        ans2 = Right4(test);
+        Console.WriteLine(ans1 != null ? ans1.Value : "无");
+        Console.WriteLine(ans2 != null ? ans2.Value : "无");
+    }
+
+    private class Node(int v)
+    {
+        public readonly int Value = v;
+        public Node? Next;
+    }
+
     #region 用于测试
 
     private static Node? Right1(Node? head)
@@ -140,59 +195,4 @@ public class LinkedListMid
     }
 
     #endregion
-    
-    public static void Run()
-    {
-        var test = new Node(0)
-        {
-            Next = new Node(1)
-            {
-                Next = new Node(2)
-                {
-                    Next = new Node(3)
-                    {
-                        Next = new Node(4)
-                        {
-                            Next = new Node(5)
-                            {
-                                Next = new Node(6)
-                                {
-                                    Next = new Node(7)
-                                    {
-                                        Next = new Node(8)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        };
-
-        var ans1 = MidOrUpMidNode(test);
-        var ans2 = Right1(test);
-        Console.WriteLine(ans1 != null ? ans1.Value : "无");
-        Console.WriteLine(ans2 != null ? ans2.Value : "无");
-
-        ans1 = MidOrDownMidNode(test);
-        ans2 = Right2(test);
-        Console.WriteLine(ans1 != null ? ans1.Value : "无");
-        Console.WriteLine(ans2 != null ? ans2.Value : "无");
-
-        ans1 = MidOrUpMidPreNode(test);
-        ans2 = Right3(test);
-        Console.WriteLine(ans1 != null ? ans1.Value : "无");
-        Console.WriteLine(ans2 != null ? ans2.Value : "无");
-
-        ans1 = MidOrDownMidPreNode(test);
-        ans2 = Right4(test);
-        Console.WriteLine(ans1 != null ? ans1.Value : "无");
-        Console.WriteLine(ans2 != null ? ans2.Value : "无");
-    }
-
-    private class Node(int v)
-    {
-        public readonly int Value = v;
-        public Node? Next;
-    }
 }

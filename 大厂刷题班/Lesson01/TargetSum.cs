@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson01;
 
 // leetcode 494题
@@ -80,40 +81,40 @@ public class TargetSum
         return sum < target || ((target & 1) ^ (sum & 1)) != 0 ? 0 : Subset2(arr, (target + sum) >> 1);
     }
 
-    // 求非负数组nums有多少个子集，累加和是s
+    // 求非负数组numbers有多少个子集，累加和是s
     // 二维动态规划
     // 不用空间压缩
-    private static int Subset1(int[] nums, int s)
+    private static int Subset1(int[] numbers, int s)
     {
         if (s < 0) return 0;
-        var n = nums.Length;
-        // dp[i,j] : nums前缀长度为i的所有子集，有多少累加和是j？
+        var n = numbers.Length;
+        // dp[i,j] : numbers前缀长度为i的所有子集，有多少累加和是j？
         var dp = new int[n + 1, s + 1];
-        // nums前缀长度为0的所有子集，有多少累加和是0？一个：空集
+        // numbers前缀长度为0的所有子集，有多少累加和是0？一个：空集
         dp[0, 0] = 1;
         for (var i = 1; i <= n; i++)
         for (var j = 0; j <= s; j++)
         {
             dp[i, j] = dp[i - 1, j];
-            if (j - nums[i - 1] >= 0) dp[i, j] += dp[i - 1, j - nums[i - 1]];
+            if (j - numbers[i - 1] >= 0) dp[i, j] += dp[i - 1, j - numbers[i - 1]];
         }
 
         return dp[n, s];
     }
 
-    // 求非负数组nums有多少个子集，累加和是s
+    // 求非负数组numbers有多少个子集，累加和是s
     // 二维动态规划
     // 用空间压缩:
     // 核心就是for循环里面的：for (int i = s; i >= n; i--) {
     // 为啥不枚举所有可能的累加和？只枚举 n...s 这些累加和？
     // 因为如果 i - n < 0，dp[i]怎么更新？和上一步的dp[i]一样！所以不用更新
     // 如果 i - n >= 0，dp[i]怎么更新？上一步的dp[i] + 上一步dp[i - n]的值，这才需要更新
-    private static int Subset2(int[] nums, int s)
+    private static int Subset2(int[] numbers, int s)
     {
         if (s < 0) return 0;
         var dp = new int[s + 1];
         dp[0] = 1;
-        foreach (var n in nums)
+        foreach (var n in numbers)
             for (var i = s; i >= n; i--)
                 dp[i] += dp[i - n];
 

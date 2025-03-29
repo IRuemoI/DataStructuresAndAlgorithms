@@ -1,4 +1,5 @@
 ﻿//pass
+
 namespace AdvancedTraining.Lesson14;
 
 // 测试链接：https://leetcode.cn/problems/first-missing-positive/

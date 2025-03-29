@@ -1,6 +1,4 @@
-﻿using MathNet.Numerics;
-
-namespace CustomTraining.Leetcode;
+﻿namespace CustomTraining.Leetcode;
 
 public class MaxAltitude
 {
@@ -13,20 +11,17 @@ public class MaxAltitude
         // 定义一个双向链表，用于存储高度
         var deque = new LinkedList<int>();
         // 定义一个结果数组，用于存储最大高度
-        int[] result = new int[heights.Length - limit + 1];
+        var result = new int[heights.Length - limit + 1];
         // 定义一个索引变量
-        int i = 0;
+        var i = 0;
         // 遍历高度数组
         for (i = 0; i < limit; i++)
         {
             // 如果双向链表不为空且链表最后一个元素小于当前高度，则移除链表最后一个元素
-            while (deque.Count != 0 && deque.Last?.Value < heights[i])
-            {
-                deque.RemoveLast();
-            }
+            while (deque.Count != 0 && deque.Last?.Value < heights[i]) deque.RemoveLast();
 
             // 将当前高度添加到双向链表
-            deque.AddLast(heights[i]);   
+            deque.AddLast(heights[i]);
         }
 
         // 如果双向链表为空，则返回结果数组
@@ -38,16 +33,10 @@ public class MaxAltitude
         for (i = limit; i < heights.Length; i++)
         {
             // 如果双向链表第一个元素等于当前高度减去限制，则移除双向链表第一个元素
-            if (deque.First.Value == heights[i - limit])
-            {
-                deque.RemoveFirst();
-            }
+            if (deque.First.Value == heights[i - limit]) deque.RemoveFirst();
 
             // 如果双向链表不为空且链表最后一个元素小于当前高度，则移除链表最后一个元素
-            while (deque.Count != 0 && deque.Last?.Value < heights[i])
-            {
-                deque.RemoveLast();
-            }
+            while (deque.Count != 0 && deque.Last?.Value < heights[i]) deque.RemoveLast();
 
             // 将当前高度添加到双向链表
             deque.AddLast(heights[i]);
@@ -64,7 +53,7 @@ public class MaxAltitude
     public static void Run()
     {
         int[] heights = [14, 2, 27, -5, 28, 13, 39];
-        int limit = 3;
+        var limit = 3;
         Console.WriteLine(string.Join(", ", MaxAltitudeCode(heights, limit)));
     }
 }
