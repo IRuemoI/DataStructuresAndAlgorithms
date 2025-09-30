@@ -63,7 +63,7 @@ public class SudokuSolver //leetcode_0037
     public static void Run()
     {
         char[][] board =
-        {
+        [
             ['5', '3', '.', '.', '7', '.', '.', '.', '.'],
             ['6', '.', '.', '1', '9', '5', '.', '.', '.'],
             ['.', '9', '8', '.', '.', '.', '.', '6', '.'],
@@ -73,12 +73,11 @@ public class SudokuSolver //leetcode_0037
             ['.', '6', '.', '.', '.', '.', '2', '8', '.'],
             ['.', '.', '.', '4', '1', '9', '.', '.', '5'],
             ['.', '.', '.', '.', '8', '.', '.', '7', '9']
-        };
+        ];
         SolveSudoku(board);
-        for (var i = 0; i < board.GetLength(0); i++)
+        foreach (var row in board)
         {
-            for (var j = 0; j < board.GetLength(1); j++) Console.Write(board[i][j] + ",");
-
+            for (var j = 0; j < board[0].Length; j++) Console.Write(row[j] + ",");
             Console.WriteLine();
         }
 

@@ -2,7 +2,7 @@
 
 public class ChooseWork
 {
-    private static int[] GetMoneys(Job[] job, int[] ability)
+    public static int[] GetMoneys(Job[] job, int[] ability)
     {
         Array.Sort(job, (x, y) => x.Hard != y.Hard ? x.Hard - y.Hard : y.Money - x.Money);
         // key : 难度   value：报酬
@@ -30,7 +30,7 @@ public class ChooseWork
         return ans;
     }
 
-    private class Job(int m, int h)
+    public class Job(int m, int h)
     {
         public readonly int Hard = h;
         public readonly int Money = m;
