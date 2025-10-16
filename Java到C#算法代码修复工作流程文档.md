@@ -654,6 +654,27 @@ private static void Swap(int[][] movies, int i, int j) {
 - C#应该采用相同的引用交换策略，而不是逐个元素交换
 - 对于算法中的数组操作，保持与Java相同的行为模式至关重要
 
+**HashMap.getOrDefault()与Dictionary.GetValueOrDefault()的差异**:
+```java
+// Java - HashMap.getOrDefault()
+colors.put(c[child], colors.getOrDefault(c[child], 0) + 1);
+weights.put(c[child], weights.getOrDefault(c[child], 0) + w[child]);
+```
+```csharp
+// C# 错误写法（直接访问不存在的键会抛出异常）
+colors[c[child]] += 1;  // 如果键不存在，抛出KeyNotFoundException
+weights[c[child]] += w[child];  // 如果键不存在，抛出KeyNotFoundException
+
+// C# 正确写法（使用GetValueOrDefault）
+colors[c[child]] = colors.GetValueOrDefault(c[child], 0) + 1;
+weights[c[child]] = weights.GetValueOrDefault(c[child], 0) + w[child];
+```
+
+**集合API的默认值处理模式**:
+- Java: `map.getOrDefault(key, defaultValue)` - 安全获取，键不存在时返回默认值
+- C#: `dict.GetValueOrDefault(key, defaultValue)` - 对应的C#方法
+- C#替代方案: `dict.TryGetValue(key, out var value) ? value : defaultValue`
+
 ### 8.2 修复优先级指南
 
 1. **最高优先级**: 运行报错
@@ -710,6 +731,7 @@ private static void Swap(int[][] movies, int i, int j) {
 13. **不要混淆集合API**: Java HashSet.Add()返回boolean，C# HashSet.Add()不返回值（但可以通过返回值判断是否新增）
 14. **不要忘记移除已处理元素**: 在使用队列或双端队列时，处理完元素后要记得从队列中移除，避免死循环
 15. **不要混淆数组交换方式**: Java中的数组交换是引用交换，不是内容交换；C#应该采用相同的引用交换策略
+16. **不要忽略默认值处理**: Java的getOrDefault()与C#的直接访问行为不同，必须使用GetValueOrDefault()或TryGetValue()安全处理
 
 ### 8.5 效率提升建议
 

@@ -39,8 +39,8 @@ public class NodeWeight
         foreach (var child in m[h])
         {
             W(child, m, w, c);
-            colors[c[child]] += 1;
-            weights[c[child]] += w[child];
+            colors[c[child]] = colors.GetValueOrDefault(c[child], 0) + 1;
+            weights[c[child]] = weights.GetValueOrDefault(c[child], 0) + w[child];
         }
 
         foreach (var color in colors.Keys) w[h] = Math.Max(w[h], colors[color] + weights[color]);
