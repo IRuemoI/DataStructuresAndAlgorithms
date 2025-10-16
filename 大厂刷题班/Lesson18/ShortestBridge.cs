@@ -5,8 +5,8 @@ public class ShortestBridge
 {
     private static int Code(int[][] m)
     {
-        var row = m.GetLength(0);
-        var column = m.GetLength(1);
+        var row = m.Length;
+        var column = m[0].Length;
         var all = row * column;
         var island = 0;
         var curs = new int[all];

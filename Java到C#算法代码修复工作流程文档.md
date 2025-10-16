@@ -517,6 +517,26 @@ if (dict.TryGetValue("key", out var value)) {
 - Java: `ArrayList` 自动处理重复
 - C#: `List` 需要显式使用 `HashSet` 去重
 
+**锯齿数组维度获取错误**:
+```java
+// Java - 锯齿数组
+int rows = matrix.length;
+int cols = matrix[0].length;
+```
+```csharp
+// C# 错误写法（对锯齿数组使用二维数组方法）
+int rows = matrix.GetLength(0);
+int cols = matrix.GetLength(1);
+
+// C# 正确写法（锯齿数组）
+int rows = matrix.Length;
+int cols = matrix[0].Length;
+```
+
+**关键区分原则**:
+- Java `int[][]` → C# `int[][]`（锯齿数组）：用 `Length` 和 `[0].Length`
+- Java `int[][]` → C# `int[,]`（二维数组）：用 `GetLength(0)` 和 `GetLength(1)`
+
 ### 8.2 修复优先级指南
 
 1. **最高优先级**: 运行报错
@@ -566,6 +586,7 @@ if (dict.TryGetValue("key", out var value)) {
 6. **不要忽略数组维度**: 二维数组vs锯齿数组的维度获取方式完全不同
 7. **不要忽略集合API**: HashMap.get() vs Dictionary[string] 的行为差异
 8. **不要忽略去重机制**: List需要显式使用HashSet避免重复结果
+9. **不要混淆数组类型**: 确认Java int[][]在C#中对应的数组类型（锯齿数组vs二维数组）
 
 ### 8.5 效率提升建议
 
