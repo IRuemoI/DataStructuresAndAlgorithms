@@ -221,6 +221,7 @@ public static void Run()
 ## 3. 常见Java到C#转换问题对照表
 
 ### 3.1 数组操作
+
 | Java | C# | 说明 |
 |------|----|----- |
 | `array.length` | `array.Length` | 一维数组长度 |
@@ -230,6 +231,7 @@ public static void Run()
 | `array[i][j]` | `array[i,j]` 或 `array[i][j]` | 访问二维数组元素 |
 
 ### 3.2 集合类型
+
 | Java | C# | 说明 |
 |------|----|----- |
 | `HashMap<K,V>` | `Dictionary<K,V>` | 哈希表 |
@@ -239,6 +241,7 @@ public static void Run()
 | `LinkedList<E>` | `LinkedList<E>` | 链表 |
 
 ### 3.3 字符串操作
+
 | Java | C# | 说明 |
 |------|----|----- |
 | `str.equals("")` | `str == ""` | 空字符串比较 |
@@ -248,6 +251,7 @@ public static void Run()
 | `str.substring(start, end)` | `str.Substring(start, length)` | 子字符串 |
 
 ### 3.4 类型转换
+
 | Java | C# | 说明 |
 |------|----|----- |
 | `(int)doubleVal` | `(int)doubleVal` | 强制类型转换 |
@@ -255,6 +259,7 @@ public static void Run()
 | `Double.parseDouble(str)` | `double.Parse(str)` 或 `Convert.ToDouble(str)` | 字符串转浮点数 |
 
 ### 3.5 输入输出
+
 | Java | C# | 说明 |
 |------|----|----- |
 | `System.out.println()` | `Console.WriteLine()` | 输出并换行 |
@@ -262,6 +267,7 @@ public static void Run()
 | `Scanner input = new Scanner(System.in)` | `Console.ReadLine()` | 读取输入 |
 
 ### 3.6 数学函数
+
 | Java | C# | 说明 |
 |------|----|----- |
 | `Math.max(a, b)` | `Math.Max(a, b)` | 最大值 |
@@ -383,6 +389,7 @@ else
 ```
 
 **API行为对照表**:
+
 | Java | C# | 说明 |
 |------|----|----- |
 | `map.get(key)` | `dict.TryGetValue(key, out value)` | 安全访问 |
@@ -536,6 +543,7 @@ const int valueMax = 20;
 11. **不要混淆数组交换方式**: Java中的数组交换是引用交换，不是内容交换
 12. **不要忽略默认值处理**: Java getOrDefault()与C#直接访问行为不同
 13. **注意测试参数合理性**: 测试参数应与算法时间复杂度匹配
+14. **不要误判问题**: 有时标记为"运行报错"的问题实际上代码是正确的，需要仔细验证输出结果
 
 ### 5.7 最佳实践建议
 
