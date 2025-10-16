@@ -51,8 +51,10 @@ public class WatchMovieMaxTime
 
     private static void Swap(int[][] movies, int i, int j)
     {
-        //交换矩阵数组的i行和j行
-        for (var k = 0; k < movies.GetLength(1); k++) (movies[i][k], movies[j][k]) = (movies[j][k], movies[i][k]);
+        // 交换整个数组引用，与Java代码一致
+        var tmp = movies[i];
+        movies[i] = movies[j];
+        movies[j] = tmp;
     }
 
     // 优化后的递归解
@@ -96,7 +98,7 @@ public class WatchMovieMaxTime
     {
         const int n = 10;
         const int t = 20;
-        const int testTime = 5000;
+        const int testTime = 100;
         Console.WriteLine("测试开始");
         for (var i = 0; i < testTime; i++)
         {
@@ -106,7 +108,7 @@ public class WatchMovieMaxTime
             var ans2 = MaxEnjoy2(movies);
             if (ans1 != ans2)
             {
-                for (var j = 0; j < movies.GetLength(0); j++) Console.WriteLine(movies[j][0] + " , " + movies[j][1]);
+                for (var j = 0; j < movies.Length; j++) Console.WriteLine(movies[j][0] + " , " + movies[j][1]);
 
                 Console.WriteLine(ans1);
                 Console.WriteLine(ans2);

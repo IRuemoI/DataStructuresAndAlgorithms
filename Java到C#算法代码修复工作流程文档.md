@@ -623,6 +623,37 @@ for (var i = 0; i < size; i++) {
 }
 ```
 
+**数组交换方式错误**:
+```java
+// Java - 引用交换（直接交换数组引用）
+public static void swap(int[][] movies, int i, int j) {
+    int[] tmp = movies[i];
+    movies[i] = movies[j];
+    movies[j] = tmp;
+}
+```
+```csharp
+// C# 错误写法（试图逐个元素交换）
+private static void Swap(int[][] movies, int i, int j) {
+    // 试图逐个元素交换，错误地使用了GetLength(1)
+    for (var k = 0; k < movies.GetLength(1); k++)
+        (movies[i][k], movies[j][k]) = (movies[j][k], movies[i][k]);
+}
+
+// C# 正确写法（引用交换，与Java一致）
+private static void Swap(int[][] movies, int i, int j) {
+    // 交换整个数组引用，与Java代码一致
+    var tmp = movies[i];
+    movies[i] = movies[j];
+    movies[j] = tmp;
+}
+```
+
+**关键原则**:
+- Java中的数组交换是引用交换，不是内容交换
+- C#应该采用相同的引用交换策略，而不是逐个元素交换
+- 对于算法中的数组操作，保持与Java相同的行为模式至关重要
+
 ### 8.2 修复优先级指南
 
 1. **最高优先级**: 运行报错
@@ -678,6 +709,7 @@ for (var i = 0; i < size; i++) {
 12. **不要混淆数组复制方法**: Java的Arrays.copyOfRange与C#的Array.Copy参数顺序完全不同
 13. **不要混淆集合API**: Java HashSet.Add()返回boolean，C# HashSet.Add()不返回值（但可以通过返回值判断是否新增）
 14. **不要忘记移除已处理元素**: 在使用队列或双端队列时，处理完元素后要记得从队列中移除，避免死循环
+15. **不要混淆数组交换方式**: Java中的数组交换是引用交换，不是内容交换；C#应该采用相同的引用交换策略
 
 ### 8.5 效率提升建议
 
