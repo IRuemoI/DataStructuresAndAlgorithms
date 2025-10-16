@@ -537,6 +537,36 @@ int cols = matrix[0].Length;
 - Java `int[][]` → C# `int[][]`（锯齿数组）：用 `Length` 和 `[0].Length`
 - Java `int[][]` → C# `int[,]`（二维数组）：用 `GetLength(0)` 和 `GetLength(1)`
 
+**数组类型转换错误**:
+```java
+// Java - 锯齿数组作为方法参数
+public static int[] query1(int[] father, int[][] queries) {
+    // 访问方式
+    int a = queries[i][0];
+    int b = queries[i][1];
+}
+```
+```csharp
+// C# 错误写法（错误地转换为二维数组）
+private static int[] query1(int[] father, int[,] queries) {
+    // 错误访问方式
+    int a = queries[i, 0];  // 编译可能通过，但逻辑错误
+    int b = queries[i, 1];
+}
+
+// C# 正确写法（保持锯齿数组类型）
+private static int[] query1(int[] father, int[][] queries) {
+    // 正确访问方式
+    int a = queries[i][0];
+    int b = queries[i][1];
+}
+```
+
+**参数类型一致性检查**:
+- 确保Java中的所有`int[][]`参数都转换为C#的`int[][]`，而不是`int[,]`
+- 检查方法签名、数组初始化、数组访问的一致性
+- 特别注意测试数据生成函数的返回类型也要保持一致
+
 ### 8.2 修复优先级指南
 
 1. **最高优先级**: 运行报错
@@ -587,6 +617,8 @@ int cols = matrix[0].Length;
 7. **不要忽略集合API**: HashMap.get() vs Dictionary[string] 的行为差异
 8. **不要忽略去重机制**: List需要显式使用HashSet避免重复结果
 9. **不要混淆数组类型**: 确认Java int[][]在C#中对应的数组类型（锯齿数组vs二维数组）
+10. **不要忽略参数类型**: 方法参数的数组类型转换要与实际使用保持一致
+11. **检查测试数据生成**: 确保测试数据生成函数的返回类型与方法参数类型匹配
 
 ### 8.5 效率提升建议
 

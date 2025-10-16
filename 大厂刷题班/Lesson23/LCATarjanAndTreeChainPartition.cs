@@ -17,14 +17,14 @@ public class LcaTarjanAndTreeChainPartition
     // 返回一个数组ans，大小为M，ans[i]表示第i条查询的答案
 
     // 暴力方法
-    private static int[] query1(int[] father, int[,] queries)
+    private static int[] query1(int[] father, int[][] queries)
     {
         var m = queries.Length;
         var ans = new int[m];
         var path = new HashSet<int>();
         for (var i = 0; i < m; i++)
         {
-            var jump = queries[i, 0];
+            var jump = queries[i][0];
             while (father[jump] != jump)
             {
                 path.Add(jump);
@@ -32,7 +32,7 @@ public class LcaTarjanAndTreeChainPartition
             }
 
             path.Add(jump);
-            jump = queries[i, 1];
+            jump = queries[i][1];
             while (!path.Contains(jump)) jump = father[jump];
             ans[i] = jump;
             path.Clear();
@@ -44,7 +44,7 @@ public class LcaTarjanAndTreeChainPartition
     // 离线批量查询最优解 -> Tarjan + 并查集
     // 如果有M条查询，时间复杂度O(N + M)
     // 但是必须把M条查询一次给全，不支持在线查询
-    private static int[] query2(int[] father, int[,] queries)
+    private static int[] query2(int[] father, int[][] queries)
     {
         var n = father.Length;
         var m = queries.Length;
@@ -61,10 +61,10 @@ public class LcaTarjanAndTreeChainPartition
             if (i != h)
                 mt[father[i]][--help[father[i]]] = i;
         for (var i = 0; i < m; i++)
-            if (queries[i, 0] != queries[i, 1])
+            if (queries[i][0] != queries[i][1])
             {
-                help[queries[i, 0]]++;
-                help[queries[i, 1]]++;
+                help[queries[i][0]]++;
+                help[queries[i][1]]++;
             }
 
         var mq = new int[n][];
@@ -76,20 +76,20 @@ public class LcaTarjanAndTreeChainPartition
         }
 
         for (var i = 0; i < m; i++)
-            if (queries[i, 0] != queries[i, 1])
+            if (queries[i][0] != queries[i][1])
             {
-                mq[queries[i, 0]][--help[queries[i, 0]]] = queries[i, 1];
-                mi[queries[i, 0]][help[queries[i, 0]]] = i;
-                mq[queries[i, 1]][--help[queries[i, 1]]] = queries[i, 0];
-                mi[queries[i, 1]][help[queries[i, 1]]] = i;
+                mq[queries[i][0]][--help[queries[i][0]]] = queries[i][1];
+                mi[queries[i][0]][help[queries[i][0]]] = i;
+                mq[queries[i][1]][--help[queries[i][1]]] = queries[i][0];
+                mi[queries[i][1]][help[queries[i][1]]] = i;
             }
 
         var ans = new int[m];
         var uf = new UnionFind(n);
         Process(h, mt, mq, mi, uf, ans);
         for (var i = 0; i < m; i++)
-            if (queries[i, 0] == queries[i, 1])
-                ans[i] = queries[i, 0];
+            if (queries[i][0] == queries[i][1])
+                ans[i] = queries[i][0];
         return ans;
     }
 
@@ -122,7 +122,7 @@ public class LcaTarjanAndTreeChainPartition
     // 在线查询最优解 -> 树链剖分
     // 空间复杂度O(N), 支持在线查询，单次查询时间复杂度O(logN)
     // 如果有M次查询，时间复杂度O(N + M * logN)
-    private static int[] query3(int[] father, int[,] queries)
+    private static int[] query3(int[] father, int[][] queries)
     {
         var tc = new TreeChain(father);
         var m = queries.Length;
@@ -130,10 +130,10 @@ public class LcaTarjanAndTreeChainPartition
         for (var i = 0; i < m; i++)
             // x y ?
             // x x x
-            if (queries[i, 0] == queries[i, 1])
-                ans[i] = queries[i, 0];
+            if (queries[i][0] == queries[i][1])
+                ans[i] = queries[i][0];
             else
-                ans[i] = tc.Lca(queries[i, 0], queries[i, 1]);
+                ans[i] = tc.Lca(queries[i][0], queries[i][1]);
         return ans;
     }
 
@@ -154,13 +154,12 @@ public class LcaTarjanAndTreeChainPartition
     // 为了测试
     // 随机生成M条查询，点有N个，点的编号在0~N-1之间
     // 输入参数M和N都要大于0
-    private static int[,] GenerateQueries(int m, int n)
+    private static int[][] GenerateQueries(int m, int n)
     {
-        var ans = new int[m, 2];
+        var ans = new int[m][];
         for (var i = 0; i < m; i++)
         {
-            ans[i, 0] = (int)(Utility.getRandomDouble * n);
-            ans[i, 1] = (int)(Utility.getRandomDouble * n);
+            ans[i] = [(int)(Utility.getRandomDouble * n), (int)(Utility.getRandomDouble * n)];
         }
 
         return ans;
