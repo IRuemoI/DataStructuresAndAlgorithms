@@ -4,6 +4,6 @@ public static class Program
 {
     public static void Main()
     {
-        Lesson45.PartitionArrayIntoTwoArraysToMinimizeSumDifference.Run();
+        Lesson36.Ratio01Split.Run();
     }
 }

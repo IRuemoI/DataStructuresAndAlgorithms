@@ -91,9 +91,15 @@ public class Heaters //leetcode_0475
     // 为了测试
     public static void Run()
     {
+        Console.WriteLine("测试对比FindRadius（正确）vs FindRadius2（错误）：");
+        Console.WriteLine("当距离相等时，应选择更右边的供暖点");
+        Console.WriteLine();
+
         var len = 5;
         var v = 10;
         var testTime = 10000;
+        var foundDifference = false;
+
         for (var i = 0; i < testTime; i++)
         {
             var a = randomArray(len, v);
@@ -102,16 +108,28 @@ public class Heaters //leetcode_0475
             var ans2 = FindRadius2(a, b);
             if (ans1 != ans2)
             {
-                Console.WriteLine("A : ");
+                Console.WriteLine("找到差异案例：");
+                Console.WriteLine("A (房子位置): ");
                 foreach (var num in a) Console.Write(num + " ");
                 Console.WriteLine();
-                Console.WriteLine("B : ");
+                Console.WriteLine("B (供暖点位置): ");
                 foreach (var num in b) Console.Write(num + " ");
                 Console.WriteLine();
-                Console.WriteLine(ans1);
-                Console.WriteLine(ans2);
+                Console.WriteLine($"FindRadius (正确): {ans1}");
+                Console.WriteLine($"FindRadius2 (错误): {ans2}");
+                Console.WriteLine();
+                Console.WriteLine("FindRadius2错误原因：");
+                Console.WriteLine("Best2方法使用 <= 比较，当距离相等时选择左边的供暖点，");
+                Console.WriteLine("但正确逻辑应该选择更右边的供暖点（为后续房子提供更好覆盖）。");
+                Console.WriteLine();
+                foundDifference = true;
                 break;
             }
+        }
+
+        if (!foundDifference)
+        {
+            Console.WriteLine("在10000次随机测试中未找到差异案例，但这不意味着算法正确。");
         }
     }
 }

@@ -2,10 +2,16 @@
   "permissions": {
     "allow": [
       "Bash(dotnet run:*)",
-      "Bash(timeout * dotnet run:*)",
+      "WebSearch",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(timeout 30 dotnet run:*)",
+      "Bash(dotnet build:*)",
+      "Bash(timeout 10 dotnet run:*)",
+      "Bash(timeout 15 dotnet run:*)",
+      "WebFetch(domain:github.com)",
+      "mcp__context7__resolve-library-id"
     ],
     "deny": [],
     "ask": []

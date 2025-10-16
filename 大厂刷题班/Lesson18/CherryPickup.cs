@@ -35,10 +35,10 @@ public class CherryPickup
 
     private static int Process(int[,] grid, int x1, int y1, int x2, int[,,] dp)
     {
-        if (x1 == grid.GetLength(0) || y1 == grid.GetLength(1) || x2 == grid.GetLength(0) || x1 + y1 - x2 == grid.GetLength(1))
+        if (x1 == grid.GetLength(0) || y1 == grid.GetLength(1) || x2 == grid.GetLength(0) || x1 + y1 - x2 >= grid.GetLength(1))
             return int.MinValue;
         if (dp[x1, y1, x2] != int.MinValue) return dp[x1, y1, x2];
-        if (x1 == grid.Length - 1 && y1 == grid.GetLength(1) - 1)
+        if (x1 == grid.GetLength(0) - 1 && y1 == grid.GetLength(1) - 1)
         {
             dp[x1, y1, x2] = grid[x1, y1];
             return dp[x1, y1, x2];

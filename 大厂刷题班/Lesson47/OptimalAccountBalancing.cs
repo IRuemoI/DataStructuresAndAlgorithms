@@ -100,8 +100,8 @@ public class OptimalAccountBalancing //leetcode_0465
         var map = new Dictionary<int, int>();
         foreach (var tran in transactions)
         {
-            map[tran[0]] = map.ContainsKey(tran[0]) ? 0 + tran[2] : tran[2];
-            map[tran[1]] = map.ContainsKey(tran[1]) ? 0 - tran[2] : tran[2];
+            map[tran[0]] = map.GetValueOrDefault(tran[0], 0) + tran[2];
+            map[tran[1]] = map.GetValueOrDefault(tran[1], 0) - tran[2];
         }
 
         var n = 0;

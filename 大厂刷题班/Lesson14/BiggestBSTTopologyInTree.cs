@@ -7,14 +7,44 @@ public class BiggestBstTopologyInTree
 {
     public static void Run()
     {
-        var tree = new[,]
+        Console.WriteLine("测试BiggestBSTTopology算法：");
+
+        // 测试1：完整的BST树
+        var tree1 = new[,]
         {
             { 2, 1, 3 },
             { 1, 0, 0 },
             { 3, 0, 0 }
         };
+        var result1 = MaxBstTopology(2, tree1, new int[4]);
+        Console.WriteLine($"测试1 - BST树(2为根，左1右3): {result1} (期望: 3)");
 
-        Console.WriteLine(MaxBstTopology(2, tree, new int[4]));
+        // 测试2：非BST树
+        var tree2 = new[,]
+        {
+            { 2, 1, 3 },
+            { 1, 0, 0 },
+            { 3, 0, 0 }
+        };
+        // 修改为非BST：让左孩子大于根节点
+        tree2[2, 1] = 4; // 3的左孩子是4
+        tree2[4, 0] = 3; // 4的父节点是3
+        var result2 = MaxBstTopology(2, tree2, new int[5]);
+        Console.WriteLine($"测试2 - 非BST树(2为根，左1右3，3的左孩子4): {result2} (期望: 2, 只包含2和1)");
+
+        // 测试3：更大的BST树
+        var tree3 = new[,]
+        {
+            { 5, 2, 8 },
+            { 2, 1, 3 },
+            { 8, 0, 0 },
+            { 1, 0, 0 },
+            { 3, 0, 0 }
+        };
+        var result3 = MaxBstTopology(5, tree3, new int[6]);
+        Console.WriteLine($"测试3 - BST树(5为根，左2右8): {result3} (期望: 5, 包含所有节点)");
+
+        Console.WriteLine("所有测试完成！");
     }
 
     // h: 代表当前的头节点
@@ -51,6 +81,7 @@ public class BiggestBstTopologyInTree
             }
         }
 
+        // 直接使用Java版本的逻辑
         m[h] = m[t[h, 1]] + m[t[h, 2]] + 1;
         return Math.Max(Math.Max(p1, p2), m[h]);
     }

@@ -60,8 +60,15 @@ public class Ratio01Split
 
     public static void Run()
     {
-        int[] arr = [0, 1, 0, 1, 0, 1, 1, 0];
+        // 根据注释中的例子："010100001" -> [1, 1, 1, 2, 1, 2, 1, 1, 3]
+        int[] arr = [0, 1, 0, 1, 0, 0, 0, 0, 1];
         var ans = Split(arr);
-        foreach (var t in ans) Console.Write(t + " "); //[1, 1, 1, 2, 1, 2, 1, 1, 3]
+        Console.Write("期望: [1, 1, 1, 2, 1, 2, 1, 1, 3], 实际: [");
+        for (int i = 0; i < ans.Length; i++)
+        {
+            Console.Write(ans[i]);
+            if (i < ans.Length - 1) Console.Write(", ");
+        }
+        Console.WriteLine("]");
     }
 }

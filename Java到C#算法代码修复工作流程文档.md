@@ -468,6 +468,93 @@ movies[i] = movies[j];
 movies[j] = tmp;
 ```
 
+#### 5.2.6 SortedSet返回值处理错误
+**问题**: Java TreeSet.floor()与C# SortedSet.GetViewBetween()行为差异
+
+```java
+// Java - TreeSet.floor()
+TreeSet<Integer> set = new TreeSet<>();
+Integer find = set.floor(sum - k);
+if (find != null) {
+    // 处理逻辑
+}
+```
+
+**C#错误写法**:
+```csharp
+var find = set.GetViewBetween(sum - k, int.MaxValue).FirstOrDefault();
+if (find != 0) {  // 错误：0可能是有效值
+    // 处理逻辑
+}
+```
+
+**C#正确写法**:
+```csharp
+var view = set.GetViewBetween(sum - k, int.MaxValue);
+if (view.Count > 0) {  // 正确：检查是否找到元素
+    var find = view.FirstOrDefault();
+    // 处理逻辑
+}
+```
+
+#### 5.2.7 位运算逻辑错误
+**问题**: 位运算条件判断错误
+
+```java
+// Java - 检查fix是否能覆盖word
+if ((fix & word) == 0) {
+    // 无法区分
+    return false;
+}
+```
+
+**C#错误写法**:
+```csharp
+if ((fix & word) == 0) {  // 逻辑反了
+    return false;
+}
+```
+
+**C#正确写法**:
+```csharp
+if ((fix & word) != word) {  // fix必须完全覆盖word的差异位
+    return false;
+}
+```
+
+#### 5.2.8 输出格式错误
+**问题**: Run方法输出逻辑错误
+
+```csharp
+// C#错误写法
+var result = string.Join(",", wordSquares(words));
+foreach (var row in result)  // result是字符串，不是列表
+    Console.WriteLine(string.Join(",", row));
+```
+
+**C#正确写法**:
+```csharp
+var result = wordSquares(words);  // 直接返回二维列表
+foreach (var square in result) {
+    Console.WriteLine($"[{string.Join(",", square.Select(w => $"\"{w}\""))}]");
+}
+```
+
+#### 5.2.9 变量名混乱导致逻辑错误
+**问题**: 变量名不一致导致理解错误
+
+```csharp
+// C#错误写法
+foreach (var pre in path)  // 应该是word，但写成了pre
+    builder.Append(pre[i]);
+```
+
+**C#正确写法**:
+```csharp
+foreach (var word in path)  // 变量名清晰明确
+    builder.Append(word[i]);
+```
+
 ### 5.3 性能问题识别与调整
 
 #### 5.3.1 超时/死循环问题
@@ -544,6 +631,10 @@ const int valueMax = 20;
 12. **不要忽略默认值处理**: Java getOrDefault()与C#直接访问行为不同
 13. **注意测试参数合理性**: 测试参数应与算法时间复杂度匹配
 14. **不要误判问题**: 有时标记为"运行报错"的问题实际上代码是正确的，需要仔细验证输出结果
+15. **不要混淆SortedSet返回值**: Java TreeSet.floor()返回null表示无匹配，C# GetViewBetween()需要检查Count > 0
+16. **不要忽略位运算逻辑**: 位运算条件判断容易写反，需要仔细验证逻辑正确性
+17. **不要混淆输出格式**: 注意方法返回的是单个值还是集合，避免错误的迭代逻辑
+18. **不要忽视变量命名**: 变量名混乱会导致逻辑错误，保持命名的一致性和清晰性
 
 ### 5.7 最佳实践建议
 
