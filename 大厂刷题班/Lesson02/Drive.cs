@@ -14,8 +14,8 @@ public class Drive
     // 1 [45,60]
     private static int MaxMoney1(int[,]? income)
     {
-        if (income == null || income.Length < 2 || (income.Length & 1) != 0) return 0;
-        var n = income.Length; // 司机数量一定是偶数，所以才能平分，A N /2 B N/2
+        if (income == null || income.GetLength(0) < 2 || (income.GetLength(0) & 1) != 0) return 0;
+        var n = income.GetLength(0); // 司机数量一定是偶数，所以才能平分，A N /2 B N/2
         var m = n >> 1; // M = N / 2 要去A区域的人
         return Process1(income, 0, m);
     }
@@ -25,9 +25,9 @@ public class Drive
     // 返回把index...司机，分配完，并且最终A和B区域同样多的情况下，index...这些司机，整体收入最大是多少！
     private static int Process1(int[,] income, int index, int rest)
     {
-        if (index == income.Length) return 0;
+        if (index == income.GetLength(0)) return 0;
         // 还剩下司机！
-        if (income.Length - index == rest) return income[index, 0] + Process1(income, index + 1, rest - 1);
+        if (income.GetLength(0) - index == rest) return income[index, 0] + Process1(income, index + 1, rest - 1);
         if (rest == 0) return income[index, 1] + Process1(income, index + 1, rest);
         // 当前司机，可以去A，或者去B
         var p1 = income[index, 0] + Process1(income, index + 1, rest - 1);
@@ -38,7 +38,7 @@ public class Drive
     // 严格位置依赖的动态规划版本
     private static int MaxMoney2(int[,] income)
     {
-        var n = income.Length;
+        var n = income.GetLength(0);
         var m = n >> 1;
         var dp = new int[n + 1, m + 1];
         for (var i = n - 1; i >= 0; i--)
@@ -70,7 +70,7 @@ public class Drive
     // 这里感谢卢圣文同学
     private static int MaxMoney3(int[,] income)
     {
-        var n = income.Length;
+        var n = income.GetLength(0);
         var arr = new int[n];
         var sum = 0;
         for (var i = 0; i < n; i++)
@@ -90,7 +90,7 @@ public class Drive
     private static int[,] randomMatrix(int len, int value)
     {
         var ans = new int[len << 1, 2];
-        for (var i = 0; i < ans.Length; i++)
+        for (var i = 0; i < ans.GetLength(0); i++)
         {
             ans[i, 0] = (int)(Utility.getRandomDouble * value);
             ans[i, 1] = (int)(Utility.getRandomDouble * value);

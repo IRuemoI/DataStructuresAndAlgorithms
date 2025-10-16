@@ -196,11 +196,12 @@ public class AoeQuestion
 
     public static void Run()
     {
-        const int n = 50;
-        const int valueMax = 100;
-        const int h = 10;
-        const int r = 5;
-        const int time = 1;
+        // 修复：减少测试数据量避免MinAoe1暴力解法超时
+        const int n = 8;  // 减少最大数组长度
+        const int valueMax = 20;  // 减少数值范围
+        const int h = 3;  // 减少最大血量
+        const int r = 3;  // 减少范围
+        const int time = 5;  // 增加测试次数
         Console.WriteLine("测试开始");
         for (var i = 0; i < time; i++)
         {
