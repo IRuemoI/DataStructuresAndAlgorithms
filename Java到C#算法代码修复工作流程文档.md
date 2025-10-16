@@ -599,6 +599,30 @@ if (set.Contains(arr[r])) break;
 set.Add(arr[r]);
 ```
 
+**队列操作缺失导致的死循环**:
+```csharp
+// 错误写法 - 忘记移除已处理的节点
+for (var i = 0; i < size; i++) {
+    var cur = isHead ? deque.First() : deque.Last();
+    curLevel.Add(cur.Val);
+    // 忘记移除已处理的节点！
+    // 这会导致deque.Count永远不会减少，造成无限循环
+}
+
+// 正确写法 - 处理后移除节点
+for (var i = 0; i < size; i++) {
+    var cur = isHead ? deque.First() : deque.Last();
+    curLevel.Add(cur.Val);
+    if (isHead) {
+        deque.RemoveFirst();  // 从头部移除
+        // 添加子节点...
+    } else {
+        deque.RemoveLast();   // 从尾部移除
+        // 添加子节点...
+    }
+}
+```
+
 ### 8.2 修复优先级指南
 
 1. **最高优先级**: 运行报错
@@ -653,6 +677,7 @@ set.Add(arr[r]);
 11. **检查测试数据生成**: 确保测试数据生成函数的返回类型与方法参数类型匹配
 12. **不要混淆数组复制方法**: Java的Arrays.copyOfRange与C#的Array.Copy参数顺序完全不同
 13. **不要混淆集合API**: Java HashSet.Add()返回boolean，C# HashSet.Add()不返回值（但可以通过返回值判断是否新增）
+14. **不要忘记移除已处理元素**: 在使用队列或双端队列时，处理完元素后要记得从队列中移除，避免死循环
 
 ### 8.5 效率提升建议
 

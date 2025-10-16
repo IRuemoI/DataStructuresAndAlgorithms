@@ -15,18 +15,17 @@ public class BinaryTreeZigzagLevelOrderTraversal //leetcode_0103
             IList<int> curLevel = new List<int>();
             for (var i = 0; i < size; i++)
             {
-                var firstNode = deque.First();
-                var tailNode = deque.Last();
-
-                var cur = isHead ? firstNode : tailNode;
+                var cur = isHead ? deque.First() : deque.Last();
                 curLevel.Add(cur.Val);
                 if (isHead)
                 {
+                    deque.RemoveFirst();
                     if (cur.Left != null) deque.AddLast(cur.Left);
                     if (cur.Right != null) deque.AddLast(cur.Right);
                 }
                 else
                 {
+                    deque.RemoveLast();
                     if (cur.Right != null) deque.AddFirst(cur.Right);
                     if (cur.Left != null) deque.AddFirst(cur.Left);
                 }
@@ -39,10 +38,9 @@ public class BinaryTreeZigzagLevelOrderTraversal //leetcode_0103
         return ans;
     }
 
-    //todo:待整理
     public static void Run()
     {
-        Console.WriteLine(ZigzagLevelOrder(
+        var result = ZigzagLevelOrder(
             new TreeNode
             {
                 Val = 1, Left = new TreeNode
@@ -60,7 +58,21 @@ public class BinaryTreeZigzagLevelOrderTraversal //leetcode_0103
                 {
                     Val = 3
                 }
-            }));
+            });
+
+        // 打印结果
+        Console.WriteLine("[");
+        foreach (var level in result)
+        {
+            Console.Write(" [");
+            for (int i = 0; i < level.Count; i++)
+            {
+                Console.Write(level[i]);
+                if (i < level.Count - 1) Console.Write(", ");
+            }
+            Console.WriteLine("]");
+        }
+        Console.WriteLine("]");
     }
 
     public class TreeNode
