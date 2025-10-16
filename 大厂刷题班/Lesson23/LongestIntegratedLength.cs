@@ -18,7 +18,8 @@ public class LongestIntegratedLength
             for (var r = l + 1; r < n; r++)
             {
                 // L....R
-                if (!set.Add(arr[r])) break;
+                if (set.Contains(arr[r])) break;
+                set.Add(arr[r]);
                 min = Math.Min(min, arr[r]);
                 max = Math.Max(max, arr[r]);
                 if (max - min == r - l) ans = Math.Max(ans, r - l + 1);
@@ -46,9 +47,9 @@ public class LongestIntegratedLength
 
     private static bool IsIntegrated(int[] arr, int left, int right)
     {
-        //int[] newArra = Arrays.copyOfRange(arr, left, right + 1); // O(N)
-        var newArr = new int[right + 1 - left];
-        Array.Copy(arr, newArr, right + 1);
+        // 等同于Java的Arrays.copyOfRange(arr, left, right + 1)
+        var newArr = new int[right - left + 1];
+        Array.Copy(arr, left, newArr, 0, right - left + 1);
         Array.Sort(newArr); // O(N*logN)
         for (var i = 1; i < newArr.Length; i++)
             if (newArr[i - 1] != newArr[i] - 1)

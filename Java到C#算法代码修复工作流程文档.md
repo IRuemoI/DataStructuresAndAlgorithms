@@ -567,6 +567,38 @@ private static int[] query1(int[] father, int[][] queries) {
 - 检查方法签名、数组初始化、数组访问的一致性
 - 特别注意测试数据生成函数的返回类型也要保持一致
 
+**数组复制操作错误**:
+```java
+// Java - Arrays.copyOfRange
+int[] newArr = Arrays.copyOfRange(arr, left, right + 1);
+```
+```csharp
+// C# 错误写法
+var newArr = new int[right + 1 - left];
+Array.Copy(arr, newArr, right + 1);  // 参数错误
+
+// C# 正确写法
+var newArr = new int[right - left + 1];
+Array.Copy(arr, left, newArr, 0, right - left + 1);
+```
+
+**HashSet操作行为差异**:
+```java
+// Java - HashSet.Add()返回boolean
+if(set.contains(arr[R])) {
+    break;
+}
+set.add(arr[R]);
+```
+```csharp
+// C# 错误写法（依赖Add()返回值）
+if (!set.Add(arr[r])) break;  // 逻辑错误
+
+// C# 正确写法（先检查再添加）
+if (set.Contains(arr[r])) break;
+set.Add(arr[r]);
+```
+
 ### 8.2 修复优先级指南
 
 1. **最高优先级**: 运行报错
@@ -619,6 +651,8 @@ private static int[] query1(int[] father, int[][] queries) {
 9. **不要混淆数组类型**: 确认Java int[][]在C#中对应的数组类型（锯齿数组vs二维数组）
 10. **不要忽略参数类型**: 方法参数的数组类型转换要与实际使用保持一致
 11. **检查测试数据生成**: 确保测试数据生成函数的返回类型与方法参数类型匹配
+12. **不要混淆数组复制方法**: Java的Arrays.copyOfRange与C#的Array.Copy参数顺序完全不同
+13. **不要混淆集合API**: Java HashSet.Add()返回boolean，C# HashSet.Add()不返回值（但可以通过返回值判断是否新增）
 
 ### 8.5 效率提升建议
 
