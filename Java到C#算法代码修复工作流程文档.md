@@ -305,398 +305,9 @@ dotnet build 大厂刷题班 --no-restore
 - **测试方法**: `RunTests()` 默认执行100次测试
 - **手动测试**: 每个算法类的 `Run()` 方法
 
-## 5. 修复示例和最佳实践
+## 5. 常见问题模式与修复指南
 
-### 5.1 示例1：修复FindWordInMatrix数组维度问题
-
-**问题描述**: `FindWordInMatrix.cs` 中数组维度获取不正确导致运行报错
-
-**Java原始代码**:
-```java
-int N = m.length;
-int M = m[0].length;
-```
-
-**C#错误代码**:
-```csharp
-int N = m.Length;
-int M = m[0].Length; // 错误：对于多维数组应该使用GetLength()
-```
-
-**C#修复后代码**:
-```csharp
-int N = m.GetLength(0);
-int M = m.GetLength(1);
-```
-
-### 5.2 示例2：修复集合类型转换
-
-**问题描述**: Java HashMap转换为C# Dictionary
-
-**Java原始代码**:
-```java
-HashMap<String, Integer> map = new HashMap<>();
-map.put("key", 1);
-int value = map.get("key");
-```
-
-**C#修复后代码**:
-```csharp
-Dictionary<string, int> map = new Dictionary<string, int>();
-map["key"] = 1; // 或 map.Add("key", 1);
-int value = map["key"];
-```
-
-### 5.3 示例3：修复字符串处理
-
-**问题描述**: 字符串比较和空值检查
-
-**Java原始代码**:
-```java
-if (word == null || word.equals("")) {
-    return true;
-}
-```
-
-**C#修复后代码**:
-```csharp
-if (string.IsNullOrEmpty(word)) {
-    return true;
-}
-```
-
-### 5.4 新增：AoeQuestion修复案例详细分析
-
-**问题描述**: `Lesson01:AoeQuestion` 程序死循环
-
-**实际问题根源**：
-- `MinAoe1`使用暴力递归解法，时间复杂度很高
-- 测试参数设置过大：`n=50, valueMax=100, h=10, r=5, time=1`
-- 导致递归深度过大，看起来像死循环（实际是超时）
-
-**修复过程**：
-1. **问题定位**：通过timeout命令确认程序超时
-2. **代码对比**：确认Java和C#逻辑完全一致
-3. **参数调整**：减少测试数据量
-   ```csharp
-   // 修复前
-   const int n = 50;
-   const int valueMax = 100;
-   const int h = 10;
-   const int r = 5;
-   const int time = 1;
-
-   // 修复后
-   const int n = 8;      // 减少最大数组长度
-   const int valueMax = 20;  // 减少数值范围
-   const int h = 3;       // 减少最大血量
-   const int r = 3;       // 减少范围
-   const int time = 5;    // 增加测试次数
-   ```
-
-**关键经验**：
-- **性能问题识别**：递归算法要注意数据量设置
-- **测试参数调优**：合理设置测试范围避免超时
-- **保持算法完整性**：不修改算法逻辑，只调整测试参数
-
-### 5.5 最佳实践建议（更新版）
-
-1. **先理解再修复**: 在修复代码前，先理解算法的逻辑和实现思路
-2. **优先读取Java版本**: Java代码是标准实现，应该作为修复的参考标准
-3. **保持一致性**: 确保修复后的代码风格与项目整体风格一致
-4. **充分测试**: 修复完成后要进行充分的测试验证
-5. **记录问题**: 记录遇到的问题和解决方案，便于后续参考
-6. **逐步修复**: 优先修复阻塞性问题（如编译错误、运行时错误）
-7. **对比验证**: 修复后的代码要与Java版本的行为保持一致
-8. **性能考虑**: 注意暴力算法在大数据量下的表现，合理设置测试参数
-
-## 6. 质量保证
-
-### 6.1 代码审查要点
-- **逻辑正确性**: 算法逻辑与Java版本一致
-- **边界处理**: 正确处理各种边界情况
-- **异常处理**: 有适当的错误处理机制
-- **性能表现**: 时间和空间复杂度符合预期
-- **代码规范**: 遵循C#编码规范
-
-### 6.2 测试标准
-- **功能测试**: 输出结果与Java版本一致
-- **性能测试**: 大数据量下的表现符合预期
-- **边界测试**: 极端情况下的行为正确
-- **回归测试**: 修复不影响其他功能
-
-### 6.3 验证步骤
-1. **编译验证**: 确保代码能够正常编译
-2. **运行验证**: 代码能够正常运行无异常
-3. **结果验证**: 输出结果正确
-4. **性能验证**: 性能表现符合预期
-5. **回归验证**: 不影响其他已修复的代码
-
-## 7. 常见陷阱和注意事项
-
-### 7.1 数组相关陷阱（新增）
-- **多维数组 vs 锯齿数组**: C#中多维数组 `int[,]` 和锯齿数组 `int[][]` 的区别
-  - Java使用 `int[][]`（锯齿数组）→ C#使用 `int[,]`（二维数组）：必须用 `GetLength(0)` 和 `GetLength(1)`
-  - Java使用 `int[][]`（锯齿数组）→ C#也用 `int[][]`（锯齿数组）：用 `Length` 和 `[0].Length`
-- **索引越界**: C#数组索引检查更严格
-- **Length属性**: Length vs GetLength() 的正确使用场景
-
-### 7.2 类型系统陷阱（新增）
-- **值类型 vs 引用类型**: C#中int是值类型，Integer是引用类型
-- **可空类型**: C#的可空值类型语法
-- **类型转换**: 显式类型转换的语法差异
-- **集合API差异**: Java HashMap.get() vs C# Dictionary[string] 的重要区别
-  - Java: `map.get(key)` 不存在时返回 `null`
-  - C#: `map[key]` 不存在时抛出 `KeyNotFoundException`
-  - C#正确用法: `map.TryGetValue(key, out var value)` + `value.HasValue` 检查
-
-### 7.3 内存管理陷阱
-- **垃圾回收**: C#的GC机制与Java的差异
-- **资源释放**: IDisposable模式的正确使用
-- **内存泄漏**: 事件订阅、静态引用等可能导致的问题
-
-### 7.4 并发相关陷阱
-- **线程安全**: C#中的线程安全机制
-- **锁机制**: lock关键字的正确使用
-- **异步编程**: async/await模式的正确使用
-
-## 8. 实际修复经验总结（新增章节）
-
-### 8.1 常见问题类型和解决方案
-
-#### 8.1.1 编译配置问题
-**问题**: 大量编译警告干扰输出
-**解决方案**:
-```bash
-# 推荐的运行命令
-dotnet run --project 大厂刷题班 --verbosity quiet 2>nul
-```
-
-#### 8.1.2 超时/死循环问题
-**问题识别**:
-- 程序运行超过预期时间
-- 通过timeout命令确认超时
-- 通常与递归深度过大或测试参数过大有关
-
-**解决策略**:
-1. 检查是否为暴力算法的性能问题
-2. 调整测试参数（如AoeQuestion案例）
-3. 不修改算法逻辑，只调整测试环境
-
-#### 8.1.3 数组维度问题
-**常见错误模式**:
-```csharp
-// 错误
-int cols = matrix[0].Length;  // 可能越界
-// 正确
-int cols = matrix.GetLength(1);
-```
-
-#### 8.1.4 集合类型转换问题（重要更新）
-**关键映射关系**:
-- `HashMap` → `Dictionary`
-- `ArrayList` → `List`
-- `HashSet` → `HashSet`
-- `TreeMap` → `SortDictionary`
-
-**API行为差异**:
-```csharp
-// Java (返回null)
-Integer value = map.get("key");
-
-// C# 错误写法 (抛出异常)
-int value = dict["key"];
-
-// C# 正确写法
-if (dict.TryGetValue("key", out var value)) {
-    // 使用 value
-}
-```
-
-**去重机制差异**:
-- Java: `ArrayList` 自动处理重复
-- C#: `List` 需要显式使用 `HashSet` 去重
-
-**锯齿数组维度获取错误**:
-```java
-// Java - 锯齿数组
-int rows = matrix.length;
-int cols = matrix[0].length;
-```
-```csharp
-// C# 错误写法（对锯齿数组使用二维数组方法）
-int rows = matrix.GetLength(0);
-int cols = matrix.GetLength(1);
-
-// C# 正确写法（锯齿数组）
-int rows = matrix.Length;
-int cols = matrix[0].Length;
-```
-
-**关键区分原则**:
-- Java `int[][]` → C# `int[][]`（锯齿数组）：用 `Length` 和 `[0].Length`
-- Java `int[][]` → C# `int[,]`（二维数组）：用 `GetLength(0)` 和 `GetLength(1)`
-
-**数组类型转换错误**:
-```java
-// Java - 锯齿数组作为方法参数
-public static int[] query1(int[] father, int[][] queries) {
-    // 访问方式
-    int a = queries[i][0];
-    int b = queries[i][1];
-}
-```
-```csharp
-// C# 错误写法（错误地转换为二维数组）
-private static int[] query1(int[] father, int[,] queries) {
-    // 错误访问方式
-    int a = queries[i, 0];  // 编译可能通过，但逻辑错误
-    int b = queries[i, 1];
-}
-
-// C# 正确写法（保持锯齿数组类型）
-private static int[] query1(int[] father, int[][] queries) {
-    // 正确访问方式
-    int a = queries[i][0];
-    int b = queries[i][1];
-}
-```
-
-**参数类型一致性检查**:
-- 确保Java中的所有`int[][]`参数都转换为C#的`int[][]`，而不是`int[,]`
-- 检查方法签名、数组初始化、数组访问的一致性
-- 特别注意测试数据生成函数的返回类型也要保持一致
-
-**数组复制操作错误**:
-```java
-// Java - Arrays.copyOfRange
-int[] newArr = Arrays.copyOfRange(arr, left, right + 1);
-```
-```csharp
-// C# 错误写法
-var newArr = new int[right + 1 - left];
-Array.Copy(arr, newArr, right + 1);  // 参数错误
-
-// C# 正确写法
-var newArr = new int[right - left + 1];
-Array.Copy(arr, left, newArr, 0, right - left + 1);
-```
-
-**HashSet操作行为差异**:
-```java
-// Java - HashSet.Add()返回boolean
-if(set.contains(arr[R])) {
-    break;
-}
-set.add(arr[R]);
-```
-```csharp
-// C# 错误写法（依赖Add()返回值）
-if (!set.Add(arr[r])) break;  // 逻辑错误
-
-// C# 正确写法（先检查再添加）
-if (set.Contains(arr[r])) break;
-set.Add(arr[r]);
-```
-
-**队列操作缺失导致的死循环**:
-```csharp
-// 错误写法 - 忘记移除已处理的节点
-for (var i = 0; i < size; i++) {
-    var cur = isHead ? deque.First() : deque.Last();
-    curLevel.Add(cur.Val);
-    // 忘记移除已处理的节点！
-    // 这会导致deque.Count永远不会减少，造成无限循环
-}
-
-// 正确写法 - 处理后移除节点
-for (var i = 0; i < size; i++) {
-    var cur = isHead ? deque.First() : deque.Last();
-    curLevel.Add(cur.Val);
-    if (isHead) {
-        deque.RemoveFirst();  // 从头部移除
-        // 添加子节点...
-    } else {
-        deque.RemoveLast();   // 从尾部移除
-        // 添加子节点...
-    }
-}
-```
-
-**数组交换方式错误**:
-```java
-// Java - 引用交换（直接交换数组引用）
-public static void swap(int[][] movies, int i, int j) {
-    int[] tmp = movies[i];
-    movies[i] = movies[j];
-    movies[j] = tmp;
-}
-```
-```csharp
-// C# 错误写法（试图逐个元素交换）
-private static void Swap(int[][] movies, int i, int j) {
-    // 试图逐个元素交换，错误地使用了GetLength(1)
-    for (var k = 0; k < movies.GetLength(1); k++)
-        (movies[i][k], movies[j][k]) = (movies[j][k], movies[i][k]);
-}
-
-// C# 正确写法（引用交换，与Java一致）
-private static void Swap(int[][] movies, int i, int j) {
-    // 交换整个数组引用，与Java代码一致
-    var tmp = movies[i];
-    movies[i] = movies[j];
-    movies[j] = tmp;
-}
-```
-
-**关键原则**:
-- Java中的数组交换是引用交换，不是内容交换
-- C#应该采用相同的引用交换策略，而不是逐个元素交换
-- 对于算法中的数组操作，保持与Java相同的行为模式至关重要
-
-**锯齿数组vs二维数组的维度获取混淆**:
-```java
-// Java - 锯齿数组 int[][]
-int rows = map.length;           // 正确：获取外层数组长度
-int cols = map[0].length;       // 正确：获取内层数组长度
-```
-```csharp
-// C# 二维数组 int[,] - 错误用法
-int rows = map.Length;          // 错误：这是锯齿数组的用法
-int cols = map[0].Length;       // 错误：索引越界异常
-
-// C# 二维数组 int[,] - 正确用法
-int rows = map.GetLength(0);     // 正确：获取行数
-int cols = map.GetLength(1);     // 正确：获取列数
-```
-
-**性能问题的识别与调整**:
-- 暴力递归算法在小数据量上可能运行正常，但在大数据量上会导致超时
-- 测试参数的设置应该与算法的时间复杂度相匹配
-- 对于对数器测试，适当减少测试规模可以提高效率同时保持有效性
-
-**HashMap.getOrDefault()与Dictionary.GetValueOrDefault()的差异**:
-```java
-// Java - HashMap.getOrDefault()
-colors.put(c[child], colors.getOrDefault(c[child], 0) + 1);
-weights.put(c[child], weights.getOrDefault(c[child], 0) + w[child]);
-```
-```csharp
-// C# 错误写法（直接访问不存在的键会抛出异常）
-colors[c[child]] += 1;  // 如果键不存在，抛出KeyNotFoundException
-weights[c[child]] += w[child];  // 如果键不存在，抛出KeyNotFoundException
-
-// C# 正确写法（使用GetValueOrDefault）
-colors[c[child]] = colors.GetValueOrDefault(c[child], 0) + 1;
-weights[c[child]] = weights.GetValueOrDefault(c[child], 0) + w[child];
-```
-
-**集合API的默认值处理模式**:
-- Java: `map.getOrDefault(key, defaultValue)` - 安全获取，键不存在时返回默认值
-- C#: `dict.GetValueOrDefault(key, defaultValue)` - 对应的C#方法
-- C#替代方案: `dict.TryGetValue(key, out var value) ? value : defaultValue`
-
-### 8.2 修复优先级指南
+### 5.1 修复优先级
 
 1. **最高优先级**: 运行报错
    - 修复语法错误
@@ -718,52 +329,226 @@ weights[c[child]] = weights.GetValueOrDefault(c[child], 0) + w[child];
    - 完善错误处理
    - 优化代码风格
 
-### 8.3 实用工具和技巧
+### 5.2 核心问题模式与解决方案
 
-#### 8.3.1 代码对比技巧
+#### 5.2.1 数组维度问题
+**问题**: Java锯齿数组到C#的维度获取错误
+
+```java
+// Java - 锯齿数组
+int rows = matrix.length;
+int cols = matrix[0].length;
+```
+
+**C#错误写法**:
+```csharp
+int rows = matrix.Length;          // 错误：混淆数组类型
+int cols = matrix[0].Length;       // 可能越界异常
+```
+
+**C#正确写法**:
+```csharp
+// 方案1：转换为二维数组时
+int rows = matrix.GetLength(0);
+int cols = matrix.GetLength(1);
+
+// 方案2：保持锯齿数组时
+int rows = matrix.Length;
+int cols = matrix[0].Length;
+```
+
+**关键原则**: 准确对应Java原意，明确数组类型转换策略
+
+#### 5.2.2 集合API差异问题
+**问题**: HashMap与Dictionary的行为差异
+
+```java
+// Java - HashMap.getOrDefault()
+colors.put(c[child], colors.getOrDefault(c[child], 0) + 1);
+```
+
+**C#错误写法**:
+```csharp
+colors[c[child]] += 1;  // KeyNotFoundException
+```
+
+**C#正确写法**:
+```csharp
+colors[c[child]] = colors.GetValueOrDefault(c[child], 0) + 1;
+// 或者
+if (colors.TryGetValue(c[child], out var value))
+    colors[c[child]] = value + 1;
+else
+    colors[c[child]] = 1;
+```
+
+**API行为对照表**:
+| Java | C# | 说明 |
+|------|----|----- |
+| `map.get(key)` | `dict.TryGetValue(key, out value)` | 安全访问 |
+| `map.getOrDefault(k, d)` | `dict.GetValueOrDefault(k, d)` | 默认值处理 |
+| `map.put(k, v)` | `dict[k] = v` 或 `dict.Add(k, v)` | 添加元素 |
+
+#### 5.2.3 数组复制操作错误
+**问题**: Arrays.copyOfRange与Array.Copy参数差异
+
+```java
+// Java
+int[] newArr = Arrays.copyOfRange(arr, left, right + 1);
+```
+
+**C#错误写法**:
+```csharp
+var newArr = new int[right + 1 - left];
+Array.Copy(arr, newArr, right + 1);  // 参数错误
+```
+
+**C#正确写法**:
+```csharp
+var newArr = new int[right - left + 1];
+Array.Copy(arr, left, newArr, 0, right - left + 1);
+```
+
+#### 5.2.4 队列操作缺失导致死循环
+**问题**: 忘记移除已处理的队列元素
+
+```csharp
+// 错误写法
+for (var i = 0; i < size; i++) {
+    var cur = isHead ? deque.First() : deque.Last();
+    curLevel.Add(cur.Val);
+    // 忘记移除元素！导致无限循环
+}
+```
+
+**正确写法**:
+```csharp
+for (var i = 0; i < size; i++) {
+    var cur = isHead ? deque.First() : deque.Last();
+    curLevel.Add(cur.Val);
+    if (isHead) {
+        deque.RemoveFirst();
+    } else {
+        deque.RemoveLast();
+    }
+}
+```
+
+#### 5.2.5 数组交换方式错误
+**问题**: 混淆引用交换和内容交换
+
+```java
+// Java - 引用交换
+public static void swap(int[][] movies, int i, int j) {
+    int[] tmp = movies[i];
+    movies[i] = movies[j];
+    movies[j] = tmp;
+}
+```
+
+**C#错误写法**:
+```csharp
+// 试图逐个元素交换
+for (var k = 0; k < movies.GetLength(1); k++)
+    (movies[i][k], movies[j][k]) = (movies[j][k], movies[i][k]);
+```
+
+**C#正确写法**:
+```csharp
+// 引用交换，与Java一致
+var tmp = movies[i];
+movies[i] = movies[j];
+movies[j] = tmp;
+```
+
+### 5.3 性能问题识别与调整
+
+#### 5.3.1 超时/死循环问题
+**识别特征**:
+- 程序运行超过预期时间
+- 通常与递归深度过大或测试参数过大有关
+- 暴力算法在大数据量下表现差
+
+**解决策略**:
+1. 调整测试参数
+2. 不修改算法逻辑，只调整测试环境
+3. 设置合理的超时时间
+
+**示例**: AoeQuestion案例
+```csharp
+// 修复前（参数过大导致超时）
+const int n = 50;
+const int valueMax = 100;
+
+// 修复后（合理参数）
+const int n = 8;
+const int valueMax = 20;
+```
+
+### 5.4 类型转换映射表
+
+#### 5.4.1 集合类型映射
+| Java | C# | 说明 |
+|------|----|----- |
+| `HashMap<K,V>` | `Dictionary<K,V>` | 哈希表 |
+| `ArrayList<E>` | `List<E>` | 动态数组 |
+| `HashSet<E>` | `HashSet<E>` | 哈希集合 |
+| `TreeMap<K,V>` | `SortDictionary<K,V>` | 有序字典 |
+| `LinkedList<E>` | `LinkedList<E>` | 链表 |
+
+#### 5.4.2 字符串操作映射
+| Java | C# | 说明 |
+|------|----|----- |
+| `str.equals("")` | `str == ""` | 空字符串比较 |
+| `str == null \| str.equals("")` | `string.IsNullOrEmpty(str)` | 空值检查 |
+| `str.length()` | `str.Length` | 字符串长度 |
+| `str.substring(start, end)` | `str.Substring(start, length)` | 子字符串 |
+
+### 5.5 实用修复技巧
+
+#### 5.5.1 代码对比技巧
 - 使用VS Code的文件对比功能
-- 先看Java代码理解逻辑，再看C#实现
+- 先理解Java代码逻辑，再对比C#实现
 - 关注方法签名、返回值类型、参数传递方式
 
-#### 8.3.2 调试技巧
+#### 5.5.2 调试技巧
 - 修改Program.cs测试特定算法
 - 使用Console.WriteLine输出中间结果
 - 设置合理超时避免无限等待
 
-#### 8.3.3 Git管理技巧
+#### 5.5.3 Git管理技巧
 - 修复前提交当前状态
 - 使用git diff查看修改内容
 - 每个修复完成后提交并添加说明
 
-### 8.4 避免的常见陷阱（新增基于实际修复经验）
+### 5.6 避免的常见陷阱（基于实际修复经验）
 
 1. **不要过度优化**: 首先保证正确性，再考虑性能
 2. **不要修改算法逻辑**: Java代码是标准，应该保持一致性
 3. **不要忽略测试参数**: 测试数据量过大可能导致超时
 4. **不要忽略类型转换**: 特别注意数组和集合类型的转换
 5. **不要忽略边界条件**: 确保边界情况的处理正确
-6. **不要忽略数组维度**: 二维数组vs锯齿数组的维度获取方式完全不同
+6. **不要混淆数组类型**: 明确锯齿数组vs二维数组的维度获取方式
 7. **不要忽略集合API**: HashMap.get() vs Dictionary[string] 的行为差异
 8. **不要忽略去重机制**: List需要显式使用HashSet避免重复结果
-9. **不要混淆数组类型**: 确认Java int[][]在C#中对应的数组类型（锯齿数组vs二维数组）
-10. **不要忽略参数类型**: 方法参数的数组类型转换要与实际使用保持一致
-11. **检查测试数据生成**: 确保测试数据生成函数的返回类型与方法参数类型匹配
-12. **不要混淆数组复制方法**: Java的Arrays.copyOfRange与C#的Array.Copy参数顺序完全不同
-13. **不要混淆集合API**: Java HashSet.Add()返回boolean，C# HashSet.Add()不返回值（但可以通过返回值判断是否新增）
-14. **不要忘记移除已处理元素**: 在使用队列或双端队列时，处理完元素后要记得从队列中移除，避免死循环
-15. **不要混淆数组交换方式**: Java中的数组交换是引用交换，不是内容交换；C#应该采用相同的引用交换策略
-16. **不要忽略默认值处理**: Java的getOrDefault()与C#的直接访问行为不同，必须使用GetValueOrDefault()或TryGetValue()安全处理
-17. **不要混淆锯齿和二维数组**: C#中int[][]（锯齿数组）和int[,]（二维数组）的维度获取方式完全不同，必须准确对应Java的原意
-18. **注意测试参数合理性**: 对于性能敏感的算法，测试参数应该与算法时间复杂度匹配，避免无效的测试
+9. **不要混淆数组复制方法**: Java Arrays.copyOfRange与C# Array.Copy参数顺序完全不同
+10. **不要忘记移除队列元素**: 处理完元素后要从队列中移除，避免死循环
+11. **不要混淆数组交换方式**: Java中的数组交换是引用交换，不是内容交换
+12. **不要忽略默认值处理**: Java getOrDefault()与C#直接访问行为不同
+13. **注意测试参数合理性**: 测试参数应与算法时间复杂度匹配
 
-### 8.5 效率提升建议
+### 5.7 最佳实践建议
 
-1. **批量修复**: 如果发现相同的问题模式，可以批量修复
-2. **模板化记录**: 为常见问题创建修复模板
-3. **工具链优化**: 配置好开发环境和快捷命令
-4. **知识积累**: 建立常见问题的解决方案库
+1. **先理解再修复**: 修复代码前，先理解算法的逻辑和实现思路
+2. **Java优先原则**: 以Java代码为标准，确保修复的正确性
+3. **保持一致性**: 确保修复后的代码风格与项目整体风格一致
+4. **充分测试**: 修复完成后要进行充分的测试验证
+5. **记录问题**: 记录遇到的问题和解决方案，便于后续参考
+6. **逐步修复**: 优先修复阻塞性问题（如编译错误、运行时错误）
+7. **对比验证**: 修复后的代码要与Java版本的行为保持一致
+8. **性能考虑**: 注意暴力算法在大数据量下的表现，合理设置测试参数
 
-## 9. 总结
+## 6. 总结
 
 这个工作流程文档基于实际修复经验进行了优化，特别强调了：
 
