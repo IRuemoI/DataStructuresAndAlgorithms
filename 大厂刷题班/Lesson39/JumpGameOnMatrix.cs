@@ -30,14 +30,14 @@ public class JumpGameOnMatrix
     // 5000 * 5000 = 25000000 -> 2 * (10 ^ 7)
     private static int Process(int[,] map, int row, int col)
     {
-        if (row == map.Length - 1 && col == map.GetLength(1) - 1) return 0;
+        if (row == map.GetLength(0) - 1 && col == map.GetLength(1) - 1) return 0;
         // 如果没到右下角
         if (map[row, col] == 0) return int.MaxValue;
         // 当前位置，可以去很多的位置，next含义：
         // 在所有能去的位置里，哪个位置最后到达右下角，跳的次数最少，就是next
         var next = int.MaxValue;
         // 往下能到达的位置，全试一遍
-        for (var down = row + 1; down < map.Length && down - row <= map[row, col]; down++)
+        for (var down = row + 1; down < map.GetLength(0) && down - row <= map[row, col]; down++)
             next = Math.Min(next, Process(map, down, col));
         // 往右能到达的位置，全试一遍
         for (var right = col + 1; right < map.GetLength(1) && right - col <= map[row, col]; right++)
@@ -143,9 +143,9 @@ public class JumpGameOnMatrix
         Console.WriteLine("线段树展示结束");
 
         // 以下为正式测试
-        var len = 10;
-        var value = 8;
-        var testTimes = 10000;
+        var len = 5;
+        var value = 5;
+        var testTimes = 100;
         Console.WriteLine("对数器测试开始");
         for (var i = 0; i < testTimes; i++)
         {

@@ -654,6 +654,27 @@ private static void Swap(int[][] movies, int i, int j) {
 - C#应该采用相同的引用交换策略，而不是逐个元素交换
 - 对于算法中的数组操作，保持与Java相同的行为模式至关重要
 
+**锯齿数组vs二维数组的维度获取混淆**:
+```java
+// Java - 锯齿数组 int[][]
+int rows = map.length;           // 正确：获取外层数组长度
+int cols = map[0].length;       // 正确：获取内层数组长度
+```
+```csharp
+// C# 二维数组 int[,] - 错误用法
+int rows = map.Length;          // 错误：这是锯齿数组的用法
+int cols = map[0].Length;       // 错误：索引越界异常
+
+// C# 二维数组 int[,] - 正确用法
+int rows = map.GetLength(0);     // 正确：获取行数
+int cols = map.GetLength(1);     // 正确：获取列数
+```
+
+**性能问题的识别与调整**:
+- 暴力递归算法在小数据量上可能运行正常，但在大数据量上会导致超时
+- 测试参数的设置应该与算法的时间复杂度相匹配
+- 对于对数器测试，适当减少测试规模可以提高效率同时保持有效性
+
 **HashMap.getOrDefault()与Dictionary.GetValueOrDefault()的差异**:
 ```java
 // Java - HashMap.getOrDefault()
@@ -732,6 +753,8 @@ weights[c[child]] = weights.GetValueOrDefault(c[child], 0) + w[child];
 14. **不要忘记移除已处理元素**: 在使用队列或双端队列时，处理完元素后要记得从队列中移除，避免死循环
 15. **不要混淆数组交换方式**: Java中的数组交换是引用交换，不是内容交换；C#应该采用相同的引用交换策略
 16. **不要忽略默认值处理**: Java的getOrDefault()与C#的直接访问行为不同，必须使用GetValueOrDefault()或TryGetValue()安全处理
+17. **不要混淆锯齿和二维数组**: C#中int[][]（锯齿数组）和int[,]（二维数组）的维度获取方式完全不同，必须准确对应Java的原意
+18. **注意测试参数合理性**: 对于性能敏感的算法，测试参数应该与算法时间复杂度匹配，避免无效的测试
 
 ### 8.5 效率提升建议
 
