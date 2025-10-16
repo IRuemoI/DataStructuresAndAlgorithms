@@ -22,11 +22,10 @@ public class PalindromePairs
     {
         List<List<int>> res = new();
         var reverse = Reverse(word);
-        var rest = words[""];
-        if (rest != null && rest.Value != index && word.Equals(reverse))
+        if (words.TryGetValue("", out var rest1) && rest1.HasValue && rest1.Value != index && word.Equals(reverse))
         {
-            AddRecord(res, rest.Value, index);
-            AddRecord(res, index, rest.Value);
+            AddRecord(res, rest1.Value, index);
+            AddRecord(res, index, rest1.Value);
         }
 
         var rs = manacherss(word);
@@ -34,15 +33,13 @@ public class PalindromePairs
         for (var i = 1; i < mid; i++)
             if (i - rs[i] == -1)
             {
-                rest = words[reverse.Substring(0, mid - i)];
-                if (rest != null && rest.Value != index) AddRecord(res, rest.Value, index);
+                if (words.TryGetValue(reverse.Substring(0, mid - i), out var rest2) && rest2.HasValue && rest2.Value != index) AddRecord(res, rest2.Value, index);
             }
 
         for (var i = mid + 1; i < rs.Length; i++)
             if (i + rs[i] == rs.Length)
             {
-                rest = words[reverse.Substring((mid << 1) - i)];
-                if (rest != null && rest.Value != index) AddRecord(res, index, rest.Value);
+                if (words.TryGetValue(reverse.Substring((mid << 1) - i), out var rest3) && rest3.HasValue && rest3.Value != index) AddRecord(res, index, rest3.Value);
             }
 
         return res;
@@ -109,8 +106,7 @@ public class PalindromePairs
         return new string(chs);
     }
 
-    //todo:可能有问题
-    public static void Run()
+        public static void Run()
     {
         string[] words = ["abcd", "dcba", "lls", "s", "sssll"];
         var result = palindromePairs(words);

@@ -13,7 +13,7 @@ public class SnakeGame
     {
         if (matrix == null || matrix.Length == 0 || matrix.GetLength(1) == 0) return 0;
         var res = int.MinValue;
-        for (var i = 0; i < matrix.Length; i++)
+        for (var i = 0; i < matrix.GetLength(0); i++)
         for (var j = 0; j < matrix.GetLength(1); j++)
         {
             var ans = process(matrix, i, j);
@@ -27,7 +27,7 @@ public class SnakeGame
     {
         if (matrix == null || matrix.Length == 0 || matrix.GetLength(1) == 0) return 0;
         var ans = 0;
-        for (var i = 0; i < matrix.Length; i++)
+        for (var i = 0; i < matrix.GetLength(0); i++)
         for (var j = 0; j < matrix.GetLength(1); j++)
         {
             var cur = F(matrix, i, j);
@@ -66,7 +66,7 @@ public class SnakeGame
             preYes = Math.Max(pre.Yes, preYes);
         }
 
-        if (i < matrix.Length - 1)
+        if (i < matrix.GetLength(0) - 1)
         {
             pre = F(matrix, i + 1, j - 1);
             preNo = Math.Max(pre.No, preNo);
@@ -102,7 +102,7 @@ public class SnakeGame
             preUse = Math.Max(preUse, preAns[1]);
         }
 
-        if (i + 1 < m.Length)
+        if (i + 1 < m.GetLength(0))
         {
             preAns = process(m, i + 1, j - 1);
             preUnuse = Math.Max(preUnuse, preAns[0]);
@@ -128,7 +128,7 @@ public class SnakeGame
         if (matrix == null || matrix.GetLength(0) == 0 || matrix.GetLength(1) == 0) return 0;
         var max = int.MinValue;
         var dp = new int[matrix.GetLength(0), matrix.GetLength(1), 2];
-        for (var i = 0; i < dp.Length; i++)
+        for (var i = 0; i < dp.GetLength(0); i++)
         {
             dp[i, 0, 0] = matrix[i, 0];
             dp[i, 0, 1] = -matrix[i, 0];
@@ -146,7 +146,7 @@ public class SnakeGame
                 preUse = Math.Max(preUse, dp[i - 1, j - 1, 1]);
             }
 
-            if (i + 1 < matrix.Length)
+            if (i + 1 < matrix.GetLength(0))
             {
                 preUnuse = Math.Max(preUnuse, dp[i + 1, j - 1, 0]);
                 preUse = Math.Max(preUse, dp[i + 1, j - 1, 1]);

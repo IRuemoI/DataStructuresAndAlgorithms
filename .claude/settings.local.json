@@ -2,8 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(dotnet run:*)",
-      "Bash(timeout 10 dotnet run:*)",
-      "Bash(timeout 15 dotnet run:*)"
+      "Bash(timeout * dotnet run:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []

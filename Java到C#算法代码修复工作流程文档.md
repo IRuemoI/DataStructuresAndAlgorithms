@@ -434,15 +434,21 @@ if (string.IsNullOrEmpty(word)) {
 
 ## 7. 常见陷阱和注意事项
 
-### 7.1 数组相关陷阱
+### 7.1 数组相关陷阱（新增）
 - **多维数组 vs 锯齿数组**: C#中多维数组 `int[,]` 和锯齿数组 `int[][]` 的区别
+  - Java使用 `int[][]`（锯齿数组）→ C#使用 `int[,]`（二维数组）：必须用 `GetLength(0)` 和 `GetLength(1)`
+  - Java使用 `int[][]`（锯齿数组）→ C#也用 `int[][]`（锯齿数组）：用 `Length` 和 `[0].Length`
 - **索引越界**: C#数组索引检查更严格
-- **Length属性**: 注意Length和GetLength()的区别
+- **Length属性**: Length vs GetLength() 的正确使用场景
 
-### 7.2 类型系统陷阱
+### 7.2 类型系统陷阱（新增）
 - **值类型 vs 引用类型**: C#中int是值类型，Integer是引用类型
 - **可空类型**: C#的可空值类型语法
 - **类型转换**: 显式类型转换的语法差异
+- **集合API差异**: Java HashMap.get() vs C# Dictionary[string] 的重要区别
+  - Java: `map.get(key)` 不存在时返回 `null`
+  - C#: `map[key]` 不存在时抛出 `KeyNotFoundException`
+  - C#正确用法: `map.TryGetValue(key, out var value)` + `value.HasValue` 检查
 
 ### 7.3 内存管理陷阱
 - **垃圾回收**: C#的GC机制与Java的差异
@@ -486,12 +492,30 @@ int cols = matrix[0].Length;  // 可能越界
 int cols = matrix.GetLength(1);
 ```
 
-#### 8.1.4 集合类型转换问题
+#### 8.1.4 集合类型转换问题（重要更新）
 **关键映射关系**:
 - `HashMap` → `Dictionary`
 - `ArrayList` → `List`
 - `HashSet` → `HashSet`
 - `TreeMap` → `SortDictionary`
+
+**API行为差异**:
+```csharp
+// Java (返回null)
+Integer value = map.get("key");
+
+// C# 错误写法 (抛出异常)
+int value = dict["key"];
+
+// C# 正确写法
+if (dict.TryGetValue("key", out var value)) {
+    // 使用 value
+}
+```
+
+**去重机制差异**:
+- Java: `ArrayList` 自动处理重复
+- C#: `List` 需要显式使用 `HashSet` 去重
 
 ### 8.2 修复优先级指南
 
@@ -532,13 +556,16 @@ int cols = matrix.GetLength(1);
 - 使用git diff查看修改内容
 - 每个修复完成后提交并添加说明
 
-### 8.4 避免的常见陷阱
+### 8.4 避免的常见陷阱（新增基于实际修复经验）
 
 1. **不要过度优化**: 首先保证正确性，再考虑性能
 2. **不要修改算法逻辑**: Java代码是标准，应该保持一致性
 3. **不要忽略测试参数**: 测试数据量过大可能导致超时
 4. **不要忽略类型转换**: 特别注意数组和集合类型的转换
 5. **不要忽略边界条件**: 确保边界情况的处理正确
+6. **不要忽略数组维度**: 二维数组vs锯齿数组的维度获取方式完全不同
+7. **不要忽略集合API**: HashMap.get() vs Dictionary[string] 的行为差异
+8. **不要忽略去重机制**: List需要显式使用HashSet避免重复结果
 
 ### 8.5 效率提升建议
 

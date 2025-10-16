@@ -7,7 +7,8 @@ public class RemoveInvalidParentheses
     private static List<string> Code(string s)
     {
         var ans = new List<string>();
-        Remove(s, ans, 0, 0, ['(', ')']);
+        var set = new HashSet<string>();
+        Remove(s, ans, set, 0, 0, ['(', ')']);
         return ans;
     }
 
@@ -30,7 +31,7 @@ public class RemoveInvalidParentheses
     // checkIndex = 6 ，modifyIndex = 4
     // 也就是说，
     // checkIndex和modifyIndex，分别表示查的开始 和 调的开始，之前的都不用管了  par  (  )
-    private static void Remove(string s, List<string> ans, int checkIndex, int deleteIndex, char[] par)
+    private static void Remove(string s, List<string> ans, HashSet<string> set, int checkIndex, int deleteIndex, char[] par)
     {
         var count = 0;
         for (var i = checkIndex; i < s.Length; i++)
@@ -44,7 +45,7 @@ public class RemoveInvalidParentheses
             {
                 for (var j = deleteIndex; j <= i; j++)
                     if (s[j] == par[1] && (j == deleteIndex || s[j - 1] != par[1]))
-                        Remove(s.Substring(0, j) + s.Substring(j + 1, s.Length), ans, i, j, par);
+                        Remove(s.Substring(0, j) + s.Substring(j + 1), ans, set, i, j, par);
 
                 return;
             }
@@ -52,13 +53,12 @@ public class RemoveInvalidParentheses
 
         var reversed = new string(s.Reverse().ToArray());
         if (par[0] == '(')
-            Remove(reversed, ans, 0, 0, new[] { ')', '(' });
-        else
+            Remove(reversed, ans, set, 0, 0, new[] { ')', '(' });
+        else if (set.Add(reversed))
             ans.Add(reversed);
     }
 
-    //TODO:输出结果有问题
-    public static void Run()
+        public static void Run()
     {
         var result = Code("()())()"); // ["()()()", "(())()"]
         foreach (var item in result) Console.WriteLine(item);
