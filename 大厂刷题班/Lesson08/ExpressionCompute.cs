@@ -53,9 +53,8 @@ public class ExpressionCompute
             }
             else
             {
-                var temp = que.Last.Value;
+                var cur = Convert.ToInt32(que.Last!.Value);
                 que.RemoveLast();
-                var cur = Convert.ToInt32(temp);
                 num = top.Equals("*") ? cur * num : cur / num;
             }
         }

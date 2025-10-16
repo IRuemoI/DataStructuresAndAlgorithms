@@ -25,15 +25,15 @@
 public class FindWordInMatrix
 {
     // 可以走重复的设定
-    private static bool FindWord1(char[]?[]? m, string word)
+    private static bool FindWord1(char[][] m, string word)
     {
         if (word is null or "") return true;
 
         if (m == null || m.Length == 0 || m[0] == null || m[0].Length == 0) return false;
 
         var w = word.ToCharArray();
-        var row = m.GetLength(0);
-        var column = m.GetLength(1);
+        var row = m.Length;
+        var column = m[0].Length;
         var len = w.Length;
         // dp[i][j][k]表示：必须以m[i][j]这个字符结尾的情况下，能不能找到w[0...k]这个前缀串
         // ORIGINAL LINE: bool[][][] dp = new bool[N][M][len];

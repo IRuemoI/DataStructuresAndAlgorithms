@@ -8,7 +8,7 @@ public class Largest1BorderedSquare
         var right = new int[m.GetLength(0), m.GetLength(1)];
         var down = new int[m.GetLength(0), m.GetLength(1)];
         SetBorderMap(m, right, down);
-        for (var size = Math.Min(m.Length, m.GetLength(1)); size != 0; size--)
+        for (var size = Math.Min(m.GetLength(0), m.GetLength(1)); size != 0; size--)
             if (HasSizeOfBorder(size, right, down))
                 return size * size;
 
@@ -17,7 +17,7 @@ public class Largest1BorderedSquare
 
     private static void SetBorderMap(int[,] m, int[,] right, int[,] down)
     {
-        var r = m.Length;
+        var r = m.GetLength(0);
         var c = m.GetLength(1);
         if (m[r - 1, c - 1] == 1)
         {
@@ -50,8 +50,8 @@ public class Largest1BorderedSquare
 
     private static bool HasSizeOfBorder(int size, int[,] right, int[,] down)
     {
-        for (var i = 0; i != right.Length - size + 1; i++)
-        for (var j = 0; j != right.GetLength(1); j++)
+        for (var i = 0; i != right.GetLength(0) - size + 1; i++)
+        for (var j = 0; j != right.GetLength(1) - size + 1; j++)
             if (right[i, j] >= size && down[i, j] >= size && right[i + size - 1, j] >= size &&
                 down[i, j + size - 1] >= size)
                 return true;
