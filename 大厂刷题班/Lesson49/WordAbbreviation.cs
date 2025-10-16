@@ -16,7 +16,7 @@ public class WordAbbreviation //leetcode_0527
         for (var i = 0; i < len; i++)
         {
             res.Add(MakeAbbr(words[i], 1));
-            var list = map[res[i]];
+            var list = map.GetValueOrDefault(res[i], new List<int>());
             list.Add(i);
             map[res[i]] = list;
         }
@@ -31,7 +31,7 @@ public class WordAbbreviation //leetcode_0527
                 {
                     prefix[j]++;
                     res[j] = MakeAbbr(words[j], prefix[j]);
-                    var list = map[res[j]];
+                    var list = map.GetValueOrDefault(res[j], new List<int>());
                     list.Add(j);
                     map[res[j]] = list;
                 }

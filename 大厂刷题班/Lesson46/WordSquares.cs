@@ -76,7 +76,7 @@ public class WordSquares //leetcode_0425
         {
             // 把限制求出来，前缀的限制！
             var builder = new StringBuilder();
-            foreach (var pre in path) builder.Append(pre[i]);
+            foreach (var word in path) builder.Append(word[i]);
             var prefix = builder.ToString();
             if (map.TryGetValue(prefix, out var value))
                 foreach (var next in value)
@@ -88,12 +88,14 @@ public class WordSquares //leetcode_0425
         }
     }
 
-    //todo:输出有问题
     public static void Run()
     {
-        var result = string.Join(",", wordSquares(["abat", "baba", "atan", "atal"]));
-        foreach (var row in result)
-            // 输出: [["baba","abat","baba","atal"],["baba","abat","baba","atan"]]
-            Console.WriteLine(string.Join(",", row));
+        var result = wordSquares(["abat", "baba", "atan", "atal"]);
+        Console.WriteLine($"Found {result.Count} word squares:");
+        foreach (var square in result)
+        {
+            Console.WriteLine($"[{string.Join(",", square.Select(word => $"\"{word}\""))}]");
+        }
+        // 期望输出: [["baba","abat","baba","atal"],["baba","abat","baba","atan"]]
     }
 }

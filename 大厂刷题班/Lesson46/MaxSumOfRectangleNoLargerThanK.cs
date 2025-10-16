@@ -16,11 +16,11 @@ public class MaxSumOfRectangleNoLargerThanK //leetcode_0363
             sum += item;
             // 找之前哪个前缀和 >= sum - k  且最接近
             // 有序表中，ceiling(x) 返回>=x且最接近的！
-            // 有序表中，floor(x) 返回<=x且最接近的！
-            int? find = set.FirstOrDefault(x => x <= sum - k);
-            if (find != null)
+            var view = set.GetViewBetween(sum - k, int.MaxValue);
+            if (view.Count > 0)
             {
-                var curAns = sum - find ?? throw new InvalidOperationException();
+                var find = view.FirstOrDefault();
+                var curAns = sum - find;
                 ans = Math.Max(ans, curAns);
             }
 
@@ -56,8 +56,12 @@ public class MaxSumOfRectangleNoLargerThanK //leetcode_0363
                 {
                     colSum[c] += matrix[e, c];
                     rowSum += colSum[c];
-                    int? it = sumSet.FirstOrDefault(x => x <= rowSum - k);
-                    if (it != null) res = Math.Max(res, rowSum - it ?? throw new InvalidOperationException());
+                    var view = sumSet.GetViewBetween(rowSum - k, int.MaxValue);
+                    if (view.Count > 0)
+                    {
+                        var it = view.FirstOrDefault();
+                        res = Math.Max(res, rowSum - it);
+                    }
 
                     sumSet.Add(rowSum);
                 }

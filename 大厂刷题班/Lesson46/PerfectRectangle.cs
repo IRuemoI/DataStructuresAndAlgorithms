@@ -4,7 +4,7 @@ public class PerfectRectangle //leetcode_0391
 {
     private static bool IsRectangleCover(int[][] matrix)
     {
-        if (matrix.GetLength(0) == 0 || matrix.GetLength(1) == 0) return false;
+        if (matrix.Length == 0 || matrix[0].Length == 0) return false;
         var l = int.MaxValue;
         var r = int.MinValue;
         var d = int.MaxValue;
@@ -30,12 +30,13 @@ public class PerfectRectangle //leetcode_0391
     private static void Add(Dictionary<int, Dictionary<int, int>> map, int row, int col)
     {
         if (!map.ContainsKey(row)) map[row] = new Dictionary<int, int>();
-        map[row][col] += 1;
+        map[row][col] = map[row].GetValueOrDefault(col, 0) + 1;
     }
 
     private static bool CheckPoints(Dictionary<int, Dictionary<int, int>> map, int l, int d, int r, int u)
     {
-        if (map[l][d] != 1 || map[l][u] != 1 || map[r][d] != 1 || map[r][u] != 1) return false;
+        if (map[l].GetValueOrDefault(d, 0) != 1 || map[l].GetValueOrDefault(u, 0) != 1 ||
+            map[r].GetValueOrDefault(d, 0) != 1 || map[r].GetValueOrDefault(u, 0) != 1) return false;
         map[l].Remove(d);
         map[l].Remove(u);
         map[r].Remove(d);
@@ -47,7 +48,6 @@ public class PerfectRectangle //leetcode_0391
         return true;
     }
 
-    //todo:待修复
     public static void Run()
     {
         int[][] m = [[1, 1, 3, 3], [3, 1, 4, 2], [3, 2, 4, 4], [1, 3, 2, 4], [2, 3, 3, 4]];

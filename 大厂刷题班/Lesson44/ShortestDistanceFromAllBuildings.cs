@@ -59,7 +59,7 @@ public class ShortestDistanceFromAllBuildings //leetcode_0317
 
     private static void Add(LinkedList<Position> q, Dictionary<Position, int> l, Position[,] p, int i, int j, int level)
     {
-        if (i >= 0 && i < p.Length && j >= 0 && j < p.GetLength(1) && p[i, j].V != 2 && !l.ContainsKey(p[i, j]))
+        if (i >= 0 && i < p.GetLength(0) && j >= 0 && j < p.GetLength(1) && p[i, j].V != 2 && !l.ContainsKey(p[i, j]))
         {
             l[p[i, j]] = level;
             q.AddLast(p[i, j]);
@@ -133,7 +133,7 @@ public class ShortestDistanceFromAllBuildings //leetcode_0317
 
     private static void Add(LinkedList<Info> q, Dictionary<Info, int> l, Info[,] infos, int i, int j, int level)
     {
-        if (i >= 0 && i < infos.Length && j >= 0 && j < infos.GetLength(1) && infos[i, j].V == 0 &&
+        if (i >= 0 && i < infos.GetLength(0) && j >= 0 && j < infos.GetLength(1) && infos[i, j].V == 0 &&
             !l.ContainsKey(infos[i, j]))
         {
             l[infos[i, j]] = level;
@@ -162,11 +162,11 @@ public class ShortestDistanceFromAllBuildings //leetcode_0317
     // dist[nextr,nextc] += level;
     private static int ShortestDistance3(int[,] grid)
     {
-        var dist = new int[grid.Length, grid.GetLength(1)];
+        var dist = new int[grid.GetLength(0), grid.GetLength(1)];
         var pass = 0;
         var step = int.MaxValue;
         int[] trans = [0, 1, 0, -1, 0];
-        for (var i = 0; i < grid.Length; i++)
+        for (var i = 0; i < grid.GetLength(0); i++)
         for (var j = 0; j < grid.GetLength(1); j++)
             if (grid[i, j] == 1)
             {
@@ -203,7 +203,7 @@ public class ShortestDistanceFromAllBuildings //leetcode_0317
                     // 上下左右
                     var nextr = node[0] + trans[i - 1];
                     var nextc = node[1] + trans[i];
-                    if (nextr >= 0 && nextr < grid.Length && nextc >= 0 && nextc < grid.GetLength(1) &&
+                    if (nextr >= 0 && nextr < grid.GetLength(0) && nextc >= 0 && nextc < grid.GetLength(1) &&
                         grid[nextr, nextc] == pass)
                     {
                         que.AddLast(new[] { nextr, nextc });
@@ -218,7 +218,6 @@ public class ShortestDistanceFromAllBuildings //leetcode_0317
         return ans;
     }
 
-    //todo:待修复
     public static void Run()
     {
         int[,] grid =

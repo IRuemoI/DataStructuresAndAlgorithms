@@ -40,7 +40,7 @@ public class MinimumUniqueWordAbbreviation //leetcode_0411
     private static bool CanFix(int[] words, int fix)
     {
         foreach (var word in words)
-            if ((fix & word) == 0)
+            if ((fix & word) != word)  // fix必须完全覆盖word的差异位
                 return false;
         return true;
     }
@@ -182,7 +182,17 @@ public class MinimumUniqueWordAbbreviation //leetcode_0411
 
     public static void Run()
     {
-        Console.WriteLine(MinAbbreviation1("apple", ["plain", "amber", "blade"])); //输出"1p3"
-        Console.WriteLine(MinAbbreviation2("apple", ["plain", "amber", "blade"])); //输出"1p3"
+        // 重置静态字段
+        _min = int.MaxValue;
+        _best = 0;
+
+        var result1 = MinAbbreviation1("apple", ["plain", "amber", "blade"]);
+        Console.WriteLine("MinAbbreviation1 result: " + result1); //期望"1p3"
+
+        _min = int.MaxValue;
+        _best = 0;
+
+        var result2 = MinAbbreviation2("apple", ["plain", "amber", "blade"]);
+        Console.WriteLine("MinAbbreviation2 result: " + result2); //期望"1p3"
     }
 }

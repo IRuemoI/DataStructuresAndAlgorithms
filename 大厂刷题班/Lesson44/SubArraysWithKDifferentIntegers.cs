@@ -50,11 +50,11 @@ public class SubArraysWithKDifferentIntegers //leetcode_0992
     private static int NumbersMostK(int[] arr, int k)
     {
         int i = 0, res = 0;
-        var count = new Dictionary<int, int?>();
+        var count = new Dictionary<int, int>();
         for (var j = 0; j < arr.Length; ++j)
         {
-            if ((count[arr[j]] != null ? count[arr[j]] : 0) == 0) k--;
-            count[arr[j]] = (count[arr[j]] != null ? count[arr[j]] : 0) + 1;
+            if (count.GetValueOrDefault(arr[j], 0) == 0) k--;
+            count[arr[j]] = count.GetValueOrDefault(arr[j], 0) + 1;
             while (k < 0)
             {
                 count[arr[i]] = count[arr[i]] - 1;
@@ -68,7 +68,6 @@ public class SubArraysWithKDifferentIntegers //leetcode_0992
         return res;
     }
 
-    //todo:待修复
     public static void Run()
     {
         Console.WriteLine(SubArraysWithKDistinct1([1, 2, 1, 2, 3], 2)); //输出7

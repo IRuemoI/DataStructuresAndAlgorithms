@@ -17,12 +17,15 @@ public class PartitionArrayIntoTwoArraysToMinimizeSumDifference //leetcode_2035
         foreach (var leftNum in lmap.Keys)
         foreach (var leftSum in lmap[leftNum])
         {
-            int? rightSum = rmap[half - leftNum].LastOrDefault(x => x <= (sum >> 1) - leftSum);
-            if (rightSum != null)
+            if (rmap.TryGetValue(half - leftNum, out var rightSet))
             {
-                var pickSum = leftSum + rightSum ?? throw new InvalidOperationException();
-                var restSum = sum - pickSum;
-                ans = Math.Min(ans, restSum - pickSum);
+                int? rightSum = rightSet.LastOrDefault(x => x <= (sum >> 1) - leftSum);
+                if (rightSum != null)
+                {
+                    var pickSum = leftSum + rightSum.Value;
+                    var restSum = sum - pickSum;
+                    ans = Math.Min(ans, restSum - pickSum);
+                }
             }
         }
 
